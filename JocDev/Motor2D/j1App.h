@@ -13,6 +13,7 @@ class j1Textures;
 class j1Audio;
 class j1Scene;
 class j1Map;
+class j1FadetoBlack;
 
 class j1App
 {
@@ -81,6 +82,7 @@ public:
 	j1Render*			render;
 	j1Textures*			tex;
 	j1Audio*			audio;
+	j1FadetoBlack*		fade;
 	j1Scene*			scene;
 	j1Map*				map;
 

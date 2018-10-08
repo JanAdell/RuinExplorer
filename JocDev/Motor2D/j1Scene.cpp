@@ -7,6 +7,7 @@
 #include "j1Render.h"
 #include "j1Window.h"
 #include "j1Map.h"
+#include "j1FadetoBlack.h"
 #include "j1Scene.h"
 
 j1Scene::j1Scene() : j1Module()
@@ -61,6 +62,13 @@ bool j1Scene::Update(float dt)
 
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= 5;
+
+	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN && App->fade->IsFading() == false)
+	{
+		App->map->CleanUp();
+		App->fade->fadetoBlack();
+		App->map->Load("SeaTempleMap.tmx");
+	}
 
 	//App->render->Blit(img, 0, 0);
 	App->map->Draw();
