@@ -30,6 +30,7 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
+	//App->map->Load("SeaTempleMap.tmx");
 	App->map->Load("Volcano_Map.tmx");
 	return true;
 }

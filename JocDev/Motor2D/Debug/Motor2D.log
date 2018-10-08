@@ -1,14 +1,2 @@
-﻿  j1Main.cpp
-  j1App.cpp
-  j1Audio.cpp
-  j1Input.cpp
-  j1Map.cpp
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1map.cpp(106): warning C4101: 'item_layer': unreferenced local variable
-  j1Scene.cpp
-  p2Log.cpp
-  j1Render.cpp
-  j1Textures.cpp
-  j1Window.cpp
-  pugixml.cpp
-  Generating Code...
-LINK : fatal error LNK1104: cannot open file 'SDL/libx86/SDL2.lib'
+﻿  j1Scene.cpp
+  Motor2D.vcxproj -> C:\Users\Isabel\Desktop\class vec3\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe
