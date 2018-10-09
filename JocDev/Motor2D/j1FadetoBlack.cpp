@@ -17,9 +17,8 @@ bool  j1FadetoBlack::Start()
 	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
 	return true;
 	uint width, height;
-	uint scale = App->win->GetScale();
 	App->win->GetWindowSize(width, height);
-	screen = {0,0,static_cast <int>(width*scale),static_cast <int> (height*scale)};
+	screen = { 0,0,(int)width,(int)height};
 }
 
 // Actualización: dibujar fondo
@@ -60,7 +59,7 @@ bool j1FadetoBlack::Update()
 }
 
 // Se desvanece a negro. En el punto medio, desactiva un módulo, luego activa el otro
-bool j1FadetoBlack::fadetoBlack(float time)
+bool j1FadetoBlack::fadetoBlack(j1Module* mod, float time)
 {
 	bool ret = false;
 
@@ -69,6 +68,7 @@ bool j1FadetoBlack::fadetoBlack(float time)
 		current_step = fade_step::FADE_TO_BLACK;
 		start_time = SDL_GetTicks();
 		total_time = (Uint32)(time * 0.5f * 1000.0f);
+		
 		ret = true;
 	}
 

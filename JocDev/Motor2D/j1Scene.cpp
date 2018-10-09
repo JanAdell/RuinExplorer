@@ -70,11 +70,17 @@ bool j1Scene::Update(float dt)
 		App->map->Load("SeaTempleMap.tmx");
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN && App->fade->IsFading() == false) 
+	{
+		App->map->CleanUp();
+		App->fade->fadetoBlack();
+		App->map->Load("Volcano_Map.tmx");
+	}
+
 	//App->render->Blit(img, 0, 0);
 	App->map->Draw();
 
-	// TODO 7: Set the window title like
-	//"Map:%dx%d Tiles:%dx%d Tilesets:%d"
+	
 	p2SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
 					App->map->data.width, App->map->data.height,
 					App->map->data.tile_width, App->map->data.tile_height,

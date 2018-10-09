@@ -109,7 +109,7 @@ bool j1Map::CleanUp()
 		RELEASE(item->data);
 		item = item->next;
 	}
-
+	data.layers.clear();
 
 	// Clean up the pugui tree
 	map_file.reset();
