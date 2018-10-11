@@ -22,7 +22,7 @@ bool  j1FadetoBlack::Start()
 }
 
 // Actualización: dibujar fondo
-bool j1FadetoBlack::Update()
+bool j1FadetoBlack::Update(float id)
 {
 	if (current_step == fade_step::NONE)
 		return true;
@@ -59,7 +59,7 @@ bool j1FadetoBlack::Update()
 }
 
 // Se desvanece a negro. En el punto medio, desactiva un módulo, luego activa el otro
-bool j1FadetoBlack::fadetoBlack(j1Module* mod, float time)
+bool j1FadetoBlack::fadetoBlack(float time)
 {
 	bool ret = false;
 

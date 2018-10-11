@@ -3,6 +3,7 @@
 #include "j1App.h"
 #include "j1Window.h"
 #include "j1Render.h"
+#include "j1Map.h"
 
 #define VSYNC true
 
@@ -57,6 +58,11 @@ bool j1Render::Start()
 	LOG("render start");
 	// back background
 	SDL_RenderGetViewport(renderer, &viewport);
+
+	//camera position
+	uint width, height;
+	App->win->GetWindowSize(width, height);
+	camera.y = -App->map->data.height * App->map->data.tile_height + height;
 	return true;
 }
 
