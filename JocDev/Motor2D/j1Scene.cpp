@@ -8,6 +8,7 @@
 #include "j1Window.h"
 #include "j1Map.h"
 #include "j1FadetoBlack.h"
+#include "j1Player.h"
 #include "j1Scene.h"
 
 j1Scene::j1Scene() : j1Module()
@@ -63,18 +64,22 @@ bool j1Scene::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= 5;
 
-	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN && App->fade->IsFading() == false)
+	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
 		App->map->CleanUp();
 		App->fade->fadetoBlack();
+		App->render->Start();
 		App->map->Load("SeaTempleMap.tmx");
+		App->player->Start();
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN && App->fade->IsFading() == false) 
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
 	{
 		App->map->CleanUp();
 		App->fade->fadetoBlack();
+		App->render->Start();
 		App->map->Load("Volcano_Map.tmx");
+		App->player->Start();
 	}
 
 	//App->render->Blit(img, 0, 0);

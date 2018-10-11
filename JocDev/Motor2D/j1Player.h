@@ -20,16 +20,24 @@ public:
 	bool Update(float dt);
 	bool CleanUp();
 	//void OnCollision(Collider* c1, Collider* c2);
+	
+
+
 
 public:
 	//Mix_Chunk* player_death = nullptr;
 	SDL_Texture* player_tex = nullptr;
 	iPoint position;
-	fPoint speed;
+	int normal_jump;
+	int boosted_jump;
+	int distance_to_jump;
+	bool boost_jump = false;
+	bool start_jump = false;
 
 private:
 	SDL_Rect sprite_player;
 	j1Textures* tex_player = nullptr;
+	fPoint speed;
 };
 
 #endif
