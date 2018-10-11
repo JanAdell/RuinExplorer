@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="34" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="36" nextobjectid="55">
  <tileset firstgid="1" name="Volcano Background" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
   <image source="terrain_atlas.png" width="1024" height="1024"/>
   <terraintypes>
@@ -76,6 +76,9 @@
   <tile id="2776" terrain="4,4,4,4"/>
  </tileset>
  <layer id="24" name="sky" width="32" height="129">
+  <properties>
+   <property name="draw" type="int" value="1"/>
+  </properties>
   <data>
    <tile gid="457"/>
    <tile gid="457"/>
@@ -4208,6 +4211,9 @@
   </data>
  </layer>
  <layer id="25" name="Background" width="32" height="129">
+  <properties>
+   <property name="draw" type="int" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -8340,6 +8346,9 @@
   </data>
  </layer>
  <layer id="26" name="Background Details &amp; plataforms" width="32" height="129">
+  <properties>
+   <property name="draw" type="int" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -12472,6 +12481,9 @@
   </data>
  </layer>
  <layer id="27" name="SideBars &amp; UI" width="32" height="129">
+  <properties>
+   <property name="draw" type="int" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -16604,6 +16616,9 @@
   </data>
  </layer>
  <layer id="30" name="Sand" width="32" height="129">
+  <properties>
+   <property name="draw" type="int" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -20736,6 +20751,9 @@
   </data>
  </layer>
  <layer id="28" name="UI and Sidebars Details" width="32" height="129">
+  <properties>
+   <property name="draw" type="int" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -24868,6 +24886,9 @@
   </data>
  </layer>
  <layer id="29" name="Platform Details" width="32" height="129">
+  <properties>
+   <property name="draw" type="int" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -28999,4 +29020,44 @@
    <tile/>
   </data>
  </layer>
+ <objectgroup color="#0000ff" id="35" name="Colliders">
+  <object id="10" x="289" y="3969.5" width="125.5" height="29"/>
+  <object id="11" x="608" y="3969" width="126" height="28"/>
+  <object id="12" x="300" y="4077" width="426" height="55"/>
+  <object id="13" x="288" y="3874" width="31" height="31"/>
+  <object id="14" x="322" y="3840" width="59" height="31"/>
+  <object id="21" x="352" y="3871" width="126" height="30"/>
+  <object id="22" x="545" y="3872" width="126" height="31"/>
+  <object id="23" x="641" y="3840" width="61" height="30"/>
+  <object id="24" x="704" y="3872" width="29" height="30"/>
+  <object id="25" x="608" y="3743" width="127" height="31"/>
+  <object id="26" x="480" y="3711" width="62" height="32"/>
+  <object id="27" x="288" y="3742" width="127" height="33"/>
+  <object id="28" x="480" y="3968" width="63" height="30"/>
+  <object id="29" x="288" y="3648" width="126" height="31"/>
+  <object id="30" x="480" y="3585" width="256" height="29"/>
+  <object id="31" x="288" y="3486" width="94" height="34"/>
+  <object id="32" x="672" y="3423" width="64" height="33"/>
+  <object id="33" x="448" y="3359" width="129" height="32"/>
+  <object id="34" x="705" y="3327" width="31" height="33"/>
+  <object id="35" x="287" y="3392" width="32" height="29"/>
+  <object id="36" x="288" y="3296" width="30" height="31"/>
+  <object id="37" x="352" y="3233" width="95" height="31"/>
+  <object id="38" x="576" y="3232" width="95" height="31"/>
+  <object id="39" x="704" y="3233" width="31" height="32"/>
+  <object id="40" x="481" y="3199" width="62" height="31"/>
+  <object id="41" x="544" y="3104" width="190" height="32"/>
+  <object id="42" x="287" y="3104" width="192" height="30"/>
+  <object id="43" x="288" y="3008" width="191" height="31"/>
+  <object id="44" x="544" y="3006" width="191" height="33"/>
+  <object id="45" x="288" y="2912" width="190" height="32"/>
+  <object id="46" x="544" y="2912" width="193" height="31"/>
+  <object id="47" x="417" y="2816" width="60" height="33"/>
+  <object id="48" x="481" y="2783" width="61" height="31"/>
+  <object id="50" x="544.5" y="2816" width="62.5" height="31"/>
+  <object id="51" x="672.667" y="2784" width="63.3333" height="30"/>
+  <object id="52" x="288" y="2784" width="64" height="32"/>
+  <object id="53" x="351" y="2688" width="65" height="31"/>
+  <object id="54" x="607" y="2688" width="63" height="30"/>
+ </objectgroup>
 </map>

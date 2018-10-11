@@ -8,6 +8,7 @@
 	
   <renderer>
     <vsync value="false"/>
+	<camera speed = "1" time = "500"/>
   </renderer>
 
   <window>
@@ -27,7 +28,6 @@
   </map>
 
   <player>
-	  <position x = "500" y = "4050"/>
 	  <speed x = "1" y = "1"/>
   </player>
 </config>

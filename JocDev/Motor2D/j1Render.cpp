@@ -49,6 +49,8 @@ bool j1Render::Awake(pugi::xml_node& config)
 		camera.y = 0;
 	}
 
+	speed = config.child("camera").attribute("speed").as_uint();
+	time_to_start = config.child("camera").attribute("time").as_uint();
 	return ret;
 }
 
@@ -75,6 +77,18 @@ bool j1Render::PreUpdate()
 
 bool j1Render::Update(float dt)
 {
+	if (camera.y != 0)
+	{
+		if (time_to_start < speed)
+		{
+			camera.y += 1;
+			speed = time_to_start - 1;
+		}
+		else
+		{
+			speed += 1;
+		}
+	}
 	return true;
 }
 

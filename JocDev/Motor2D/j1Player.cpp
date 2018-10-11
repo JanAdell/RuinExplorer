@@ -13,8 +13,6 @@
 j1Player::j1Player()
 {
 	name.create("player");
-
-	// idle animation
 }
 
 j1Player::~j1Player()
@@ -23,8 +21,6 @@ j1Player::~j1Player()
 bool j1Player::Awake(pugi::xml_node & conf)
 {
 	bool ret = true;
-	/*position.x = conf.child("position").attribute("x").as_int();
-	position.y = conf.child("position").attribute("y").as_int();*/
 	speed.x = conf.child("speed").attribute("x").as_float();
 	speed.y = conf.child("speed").attribute("y").as_float();
 	return ret;
@@ -90,6 +86,12 @@ bool j1Player::Update(float dt)
 			start_jump = false;
 		}
 	}
+
+	if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
+		position.x = 7 * App->map->data.tile_width;
+
+	else if (position.x < 7 * App->map->data.tile_width)
+		position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
 	App->render->Blit(player_tex, position.x, position.y, &sprite_player);
 
 	return true;
