@@ -46,7 +46,7 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	if(App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	/*if(App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 		App->LoadGame();
 
 	if(App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
@@ -63,13 +63,18 @@ bool j1Scene::Update(float dt)
 
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= 5;
-
+	*/
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
 		App->map->CleanUp();
 		App->fade->fadetoBlack();
 		App->render->Start();
 		App->map->Load("SeaTempleMap.tmx");
+
+		App->audio->PlayMusic("Game/audio/music/LavaLand.wav" , DEFAULT_MUSIC_FADE_TIME);
+		
+		App->fade->fadefromBlack();
+		
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
 	}
@@ -80,6 +85,11 @@ bool j1Scene::Update(float dt)
 		App->fade->fadetoBlack();
 		App->render->Start();
 		App->map->Load("Volcano_Map.tmx");
+
+		App->audio->PlayMusic("Game/audio/music/FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+
+		App->fade->fadefromBlack();
+		
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
 	}
