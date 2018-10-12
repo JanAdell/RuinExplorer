@@ -23979,7 +23979,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="2221"/>
    <tile gid="2223"/>
    <tile/>
    <tile/>
@@ -23992,6 +23992,7 @@
    <tile/>
    <tile/>
    <tile gid="2220"/>
+   <tile gid="2222"/>
    <tile/>
    <tile/>
    <tile/>
@@ -24011,7 +24012,6 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2221"/>
    <tile/>
    <tile/>
    <tile/>
@@ -24024,7 +24024,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2223"/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -25124,7 +25124,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="6" name="Platforms Details" width="32" height="130" locked="1">
+ <layer id="6" name="Platforms Details" width="32" height="130">
   <data>
    <tile/>
    <tile/>
@@ -28143,7 +28143,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="3801"/>
    <tile/>
    <tile/>
    <tile/>
@@ -28151,25 +28151,6 @@
    <tile/>
    <tile gid="3801"/>
    <tile gid="3801"/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -28188,7 +28169,26 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="3801"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>

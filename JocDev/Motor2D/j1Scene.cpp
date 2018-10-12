@@ -71,6 +71,7 @@ bool j1Scene::Update(float dt)
 		App->render->Start();
 		App->map->Load("SeaTempleMap.tmx");
 		App->player->Start();
+		App->render->ResetTime(App->render->speed);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
@@ -80,6 +81,7 @@ bool j1Scene::Update(float dt)
 		App->render->Start();
 		App->map->Load("Volcano_Map.tmx");
 		App->player->Start();
+		App->render->ResetTime(App->render->speed);
 	}
 
 	//App->render->Blit(img, 0, 0);
