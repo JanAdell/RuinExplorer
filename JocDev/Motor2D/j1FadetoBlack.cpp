@@ -75,6 +75,22 @@ bool j1FadetoBlack::fadetoBlack(float time)
 	return ret;
 }
 
+bool j1FadetoBlack::fadefromBlack(float time)
+{
+	bool ret = false;
+
+	if (current_step == fade_step::NONE)
+	{
+		current_step = fade_step::FADE_FROM_BLACK;
+		start_time = SDL_GetTicks();
+		total_time = (Uint32)(time * 0.5f * 1000.0f);
+
+		ret = true;
+	}
+
+	return ret;
+}
+
 bool j1FadetoBlack::IsFading() const
 {
 	return current_step != fade_step::NONE;

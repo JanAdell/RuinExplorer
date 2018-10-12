@@ -33,6 +33,9 @@ public:
 	bool CleanUp();
 
 private:
+
+	_Mix_Music* Stage_music = nullptr;
+
 };
 
 #endif // __j1SCENE_H__
