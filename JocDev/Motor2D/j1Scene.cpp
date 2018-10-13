@@ -74,6 +74,7 @@ bool j1Scene::Update(float dt)
 		App->map->Load("SeaTempleMap.tmx");
 		App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
 		App->player->Start();
+		App->render->ResetTime(App->render->speed);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
@@ -84,6 +85,7 @@ bool j1Scene::Update(float dt)
 		App->map->Load("Volcano_Map.tmx");
 		App->audio->PlayMusic("LavaLand.wav", DEFAULT_MUSIC_FADE_TIME);
 		App->player->Start();
+		App->render->ResetTime(App->render->speed);
 	}
 
 	//App->render->Blit(img, 0, 0);

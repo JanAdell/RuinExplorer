@@ -4,6 +4,7 @@
 #include "j1Render.h"
 #include "j1Textures.h"
 #include "j1Map.h"
+#include "j1Input.h"
 #include <math.h>
 
 j1Map::j1Map() : j1Module(), map_loaded(false)
@@ -46,7 +47,7 @@ void j1Map::Draw()
 					if (gid != 0)
 					{
 						iPoint worldPos = MapToWorld(i, j);
-						App->render->Blit(tile_iterator->data->texture, worldPos.x, worldPos.y, &tile_iterator->data->GetTileRect(gid));
+						App->render->Blit(tile_iterator->data->texture, worldPos.x, worldPos.y,SDL_FLIP_NONE, &tile_iterator->data->GetTileRect(gid));
 					}
 				}
 			}
