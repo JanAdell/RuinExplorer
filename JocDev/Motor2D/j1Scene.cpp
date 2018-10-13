@@ -116,7 +116,7 @@ bool j1Scene::Update(float dt)
 	}
 
 	//win condicion
-	if (App->player->position.y > App->map->data.tile_height * 17)
+	if (-App->player->position.y > -App->map->data.tile_height * 17)
 	{
 		if (volcan_map)
 		{
