@@ -35,6 +35,7 @@ public:
 private:
 
 	_Mix_Music* Stage_music = nullptr;
+	bool volcan_scene = true;
 
 };
 

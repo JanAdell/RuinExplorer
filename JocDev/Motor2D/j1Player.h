@@ -49,7 +49,7 @@ private:
 	Animation fall;
 	SDL_RendererFlip flip;
 	int pos_collidery;
-	bool top_jump = false;
+	bool top_jump = true;
 	iPoint player_size;
 };
 

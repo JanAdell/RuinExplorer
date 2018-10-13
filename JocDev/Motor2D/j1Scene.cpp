@@ -70,26 +70,29 @@ bool j1Scene::Update(float dt)
 	{
 		App->map->CleanUp();
 		App->collisions->CleanUp();
-		App->render->Start();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
 		App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+		App->render->Start();
 		App->collisions->Start();
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
+		
+		volcan_scene = false;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
 	{
 		App->map->CleanUp();
 		App->collisions->CleanUp();
-		App->render->Start();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("Volcano_Map.tmx");
+		App->render->Start();
 		App->collisions->Start();
 		App->audio->PlayMusic("LavaLand.wav", DEFAULT_MUSIC_FADE_TIME);
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
+		volcan_scene = true;
 	}
 
 	//App->render->Blit(img, 0, 0);
@@ -102,7 +105,50 @@ bool j1Scene::Update(float dt)
 					App->map->data.tilesets.count());
 
 	App->win->SetTitle(title.GetString());
-	return true;
+	
+	//dead condicion
+	if (-App->player->position.y < (App->render->camera.y - App->render->camera.h))
+	{
+
+		App->render->Start();
+		App->fade->fadetoBlack(2.0f);
+		App->player->Start();
+		App->render->ResetTime(App->render->speed);
+		volcan_scene = true;
+	}
+	
+	//win condicion
+	if (-App->player->position.y > -App->map->data.tile_height * 17)
+	{
+		if (volcan_scene = true)
+		{
+			App->map->CleanUp();
+			App->collisions->CleanUp();
+			App->render->Start();
+			App->fade->fadetoBlack(2.0f);
+			App->map->Load("SeaTempleMap.tmx");
+			App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+			App->collisions->Start();
+			App->player->Start();
+			App->render->ResetTime(App->render->speed);
+			volcan_scene = false;
+		}
+		else
+		{
+			App->map->CleanUp();
+			App->collisions->CleanUp();
+			App->render->Start();
+			App->fade->fadetoBlack(2.0f);
+			App->map->Load("Volcano_Map.tmx");
+			App->collisions->Start();
+			App->audio->PlayMusic("LavaLand.wav", DEFAULT_MUSIC_FADE_TIME);
+			App->player->Start();
+			App->render->ResetTime(App->render->speed);
+			volcan_scene = true;
+		}
+	}
+
+	return true;	
 }
 
 // Called each loop iteration
