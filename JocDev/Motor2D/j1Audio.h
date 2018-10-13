@@ -6,16 +6,9 @@
 #include "p2List.h"
 
 #define DEFAULT_MUSIC_FADE_TIME 2.0f
-#define DEFAULT_MUSIC_VOLUME 10
-#define DEFAULT_SFX_VOLUME 100
 
 struct _Mix_Music;
 struct Mix_Chunk;
-
-enum Audio_State {
-	PLAY_AUDIO,
-	STOP_AUDIO,
-};
 
 class j1Audio : public j1Module
 {
@@ -46,10 +39,6 @@ private:
 	_Mix_Music*			music;
 	p2List<Mix_Chunk*>	fx;
 
-	int volumeMUS = DEFAULT_MUSIC_VOLUME;
-	int volumeSFX = DEFAULT_SFX_VOLUME;
-	/*int sfxID = 0;
-	int musicID = 0;*/
 };
 
 #endif // __j1AUDIO_H__

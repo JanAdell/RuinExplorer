@@ -135,6 +135,7 @@ bool j1Map::Load(const char* file_name)
 	if(ret == true)
 	{
 		ret = LoadMap();
+		
 	}
 
 	// Load all tilesets info ----------------------------------------------

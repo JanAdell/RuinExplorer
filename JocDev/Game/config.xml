@@ -7,7 +7,7 @@
   </app>
 	
   <renderer>
-    <vsync value="false"/>
+    <vsync value="true"/>
 	<camera speed = "1" time = "500"/>
   </renderer>
 
@@ -26,6 +26,14 @@
   <map>
     <folder>maps/</folder>
   </map>
+
+  <music>
+    <folder>audio/Music/</folder>
+  </music>
+
+  <fx>
+    <folder>audio/Effects/</folder>
+  </fx>
 
   <player>
 	  <speed x = "1" y = "1"/>

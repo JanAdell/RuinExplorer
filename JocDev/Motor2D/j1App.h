@@ -82,8 +82,8 @@ public:
 	j1Input*			input;
 	j1Render*			render;
 	j1Textures*			tex;
-	j1Audio*			audio;
-	j1FadetoBlack*		fade;
+	j1Audio*			audio = nullptr;
+	j1FadetoBlack*		fade = nullptr;
 	j1Scene*			scene;
 	j1Map*				map;
 	j1Player*			player;
