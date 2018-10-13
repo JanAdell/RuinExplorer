@@ -4,8 +4,11 @@
 #include "j1Render.h"
 #include "j1Player.h"
 #include "j1Audio.h"
+#include "j1Map.h"
 #include "p2Log.h"
 #include "j1Map.h"
+#include "j1Collisions.h"
+#include "p2Log.h"
 #include <stdio.h>
 
 
@@ -23,6 +26,8 @@ bool j1Player::Awake(pugi::xml_node & conf)
 	bool ret = true;
 	speed.x = conf.child("speed").attribute("x").as_float();
 	speed.y = conf.child("speed").attribute("y").as_float();
+	player_size.x =	conf.child("idle_anim").attribute("w1").as_int();
+	player_size.y = conf.child("idle_anim").attribute("h1").as_int();
 
 	//sprites
 	//idle
@@ -66,9 +71,12 @@ bool j1Player::Start()
 	player_tex = App->tex->Load("adventurer/adventurer.png"); 
 	position.y = App->map->data.tile_height * App->map->data.height - 3 * App->map->data.tile_height + App->map->data.tile_height/2;
 	position.x = App->map->data.tile_width * App->map->data.width / 2;
-	normal_jump = App->map->data.tile_height * 4;
-	boosted_jump = App->map->data.tile_height * 8;
+	normal_jump = App->map->data.tile_height * 3;
+	boosted_jump = App->map->data.tile_height * 6;
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
+	collider_player_down = App->collisions->AddCollider({ position.x, position.y + player_size.y, player_size.x, 1 }, COLLIDER_PLAYER_DOWN, this);
+	collider_player_up = App->collisions->AddCollider({ position.x,position.y - 3,player_size.x,1 }, COLLIDER_PLAYER_UP);
+	
 	return ret;
 }
 
@@ -82,12 +90,10 @@ bool j1Player::CleanUp()
 }
 
 
-
-
-
 // Update: draw background
 bool j1Player::Update(float dt)
 {
+	pos_collidery = position.y + 30;
 	current_animation = &idle;
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
@@ -103,26 +109,35 @@ bool j1Player::Update(float dt)
 		position.x -= speed.x;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+	if (stay_in_platform)
 	{
-		if (boost_jump == false && start_jump == false)
+		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 		{
-			jump_anim.Reset();
-			distance_to_jump = position.y - normal_jump;
-			start_jump = true;
+			start_jump = false;
+			if (boost_jump == false && start_jump == false)
+			{
+				jump_anim.Reset();
+				distance_to_jump = position.y - normal_jump;
+				position.y -= speed.y;
+				start_jump = true;
+				stay_in_platform = false;
+				top_jump = false;
+			}
 		}
 	}
-
-	if (start_jump)
+	else
 	{
-		if (distance_to_jump < position.y)
+		if (position.y > distance_to_jump && top_jump == false)
 		{
 			current_animation = &jump_anim;
 			position.y -= speed.y;
 		}
-		else
+		if (position.y == distance_to_jump)
+			top_jump = true;
+		if(top_jump == true)
 		{
-			start_jump = false;
+			position.y += speed.y;
+			current_animation = &fall;
 		}
 	}
 
@@ -131,15 +146,23 @@ bool j1Player::Update(float dt)
 
 	else if (position.x < 7 * App->map->data.tile_width)
 		position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
-
+	
+	//colliders player
+	collider_player_down->SetPos(position.x, position.y + player_size.y);
+	collider_player_up->SetPos(position.x, position.y - 3);
 	App->render->Blit(player_tex, position.x, position.y,flip, &(current_animation->GetCurrentFrame()));
 
 	return true;
 }
 
-//void j1Player::OnCollision(Collider* c1, Collider* c2)
-//{
-//	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
-//	{
-//	}
-//}
+void j1Player::OnCollision(Collider* c1, Collider* c2)
+{
+	if (c1->type == COLLIDER_PLAYER_DOWN && c2->type == COLLIDER_WALL)
+	{
+		stay_in_platform = true;
+	}
+	if (c1->type == COLLIDER_PLAYER_UP && c2->type == COLLIDER_WALL)
+	{
+		top_jump = true;
+	}
+}

@@ -9,6 +9,7 @@
 #pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
 
 struct SDL_Texture;
+struct Collider;
 
 class j1Player : public j1Module
 {
@@ -20,9 +21,10 @@ public:
 	bool Start();
 	bool Update(float dt);
 	bool CleanUp();
-	//void OnCollision(Collider* c1, Collider* c2);
-	
-
+	void OnCollision(Collider* c1, Collider* c2);
+	Collider* collider_player_down = nullptr;
+	Collider* collider_player_lateral = nullptr;
+	Collider* collider_player_up = nullptr;
 
 
 public:
@@ -44,6 +46,10 @@ private:
 	Animation fall;
 	fPoint speed;
 	SDL_RendererFlip flip;
+	int pos_collidery;
+	bool stay_in_platform = false;
+	bool top_jump = false;
+	iPoint player_size;
 };
 
 #endif

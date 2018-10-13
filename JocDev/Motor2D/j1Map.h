@@ -5,6 +5,7 @@
 #include "p2List.h"
 #include "p2Point.h"
 #include "j1Module.h"
+#include "j1Collisions.h"
 
 
 struct Layer
@@ -40,6 +41,14 @@ struct TileSet
 	int					offset_y;
 };
 
+struct MapObject
+{
+	p2SString name;
+	Collider* col[MAX_COLLIDERS] = { nullptr };
+	uint id = 0u;
+};
+
+
 enum MapTypes
 {
 	MAPTYPE_UNKNOWN = 0,
@@ -57,8 +66,8 @@ struct MapData
 	SDL_Color			background_color;
 	MapTypes			type;
 	p2List<TileSet*>	tilesets;
-	// TODO 2: Add a list/array of layers to the map!
 	p2List<Layer*>		layers;
+	p2List<MapObject*>	objects;
 	
 };
 
@@ -93,8 +102,8 @@ private:
 	bool LoadMap();
 	bool LoadTilesetDetails(pugi::xml_node& tileset_node, TileSet* set);
 	bool LoadTilesetImage(pugi::xml_node& tileset_node, TileSet* set);
-	// TODO 3: Create a method that loads a single laye
 	bool LoadLayer(pugi::xml_node& node, Layer* layer);
+	bool LoadObjects(pugi::xml_node& node, MapObject* object);
 
 public:
 

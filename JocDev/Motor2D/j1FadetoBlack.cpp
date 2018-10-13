@@ -58,11 +58,6 @@ bool j1FadetoBlack::Update(float id)
 	return true;
 }
 
-bool j1FadetoBlack::fadetoBlack(float time)
-{
-	return false;
-}
-
 // Se desvanece a negro. En el punto medio, desactiva un módulo, luego activa el otro
 bool j1FadetoBlack::fadetoBlack(float time)
 {
