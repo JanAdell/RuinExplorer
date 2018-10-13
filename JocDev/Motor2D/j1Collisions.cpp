@@ -13,14 +13,34 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_WALL][COLLIDER_WALL] = false;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_UP] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_DOWN] = true;
+	matrix[COLLIDER_WALL][COLLIDER_PLAYER_LEFT] = true;
+	matrix[COLLIDER_WALL][COLLIDER_PLAYER_RIGHT] = true;
 
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_UP] = false;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_DOWN] = false;
+	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_LEFT] = false;
+	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_RIGHT] = false;
 
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_UP] = false;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_DOWN] = false;
+	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_LEFT] = false;
+	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_RIGHT] = false;
+
+	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_WALL] = true;
+	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_UP] = false;
+	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_DOWN] = false;
+	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_LEFT] = false;
+	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_RIGHT] = false;
+
+	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_WALL] = true;
+	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_UP] = false;
+	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_DOWN] = false;
+	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_LEFT] = false;
+	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_RIGHT] = false;
+
+
 }
 
 // Destructor
@@ -59,7 +79,7 @@ bool j1Collisions::PreUpdate()
 				continue;
 
 			c2 = colliders[k];
-
+	
 			if (c1->CheckCollision(c2->rect) == true)
 			{
 				if (matrix[c1->type][c2->type] && c1->callback)
@@ -125,7 +145,13 @@ void j1Collisions::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
 		case COLLIDER_PLAYER_DOWN: // green
-			App->render->DrawQuad(colliders[i]->rect, 0, 125, 125, alpha);
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
+		case COLLIDER_PLAYER_LEFT: // green
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
+		case COLLIDER_PLAYER_RIGHT: // green
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
 		}
 	}
@@ -168,7 +194,7 @@ Collider* j1Collisions::AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1Module*
 
 bool Collider::CheckCollision(const SDL_Rect& r) const
 {
-	// TODO 0: Return true if there is an overlap
+	//Return true if there is an overlap
 	return (rect.x < r.x + r.w &&
 		rect.x + rect.w > r.x &&
 		rect.y < r.y + r.h &&

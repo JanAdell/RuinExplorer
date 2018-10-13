@@ -69,10 +69,12 @@ bool j1Scene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
 		App->map->CleanUp();
+		App->collisions->CleanUp();
 		App->render->Start();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
 		App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+		App->collisions->Start();
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
 	}
@@ -80,9 +82,11 @@ bool j1Scene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
 	{
 		App->map->CleanUp();
+		App->collisions->CleanUp();
 		App->render->Start();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("Volcano_Map.tmx");
+		App->collisions->Start();
 		App->audio->PlayMusic("LavaLand.wav", DEFAULT_MUSIC_FADE_TIME);
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);

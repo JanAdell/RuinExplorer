@@ -82,7 +82,7 @@ bool j1Render::Update(float dt)
 		if (time_to_start < speed)
 		{
 			camera.y += 1;
-			speed = time_to_start - 1;
+			speed = time_to_start;
 		}
 		else
 		{

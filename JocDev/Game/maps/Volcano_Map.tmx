@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="36" nextobjectid="126">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="36" nextobjectid="128">
  <tileset firstgid="1" name="Volcano Background" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
   <image source="terrain_atlas.png" width="1024" height="1024"/>
   <terraintypes>
@@ -24603,6 +24603,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="2122"/>
    <tile/>
    <tile/>
    <tile/>
@@ -24617,8 +24618,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="2122"/>
    <tile/>
    <tile/>
    <tile/>
@@ -29024,8 +29024,8 @@
   <object id="10" x="289" y="3969.5" width="125.5" height="29"/>
   <object id="11" x="608" y="3969" width="126" height="28"/>
   <object id="12" x="300" y="4077" width="426" height="55"/>
-  <object id="13" x="288" y="3874" width="31" height="31"/>
-  <object id="14" x="322" y="3840" width="59" height="31"/>
+  <object id="13" x="288" y="3872" width="31" height="33"/>
+  <object id="14" x="321" y="3840" width="60" height="31"/>
   <object id="21" x="352" y="3871" width="126" height="30"/>
   <object id="22" x="545" y="3872" width="126" height="31"/>
   <object id="23" x="641" y="3840" width="61" height="30"/>
@@ -29128,5 +29128,7 @@
   <object id="123" x="448" y="576" width="32" height="32"/>
   <object id="124" x="544" y="576" width="31" height="30"/>
   <object id="125" x="704" y="577" width="32" height="30"/>
+  <object id="126" x="737" y="3840" width="30" height="31"/>
+  <object id="127" x="256" y="3839" width="30" height="32"/>
  </objectgroup>
 </map>
