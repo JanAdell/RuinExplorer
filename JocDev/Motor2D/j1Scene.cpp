@@ -10,6 +10,7 @@
 #include "j1FadetoBlack.h"
 #include "j1Player.h"
 #include "j1Scene.h"
+#include "j1Collisions.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -113,7 +114,6 @@ bool j1Scene::Update(float dt)
 		App->render->Start();
 		App->fade->fadetoBlack(2.0f);
 		App->player->Start();
-		App->render->ResetTime(App->render->speed);
 		volcan_scene = true;
 	}
 	
