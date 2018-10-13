@@ -23,7 +23,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 	Collider* collider_player_down = nullptr;
-	Collider* collider_player_lateral = nullptr;
+	Collider* collider_player_right = nullptr;
+	Collider* collider_player_left = nullptr;
 	Collider* collider_player_up = nullptr;
 
 
@@ -48,7 +49,7 @@ private:
 	SDL_RendererFlip flip;
 	int pos_collidery;
 	bool stay_in_platform = false;
-	bool top_jump = false;
+	bool top_jump = true;
 	iPoint player_size;
 };
 

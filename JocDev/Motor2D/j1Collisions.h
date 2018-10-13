@@ -11,7 +11,8 @@ enum COLLIDER_TYPE
 	COLLIDER_WALL,
 	COLLIDER_PLAYER_UP,
 	COLLIDER_PLAYER_DOWN,
-	COLLIDER_PLAYER_LATERAL,
+	COLLIDER_PLAYER_LEFT,
+	COLLIDER_PLAYER_RIGHT,
 	COLLIDER_MAX
 };
 
@@ -51,10 +52,10 @@ public:
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1Module* callback = nullptr);
 	void DebugDraw();
+	Collider * colliders[MAX_COLLIDERS];
 
 private:
 
-	Collider * colliders[MAX_COLLIDERS];
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 	bool debug = false;
 	bool god_mode = false;

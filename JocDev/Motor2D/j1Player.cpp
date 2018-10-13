@@ -69,14 +69,16 @@ bool j1Player::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	player_tex = App->tex->Load("adventurer/adventurer.png"); 
-	position.y = App->map->data.tile_height * App->map->data.height - 3 * App->map->data.tile_height + App->map->data.tile_height/2;
+	position.y = App->map->data.tile_height * App->map->data.height - 4 * App->map->data.tile_height + App->map->data.tile_height/2;
 	position.x = App->map->data.tile_width * App->map->data.width / 2;
 	normal_jump = App->map->data.tile_height * 3;
 	boosted_jump = App->map->data.tile_height * 6;
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
-	collider_player_down = App->collisions->AddCollider({ position.x, position.y + player_size.y, player_size.x, 1 }, COLLIDER_PLAYER_DOWN, this);
-	collider_player_up = App->collisions->AddCollider({ position.x,position.y - 3,player_size.x,1 }, COLLIDER_PLAYER_UP);
-	
+	collider_player_down = App->collisions->AddCollider({ position.x + 2, position.y + player_size.y, player_size.x - 2, 1 }, COLLIDER_PLAYER_DOWN, this);
+	collider_player_up = App->collisions->AddCollider({ position.x + 2,position.y - 3,player_size.x - 2,1 }, COLLIDER_PLAYER_UP,this);
+	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y }, COLLIDER_PLAYER_LEFT,this);
+	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y }, COLLIDER_PLAYER_LEFT,this);
+
 	return ret;
 }
 
@@ -147,9 +149,26 @@ bool j1Player::Update(float dt)
 	else if (position.x < 7 * App->map->data.tile_width)
 		position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
 	
+	Collider*c1;
+	for (uint k = 0; k < MAX_COLLIDERS; ++k)
+	{
+		// skip empty colliders
+		if (App->collisions->colliders[k] == nullptr)
+			continue;
+
+		c1 = App->collisions->colliders[k];
+
+		if (collider_player_down->CheckCollision(c1->rect) == false)
+		{
+			stay_in_platform = false;
+		}
+	}
+
 	//colliders player
-	collider_player_down->SetPos(position.x, position.y + player_size.y);
-	collider_player_up->SetPos(position.x, position.y - 3);
+	collider_player_down->SetPos(position.x + 2, position.y + player_size.y);
+	collider_player_up->SetPos(position.x + 2, position.y - 3);
+	collider_player_left->SetPos(position.x, position.y);
+	collider_player_right->SetPos(position.x + player_size.x, position.y);
 	App->render->Blit(player_tex, position.x, position.y,flip, &(current_animation->GetCurrentFrame()));
 
 	return true;
@@ -157,12 +176,21 @@ bool j1Player::Update(float dt)
 
 void j1Player::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER_DOWN && c2->type == COLLIDER_WALL)
+	if (c1->type == COLLIDER_PLAYER_LEFT && c2->type == COLLIDER_WALL)
+	{
+		position.x += speed.x;
+	}
+	else if (c1->type == COLLIDER_PLAYER_RIGHT && c2->type == COLLIDER_WALL)
+	{
+		position.x -= speed.x;
+	}
+	else if (c1->type == COLLIDER_PLAYER_DOWN && c2->type == COLLIDER_WALL)
 	{
 		stay_in_platform = true;
 	}
-	if (c1->type == COLLIDER_PLAYER_UP && c2->type == COLLIDER_WALL)
+	else if (c1->type == COLLIDER_PLAYER_UP && c2->type == COLLIDER_WALL)
 	{
 		top_jump = true;
 	}
+
 }

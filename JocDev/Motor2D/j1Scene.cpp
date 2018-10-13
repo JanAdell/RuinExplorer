@@ -69,26 +69,32 @@ bool j1Scene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
 		App->map->CleanUp();
-		App->render->Start();
+		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
 		App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+		App->render->Start();
 		App->player->Start();
+		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
+		volcan_map = false;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
 	{
 		App->map->CleanUp();
-		App->render->Start();
+		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("Volcano_Map.tmx");
 		App->audio->PlayMusic("LavaLand.wav", DEFAULT_MUSIC_FADE_TIME);
+		App->render->Start();
 		App->player->Start();
+		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
+		volcan_map = true;
 	}
 
-	//App->render->Blit(img, 0, 0);
+
 	App->map->Draw();
 
 	
@@ -98,6 +104,48 @@ bool j1Scene::Update(float dt)
 					App->map->data.tilesets.count());
 
 	App->win->SetTitle(title.GetString());
+
+	//dead condicion
+	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
+	{
+
+		App->fade->fadetoBlack(2.0f);
+		App->render->Start();
+		App->player->Start();
+		App->render->ResetTime(App->render->speed);
+	}
+
+	//win condicion
+	if (App->player->position.y > App->map->data.tile_height * 17)
+	{
+		if (volcan_map)
+		{
+			App->map->CleanUp();
+			App->collisions->CleanUp();
+			App->fade->fadetoBlack(2.0f);
+			App->map->Load("SeaTempleMap.tmx");
+			App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+			App->render->Start();
+			App->player->Start();
+			App->collisions->Start();
+			App->render->ResetTime(App->render->speed);
+			volcan_map = false;
+		}
+		else
+		{
+			App->map->CleanUp();
+			App->collisions->CleanUp();
+			App->fade->fadetoBlack(2.0f);
+			App->map->Load("SeaTempleMap.tmx");
+			App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+			App->render->Start();
+			App->player->Start();
+			App->collisions->Start();
+			App->render->ResetTime(App->render->speed);
+			volcan_map = false;
+		}
+	}
+
 	return true;
 }
 
