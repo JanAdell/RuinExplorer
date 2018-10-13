@@ -97,28 +97,28 @@ bool j1Player::Update(float dt)
 {
 	pos_collidery = position.y + 30;
 	current_animation = &idle;
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		current_animation = &run;
 		flip = SDL_RendererFlip :: SDL_FLIP_NONE;
 		position.x += speed.x;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		current_animation = &run;
 		flip = SDL_RendererFlip::SDL_FLIP_HORIZONTAL;
 		position.x -= speed.x;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
 		top_jump = true;
 	}
 
 	if (stay_in_platform)
 	{
-		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 		{
 			start_jump = false;
 			if (boost_jump == false && start_jump == false)

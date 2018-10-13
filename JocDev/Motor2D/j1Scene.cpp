@@ -35,7 +35,7 @@ bool j1Scene::Start()
 	//App->map->Load("SeaTempleMap.tmx");
 	App->fade->fadetoBlack(2.0f);
 	App->map->Load("Volcano_Map.tmx");
-	App->audio->PlayMusic("LavaLand.opp", DEFAULT_MUSIC_FADE_TIME);
+	App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	return true;
 }
 
@@ -50,11 +50,13 @@ bool j1Scene::Update(float dt)
 {
 	if(App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 		App->LoadGame();
+		
 
-	if(App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
 		App->SaveGame();
 
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+
+	/*if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		App->render->camera.y += 5;
 
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
@@ -64,7 +66,7 @@ bool j1Scene::Update(float dt)
 		App->render->camera.x += 5;
 
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		App->render->camera.x -= 5;
+		App->render->camera.x -= 5;*/
 	
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
@@ -72,7 +74,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
-		App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
@@ -86,7 +88,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("Volcano_Map.tmx");
-		App->audio->PlayMusic("LavaLand.wav", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
