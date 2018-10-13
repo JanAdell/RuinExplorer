@@ -35,7 +35,7 @@ bool j1Scene::Start()
 	//App->map->Load("SeaTempleMap.tmx");
 	App->fade->fadetoBlack(2.0f);
 	App->map->Load("Volcano_Map.tmx");
-	App->audio->PlayMusic("LavaLand.wav", DEFAULT_MUSIC_FADE_TIME);
+	App->audio->PlayMusic("LavaLand.opp", DEFAULT_MUSIC_FADE_TIME);
 	return true;
 }
 
