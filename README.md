@@ -1,6 +1,7 @@
-# Videogame_Dev_RuinExplorer
+# Videogame Development: Ruin Explorer
 Repository dedicated to the project releases of the Videogame Development subject from GDDV (CITM, UPC).
 
+In this project we will attempt to put together a vertical platformer called Ruin Explorer, based on difficult platforming and the freedom of advancing taking whichever route the player prefers.
 
 
 ## Controls
@@ -15,13 +16,14 @@ Repository dedicated to the project releases of the Videogame Development subjec
 
 ## Credits
 
-**-Programming and Design: Didac Llop**
+**Programming and Design: Didac Llop**
 
-* *Github* : https://github.com/didaclis
+> *Github* : https://github.com/didaclis
 
 **Programming and Design: Jan Adell**
 
-* *Github*: https://github.com/JanAdell
+> *Github*: https://github.com/JanAdell
+
 
 ### Art, sprites and character animations:
 
@@ -31,17 +33,17 @@ Repository dedicated to the project releases of the Videogame Development subjec
 
 * *Dungeon Crawl Tiles*:
 
-  -https://opengameart.org/content/dungeon-crawl-32x32-tiles
+  >https://opengameart.org/content/dungeon-crawl-32x32-tiles
 
-	-https://code.google.com/archive/p/crawl-tiles/
+	>https://code.google.com/archive/p/crawl-tiles/
 
 **Character sprites and animations:**
 
 * *Animated Pixel Adventurer* by rvros:
 
-	-https://itch.io/profile/rvros
+	> https://itch.io/profile/rvros
 
-	-https://rvros.itch.io/animated-pixel-hero
+	> https://rvros.itch.io/animated-pixel-hero
 
 ### Audio:
 
@@ -49,7 +51,7 @@ Repository dedicated to the project releases of the Videogame Development subjec
 
 * *Lava Area Theme* and *Ancient Ruins* by Ted Kerr: 
 
-  -https://opengameart.org/users/wolfgang
+  > https://opengameart.org/users/wolfgang
 
 
 
@@ -57,10 +59,10 @@ Repository dedicated to the project releases of the Videogame Development subjec
 
 * *8-bit Sound Effects Library* by LittleRobotSoundFactory
 
-  -https://freesound.org/people/LittleRobotSoundFactory/
+  > https://freesound.org/people/LittleRobotSoundFactory/
   
 
-###Debug and Utility Keys
+### Debug and Utility Keys
 
 * F1: See game colliders.
 * F2: Places the player at the start of the first stage.
@@ -69,4 +71,33 @@ Repository dedicated to the project releases of the Videogame Development subjec
 * F6: Places the player at the start of the second stage;
 * S key: Saves the game.
 * L key: Loads previously saved game.
+
+
+### License
+
+GNU GPLv3
+
+Ruin Explorer (Provisional name)
+
+Copyright (C) 2018  Didac Llop / Jan Adell
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+See the license here: https://github.com/JaumeMontagut/CITM_2_Dev_Platformer/blob/master/LICENSE
+
+
+## Project repository
+
+https://github.com/JanAdell/Videogame_Dev_RuinExplorer
 
