@@ -52,43 +52,31 @@ bool j1Scene::Update(float dt)
 	
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
-		App->LoadGame("save_game.xml");
-		App->map->CleanUp();
-		App->player->CleanUp();
-		App->collisions->CleanUp();
-		App->fade->fadetoBlack(2.0f);
-		
-		if (!volcan_map)
+
+		if (volcan_map && map_saved)
 		{
-			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-		}
-		else 
-		{
-			App->map->Load("Volcano_Map.tmx");
+			App->LoadGame("save_game.xml");
+			App->fade->fadetoBlack(2.0f);
 			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 			
 		}
-		App->collisions->Start();
-		App->player->Start();
+	
+	
+		if (!volcan_map && !map_saved)
+		{
+			App->LoadGame("save_game.xml");
+			App->fade->fadetoBlack(2.0f);
+			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		}
+		
 	}
 	
 	if (App->player->stay_in_platform)
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
+		{
 			App->SaveGame("save_game.xml");
-
-
-	/*if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		App->render->camera.y += 5;
-
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		App->render->camera.y -= 5;
-
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		App->render->camera.x += 5;
-
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		App->render->camera.x -= 5;*/
+			map_saved = volcan_map;
+		}
 	
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
