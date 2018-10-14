@@ -3,27 +3,27 @@ Repository dedicated to the project releases of the Videogame Development subjec
 
 
 
-**Controls**
+# Controls
 
-**·**Left Arrow Key: Move Left
+·Left Arrow Key: Move Left
 
-**·**Right Arrow Key: Move Right
+·Right Arrow Key: Move Right
 
-**·**Space: Jump
+·Space: Jump
 
 
 
-**Credits**
+# Credits
 
-**·**Programming and Design: Didac Llop
+·Programming and Design: Didac Llop
 
 *Github* : https://github.com/didaclis
 
-**·**Programming and Design: Jan Adell
+·Programming and Design: Jan Adell
 
 *Github*: https://github.com/JanAdell
 
-**·**Art, Sprites and character animations:
+·Art, Sprites and character animations:
 
 ​	·Tilesets and free art used to create the maps:
 
