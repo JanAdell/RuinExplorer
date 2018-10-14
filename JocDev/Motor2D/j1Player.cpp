@@ -61,7 +61,6 @@ bool j1Player::Awake(pugi::xml_node & conf)
 	fall.loop = false;
 	fall.speed = 0.02;
 
-	//teleport
 
 	return ret;
 }
@@ -84,6 +83,9 @@ bool j1Player::Start()
 	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_LEFT,this);
 	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_RIGHT,this);
 
+	App->audio->LoadFx("audio/fx/Teleport.wav");
+	//App->audio->LoadFx("audio/fx/Death.wav");
+
 	return ret;
 }
 
@@ -91,9 +93,12 @@ bool j1Player::Start()
 bool j1Player::CleanUp()
 {
 	LOG("Unloading player");
+	App->audio->UnloadFx(1);
+	//App->audio->UnloadFx(2);
 	App->tex->UnLoad(player_tex);
 	player_tex = nullptr;
 	return true;
+
 }
 
 
@@ -159,6 +164,7 @@ bool j1Player::Update(float dt)
 		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
 			position.x = 7 * App->map->data.tile_width;
 
+<<<<<<< HEAD
 		else if (position.x < 7 * App->map->data.tile_width)
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
 	}
@@ -171,6 +177,19 @@ bool j1Player::Update(float dt)
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
 	}
 	
+=======
+	if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width) {
+		position.x = 7 * App->map->data.tile_width;
+		App->audio->PlayFx(1, 0);
+	}
+		
+
+	else if (position.x < 7 * App->map->data.tile_width) {
+		position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
+		App->audio->PlayFx(1, 0);
+	}
+
+>>>>>>> 839312bb7b189f4c0997e171b3bcd9cdaa6a219f
 	Collider*c1;
 	for (uint k = 0; k < MAX_COLLIDERS; ++k)
 	{

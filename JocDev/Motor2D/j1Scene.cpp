@@ -37,6 +37,8 @@ bool j1Scene::Start()
 	App->fade->fadetoBlack(2.0f);
 	App->map->Load("Volcano_Map.tmx");
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+	App->audio->LoadFx("audio/fx/Death.wav");
+
 	return true;
 }
 
@@ -52,23 +54,25 @@ bool j1Scene::Update(float dt)
 	
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
-
-		if (volcan_map && map_saved)
+		App->LoadGame("save_game.xml");
+		App->map->CleanUp();
+		App->player->CleanUp();
+		App->collisions->CleanUp();
+		App->fade->fadetoBlack(2.0f);
+		
+		if (!volcan_map)
 		{
-			App->LoadGame("save_game.xml");
-			App->fade->fadetoBlack(2.0f);
+			App->map->Load("SeaTempleMap.tmx");
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
+		}
+		else 
+		{
+			App->map->Load("Volcano_Map.tmx");
 			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 			
 		}
-	
-	
-		if (!volcan_map && !map_saved)
-		{
-			App->LoadGame("save_game.xml");
-			App->fade->fadetoBlack(2.0f);
-			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-		}
-		
+		App->collisions->Start();
+		App->player->Start();
 	}
 	//fiinish first map
 	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN && volcan_map)
@@ -85,10 +89,20 @@ bool j1Scene::Update(float dt)
 	
 	if (App->player->stay_in_platform)
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
-		{
 			App->SaveGame("save_game.xml");
-			map_saved = volcan_map;
-		}
+
+
+	/*if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		App->render->camera.y += 5;
+
+	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		App->render->camera.y -= 5;
+
+	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		App->render->camera.x += 5;
+
+	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		App->render->camera.x -= 5;*/
 	
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
@@ -96,7 +110,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
-		App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
@@ -136,16 +150,19 @@ bool j1Scene::Update(float dt)
 		App->player->collider_player_up->to_delete = true;
 		App->player->collider_player_left->to_delete = true;
 		App->player->collider_player_right->to_delete = true;
+		App->audio->PlayFx(2, 0);
 		App->fade->fadetoBlack(2.0f);
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
+		App->audio->PlayFx(1, 0);
 	}
 
 	//win condicion
 	if (-App->player->position.y > -App->map->data.tile_height * 16 && volcan_map)
 	{
+<<<<<<< HEAD
 		
 		App->map->CleanUp();
 		App->collisions->CleanUp();
@@ -170,6 +187,34 @@ bool j1Scene::Update(float dt)
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
 		volcan_map = true;
+=======
+		if (volcan_map)
+		{
+			App->map->CleanUp();
+			App->collisions->CleanUp();
+			App->fade->fadetoBlack(2.0f);
+			App->map->Load("SeaTempleMap.tmx");
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->render->Start();
+			App->player->Start();
+			App->collisions->Start();
+			App->render->ResetTime(App->render->speed);
+			volcan_map = false;
+		}
+		else
+		{
+			App->map->CleanUp();
+			App->collisions->CleanUp();
+			App->fade->fadetoBlack(2.0f);
+			App->map->Load("Volcano_map.tmx");
+			App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->render->Start();
+			App->player->Start();
+			App->collisions->Start();
+			App->render->ResetTime(App->render->speed);
+			volcan_map = true;
+		}
+>>>>>>> 839312bb7b189f4c0997e171b3bcd9cdaa6a219f
 	}
 
 	return true;
@@ -190,8 +235,9 @@ bool j1Scene::PostUpdate()
 bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
-
+	App->audio->UnloadFx(1);
 	return true;
+
 }
 
 

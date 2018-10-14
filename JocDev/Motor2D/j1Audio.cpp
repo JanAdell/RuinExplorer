@@ -171,3 +171,22 @@ bool j1Audio::PlayFx(unsigned int id, int repeat)
 
 	return ret;
 }
+
+
+//Unload previosly loaded SFX
+bool j1Audio::UnloadFx(unsigned int Fx)
+{
+
+	bool ret = false;
+	p2List_item<Mix_Chunk*>* item;
+	for (item = fx.start; item != NULL; item = item->next) {
+
+		if (item->data == fx[Fx]) {
+			Mix_FreeChunk(item->data);
+		}
+	}
+	fx.clear();
+	LOG("Sound Effects unloaded succesfully.");
+	
+	return true;
+}
