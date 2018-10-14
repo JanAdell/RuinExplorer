@@ -76,8 +76,8 @@ bool j1Player::Start()
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
 	collider_player_down = App->collisions->AddCollider({ position.x + 2, position.y + player_size.y, player_size.x - 2, 1 }, COLLIDER_PLAYER_DOWN, this);
 	collider_player_up = App->collisions->AddCollider({ position.x + 2,position.y - 3,player_size.x - 2,1 }, COLLIDER_PLAYER_UP,this);
-	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y }, COLLIDER_PLAYER_LEFT,this);
-	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y }, COLLIDER_PLAYER_RIGHT,this);
+	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_LEFT,this);
+	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_RIGHT,this);
 
 	return ret;
 }
