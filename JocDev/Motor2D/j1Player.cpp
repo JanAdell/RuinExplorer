@@ -60,6 +60,8 @@ bool j1Player::Awake(pugi::xml_node & conf)
 	fall.loop = false;
 	fall.speed = 0.02;
 
+	//teleport
+
 	return ret;
 }
 

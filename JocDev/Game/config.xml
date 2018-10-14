@@ -29,13 +29,10 @@
     <stage name="SeaTempleMap.tmx"/>
   </map>
 
-  <music>
-    <folder>audio/Music/</folder>
-  </music>
-
-  <fx>
-    <folder>audio/Effects/</folder>
-  </fx>
+  <audio>
+    <music>audio/music/</music>
+    <fx>audio/fx/</fx>
+  </audio>
 
   <player>
 	  <speed x = "2" y = "2"/>

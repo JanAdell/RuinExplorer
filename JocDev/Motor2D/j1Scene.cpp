@@ -32,6 +32,7 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
+	
 	//App->map->Load("SeaTempleMap.tmx");
 	App->fade->fadetoBlack(2.0f);
 	App->map->Load("Volcano_Map.tmx");
@@ -56,12 +57,17 @@ bool j1Scene::Update(float dt)
 		App->player->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
-		if(volcan_map)
+		
+		if (volcan_map) {
 			App->map->Load("SeaTempleMap.tmx");
-		else
-		App->map->Load("Volcano_Map.tmx");
-		App->collisions->Start();
-		App->player->Start();
+			App->audio->PlayMusic("SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		}
+		else {
+			App->map->Load("Volcano_Map.tmx");
+			App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->collisions->Start();
+			App->player->Start();
+		}
 	}
 	
 	if (App->player->stay_in_platform)
@@ -134,7 +140,7 @@ bool j1Scene::Update(float dt)
 	}
 
 	//win condicion
-	if (-App->player->position.y > -App->map->data.tile_height * 17)
+	if (-App->player->position.y > -App->map->data.tile_height * 18)
 	{
 		if (volcan_map)
 		{
@@ -142,7 +148,7 @@ bool j1Scene::Update(float dt)
 			App->collisions->CleanUp();
 			App->fade->fadetoBlack(2.0f);
 			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+			App->audio->PlayMusic("SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 			App->render->Start();
 			App->player->Start();
 			App->collisions->Start();
@@ -155,7 +161,7 @@ bool j1Scene::Update(float dt)
 			App->collisions->CleanUp();
 			App->fade->fadetoBlack(2.0f);
 			App->map->Load("Volcano_map.tmx");
-			App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
+			App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 			App->render->Start();
 			App->player->Start();
 			App->collisions->Start();

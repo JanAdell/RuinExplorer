@@ -6,14 +6,14 @@
 	<audio />
 	<map />
 	<scene>
-		<scene volcan_map="false" />
+		<scene volcan_map="true" />
 	</scene>
 	<:anonymous />
 	<player>
-		<player x="502" y="4258" />
+		<player x="264" y="3716" />
 	</player>
 	<:anonymous />
 	<renderer>
-		<camera x="0" y="-3680" speed="188" />
+		<camera x="0" y="-3360" speed="415" />
 	</renderer>
 </game_state>
