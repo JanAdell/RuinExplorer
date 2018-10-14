@@ -5,6 +5,8 @@
 #include "j1Textures.h"
 #include "j1Map.h"
 #include "j1Input.h"
+#include "j1Collisions.h"
+
 #include <math.h>
 
 j1Map::j1Map() : j1Module(), map_loaded(false)
@@ -113,16 +115,6 @@ bool j1Map::CleanUp()
 	data.layers.clear();
 
 	// Clean up the pugui tree
-	p2List_item<MapObject*>* object_item;
-	object_item = data.objects.start;
-
-	while (object_item != NULL)
-	{
-		RELEASE(object_item->data);
-		object_item = object_item->next;
-	}
-	data.objects.clear();
-
 
 	map_file.reset();
 
@@ -187,14 +179,12 @@ bool j1Map::Load(const char* file_name)
 	pugi::xml_node object_iterator;
 	for (object_iterator = map_file.child("map").child("objectgroup"); object_iterator && ret; object_iterator = object_iterator.next_sibling("objectgroup"))
 	{
-		MapObject* obj = new MapObject;
 		
 		if (ret == true)
 		{
-			LoadObjects(object_iterator, obj);
+			LoadObjects(object_iterator);
 		}
 
-		data.objects.add(obj);
 	}
 
 
@@ -393,26 +383,23 @@ bool j1Map::LoadLayer(pugi::xml_node& node, Layer* layer)
 	return ret;
 }
 
-bool j1Map::LoadObjects(pugi::xml_node & node, MapObject * object)
+bool j1Map::LoadObjects(pugi::xml_node & node)
 {
 	bool ret = true;
-	object->name = node.attribute("name").as_string();
-	object->id = node.attribute("id").as_uint();
+
 	pugi::xml_node col_object = node.child("object");
 	if (node == NULL)
 	{
 		LOG("Error parsing map xml file: Cannot find 'layer/data' tag.");
 		ret = false;
-		RELEASE(object);
 	}
 	else
 	{
-		object = new MapObject;
+
 		int i = 0;
 		for (col_object; col_object; col_object = col_object.next_sibling("object"))
 		{
-			object->col[i] = new Collider( { col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0)},COLLIDER_WALL);
-			App->collisions->AddCollider(object->col[i]->rect, object->col[i]->type);
+			App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_WALL);
 			i++;
 		}
 
