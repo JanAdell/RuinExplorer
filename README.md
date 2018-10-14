@@ -68,8 +68,9 @@ In this project we will attempt to put together a vertical platformer called Rui
 * F1: See game colliders.
 * F2: Places the player at the start of the first stage.
 * F3: Places the player at the end of the first stage.
-* F5: Places the player at the start of the second stage;
-* F6: Places the player at the start of the second stage;
+* F5: Places the player at the start of the second stage.
+* F6: Places the player at the start of the second stage.
+* F10: God Mode. Allows free camera control.
 * S key: Saves the game.
 * L key: Loads previously saved game.
 
