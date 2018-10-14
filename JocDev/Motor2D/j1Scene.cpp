@@ -10,6 +10,7 @@
 #include "j1FadetoBlack.h"
 #include "j1Player.h"
 #include "j1Scene.h"
+#include "j1Collisions.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -110,9 +111,8 @@ bool j1Scene::Update(float dt)
 	//dead condition
 	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
 	{
-
-		App->fade->fadetoBlack(2.0f);
 		App->render->Start();
+		App->fade->fadetoBlack(2.0f);
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
 	}

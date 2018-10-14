@@ -154,16 +154,16 @@ bool j1Player::Update(float dt)
 	else if (position.x < 7 * App->map->data.tile_width)
 		position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
 	
-	Collider*c1;
+	//check if player is in a platform
+	Collider* c2;
+
 	for (uint k = 0; k < MAX_COLLIDERS; ++k)
 	{
 		// skip empty colliders
 		if (App->collisions->colliders[k] == nullptr)
 			continue;
-
-		c1 = App->collisions->colliders[k];
-
-		if (collider_player_down->CheckCollision(c1->rect) == false)
+		c2 = App->collisions->colliders[k];
+		if (collider_player_down->CheckCollision(c2->rect) == false)
 		{
 			stay_in_platform = false;
 		}
@@ -197,5 +197,4 @@ void j1Player::OnCollision(Collider* c1, Collider* c2)
 	{
 		top_jump = true;
 	}
-
 }
