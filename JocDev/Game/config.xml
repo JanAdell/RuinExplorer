@@ -25,6 +25,8 @@
 
   <map>
     <folder>maps/</folder>
+    <stage name="Volcano_Map.tmx"/>
+    <stage name="SeaTempleMap.tmx"/>
   </map>
 
   <music>
