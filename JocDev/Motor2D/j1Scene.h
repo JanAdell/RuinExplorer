@@ -32,9 +32,11 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	bool Load(pugi::xml_node&);
+	bool Save(pugi::xml_node&) const;
+
 	bool volcan_map = true;
 private:
-
 	_Mix_Music* Stage_music = nullptr;
 
 };

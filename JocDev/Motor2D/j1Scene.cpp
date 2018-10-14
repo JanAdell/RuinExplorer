@@ -48,12 +48,25 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	if(App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	
+	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	{
 		App->LoadGame("save_game.xml");
-		
-
-	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
-		App->SaveGame("save_game.xml");
+		App->map->CleanUp();
+		App->player->CleanUp();
+		App->collisions->CleanUp();
+		App->fade->fadetoBlack(2.0f);
+		if(volcan_map)
+			App->map->Load("SeaTempleMap.tmx");
+		else
+		App->map->Load("Volcano_Map.tmx");
+		App->collisions->Start();
+		App->player->Start();
+	}
+	
+	if (App->player->stay_in_platform)
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
+			App->SaveGame("save_game.xml");
 
 
 	/*if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
@@ -110,7 +123,10 @@ bool j1Scene::Update(float dt)
 	//dead condition
 	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
 	{
-
+		App->player->collider_player_down->to_delete = true;
+		App->player->collider_player_up->to_delete = true;
+		App->player->collider_player_left->to_delete = true;
+		App->player->collider_player_right->to_delete = true;
 		App->fade->fadetoBlack(2.0f);
 		App->render->Start();
 		App->player->Start();
@@ -138,13 +154,13 @@ bool j1Scene::Update(float dt)
 			App->map->CleanUp();
 			App->collisions->CleanUp();
 			App->fade->fadetoBlack(2.0f);
-			App->map->Load("SeaTempleMap.tmx");
+			App->map->Load("Volcano_map.tmx");
 			App->audio->PlayMusic("FirstSnow.wav", DEFAULT_MUSIC_FADE_TIME);
 			App->render->Start();
 			App->player->Start();
 			App->collisions->Start();
 			App->render->ResetTime(App->render->speed);
-			volcan_map = false;
+			volcan_map = true;
 		}
 	}
 
@@ -167,5 +183,23 @@ bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
 
+	return true;
+}
+
+
+// Load Game State
+bool j1Scene::Load(pugi::xml_node& data)
+{
+	volcan_map = data.child("volcan_map").attribute("name_map").as_bool();
+	return true;
+}
+
+// Save Game State
+bool j1Scene::Save(pugi::xml_node& data) const
+{
+	pugi::xml_node scene = data.append_child("scene");
+
+	scene.append_attribute("volcan_map") = volcan_map;
+	
 	return true;
 }

@@ -22,6 +22,8 @@ public:
 	bool Update(float dt);
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+	bool Load(pugi::xml_node &node);
+	bool Save(pugi::xml_node &node) const;
 	Collider* collider_player_down = nullptr;
 	Collider* collider_player_right = nullptr;
 	Collider* collider_player_left = nullptr;
@@ -37,6 +39,7 @@ public:
 	int distance_to_jump;
 	bool boost_jump = false;
 	bool start_jump = false;
+	bool stay_in_platform = false;
 
 private:
 	j1Textures* tex_player = nullptr;
@@ -47,8 +50,7 @@ private:
 	Animation fall;
 	fPoint speed;
 	SDL_RendererFlip flip;
-	int pos_collidery;
-	bool stay_in_platform = false;
+	int pos_collidery;	
 	bool top_jump = true;
 	iPoint player_size;
 };

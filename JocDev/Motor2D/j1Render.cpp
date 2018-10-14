@@ -112,7 +112,7 @@ bool j1Render::Load(pugi::xml_node& data)
 {
 	camera.x = data.child("camera").attribute("x").as_int();
 	camera.y = data.child("camera").attribute("y").as_int();
-
+	speed = data.child("camera").attribute("speed").as_int();
 	return true;
 }
 
@@ -123,6 +123,7 @@ bool j1Render::Save(pugi::xml_node& data) const
 
 	cam.append_attribute("x") = camera.x;
 	cam.append_attribute("y") = camera.y;
+	cam.append_attribute("speed") = speed;
 
 	return true;
 }

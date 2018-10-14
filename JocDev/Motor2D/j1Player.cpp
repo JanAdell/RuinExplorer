@@ -73,7 +73,9 @@ bool j1Player::Start()
 	position.x = App->map->data.tile_width * App->map->data.width / 2;
 	normal_jump = App->map->data.tile_height * 4;
 	boosted_jump = App->map->data.tile_height * 8;
+	top_jump = true;
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
+
 	collider_player_down = App->collisions->AddCollider({ position.x + 2, position.y + player_size.y, player_size.x - 2, 1 }, COLLIDER_PLAYER_DOWN, this);
 	collider_player_up = App->collisions->AddCollider({ position.x + 2,position.y - 3,player_size.x - 2,1 }, COLLIDER_PLAYER_UP,this);
 	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_LEFT,this);
@@ -97,6 +99,7 @@ bool j1Player::Update(float dt)
 {
 	pos_collidery = position.y + 30;
 	current_animation = &idle;
+
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		current_animation = &run;
@@ -176,6 +179,7 @@ bool j1Player::Update(float dt)
 	collider_player_right->SetPos(position.x + player_size.x, position.y);
 	App->render->Blit(player_tex, position.x, position.y,flip, &(current_animation->GetCurrentFrame()));
 
+
 	return true;
 }
 
@@ -198,4 +202,24 @@ void j1Player::OnCollision(Collider* c1, Collider* c2)
 		top_jump = true;
 	}
 
+}
+
+
+bool j1Player::Load(pugi::xml_node& data)
+{
+	position.x = data.child("player").attribute("x").as_int();
+	position.y = data.child("player").attribute("y").as_int();
+
+	return true;
+}
+
+// Save Game State
+bool j1Player::Save(pugi::xml_node& data) const
+{
+	pugi::xml_node pos = data.append_child("player");
+
+	pos.append_attribute("x") = position.x;
+	pos.append_attribute("y") = position.y;
+
+	return true;
 }

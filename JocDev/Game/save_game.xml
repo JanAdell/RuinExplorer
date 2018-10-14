@@ -5,11 +5,15 @@
 	<textures />
 	<audio />
 	<map />
-	<scene />
+	<scene>
+		<scene volcan_map="false" />
+	</scene>
 	<:anonymous />
-	<player />
+	<player>
+		<player x="502" y="4258" />
+	</player>
 	<:anonymous />
 	<renderer>
-		<camera x="0" y="-3100" />
+		<camera x="0" y="-3680" speed="188" />
 	</renderer>
 </game_state>
