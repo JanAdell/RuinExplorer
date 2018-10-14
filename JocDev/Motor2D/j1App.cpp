@@ -282,21 +282,22 @@ const char* j1App::GetOrganization() const
 }
 
 // Load / Save
-void j1App::LoadGame()
+void j1App::LoadGame(const char* file)
 {
 	// we should be checking if that file actually exist
 	// from the "GetSaveGames" list
-	//load_game.create(file);
+	//loads created file in SaveGame procedure
 	want_to_load = true;
 }
 
 // ---------------------------------------
-void j1App::SaveGame() const
+void j1App::SaveGame(const char* file) const
 {
 	// we should be checking if that file actually exist
 	// from the "GetSaveGames" list ... should we overwrite ?
-	//save_game.create(file);
+	
 	want_to_save = true;
+	save_game.create(file);
 }
 
 // ---------------------------------------

@@ -1,3 +1,3 @@
-﻿  j1Scene.cpp
+﻿  j1App.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   Motor2D.vcxproj -> C:\Users\adell\Documents\GitHub\Videogame_Dev_RuinExplorer\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe
