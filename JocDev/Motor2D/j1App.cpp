@@ -286,6 +286,7 @@ void j1App::LoadGame()
 {
 	// we should be checking if that file actually exist
 	// from the "GetSaveGames" list
+	//load_game.create(file);
 	want_to_load = true;
 }
 
@@ -294,7 +295,7 @@ void j1App::SaveGame() const
 {
 	// we should be checking if that file actually exist
 	// from the "GetSaveGames" list ... should we overwrite ?
-
+	//save_game.create(file);
 	want_to_save = true;
 }
 

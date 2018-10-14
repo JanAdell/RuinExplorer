@@ -107,7 +107,7 @@ bool j1Scene::Update(float dt)
 
 	App->win->SetTitle(title.GetString());
 
-	//dead condicion
+	//dead condition
 	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
 	{
 
