@@ -3,50 +3,60 @@ Repository dedicated to the project releases of the Videogame Development subjec
 
 
 
-# Controls
+## Controls
 
-·Left Arrow Key: Move Left
+* Left Arrow Key: Move Left
 
-·Right Arrow Key: Move Right
+* Right Arrow Key: Move Right
 
-·Space: Jump
+* Space: Jump
 
 
 
-# Credits
+## Credits
 
-·Programming and Design: Didac Llop
+**-Programming and Design: Didac Llop**
 
-*Github* : https://github.com/didaclis
+* *Github* : https://github.com/didaclis
 
-·Programming and Design: Jan Adell
+**Programming and Design: Jan Adell**
 
-*Github*: https://github.com/JanAdell
+* *Github*: https://github.com/JanAdell
 
-·Art, Sprites and character animations:
+### Art, sprites and character animations:
 
-​	·Tilesets and free art used to create the maps:
+**Tilesets and free art used to create the maps:**
 
-​		- *Atlas* (Attribution file in folder).
+* *Atlas* (Attribution file in folder).
 
-​		-*Dungeon Crawl Tiles*:
+* *Dungeon Crawl Tiles*:
 
-​				-https://opengameart.org/content/dungeon-crawl-32x32-tiles
+  -https://opengameart.org/content/dungeon-crawl-32x32-tiles
 
-​				-https://code.google.com/archive/p/crawl-tiles/
+	-https://code.google.com/archive/p/crawl-tiles/
 
-​	·Character sprites and animations:
+**Character sprites and animations:**
 
-​		-*Animated Pixel Adventurer* by rvros:
+* *Animated Pixel Adventurer* by rvros:
 
-​				-https://itch.io/profile/rvros
+	-https://itch.io/profile/rvros
 
-​				-https://rvros.itch.io/animated-pixel-hero
+	-https://rvros.itch.io/animated-pixel-hero
 
-·Audio:
+### Audio:
 
-​	·Themes used:
+**Themes used:**
 
-​		-*Lava Area Theme* by Wolfgang (https://opengameart.org/users/wolfgang)
+* *Lava Area Theme* by Wolfgang 
 
-​		-*Mild Action Track* by 3uhox (https://opengameart.org/users/3uhox)
+  -https://opengameart.org/users/wolfgang
+
+* *Mild Action Track* by 3uhox 
+
+  -https://opengameart.org/users/3uhox
+
+**Sound Effects Used:**
+
+* *8-bit Sound Effects Library* by LittleRobotSoundFactory
+
+  -https://freesound.org/people/LittleRobotSoundFactory/
