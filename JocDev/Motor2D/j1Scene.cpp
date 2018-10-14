@@ -142,12 +142,13 @@ bool j1Scene::Update(float dt)
 		App->player->collider_player_left->to_delete = true;
 		App->player->collider_player_right->to_delete = true;
 		App->audio->PlayFx(2, 0);
+		App->audio->PlayFx(1, 0);
 		App->fade->fadetoBlack(2.0f);
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
-		App->audio->PlayFx(1, 0);
+		
 	}
 
 	//win condicion

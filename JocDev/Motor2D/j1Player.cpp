@@ -162,30 +162,32 @@ bool j1Player::Update(float dt)
 	if (App->scene->volcan_map)
 	{
 		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
+		{
+			App->audio->PlayFx(1, 0);
 			position.x = 7 * App->map->data.tile_width;
+		}
 
 		else if (position.x < 7 * App->map->data.tile_width)
-			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
+		{
+			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;	
+			App->audio->PlayFx(1, 0);
+		}
 	}
 	else
 	{
 		if (position.x > App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width)
+		{
 			position.x = 8 * App->map->data.tile_width;
+		}
 
 		else if (position.x < 8 * App->map->data.tile_width)
+		{
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
+			App->audio->PlayFx(1, 0);
+		}
 	}
 	
-	if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width) {
-		position.x = 7 * App->map->data.tile_width;
-		App->audio->PlayFx(1, 0);
-	}
-		
 
-	else if (position.x < 7 * App->map->data.tile_width) {
-		position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
-		App->audio->PlayFx(1, 0);
-	}
 
 	Collider*c1;
 	for (uint k = 0; k < MAX_COLLIDERS; ++k)
