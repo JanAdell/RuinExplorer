@@ -9,6 +9,7 @@
 #include "j1Map.h"
 #include "j1Collisions.h"
 #include "p2Log.h"
+#include "j1Scene.h"
 #include <stdio.h>
 
 
@@ -152,12 +153,23 @@ bool j1Player::Update(float dt)
 			current_animation = &fall;
 		}
 	}
+	//mechanic
+	if (App->scene->volcan_map)
+	{
+		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
+			position.x = 7 * App->map->data.tile_width;
 
-	if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
-		position.x = 7 * App->map->data.tile_width;
+		else if (position.x < 7 * App->map->data.tile_width)
+			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
+	}
+	else
+	{
+		if (position.x > App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width)
+			position.x = 8 * App->map->data.tile_width;
 
-	else if (position.x < 7 * App->map->data.tile_width)
-		position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
+		else if (position.x < 8 * App->map->data.tile_width)
+			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
+	}
 	
 	Collider*c1;
 	for (uint k = 0; k < MAX_COLLIDERS; ++k)
