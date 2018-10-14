@@ -36,7 +36,7 @@ bool j1Scene::Start()
 	//App->map->Load("SeaTempleMap.tmx");
 	App->fade->fadetoBlack(2.0f);
 	App->map->Load("Volcano_Map.tmx");
-	App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	return true;
 }
 
@@ -58,16 +58,19 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		
-		if (volcan_map) {
+		if (!volcan_map)
+		{
 			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		}
-		else {
+		else 
+		{
 			App->map->Load("Volcano_Map.tmx");
-			App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-			App->collisions->Start();
-			App->player->Start();
+			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			
 		}
+		App->collisions->Start();
+		App->player->Start();
 	}
 	
 	if (App->player->stay_in_platform)
@@ -93,7 +96,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
-		App->audio->PlayMusic("SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
@@ -107,7 +110,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("Volcano_Map.tmx");
-		App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
@@ -134,6 +137,7 @@ bool j1Scene::Update(float dt)
 		App->player->collider_player_left->to_delete = true;
 		App->player->collider_player_right->to_delete = true;
 		App->fade->fadetoBlack(2.0f);
+		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
@@ -148,7 +152,7 @@ bool j1Scene::Update(float dt)
 			App->collisions->CleanUp();
 			App->fade->fadetoBlack(2.0f);
 			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 			App->render->Start();
 			App->player->Start();
 			App->collisions->Start();
@@ -196,7 +200,7 @@ bool j1Scene::CleanUp()
 // Load Game State
 bool j1Scene::Load(pugi::xml_node& data)
 {
-	volcan_map = data.child("volcan_map").attribute("name_map").as_bool();
+	volcan_map = data.child("scene").attribute("volcan_map").as_bool();
 	return true;
 }
 

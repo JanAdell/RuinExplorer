@@ -10,10 +10,10 @@
 	</scene>
 	<:anonymous />
 	<player>
-		<player x="264" y="3716" />
+		<player x="512" y="4048" />
 	</player>
 	<:anonymous />
 	<renderer>
-		<camera x="0" y="-3360" speed="415" />
+		<camera x="0" y="-3360" speed="147" />
 	</renderer>
 </game_state>
