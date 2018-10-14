@@ -74,6 +74,18 @@ bool j1Scene::Update(float dt)
 		App->collisions->Start();
 		App->player->Start();
 	}
+	//fiinish first map
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN && volcan_map)
+	{
+		App->render->camera.x = App->render->camera.y = 0;
+		App->player->position.y = App->map->data.tile_height * 19;
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN && !volcan_map)
+	{
+		App->render->camera.x = App->render->camera.y = 0;
+		App->player->position.y = App->map->data.tile_height * 19;
+	}
 	
 	if (App->player->stay_in_platform)
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
@@ -148,8 +160,34 @@ bool j1Scene::Update(float dt)
 	}
 
 	//win condicion
-	if (-App->player->position.y > -App->map->data.tile_height * 18)
+	if (-App->player->position.y > -App->map->data.tile_height * 16 && volcan_map)
 	{
+<<<<<<< HEAD
+		
+		App->map->CleanUp();
+		App->collisions->CleanUp();
+		App->fade->fadetoBlack(2.0f);
+		App->map->Load("SeaTempleMap.tmx");
+		App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->render->Start();
+		App->player->Start();
+		App->collisions->Start();
+		App->render->ResetTime(App->render->speed);
+		volcan_map = false;
+	}
+	else if(-App->player->position.y > -App->map->data.tile_height * 10 && !volcan_map)
+	{
+		App->map->CleanUp();
+		App->collisions->CleanUp();
+		App->fade->fadetoBlack(2.0f);
+		App->map->Load("Volcano_map.tmx");
+		App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->render->Start();
+		App->player->Start();
+		App->collisions->Start();
+		App->render->ResetTime(App->render->speed);
+		volcan_map = true;
+=======
 		if (volcan_map)
 		{
 			App->map->CleanUp();
@@ -176,6 +214,7 @@ bool j1Scene::Update(float dt)
 			App->render->ResetTime(App->render->speed);
 			volcan_map = true;
 		}
+>>>>>>> 839312bb7b189f4c0997e171b3bcd9cdaa6a219f
 	}
 
 	return true;

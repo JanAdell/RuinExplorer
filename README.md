@@ -47,16 +47,26 @@ Repository dedicated to the project releases of the Videogame Development subjec
 
 **Themes used:**
 
-* *Lava Area Theme* by Wolfgang 
+* *Lava Area Theme* and *Ancient Ruins* by Ted Kerr: 
 
   -https://opengameart.org/users/wolfgang
 
-* *Mild Action Track* by 3uhox 
 
-  -https://opengameart.org/users/3uhox
 
 **Sound Effects Used:**
 
 * *8-bit Sound Effects Library* by LittleRobotSoundFactory
 
   -https://freesound.org/people/LittleRobotSoundFactory/
+  
+
+###Debug and Utility Keys
+
+* F1: See game colliders.
+* F2: Places the player at the start of the first stage.
+* F3: Places the player at the end of the first stage.
+* F5: Places the player at the start of the second stage;
+* F6: Places the player at the start of the second stage;
+* S key: Saves the game.
+* L key: Loads previously saved game.
+
