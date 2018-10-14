@@ -53,6 +53,9 @@ public:
 	uint			speed;
 	uint			time_to_start;
 	bool god_mode = false;
+
+private:
+	p2SString game_name;
 };
 
 #endif // __j1RENDER_H__

@@ -84,7 +84,7 @@ bool j1Player::Start()
 	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_RIGHT,this);
 
 	App->audio->LoadFx("audio/fx/Teleport.wav");
-	//App->audio->LoadFx("audio/fx/Death.wav");
+	App->audio->LoadFx("audio/fx/Death.wav");
 
 	return ret;
 }

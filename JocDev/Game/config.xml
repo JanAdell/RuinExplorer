@@ -9,10 +9,11 @@
   <renderer>
     <vsync value="true"/>
 	<camera speed = "1" time = "500"/>
+	<game_name name = "Ruin_Explorer"/>
   </renderer>
 
   <window>
-    <resolution width="1024" height="768" scale="1"/>
+    <resolution width="1024" height="700" scale="1"/>
     <fullscreen value="false"/>
     <borderless value="false"/>
     <resizable value="false"/>

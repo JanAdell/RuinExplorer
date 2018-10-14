@@ -126,13 +126,6 @@ bool j1Scene::Update(float dt)
 
 	App->map->Draw();
 
-	
-	p2SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
-					App->map->data.width, App->map->data.height,
-					App->map->data.tile_width, App->map->data.tile_height,
-					App->map->data.tilesets.count());
-
-	App->win->SetTitle(title.GetString());
 
 	//dead condition
 	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
@@ -141,7 +134,6 @@ bool j1Scene::Update(float dt)
 		App->player->collider_player_up->to_delete = true;
 		App->player->collider_player_left->to_delete = true;
 		App->player->collider_player_right->to_delete = true;
-		App->audio->PlayFx(2, 0);
 		App->audio->PlayFx(1, 0);
 		App->fade->fadetoBlack(2.0f);
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
