@@ -2,7 +2,7 @@
 
 <config>
   <app>
-    <title>Game Development Testbed</title>
+    <title>Ruin Explorer</title>
     <organization>UPC</organization>
   </app>
 	
@@ -31,9 +31,14 @@
 
   <audio>
     <music>audio/music/</music>
-    <fx>audio/fx/</fx>
   </audio>
 
+  <fx>
+    <folder>audio/fx/</folder>
+    <track name="Teleport.wav"/>
+    <track name="Death.wav"/>
+  </fx>
+  
   <player>
 	  <speed x = "2" y = "2"/>
 		  <idle_anim

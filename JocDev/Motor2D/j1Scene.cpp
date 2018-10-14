@@ -37,6 +37,8 @@ bool j1Scene::Start()
 	App->fade->fadetoBlack(2.0f);
 	App->map->Load("Volcano_Map.tmx");
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+	App->audio->LoadFx("audio/fx/Death.wav");
+
 	return true;
 }
 
@@ -61,7 +63,7 @@ bool j1Scene::Update(float dt)
 		if (!volcan_map)
 		{
 			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		}
 		else 
 		{
@@ -96,7 +98,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
-		App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
@@ -136,11 +138,13 @@ bool j1Scene::Update(float dt)
 		App->player->collider_player_up->to_delete = true;
 		App->player->collider_player_left->to_delete = true;
 		App->player->collider_player_right->to_delete = true;
+		App->audio->PlayFx(2, 0);
 		App->fade->fadetoBlack(2.0f);
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->render->ResetTime(App->render->speed);
+		App->audio->PlayFx(1, 0);
 	}
 
 	//win condicion
@@ -152,7 +156,7 @@ bool j1Scene::Update(float dt)
 			App->collisions->CleanUp();
 			App->fade->fadetoBlack(2.0f);
 			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 			App->render->Start();
 			App->player->Start();
 			App->collisions->Start();
@@ -192,8 +196,9 @@ bool j1Scene::PostUpdate()
 bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
-
+	App->audio->UnloadFx(1);
 	return true;
+
 }
 
 

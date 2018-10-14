@@ -53,6 +53,8 @@ private:
 	int pos_collidery;	
 	bool top_jump = true;
 	iPoint player_size;
+	uint sfx;
+
 };
 
 #endif
