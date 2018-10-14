@@ -181,7 +181,7 @@ bool j1Audio::UnloadFx(unsigned int Fx)
 	p2List_item<Mix_Chunk*>* item;
 	for (item = fx.start; item != NULL; item = item->next) {
 
-		if (item->data == fx[Fx]) {
+		if (item->data != nullptr) {
 			Mix_FreeChunk(item->data);
 		}
 	}

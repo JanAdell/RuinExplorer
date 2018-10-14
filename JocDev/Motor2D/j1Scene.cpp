@@ -54,25 +54,21 @@ bool j1Scene::Update(float dt)
 	
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
-		App->LoadGame("save_game.xml");
-		App->map->CleanUp();
-		App->player->CleanUp();
-		App->collisions->CleanUp();
-		App->fade->fadetoBlack(2.0f);
-		
-		if (!volcan_map)
-		{
-			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
-		}
-		else 
+		if (volcan_map && map_saved)
 		{
 			App->map->Load("Volcano_Map.tmx");
+			App->LoadGame("save_game.xml");
+			App->fade->fadetoBlack(2.0f);
 			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-			
+
 		}
-		App->collisions->Start();
-		App->player->Start();
+
+		if (!volcan_map && !map_saved)
+		{
+			App->LoadGame("save_game.xml");
+			App->fade->fadetoBlack(2.0f);
+			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		}
 	}
 	//fiinish first map
 	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN && volcan_map)
@@ -89,20 +85,14 @@ bool j1Scene::Update(float dt)
 	
 	if (App->player->stay_in_platform)
 		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
+		{
 			App->SaveGame("save_game.xml");
+			if (volcan_map)
+				map_saved = true;
+			else
+				map_saved = false;
+		}
 
-
-	/*if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		App->render->camera.y += 5;
-
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		App->render->camera.y -= 5;
-
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		App->render->camera.x += 5;
-
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		App->render->camera.x -= 5;*/
 	
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
@@ -162,7 +152,6 @@ bool j1Scene::Update(float dt)
 	//win condicion
 	if (-App->player->position.y > -App->map->data.tile_height * 16 && volcan_map)
 	{
-<<<<<<< HEAD
 		
 		App->map->CleanUp();
 		App->collisions->CleanUp();
@@ -187,34 +176,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
 		volcan_map = true;
-=======
-		if (volcan_map)
-		{
-			App->map->CleanUp();
-			App->collisions->CleanUp();
-			App->fade->fadetoBlack(2.0f);
-			App->map->Load("SeaTempleMap.tmx");
-			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
-			App->render->Start();
-			App->player->Start();
-			App->collisions->Start();
-			App->render->ResetTime(App->render->speed);
-			volcan_map = false;
-		}
-		else
-		{
-			App->map->CleanUp();
-			App->collisions->CleanUp();
-			App->fade->fadetoBlack(2.0f);
-			App->map->Load("Volcano_map.tmx");
-			App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-			App->render->Start();
-			App->player->Start();
-			App->collisions->Start();
-			App->render->ResetTime(App->render->speed);
-			volcan_map = true;
-		}
->>>>>>> 839312bb7b189f4c0997e171b3bcd9cdaa6a219f
+
 	}
 
 	return true;

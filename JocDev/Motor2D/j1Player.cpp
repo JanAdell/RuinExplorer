@@ -164,7 +164,6 @@ bool j1Player::Update(float dt)
 		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
 			position.x = 7 * App->map->data.tile_width;
 
-<<<<<<< HEAD
 		else if (position.x < 7 * App->map->data.tile_width)
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
 	}
@@ -177,7 +176,6 @@ bool j1Player::Update(float dt)
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
 	}
 	
-=======
 	if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width) {
 		position.x = 7 * App->map->data.tile_width;
 		App->audio->PlayFx(1, 0);
@@ -189,7 +187,6 @@ bool j1Player::Update(float dt)
 		App->audio->PlayFx(1, 0);
 	}
 
->>>>>>> 839312bb7b189f4c0997e171b3bcd9cdaa6a219f
 	Collider*c1;
 	for (uint k = 0; k < MAX_COLLIDERS; ++k)
 	{
