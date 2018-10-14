@@ -40,6 +40,7 @@ public:
 	bool boost_jump = false;
 	bool start_jump = false;
 	bool stay_in_platform = false;
+	fPoint speed;
 
 private:
 	j1Textures* tex_player = nullptr;
@@ -48,7 +49,6 @@ private:
 	Animation run;
 	Animation jump_anim;
 	Animation fall;
-	fPoint speed;
 	SDL_RendererFlip flip;
 	int pos_collidery;	
 	bool top_jump = true;

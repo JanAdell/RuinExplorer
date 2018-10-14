@@ -4,6 +4,8 @@
 #include "j1Window.h"
 #include "j1Render.h"
 #include "j1Map.h"
+#include "j1Input.h"
+#include "j1Player.h"
 
 #define VSYNC true
 
@@ -77,17 +79,41 @@ bool j1Render::PreUpdate()
 
 bool j1Render::Update(float dt)
 {
-	if (camera.y != 0)
+	if (App->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
+		god_mode = !god_mode;
+
+	if (!god_mode)
 	{
-		if (time_to_start < speed)
+		if (camera.y != 0)
 		{
-			camera.y += 1;
-			speed = time_to_start;
+			if (time_to_start < speed)
+			{
+				camera.y += 1;
+				speed = time_to_start;
+			}
+			else
+			{
+				speed += 1;
+			}
 		}
-		else
+	}
+	else
+	{
+		if (App->player->position.y < App->map->data.height*App->map->data.tile_height - 15* App->map->data.tile_height)
 		{
-			speed += 1;
+			if (-App->player->position.y > camera.y - camera.h * 1 / 4)
+			{
+				camera.y += App->player->speed.y;
+			}
 		}
+		else if (App->player->position.y < App->map->data.height*App->map->data.tile_height - 6 * App->map->data.tile_height)
+		{
+			if (-App->player->position.y < camera.y - camera.h * 3 / 4)
+			{
+				camera.y -= App->player->speed.y;
+			}
+		}
+
 	}
 	return true;
 }

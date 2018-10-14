@@ -52,6 +52,7 @@ public:
 	SDL_Color		background;
 	uint			speed;
 	uint			time_to_start;
+	bool god_mode = false;
 };
 
 #endif // __j1RENDER_H__
