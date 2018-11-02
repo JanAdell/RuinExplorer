@@ -82,6 +82,8 @@ bool j1Player::Start()
 	collider_player_up = App->collisions->AddCollider({ position.x + 2,position.y - 3,player_size.x - 2,1 }, COLLIDER_PLAYER_UP,this);
 	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_LEFT,this);
 	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_RIGHT,this);
+	collider_player = App->collisions->AddCollider({ position.x,position.y,player_size.x,player_size.y}, COLLIDER_PLAYER, this);
+
 
 	App->audio->LoadFx("audio/fx/Teleport.wav");
 	App->audio->LoadFx("audio/fx/Death.wav");
@@ -126,13 +128,13 @@ bool j1Player::Update(float dt)
 	{
 		top_jump = true;
 	}
-
+	//jump
 	if (stay_in_platform)
 	{
-		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
 			start_jump = false;
-			if (boost_jump == false && start_jump == false)
+			if (start_jump == false)
 			{
 				jump_anim.Reset();
 				distance_to_jump = position.y - normal_jump;
@@ -209,6 +211,7 @@ bool j1Player::Update(float dt)
 	collider_player_up->SetPos(position.x + 2, position.y - 3);
 	collider_player_left->SetPos(position.x, position.y);
 	collider_player_right->SetPos(position.x + player_size.x, position.y);
+	collider_player->SetPos(position.x, position.y);
 	App->render->Blit(player_tex, position.x, position.y,flip, &(current_animation->GetCurrentFrame()));
 
 
@@ -232,6 +235,20 @@ void j1Player::OnCollision(Collider* c1, Collider* c2)
 	else if (c1->type == COLLIDER_PLAYER_UP && c2->type == COLLIDER_WALL)
 	{
 		top_jump = true;
+	}
+
+	if (c1->type == COLLIDER_PLAYER && c2->type == BOOST)
+	{
+		if (stay_in_platform == true && App->input->GetKey(SDL_SCANCODE_SPACE))
+		{
+			start_jump = false;
+			jump_anim.Reset();
+			distance_to_jump = position.y - boosted_jump;
+			position.y -= speed.y;
+			start_jump = true;
+			stay_in_platform = false;
+			top_jump = false;
+		}
 	}
 
 }

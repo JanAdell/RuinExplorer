@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="139" tilewidth="32" tileheight="32" infinite="0" nextlayerid="32" nextobjectid="173">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="139" tilewidth="32" tileheight="32" infinite="0" nextlayerid="33" nextobjectid="216">
  <tileset firstgid="1" name="Tile 2" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
   <image source="terrain_atlas.png" width="1024" height="1024"/>
   <terraintypes>
@@ -31469,5 +31469,50 @@
  </objectgroup>
  <objectgroup color="#ffff00" id="31" name="Respawn">
   <object id="172" x="480.5" y="4352" width="32" height="30"/>
+ </objectgroup>
+ <objectgroup color="#00aa00" id="32" name="Booster">
+  <object id="173" x="480" y="4255" width="32" height="30"/>
+  <object id="174" x="287" y="4254" width="32" height="31"/>
+  <object id="175" x="512" y="4159" width="63" height="31"/>
+  <object id="176" x="447" y="3904" width="33" height="31"/>
+  <object id="177" x="544" y="3904" width="32" height="31"/>
+  <object id="178" x="640" y="3808" width="32" height="32"/>
+  <object id="179" x="480" y="3775" width="63" height="34"/>
+  <object id="180" x="352" y="3809" width="31" height="31"/>
+  <object id="181" x="320" y="3712" width="32" height="32"/>
+  <object id="182" x="672" y="3712" width="31" height="31"/>
+  <object id="183" x="480" y="3519" width="65" height="32"/>
+  <object id="184" x="704" y="3488" width="32" height="30"/>
+  <object id="185" x="480" y="3264" width="64" height="32"/>
+  <object id="186" x="448" y="3103" width="31" height="33"/>
+  <object id="187" x="544" y="3104" width="32" height="32"/>
+  <object id="188" x="480" y="2880" width="63" height="31"/>
+  <object id="189" x="351" y="2751" width="34" height="33"/>
+  <object id="190" x="448" y="2751" width="31" height="30"/>
+  <object id="191" x="544" y="2752" width="32" height="30"/>
+  <object id="192" x="639" y="2751" width="33" height="32"/>
+  <object id="193" x="480" y="2432" width="64" height="32"/>
+  <object id="194" x="448" y="2175" width="30" height="31"/>
+  <object id="195" x="608" y="2080" width="31" height="32"/>
+  <object id="196" x="352" y="1984" width="31" height="31"/>
+  <object id="197" x="480" y="1887" width="63" height="32"/>
+  <object id="198" x="640" y="1536" width="33" height="31"/>
+  <object id="199" x="640" y="1279" width="31" height="35"/>
+  <object id="200" x="479" y="1279" width="64" height="33"/>
+  <object id="201" x="352" y="1537" width="31" height="29"/>
+  <object id="202" x="448" y="1088" width="32" height="31"/>
+  <object id="203" x="543" y="1088" width="31" height="30"/>
+  <object id="204" x="448" y="801" width="32" height="29"/>
+  <object id="205" x="415" y="895" width="33" height="32"/>
+  <object id="206" x="576" y="896" width="32" height="33"/>
+  <object id="207" x="608" y="704" width="30" height="32"/>
+  <object id="208" x="640" y="609" width="31" height="29"/>
+  <object id="209" x="705" y="609" width="31" height="31"/>
+  <object id="210" x="577" y="608" width="30" height="31"/>
+  <object id="211" x="480" y="608" width="65" height="32"/>
+  <object id="212" x="416" y="608" width="32" height="31"/>
+  <object id="213" x="384" y="705" width="31" height="32"/>
+  <object id="214" x="352" y="609" width="31" height="31"/>
+  <object id="215" x="288" y="609" width="32" height="29"/>
  </objectgroup>
 </map>

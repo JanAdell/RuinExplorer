@@ -1,7 +1,14 @@
-﻿  j1Map.cpp
+﻿  j1Player.cpp
 c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1map.cpp(110): warning C4101: 'item_layer': variable local sin referencia
-  j1Scene.cpp
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
-  Generando código...
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(50): warning C4305: '=': truncamiento de 'double' a 'float'
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(56): warning C4305: '=': truncamiento de 'double' a 'float'
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(62): warning C4305: '=': truncamiento de 'double' a 'float'
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(117): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(124): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(141): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(153): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(159): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(225): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(229): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(247): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
   Motor2D.vcxproj -> C:\Users\Isabel\Desktop\class vec3\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe
