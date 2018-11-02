@@ -57,7 +57,6 @@ bool j1Scene::Update(float dt)
 	{
 		if (volcan_map && map_saved)
 		{
-			App->map->Load("Volcano_Map.tmx");
 			App->LoadGame("save_game.xml");
 			App->fade->fadetoBlack(2.0f);
 			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);

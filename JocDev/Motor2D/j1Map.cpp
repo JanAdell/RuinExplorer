@@ -6,6 +6,7 @@
 #include "j1Map.h"
 #include "j1Input.h"
 #include "j1Collisions.h"
+#include "j1Player.h"
 
 #include <math.h>
 
@@ -395,12 +396,19 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 	}
 	else
 	{
-
 		int i = 0;
-		for (col_object; col_object; col_object = col_object.next_sibling("object"))
+		if (strcmp(node.attribute("name").as_string(),"Colliders") == 0)
 		{
-			App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_WALL);
-			i++;
+			for (col_object; col_object; col_object = col_object.next_sibling("object"))
+			{
+				App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_WALL);
+				i++;
+			}
+		}
+		else
+		{
+			App->player->respawnPlayer.x = col_object.attribute("x").as_int();
+			App->player->respawnPlayer.y = col_object.attribute("y").as_int();
 		}
 
 	}

@@ -34,6 +34,7 @@ public:
 	//Mix_Chunk* player_death = nullptr;
 	SDL_Texture* player_tex = nullptr;
 	iPoint position;
+	iPoint respawnPlayer;
 	int normal_jump;
 	int boosted_jump;
 	int distance_to_jump;
