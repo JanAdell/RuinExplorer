@@ -141,6 +141,9 @@
   <tile id="2776" terrain="1,1,1,1"/>
  </tileset>
  <layer id="24" name="Sky" width="32" height="139">
+  <properties>
+   <property name="speed" type="float" value="1"/>
+  </properties>
   <data>
    <tile gid="457"/>
    <tile gid="457"/>
@@ -4593,6 +4596,9 @@
   </data>
  </layer>
  <layer id="25" name="Background" width="32" height="139">
+  <properties>
+   <property name="speed" type="float" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -9045,6 +9051,9 @@
   </data>
  </layer>
  <layer id="26" name="Background details" width="32" height="139">
+  <properties>
+   <property name="speed" type="float" value="1.3"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -13497,6 +13506,9 @@
   </data>
  </layer>
  <layer id="27" name="SideBar &amp; UI" width="32" height="139">
+  <properties>
+   <property name="speed" type="float" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -17949,6 +17961,9 @@
   </data>
  </layer>
  <layer id="28" name="SideBar &amp; UI details" width="32" height="139">
+  <properties>
+   <property name="speed" type="float" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -22401,6 +22416,9 @@
   </data>
  </layer>
  <layer id="29" name="Platforms" width="32" height="139">
+  <properties>
+   <property name="speed" type="float" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -26853,6 +26871,9 @@
   </data>
  </layer>
  <layer id="30" name="Platforms Details" width="32" height="139">
+  <properties>
+   <property name="speed" type="float" value="1"/>
+  </properties>
   <data>
    <tile/>
    <tile/>

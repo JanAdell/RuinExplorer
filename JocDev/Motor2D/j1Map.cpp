@@ -50,7 +50,7 @@ void j1Map::Draw()
 					if (gid != 0)
 					{
 						iPoint worldPos = MapToWorld(i, j);
-						App->render->Blit(tile_iterator->data->texture, worldPos.x, worldPos.y,SDL_FLIP_NONE, &tile_iterator->data->GetTileRect(gid));
+						App->render->Blit(tile_iterator->data->texture, worldPos.x, worldPos.y,SDL_FLIP_NONE, &tile_iterator->data->GetTileRect(gid),layer_iterator->data->speed);
 					}
 				}
 			}
@@ -361,6 +361,7 @@ bool j1Map::LoadLayer(pugi::xml_node& node, Layer* layer)
 	layer->name = node.attribute("name").as_string();
 	layer->width = node.attribute("width").as_int();
 	layer->height = node.attribute("height").as_int();
+	layer->speed = node.child("properties").child("property").attribute("value").as_float();
 	pugi::xml_node layer_data = node.child("data");
 
 	if (layer_data == NULL)
@@ -409,7 +410,7 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 				if(strcmp(node.attribute("name").as_string(), "Colliders") == 0)
 					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_WALL);
 				else
-					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, BOOST);
+					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_BOOST);
 
 				i++;
 			}

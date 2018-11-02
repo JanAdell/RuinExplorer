@@ -14,6 +14,7 @@ struct Layer
 	uint width = 0;
 	uint height = 0;
 	uint* data = nullptr;
+	float speed = 0.0f;
 
 	inline uint Get(int x, int y) const
 	{

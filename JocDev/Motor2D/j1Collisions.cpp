@@ -16,7 +16,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_LEFT] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_RIGHT] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_WALL][BOOST] = true;
+	matrix[COLLIDER_WALL][COLLIDER_BOOST] = true;
 
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_UP] = false;
@@ -24,7 +24,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_LEFT] = false;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER_UP][BOOST] = false;
+	matrix[COLLIDER_PLAYER_UP][COLLIDER_BOOST] = false;
 
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_UP] = false;
@@ -32,7 +32,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_LEFT] = false;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER_DOWN][BOOST] = false;
+	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_BOOST] = false;
 
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_UP] = false;
@@ -40,7 +40,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_LEFT] = false;
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER_RIGHT][BOOST] = false;
+	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_BOOST] = false;
 
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_UP] = false;
@@ -48,7 +48,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_LEFT] = false;
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER_LEFT][BOOST] = false;
+	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_BOOST] = false;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_UP] = false;
@@ -56,15 +56,15 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_LEFT] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_PLAYER][BOOST] = true;
+	matrix[COLLIDER_PLAYER][COLLIDER_BOOST] = true;
 
-	matrix[BOOST][COLLIDER_WALL] = false;
-	matrix[BOOST][COLLIDER_PLAYER_UP] = false;
-	matrix[BOOST][COLLIDER_PLAYER_DOWN] = false;
-	matrix[BOOST][COLLIDER_PLAYER_LEFT] = false;
-	matrix[BOOST][COLLIDER_PLAYER_RIGHT] = false;
-	matrix[BOOST][COLLIDER_PLAYER] = true;
-	matrix[BOOST][BOOST] = false;
+	matrix[COLLIDER_BOOST][COLLIDER_WALL] = false;
+	matrix[COLLIDER_BOOST][COLLIDER_PLAYER_UP] = false;
+	matrix[COLLIDER_BOOST][COLLIDER_PLAYER_DOWN] = false;
+	matrix[COLLIDER_BOOST][COLLIDER_PLAYER_LEFT] = false;
+	matrix[COLLIDER_BOOST][COLLIDER_PLAYER_RIGHT] = false;
+	matrix[COLLIDER_BOOST][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_BOOST][COLLIDER_BOOST] = false;
 }
 
 // Destructor
@@ -164,7 +164,7 @@ void j1Collisions::DebugDraw()
 		case COLLIDER_PLAYER:
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
-		case BOOST:
+		case COLLIDER_BOOST:
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		}

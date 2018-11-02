@@ -237,7 +237,7 @@ void j1Player::OnCollision(Collider* c1, Collider* c2)
 		top_jump = true;
 	}
 
-	if (c1->type == COLLIDER_PLAYER && c2->type == BOOST)
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_BOOST)
 	{
 		if (stay_in_platform == true && App->input->GetKey(SDL_SCANCODE_SPACE))
 		{
