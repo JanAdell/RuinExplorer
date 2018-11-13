@@ -6,6 +6,7 @@
 #include "j1Map.h"
 #include "j1Input.h"
 #include "j1Player.h"
+#include "j1Collisions.h"
 
 #define VSYNC true
 
@@ -88,7 +89,7 @@ bool j1Render::Update(float dt)
 	{
 		if (camera.y != 0)
 		{
-			if (time_to_start < speed)
+			if (time_to_start <= speed)
 			{
 				camera.y += 1;
 				speed = time_to_start;

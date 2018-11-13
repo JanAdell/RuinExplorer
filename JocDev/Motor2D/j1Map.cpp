@@ -50,7 +50,11 @@ void j1Map::Draw()
 					if (gid != 0)
 					{
 						iPoint worldPos = MapToWorld(i, j);
-						App->render->Blit(tile_iterator->data->texture, worldPos.x, worldPos.y,SDL_FLIP_NONE, &tile_iterator->data->GetTileRect(gid),layer_iterator->data->speed);
+						if(layer_iterator->data->speed == 1.0)
+							App->render->Blit(tile_iterator->data->texture, worldPos.x, worldPos.y,SDL_FLIP_NONE, &tile_iterator->data->GetTileRect(gid),layer_iterator->data->speed);
+						else
+							App->render->Blit(tile_iterator->data->texture, worldPos.x, worldPos.y + layer_iterator->data->speed * 780, SDL_FLIP_NONE, &tile_iterator->data->GetTileRect(gid), layer_iterator->data->speed);
+
 					}
 				}
 			}

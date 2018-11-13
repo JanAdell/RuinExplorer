@@ -129,17 +129,7 @@ bool j1Scene::Update(float dt)
 	//dead condition
 	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
 	{
-		App->player->collider_player_down->to_delete = true;
-		App->player->collider_player_up->to_delete = true;
-		App->player->collider_player_left->to_delete = true;
-		App->player->collider_player_right->to_delete = true;
-		App->audio->PlayFx(1, 0);
-		App->fade->fadetoBlack(2.0f);
-		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-		App->render->Start();
-		App->player->Start();
-		App->render->ResetTime(App->render->speed);
-		
+		dead();		
 	}
 
 	//win condicion
@@ -150,7 +140,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("SeaTempleMap.tmx");
-		App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
@@ -163,7 +153,7 @@ bool j1Scene::Update(float dt)
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack(2.0f);
 		App->map->Load("Volcano_map.tmx");
-		App->audio->PlayMusic("LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->collisions->Start();
@@ -211,4 +201,28 @@ bool j1Scene::Save(pugi::xml_node& data) const
 	scene.append_attribute("volcan_map") = volcan_map;
 	
 	return true;
+}
+
+void j1Scene::dead()
+{
+	App->player->collider_player_down->to_delete = true;
+	App->player->collider_player_up->to_delete = true;
+	App->player->collider_player_left->to_delete = true;
+	App->player->collider_player_right->to_delete = true;
+	App->player->collider_player->to_delete = true;
+	App->player->cameralimit->to_delete = true;
+	App->audio->PlayFx(1, 0);
+	App->fade->fadetoBlack(2.0f);
+	if (volcan_map)
+	{
+		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		
+	}
+	else
+	{
+		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
+	}
+	App->render->Start();
+	App->player->Start();
+	App->render->ResetTime(App->render->speed);
 }

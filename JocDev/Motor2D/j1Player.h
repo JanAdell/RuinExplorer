@@ -29,6 +29,7 @@ public:
 	Collider* collider_player_left = nullptr;
 	Collider* collider_player_up = nullptr;
 	Collider* collider_player = nullptr;
+	Collider* cameralimit = nullptr;
 
 public:
 	//Mix_Chunk* player_death = nullptr;
@@ -38,6 +39,7 @@ public:
 	int normal_jump;
 	int boosted_jump;
 	int distance_to_jump;
+	float gravity;
 	bool start_jump = false;
 	bool stay_in_platform = false;
 	fPoint speed;

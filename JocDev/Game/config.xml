@@ -41,7 +41,7 @@
   </fx>
   
   <player>
-	  <speed x = "2" y = "2"/>
+	  <speed x = "2" y = "3" gravity = "2"/>
 		  <idle_anim
 		  x1 = "14" y1 = "7" w1 = "19" h1 = "29"
 		  x2 = "66" y2 = "6" w2 = "17" h2 = "30"

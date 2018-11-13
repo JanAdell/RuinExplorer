@@ -17,6 +17,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_RIGHT] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_WALL][COLLIDER_BOOST] = true;
+	matrix[COLLIDER_WALL][COLLIDER_LIMIT_CAMERA] = false;
 
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_UP] = false;
@@ -25,6 +26,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_UP][COLLIDER_BOOST] = false;
+	matrix[COLLIDER_PLAYER_UP][COLLIDER_LIMIT_CAMERA] = true;
 
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_UP] = false;
@@ -33,6 +35,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_BOOST] = false;
+	matrix[COLLIDER_PLAYER_DOWN][COLLIDER_LIMIT_CAMERA] = false;
 
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_UP] = false;
@@ -41,6 +44,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_BOOST] = false;
+	matrix[COLLIDER_PLAYER_RIGHT][COLLIDER_LIMIT_CAMERA] = false;
 
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_UP] = false;
@@ -49,6 +53,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_BOOST] = false;
+	matrix[COLLIDER_PLAYER_LEFT][COLLIDER_LIMIT_CAMERA] = false;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_UP] = false;
@@ -57,6 +62,7 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_BOOST] = true;
+	matrix[COLLIDER_PLAYER][COLLIDER_LIMIT_CAMERA] = false;
 
 	matrix[COLLIDER_BOOST][COLLIDER_WALL] = false;
 	matrix[COLLIDER_BOOST][COLLIDER_PLAYER_UP] = false;
@@ -65,6 +71,16 @@ j1Collisions::j1Collisions()
 	matrix[COLLIDER_BOOST][COLLIDER_PLAYER_RIGHT] = false;
 	matrix[COLLIDER_BOOST][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_BOOST][COLLIDER_BOOST] = false;
+	matrix[COLLIDER_BOOST][COLLIDER_LIMIT_CAMERA] = false;
+
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_WALL] = false;
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_PLAYER_UP] = true;
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_PLAYER_DOWN] = false;
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_PLAYER_LEFT] = false;
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_PLAYER_RIGHT] = false;
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_BOOST] = false;
+	matrix[COLLIDER_LIMIT_CAMERA][COLLIDER_LIMIT_CAMERA] = false;
 }
 
 // Destructor
@@ -166,6 +182,9 @@ void j1Collisions::DebugDraw()
 			break;
 		case COLLIDER_BOOST:
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
+		case COLLIDER_LIMIT_CAMERA:
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
 		}
 	}

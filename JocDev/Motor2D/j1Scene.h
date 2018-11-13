@@ -35,6 +35,8 @@ public:
 	bool Load(pugi::xml_node&);
 	bool Save(pugi::xml_node&) const;
 
+	void dead();
+
 	bool volcan_map = true;
 	bool map_saved = true;
 private:

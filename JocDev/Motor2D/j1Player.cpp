@@ -29,7 +29,7 @@ bool j1Player::Awake(pugi::xml_node & conf)
 	speed.y = conf.child("speed").attribute("y").as_float();
 	player_size.x =	conf.child("idle_anim").attribute("w1").as_int();
 	player_size.y = conf.child("idle_anim").attribute("h1").as_int();
-
+	gravity = conf.child("speed").attribute("gravity").as_float();
 	//sprites
 	//idle
 	idle.PushBack({ conf.child("idle_anim").attribute("x1").as_int(),conf.child("idle_anim").attribute("y1").as_int(),conf.child("idle_anim").attribute("w1").as_int(),conf.child("idle_anim").attribute("h1").as_int() });
@@ -47,19 +47,19 @@ bool j1Player::Awake(pugi::xml_node & conf)
 	run.PushBack({ conf.child("run_anim").attribute("x5").as_int(),conf.child("run_anim").attribute("y5").as_int(),conf.child("run_anim").attribute("w5").as_int(),conf.child("run_anim").attribute("h5").as_int() });
 	run.PushBack({ conf.child("run_anim").attribute("x6").as_int(),conf.child("run_anim").attribute("y6").as_int(),conf.child("run_anim").attribute("w6").as_int(),conf.child("run_anim").attribute("h6").as_int() });
 	run.loop = true;
-	run.speed = 0.05;
+	run.speed = 0.2;
 
 	//jump
 	jump_anim.PushBack({ conf.child("jump_anim").attribute("x1").as_int(),conf.child("jump_anim").attribute("y1").as_int(),conf.child("jump_anim").attribute("w1").as_int(),conf.child("jump_anim").attribute("h1").as_int() });
 	jump_anim.PushBack({ conf.child("jump_anim").attribute("x2").as_int(),conf.child("jump_anim").attribute("y2").as_int(),conf.child("jump_anim").attribute("w2").as_int(),conf.child("jump_anim").attribute("h2").as_int() });
 	jump_anim.loop = false;
-	jump_anim.speed = 0.02;
+	jump_anim.speed = 0.1;
 
 	//fall
 	fall.PushBack({ conf.child("fall_anim").attribute("x1").as_int(),conf.child("fall_anim").attribute("y1").as_int(),conf.child("fall_anim").attribute("w1").as_int(),conf.child("fall_anim").attribute("h1").as_int() });
 	fall.PushBack({ conf.child("fall_anim").attribute("x2").as_int(),conf.child("fall_anim").attribute("y2").as_int(),conf.child("fall_anim").attribute("w2").as_int(),conf.child("fall_anim").attribute("h2").as_int() });
 	fall.loop = false;
-	fall.speed = 0.02;
+	fall.speed = 0.1;
 
 
 	return ret;
@@ -80,10 +80,11 @@ bool j1Player::Start()
 
 	collider_player_down = App->collisions->AddCollider({ position.x + 2, position.y + player_size.y, player_size.x - 2, 1 }, COLLIDER_PLAYER_DOWN, this);
 	collider_player_up = App->collisions->AddCollider({ position.x + 2,position.y - 3,player_size.x - 2,1 }, COLLIDER_PLAYER_UP,this);
-	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_LEFT,this);
-	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y - 2 }, COLLIDER_PLAYER_RIGHT,this);
+	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y - 3 }, COLLIDER_PLAYER_LEFT,this);
+	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y - 3 }, COLLIDER_PLAYER_RIGHT,this);
 	collider_player = App->collisions->AddCollider({ position.x,position.y,player_size.x,player_size.y}, COLLIDER_PLAYER, this);
 
+	cameralimit = App->collisions->AddCollider({ App->render->camera.x, -App->render->camera.y,App->render->camera.w, 2}, COLLIDER_LIMIT_CAMERA, this);
 
 	App->audio->LoadFx("audio/fx/Teleport.wav");
 	App->audio->LoadFx("audio/fx/Death.wav");
@@ -138,7 +139,7 @@ bool j1Player::Update(float dt)
 			{
 				jump_anim.Reset();
 				distance_to_jump = position.y - normal_jump;
-				position.y -= speed.y;
+				position.y -= speed.y + gravity;
 				start_jump = true;
 				stay_in_platform = false;
 				top_jump = false;
@@ -150,19 +151,21 @@ bool j1Player::Update(float dt)
 		if (position.y > distance_to_jump && top_jump == false)
 		{
 			current_animation = &jump_anim;
-			position.y -= speed.y;
+			position.y -= speed.y + gravity;
 		}
 		if (position.y == distance_to_jump)
 			top_jump = true;
 		if(top_jump == true)
 		{
-			position.y += speed.y;
 			current_animation = &fall;
 		}
 	}
+	position.y += gravity;
+	stay_in_platform = false;
 	//mechanic
 	if (App->scene->volcan_map)
 	{
+
 		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
 		{
 			App->audio->PlayFx(1, 0);
@@ -188,23 +191,6 @@ bool j1Player::Update(float dt)
 			App->audio->PlayFx(1, 0);
 		}
 	}
-	
-
-
-	Collider*c1;
-	for (uint k = 0; k < MAX_COLLIDERS; ++k)
-	{
-		// skip empty colliders
-		if (App->collisions->colliders[k] == nullptr)
-			continue;
-
-		c1 = App->collisions->colliders[k];
-
-		if (collider_player_down->CheckCollision(c1->rect) == false)
-		{
-			stay_in_platform = false;
-		}
-	}
 
 	//colliders player
 	collider_player_down->SetPos(position.x + 2, position.y + player_size.y);
@@ -212,6 +198,8 @@ bool j1Player::Update(float dt)
 	collider_player_left->SetPos(position.x, position.y);
 	collider_player_right->SetPos(position.x + player_size.x, position.y);
 	collider_player->SetPos(position.x, position.y);
+
+	cameralimit->SetPos(App->render->camera.x, -App->render->camera.y);
 	App->render->Blit(player_tex, position.x, position.y,flip, &(current_animation->GetCurrentFrame()));
 
 
@@ -230,6 +218,7 @@ void j1Player::OnCollision(Collider* c1, Collider* c2)
 	}
 	else if (c1->type == COLLIDER_PLAYER_DOWN && c2->type == COLLIDER_WALL)
 	{
+		position.y -= gravity;
 		stay_in_platform = true;
 	}
 	else if (c1->type == COLLIDER_PLAYER_UP && c2->type == COLLIDER_WALL)
@@ -249,6 +238,10 @@ void j1Player::OnCollision(Collider* c1, Collider* c2)
 			stay_in_platform = false;
 			top_jump = false;
 		}
+	}
+	if (c1->type == COLLIDER_PLAYER_UP && c2->type == COLLIDER_LIMIT_CAMERA)
+	{
+		position.y += gravity;
 	}
 
 }
