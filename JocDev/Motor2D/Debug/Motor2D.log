@@ -1,10 +1,4 @@
-﻿  j1App.cpp
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(21): error C2065: 'frames': undeclared identifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(204): warning C4477: 'sprintf_s' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 5 has type 'Uint64'
-  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(204): note: consider using '%llu' in the format string
-  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(204): note: consider using '%I64u' in the format string
-  j1Collisions.cpp
+﻿  j1Collisions.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2238: unexpected token(s) preceding ';'
@@ -53,7 +47,7 @@ c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C3646: 'prev_last_sec_frame_count': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2059: syntax error: '='
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2238: unexpected token(s) preceding ';'
-  j1Input.cpp
+  j1Main.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2238: unexpected token(s) preceding ';'
@@ -77,7 +71,12 @@ c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C3646: 'prev_last_sec_frame_count': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2059: syntax error: '='
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2238: unexpected token(s) preceding ';'
-  j1Main.cpp
+  j1App.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(203): warning C4477: 'sprintf_s' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 5 has type 'Uint64'
+  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(203): note: consider using '%llu' in the format string
+  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(203): note: consider using '%I64u' in the format string
+  j1Input.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2238: unexpected token(s) preceding ';'
@@ -249,6 +248,43 @@ c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1play
           [
               TYPE=int
           ]
+  j1Scene.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2238: unexpected token(s) preceding ';'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(18): error C3646: 'started_at': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(19): error C3646: 'frequency': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C3646: 'Read': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2059: syntax error: '('
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2238: unexpected token(s) preceding ';'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C3646: 'started_at': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(101): error C3646: 'frame_rate': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(101): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(115): error C3646: 'frame_count': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(115): error C2059: syntax error: '='
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(119): error C3646: 'last_sec_frame_count': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(119): error C2059: syntax error: '='
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(119): error C2238: unexpected token(s) preceding ';'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C3646: 'prev_last_sec_frame_count': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2059: syntax error: '='
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2238: unexpected token(s) preceding ';'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  j1Timer.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C3646: 'Read': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2059: syntax error: '('
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2238: unexpected token(s) preceding ';'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C3646: 'started_at': unknown override specifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(13): error C2065: 'started_at': undeclared identifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(17): error C2039: 'Read': is not a member of 'j1Timer'
+  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(6): note: see declaration of 'j1Timer'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(18): error C2270: 'Read': modifiers not allowed on nonmember functions
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(19): error C2065: 'started_at': undeclared identifier
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(25): error C2065: 'started_at': undeclared identifier
   j1Render.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
@@ -284,31 +320,6 @@ c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1rend
           [
               TYPE=float
           ]
-  j1Scene.cpp
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2238: unexpected token(s) preceding ';'
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(18): error C3646: 'started_at': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(19): error C3646: 'frequency': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C3646: 'Read': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2059: syntax error: '('
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2238: unexpected token(s) preceding ';'
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C3646: 'started_at': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(101): error C3646: 'frame_rate': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(101): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(115): error C3646: 'frame_count': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(115): error C2059: syntax error: '='
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(115): error C2238: unexpected token(s) preceding ';'
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(119): error C3646: 'last_sec_frame_count': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(119): error C2059: syntax error: '='
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(119): error C2238: unexpected token(s) preceding ';'
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C3646: 'prev_last_sec_frame_count': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2059: syntax error: '='
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2238: unexpected token(s) preceding ';'
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   j1Textures.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
@@ -333,18 +344,6 @@ c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C3646: 'prev_last_sec_frame_count': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2059: syntax error: '='
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.h(120): error C2238: unexpected token(s) preceding ';'
-  j1Timer.cpp
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C3646: 'Read': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2059: syntax error: '('
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(14): error C2238: unexpected token(s) preceding ';'
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C3646: 'started_at': unknown override specifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(13): error C2065: 'started_at': undeclared identifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(17): error C2039: 'Read': is not a member of 'j1Timer'
-  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.h(6): note: see declaration of 'j1Timer'
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(18): error C2270: 'Read': modifiers not allowed on nonmember functions
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(19): error C2065: 'started_at': undeclared identifier
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1timer.cpp(25): error C2065: 'started_at': undeclared identifier
   j1Window.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C3646: 'ReadTicks': unknown override specifier
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1perftimer.h(15): error C2059: syntax error: '('
