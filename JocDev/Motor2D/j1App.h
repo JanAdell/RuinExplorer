@@ -18,7 +18,8 @@ class j1Map;
 class j1FadetoBlack;
 class j1Player;
 class j1Collisions;
-
+//class j1PerfTimer;
+//class j1Timer;
 
 class j1App
 {
@@ -118,6 +119,8 @@ private:
 	j1Timer				last_sec_frame_time;
 	Uint32				last_sec_frame_count = 0;
 	Uint32				prev_last_sec_frame_count = 0;
+	Uint32				CapTime60 = 0;
+
 
 };
 

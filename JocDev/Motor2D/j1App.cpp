@@ -89,6 +89,8 @@ bool j1App::Awake()
 		app_config = config.child("app");
 		title.create(app_config.child("title").child_value());
 		organization.create(app_config.child("organization").child_value());
+		//time delay to define 
+		CapTime = 1000 / 60;
 	}
 
 	if(ret == true)
@@ -165,6 +167,7 @@ void j1App::PrepareUpdate()
 	frame_count++;
 	last_sec_frame_count++;
 
+
 	dt = frame_time.ReadSec();
 	frame_time.Start();
 }
@@ -186,23 +189,20 @@ void j1App::FinishUpdate()
 		last_sec_frame_count = 0;
 	}
 
-	float avg_fps = float(frame_count) / startup_time.ReadSec();
 	float seconds_since_startup = startup_time.ReadSec();
+	float avg_fps = float(frame_count) / seconds_since_startup;
 	Uint32 last_frame_ms = frame_time.Read();
 	Uint32 frames_on_last_update = prev_last_sec_frame_count;
 
-
-	if (last_frame_ms < frame_rate)
-	{
-		j1PerfTimer delay_timer;
-		SDL_Delay(frame_rate - last_frame_ms);
-		LOG("waited for: %.2f ms expected time: %u ms", delay_timer.ReadMs(), frame_rate - last_frame_ms);
-	}
-
-	static char title[256];
+	/*static char title[256];
 	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %02u Last sec frames: %i  Time since startup: %.3f Frame Count: %lu ",
 		avg_fps, last_frame_ms, frames_on_last_update, seconds_since_startup, frame_count);
-	App->win->SetTitle(title);
+	App->win->SetTitle(title);*/
+	
+	Uint32 delay = MAX(0, CapTime - last_frame_ms);
+	
+	j1PerfTimer delayTimer;
+	SDL_Delay(delay);
 }
 
 // Call modules before each loop iteration
