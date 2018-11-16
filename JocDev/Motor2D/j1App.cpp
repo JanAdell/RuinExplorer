@@ -89,8 +89,14 @@ bool j1App::Awake()
 		app_config = config.child("app");
 		title.create(app_config.child("title").child_value());
 		organization.create(app_config.child("organization").child_value());
-		//time delay to define 
-		CapTime = 1000 / 60;
+		
+		//time delay each frame cycle 
+		capTime = 1000 / app_config.attribute("framerate_cap1").as_int();
+		capTime2 = 1000 / app_config.attribute("framerate_cap2").as_int();
+		capTimeaux = capTime;
+		//capTime2 = 1000 / app_config.attribute("framerate_cap2").as_int();
+		//LOG("MS at 60 fps %u", capTime);
+		//LOG("MS at 30 fps %u", capTime2);
 	}
 
 	if(ret == true)
@@ -142,6 +148,19 @@ bool j1App::Update()
 	if(ret == true)
 		ret = PostUpdate();
 
+	//change framerate between 60 and 30 fps 
+	if (App->input->GetKey(SDL_SCANCODE_F)) {
+		//if (framerate = true) {
+			capTimeaux = capTime2;
+		//	framerate = false;
+		//}
+		//if (framerate = false) {
+		//	capTimeaux = capTime;
+		//framerate = true;
+		//}
+	}
+
+
 	FinishUpdate();
 	return ret;
 }
@@ -189,20 +208,21 @@ void j1App::FinishUpdate()
 		last_sec_frame_count = 0;
 	}
 
+	float avg_fps = float(frame_count) / startup_time.ReadSec();
 	float seconds_since_startup = startup_time.ReadSec();
-	float avg_fps = float(frame_count) / seconds_since_startup;
-	Uint32 last_frame_ms = frame_time.Read();
-	Uint32 frames_on_last_update = prev_last_sec_frame_count;
+	uint32 last_frame_ms = frame_time.Read();
+	uint32 frames_on_last_update = prev_last_sec_frame_count;
 
-	/*static char title[256];
-	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %02u Last sec frames: %i  Time since startup: %.3f Frame Count: %lu ",
-		avg_fps, last_frame_ms, frames_on_last_update, seconds_since_startup, frame_count);
-	App->win->SetTitle(title);*/
+	if (last_frame_ms < frame_rate)
+	{
+		j1PerfTimer delay_timer;
+		SDL_Delay(capTimeaux - last_frame_ms);
+	}
+
+	static char title[256];
+	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %02u Last sec frames: %i  Time since startup: %.3f Frame Count: %lu ",avg_fps, last_frame_ms, frames_on_last_update, seconds_since_startup, frame_count);
+	App->win->SetTitle(title);
 	
-	Uint32 delay = MAX(0, CapTime - last_frame_ms);
-	
-	j1PerfTimer delayTimer;
-	SDL_Delay(delay);
 }
 
 // Call modules before each loop iteration

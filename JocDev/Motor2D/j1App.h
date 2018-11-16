@@ -7,6 +7,7 @@
 #include "j1Timer.h"
 #include "PugiXml\src\pugixml.hpp"
 
+
 // Modules
 class j1Window;
 class j1Input;
@@ -18,8 +19,7 @@ class j1Map;
 class j1FadetoBlack;
 class j1Player;
 class j1Collisions;
-//class j1PerfTimer;
-//class j1Timer;
+
 
 class j1App
 {
@@ -99,7 +99,7 @@ public:
 private:
 
 	p2List<j1Module*>	modules;
-	Uint32				frame_rate;
+	uint32				frame_rate;
 	float				dt=0.0f;
 	int					argc;
 	char**				args;
@@ -111,16 +111,22 @@ private:
 	bool				want_to_load;
 	p2SString			load_game;
 	mutable p2SString	save_game;
-
-	j1PerfTimer			ptimer;
-	Uint64				frame_count = 0;
+	
+	//framerate variables
+	//j1PerfTimer			ptimer;
+	uint64				frame_count = 0;
 	j1Timer				startup_time;
 	j1Timer				frame_time;
 	j1Timer				last_sec_frame_time;
-	Uint32				last_sec_frame_count = 0;
-	Uint32				prev_last_sec_frame_count = 0;
-	Uint32				CapTime60 = 0;
-
+	uint32				last_sec_frame_count = 0;
+	uint32				prev_last_sec_frame_count = 0;
+	uint32				capTime = 0;
+	uint32				capTime2 = 0;
+	uint32				capTimeaux = 0;
+	uint32				delay = 0;
+	uint32				last_frame_ms;
+	uint32				frames_on_last_update;
+	bool				framerate = true;
 
 };
 

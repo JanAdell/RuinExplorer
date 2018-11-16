@@ -11,11 +11,11 @@ public:
 	j1Timer();
 
 	void Start();
-	Uint32 Read() const;
+	uint32 Read() const;
 	float ReadSec() const;
 
 private:
-	Uint32	started_at;
+	uint32	started_at;
 };
 
 #endif //__j1TIMER_H__

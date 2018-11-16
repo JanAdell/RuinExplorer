@@ -1,7 +1,7 @@
 <!-- Config file for the game -->
 
 <config>
-  <app>
+  <app framerate_cap1="60" framerate_cap2="30">
     <title>Ruin Explorer</title>
     <organization>UPC</organization>
   </app>

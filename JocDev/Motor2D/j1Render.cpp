@@ -101,9 +101,9 @@ bool j1Render::Update(float dt)
 		}
 
 		//windows name
-		p2SString title("Game: %s", game_name.GetString() );
+		//p2SString title("Game: %s", game_name.GetString() );
 
-		App->win->SetTitle(title.GetString());
+		//App->win->SetTitle(title.GetString());
 	}
 	else
 	{

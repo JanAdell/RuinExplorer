@@ -12,11 +12,11 @@ public:
 
 	void Start();
 	double ReadMs() const;
-	Uint64 ReadTicks() const;
+	uint64 ReadTicks() const;
 
 private:
-	Uint64	started_at;
-	static Uint64 frequency;
+	uint64	started_at;
+	static uint64 frequency;
 };
 
 #endif //__j1PERFTIMER_H__
