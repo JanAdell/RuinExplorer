@@ -5,10 +5,11 @@
 #include "Animation.h"
 #include "j1Audio.h"
 
+
 struct SDL_Texture;
 struct Collider;
 
-class Entity
+class Entity 
 {
 protected:
 	Animation * animation = nullptr;
@@ -24,9 +25,10 @@ public:
 	const Collider* GetCollider() const;
 	uint points = 0;
 
-	virtual void Move() = 0;
-	virtual void Draw(SDL_Texture* sprites) = 0;
-	virtual void OnCollision(Collider* collider) = 0;
+	virtual void Update(float dt) = 0;
+	virtual void Draw(SDL_Texture* sprites);
+	virtual void OnCollision(Collider* collider);
+
 };
 
 #endif // __ENEMY_H__

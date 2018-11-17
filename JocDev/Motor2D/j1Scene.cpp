@@ -11,6 +11,8 @@
 #include "j1Player.h"
 #include "j1Scene.h"
 #include "j1Collisions.h"
+#include "j1Entity.h"
+#include "j1Pathfinding.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -40,6 +42,14 @@ bool j1Scene::Start()
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	App->audio->LoadFx("audio/fx/death.wav");
 
+	respawnEnemies();
+
+	int w, h;
+	uchar* data = NULL;
+	if (App->map->CreateWalkabilityMap(w, h, &data))
+		App->pathfinding->SetMap(w, h, data);
+
+	RELEASE_ARRAY(data);
 	return true;
 }
 
@@ -129,7 +139,7 @@ bool j1Scene::Update(float dt)
 	//dead condition
 	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
 	{
-		dead();		
+		death();		
 	}
 
 	//win condition
@@ -203,14 +213,21 @@ bool j1Scene::Save(pugi::xml_node& data) const
 	return true;
 }
 
-void j1Scene::dead()
+void j1Scene::death()
 {
-	App->player->collider_player_down->to_delete = true;
-	App->player->collider_player_up->to_delete = true;
-	App->player->collider_player_left->to_delete = true;
-	App->player->collider_player_right->to_delete = true;
-	App->player->collider_player->to_delete = true;
-	App->player->cameralimit->to_delete = true;
+	App->entities->CleanUp();
+	if (App->player->collider_player_down != nullptr)
+		App->player->collider_player_down->to_delete = true;
+	if (App->player->collider_player_up != nullptr)
+		App->player->collider_player_up->to_delete = true;
+	if (App->player->collider_player_left != nullptr)
+		App->player->collider_player_left->to_delete = true;
+	if (App->player->collider_player_right != nullptr)
+		App->player->collider_player_right->to_delete = true;
+	if (App->player->collider_player != nullptr)
+		App->player->collider_player->to_delete = true;
+	if (App->player->cameralimit != nullptr)
+		App->player->cameralimit->to_delete = true;
 	App->audio->PlayFx(1, 0);
 	App->fade->fadetoBlack(2.0f);
 
@@ -223,7 +240,16 @@ void j1Scene::dead()
 	{
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 	}
+	
+	App->entities->Start();
 	App->render->Start();
 	App->player->Start();
 	App->render->ResetTime(App->render->speed);
+	respawnEnemies();
+}
+
+void j1Scene::respawnEnemies()
+{
+	App->entities->AddEntity(ENTITY_EYEMONSTER, App->player->respawnPlayer.x + 30, App->player->respawnPlayer.y - 220);
+
 }

@@ -6,7 +6,9 @@
 #include "Entity.h"
 #include "j1Audio.h"
 #include "j1Player.h"
+#include "j1Scene.h"
 #include "p2Log.h"
+
 
 #define SPAWN_MARGIN 2000
 #define SCREEN_SIZE 1
@@ -24,11 +26,8 @@ j1Entity::~j1Entity()
 
 bool j1Entity::Start()
 {
-	bool lets = false;
-	bool letb = false;
-	bool lett = false;
 
-	sprites = App->tex->Load("Sprites_Assets/all_enemies.png");
+	sprites = App->tex->Load("../Game/maps/enemy.png");
 	return true;
 }
 
@@ -39,7 +38,7 @@ bool j1Entity::PreUpdate()
 	{
 		if (queue[i].type != ENTITY_TYPES::NO_TYPE)
 		{
-			if (queue[i].y * SCREEN_SIZE < App->render->camera.y - (App->render->camera.h * SCREEN_SIZE) - SPAWN_MARGIN)
+			if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
 			{
 				SpawnEntity(queue[i]);
 				queue[i].type = ENTITY_TYPES::NO_TYPE;
@@ -52,14 +51,15 @@ bool j1Entity::PreUpdate()
 }
 
 // Called before render is available
-bool j1Entity::Update()
+bool j1Entity::Update(float dt)
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (entities[i] != nullptr)
-			entities[i]->Move();
+			entities[i]->Update(dt);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (entities[i] != nullptr) entities[i]->Draw(sprites);
+		if (entities[i] != nullptr) 
+			entities[i]->Draw(sprites);
 
 	return true;
 }
@@ -71,7 +71,7 @@ bool j1Entity::PostUpdate()
 	{
 		if (entities[i] != nullptr)
 		{
-			if (entities[i]->position.y * SCREEN_SIZE > (App->render->camera.y + App->render->camera.h) + SPAWN_MARGIN)
+			if (-entities[i]->position.y * SCREEN_SIZE < (App->render->camera.y - App->render->camera.h) - SPAWN_MARGIN)
 			{
 				delete entities[i];
 				entities[i] = nullptr;
@@ -126,17 +126,17 @@ void j1Entity::SpawnEntity(const EntityInfo& info)
 	// find room for the new enemy
 	uint i = 0;
 	for (; entities[i] != nullptr && i < MAX_ENEMIES; ++i);
-
-	if (i != MAX_ENEMIES)
+	switch (info.type)
 	{
-		switch (info.type)
-		{
-		case ENTITY_TYPES::PLAYER:
+	case ENTITY_TYPES::ENTITY_PLAYER:
 			/*entities[i] = new playerEntity(info.x, info.y);
 			queue[i].enemy_life = 5;*/
-			break;
-		}
+		break;
+	case ENTITY_TYPES::ENTITY_EYEMONSTER:
+		entities[i] = new EyeMonster(info.x, info.y);
+		break;
 	}
+	
 }
 
 void j1Entity::OnCollision(Collider* c1, Collider* c2)
@@ -146,12 +146,9 @@ void j1Entity::OnCollision(Collider* c1, Collider* c2)
 		if (entities[i] != nullptr && entities[i]->GetCollider() == c1)
 		{
 
-			if (queue[i].enemy_life <= 0)
-			{
 				entities[i]->OnCollision(c2);
 				delete entities[i];
 				entities[i] = nullptr;
-			}
 		}
 
 	}

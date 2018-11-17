@@ -82,7 +82,7 @@ bool j1Player::Start()
 	collider_player_up = App->collisions->AddCollider({ position.x + 2,position.y - 3,player_size.x - 2,1 }, COLLIDER_PLAYER_UP,this);
 	collider_player_left = App->collisions->AddCollider({ position.x,position.y,2,player_size.y - 3 }, COLLIDER_PLAYER_LEFT,this);
 	collider_player_right = App->collisions->AddCollider({ position.x + player_size.x,position.y,2,player_size.y - 3 }, COLLIDER_PLAYER_RIGHT,this);
-	collider_player = App->collisions->AddCollider({ position.x,position.y,player_size.x,player_size.y}, COLLIDER_PLAYER, this);
+	collider_player = App->collisions->AddCollider({ position.x,position.y,player_size.x,player_size.y-5}, COLLIDER_PLAYER, this);
 
 	cameralimit = App->collisions->AddCollider({ App->render->camera.x, -App->render->camera.y,App->render->camera.w, 2}, COLLIDER_LIMIT_CAMERA, this);
 
@@ -266,3 +266,4 @@ bool j1Player::Save(pugi::xml_node& data) const
 
 	return true;
 }
+

@@ -24,6 +24,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 	bool Load(pugi::xml_node &node);
 	bool Save(pugi::xml_node &node) const;
+	
 	Collider* collider_player_down = nullptr;
 	Collider* collider_player_right = nullptr;
 	Collider* collider_player_left = nullptr;
@@ -42,6 +43,7 @@ public:
 	float gravity;
 	bool start_jump = false;
 	bool stay_in_platform = false;
+	bool top_jump = true;
 	fPoint speed;
 
 private:
@@ -53,7 +55,6 @@ private:
 	Animation fall;
 	SDL_RendererFlip flip;
 	int pos_collidery;	
-	bool top_jump = true;
 	iPoint player_size;
 	uint sfx;
 

@@ -5,13 +5,15 @@
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
+#include "EyeMonster.h"
 
 #define MAX_ENEMIES 100
 
 enum ENTITY_TYPES
 {
 	NO_TYPE,
-	PLAYER
+	ENTITY_PLAYER,
+	ENTITY_EYEMONSTER,
 };
 
 class Entity;
@@ -32,11 +34,12 @@ public:
 
 	bool Start();
 	bool PreUpdate();
-	bool Update();
+	bool Update(float dt);
 	bool PostUpdate();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 	bool AddEntity(ENTITY_TYPES type, int x, int y);
+	SDL_RendererFlip enemyflip = SDL_RendererFlip::SDL_FLIP_NONE;
 
 	EntityInfo queue[MAX_ENEMIES];
 	Entity* entities[MAX_ENEMIES];

@@ -77,6 +77,7 @@
  </tileset>
  <layer id="24" name="sky" width="32" height="129">
   <properties>
+   <property name="Navigation" type="int" value="0"/>
    <property name="speed" type="float" value="1.25"/>
   </properties>
   <data>
@@ -4212,6 +4213,7 @@
  </layer>
  <layer id="25" name="Background" width="32" height="129">
   <properties>
+   <property name="Navigation" type="int" value="0"/>
    <property name="speed" type="float" value="1"/>
   </properties>
   <data>
@@ -8347,6 +8349,7 @@
  </layer>
  <layer id="26" name="Background Details &amp; plataforms" width="32" height="129">
   <properties>
+   <property name="Navigation" type="int" value="1"/>
    <property name="speed" type="float" value="1"/>
   </properties>
   <data>
@@ -12482,6 +12485,7 @@
  </layer>
  <layer id="27" name="SideBars &amp; UI" width="32" height="129">
   <properties>
+   <property name="Navigation" type="int" value="0"/>
    <property name="speed" type="float" value="1"/>
   </properties>
   <data>
@@ -29021,6 +29025,9 @@
   </data>
  </layer>
  <objectgroup color="#0000ff" id="35" name="Colliders">
+  <properties>
+   <property name="Navigation" type="int" value="1"/>
+  </properties>
   <object id="10" x="289" y="3969.5" width="125.5" height="29"/>
   <object id="11" x="608" y="3969" width="126" height="28"/>
   <object id="12" x="300" y="4077" width="426" height="55"/>
