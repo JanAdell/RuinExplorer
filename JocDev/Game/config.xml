@@ -8,7 +8,7 @@
 	
   <renderer>
     <vsync value="false"/>
-	<camera speed = "1" time = "500"/>
+	<camera speed = "1" time = "300"/>
 	<game_name name = "Ruin_Explorer"/>
   </renderer>
 
