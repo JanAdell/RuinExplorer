@@ -5,7 +5,7 @@
 #include "j1Entity.h"
 #include "j1Player.h"
 #include "j1Scene.h"
-
+#include "Brofiler/Brofiler.h"
 
 Entity::Entity(int x, int y) : position(x, y)
 {

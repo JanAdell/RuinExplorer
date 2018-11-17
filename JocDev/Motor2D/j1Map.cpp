@@ -7,6 +7,7 @@
 #include "j1Input.h"
 #include "j1Collisions.h"
 #include "j1Player.h"
+#include "Brofiler/Brofiler.h"
 
 #include <math.h>
 

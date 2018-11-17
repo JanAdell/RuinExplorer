@@ -7,6 +7,7 @@
 #include "j1Input.h"
 #include "j1Player.h"
 #include "j1Collisions.h"
+#include "Brofiler/Brofiler.h"
 
 #define VSYNC true
 

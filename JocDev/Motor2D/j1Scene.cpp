@@ -13,6 +13,7 @@
 #include "j1Collisions.h"
 #include "j1Entity.h"
 #include "j1Pathfinding.h"
+#include "Brofiler/Brofiler.h"
 
 j1Scene::j1Scene() : j1Module()
 {

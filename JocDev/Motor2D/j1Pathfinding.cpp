@@ -1,7 +1,8 @@
 #include "p2Defs.h"
 #include "p2Log.h"
 #include "j1App.h"
-#include "j1PathFinding.h"
+#include "j1Pathfinding.h"
+#include "Brofiler/Brofiler.h"
 
 j1Pathfinding::j1Pathfinding() : j1Module(), map(NULL), last_path(DEFAULT_PATH_LENGTH), width(0), height(0)
 {
