@@ -1,13 +1,13 @@
 <!-- Config file for the game -->
 
 <config>
-  <app framerate_cap1="60" framerate_cap2="30">
+  <app frame_time_cap="17" on="false">
     <title>Ruin Explorer</title>
     <organization>UPC</organization>
   </app>
 	
   <renderer>
-    <vsync value="true"/>
+    <vsync value="false"/>
 	<camera speed = "1" time = "500"/>
 	<game_name name = "Ruin_Explorer"/>
   </renderer>

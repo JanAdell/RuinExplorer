@@ -90,13 +90,12 @@ bool j1App::Awake()
 		title.create(app_config.child("title").child_value());
 		organization.create(app_config.child("organization").child_value());
 		
+
 		//time delay each frame cycle 
-		capTime = 1000 / app_config.attribute("framerate_cap1").as_int();
-		capTime2 = 1000 / app_config.attribute("framerate_cap2").as_int();
-		capTimeaux = capTime;
-		//capTime2 = 1000 / app_config.attribute("framerate_cap2").as_int();
-		//LOG("MS at 60 fps %u", capTime);
-		//LOG("MS at 30 fps %u", capTime2);
+		framerate = app_config.attribute("frame_time_cap").as_int();
+		framerate_cap = app_config.child("frame_time_cap").attribute("on").as_bool();
+		//LOG("MS at 60 fps = %u", capTime);
+
 	}
 
 	if(ret == true)
@@ -147,19 +146,7 @@ bool j1App::Update()
 
 	if(ret == true)
 		ret = PostUpdate();
-
-	//change framerate between 60 and 30 fps 
-	if (App->input->GetKey(SDL_SCANCODE_F)) {
-		//if (framerate = true) {
-			capTimeaux = capTime2;
-		//	framerate = false;
-		//}
-		//if (framerate = false) {
-		//	capTimeaux = capTime;
-		//framerate = true;
-		//}
-	}
-
+	
 
 	FinishUpdate();
 	return ret;
@@ -208,16 +195,18 @@ void j1App::FinishUpdate()
 		last_sec_frame_count = 0;
 	}
 
-	float avg_fps = float(frame_count) / startup_time.ReadSec();
+	float avg_fps = (float)frame_count / startup_time.ReadSec();
 	float seconds_since_startup = startup_time.ReadSec();
 	uint32 last_frame_ms = frame_time.Read();
 	uint32 frames_on_last_update = prev_last_sec_frame_count;
 
-	if (last_frame_ms < frame_rate)
+	if (last_frame_ms < framerate && framerate_cap)
 	{
 		j1PerfTimer delay_timer;
-		SDL_Delay(capTimeaux - last_frame_ms);
+		SDL_Delay((uint32)framerate - last_frame_ms);
+		
 	}
+	//LOG("delay= %u", capTime - last_frame_ms);
 
 	static char title[256];
 	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %02u Last sec frames: %i  Time since startup: %.3f Frame Count: %lu ",avg_fps, last_frame_ms, frames_on_last_update, seconds_since_startup, frame_count);
@@ -251,6 +240,9 @@ bool j1App::PreUpdate()
 bool j1App::DoUpdate()
 {
 	bool ret = true;
+	if (App->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN) {
+		framerate_cap = !framerate_cap;
+	}
 	p2List_item<j1Module*>* item;
 	item = modules.start;
 	j1Module* pModule = NULL;
