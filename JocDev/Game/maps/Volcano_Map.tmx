@@ -77,8 +77,7 @@
  </tileset>
  <layer id="24" name="sky" width="32" height="129">
   <properties>
-   <property name="Navigation" type="int" value="0"/>
-   <property name="speed" type="float" value="1.25"/>
+   <property name="speed" type="float" value="0.8"/>
   </properties>
   <data>
    <tile gid="457"/>
@@ -4213,7 +4212,6 @@
  </layer>
  <layer id="25" name="Background" width="32" height="129">
   <properties>
-   <property name="Navigation" type="int" value="0"/>
    <property name="speed" type="float" value="1"/>
   </properties>
   <data>
@@ -12485,7 +12483,6 @@
  </layer>
  <layer id="27" name="SideBars &amp; UI" width="32" height="129">
   <properties>
-   <property name="Navigation" type="int" value="0"/>
    <property name="speed" type="float" value="1"/>
   </properties>
   <data>
