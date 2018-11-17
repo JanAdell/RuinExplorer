@@ -7,6 +7,7 @@
 #include "j1Input.h"
 #include "j1Collisions.h"
 #include "j1Player.h"
+#include "j1Entity.h"
 #include "Brofiler/Brofiler.h"
 
 #include <math.h>
@@ -81,6 +82,33 @@ iPoint j1Map::MapToWorld(int x, int y) const
 
 	return ret;
 }
+
+iPoint j1Map::WorldToMap(int x, int y) const
+{
+	iPoint ret(0, 0);
+
+	if (data.type == MAPTYPE_ORTHOGONAL)
+	{
+		ret.x = x / data.tile_width;
+		ret.y = y / data.tile_height;
+	}
+	else if (data.type == MAPTYPE_ISOMETRIC)
+	{
+
+		float half_width = data.tile_width * 0.5f;
+		float half_height = data.tile_height * 0.5f;
+		ret.x = int((x / half_width + y / half_height) / 2) - 1;
+		ret.y = int((y / half_height - (x / half_width)) / 2);
+	}
+	else
+	{
+		LOG("Unknown map type");
+		ret.x = x; ret.y = y;
+	}
+
+	return ret;
+}
+
 
 SDL_Rect TileSet::GetTileRect(int id) const
 {
@@ -192,7 +220,6 @@ bool j1Map::Load(const char* file_name)
 		}
 
 	}
-
 
 	if(ret == true)
 	{
@@ -366,6 +393,7 @@ bool j1Map::LoadLayer(pugi::xml_node& node, Layer* layer)
 	layer->name = node.attribute("name").as_string();
 	layer->width = node.attribute("width").as_int();
 	layer->height = node.attribute("height").as_int();
+	LoadProperties(node, layer->properties);
 	layer->speed = node.child("properties").child("property").attribute("value").as_float();
 	pugi::xml_node layer_data = node.child("data");
 
@@ -412,8 +440,10 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 		{
 			for (col_object; col_object; col_object = col_object.next_sibling("object"))
 			{
-				if(strcmp(node.attribute("name").as_string(), "Colliders") == 0)
+				if (strcmp(node.attribute("name").as_string(), "Colliders") == 0)
 					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_WALL);
+				else if (strcmp(node.attribute("name").as_string(), "EyeMonster") == 0)
+					App->entities->AddEntity(ENTITY_EYEMONSTER,  col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0) );
 				else
 					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_BOOST);
 
@@ -496,7 +526,6 @@ bool j1Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 	for (item = data.layers.start; item != NULL; item = item->next)
 	{
 		Layer* layer = item->data;
-
 		if (layer->properties.Get("Navigation", 0) == 0)
 			continue;
 
@@ -515,11 +544,11 @@ bool j1Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 				if (tileset != NULL)
 				{
 					map[i] = (tile_id - tileset->firstgid) > 0 ? 0 : 1;
-					/*TileType* ts = tileset->GetTileType(tile_id);
-					if(ts != NULL)
-					{
-					map[i] = ts->properties.Get("walkable", 1);
-					}*/
+					/* if (tile_id - tileset->firstgid == 50)
+					map[i] = 0;
+					else
+					map[i] = 1;*/
+
 				}
 			}
 		}

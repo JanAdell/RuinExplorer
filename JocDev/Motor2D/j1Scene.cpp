@@ -39,18 +39,20 @@ bool j1Scene::Start()
 	
 	//App->map->Load("SeaTempleMap.tmx");
 	App->fade->fadetoBlack(2.0f);
-	App->map->Load("Volcano_Map.tmx");
+	
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	App->audio->LoadFx("audio/fx/death.wav");
 
+	if (App->map->Load("Volcano_Map.tmx"))
+	{
+		int w, h;
+		uchar* data = NULL;
+		if (App->map->CreateWalkabilityMap(w, h, &data))
+			App->pathfinding->SetMap(w, h, data);
+
+		RELEASE_ARRAY(data);
+	}
 	respawnEnemies();
-
-	int w, h;
-	uchar* data = NULL;
-	if (App->map->CreateWalkabilityMap(w, h, &data))
-		App->pathfinding->SetMap(w, h, data);
-
-	RELEASE_ARRAY(data);
 	return true;
 }
 

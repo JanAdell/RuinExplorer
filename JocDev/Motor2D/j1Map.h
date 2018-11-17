@@ -42,9 +42,9 @@ struct Layer
 	float speed = 0.0f;
 	Properties	properties;
 
-	inline uint Get(int x, int y) const
+	uint Get(int x, int y) const
 	{
-		return 0;
+		return data[width*y + x];;
 	}
 };
 
@@ -66,6 +66,7 @@ struct TileSet
 	int					num_tiles_height;
 	int					offset_x;
 	int					offset_y;
+	int					walkable;
 };
 
 
@@ -115,6 +116,7 @@ public:
 	// TODO 8: Create a method that translates x,y coordinates from map positions to world positions
 	inline uint GetArrayPos(int x, int y) const;
 	iPoint MapToWorld(int x, int y) const;
+	iPoint WorldToMap(int x, int y) const;
 	bool CreateWalkabilityMap(int& width, int& height, uchar** buffer) const;
 private:
 
@@ -124,6 +126,7 @@ private:
 	bool LoadLayer(pugi::xml_node& node, Layer* layer);
 	bool LoadObjects(pugi::xml_node& node);
 	bool LoadProperties(pugi::xml_node& node, Properties& properties);
+	bool LoadProperties(pugi::xml_node& node, Properties* prop);
 
 	TileSet* GetTilesetFromTileId(int id) const;
 

@@ -18,6 +18,8 @@ public:
 	bool left;
 	const p2DynArray<iPoint>* enemypath;
 	bool CleanUp();
+
+	iPoint enemy_pos, player_pos,speed,path_to_follow;
 };
 
 #endif
