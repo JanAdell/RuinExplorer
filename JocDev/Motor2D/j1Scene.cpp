@@ -57,13 +57,16 @@ bool j1Scene::Start()
 // Called each loop iteration
 bool j1Scene::PreUpdate()
 {
+	BROFILER_CATEGORY("PreUpdateScene", Profiler::Color::Blue);
+
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	
+	BROFILER_CATEGORY("UpdateScene", Profiler::Color::BlueViolet);
+
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 	{
 		if (volcan_map && map_saved)
@@ -179,6 +182,8 @@ bool j1Scene::Update(float dt)
 // Called each loop iteration
 bool j1Scene::PostUpdate()
 {
+	BROFILER_CATEGORY("PostUpdateScene", Profiler::Color::DarkBlue);
+
 	bool ret = true;
 
 	if(App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
