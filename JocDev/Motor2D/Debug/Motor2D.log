@@ -1,6 +1,84 @@
-﻿  j1App.cpp
+﻿  j1Player.cpp
 c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(212): warning C4477: 'sprintf_s' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 5 has type 'uint64'
-  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(212): note: consider using '%llu' in the format string
-  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(212): note: consider using '%I64u' in the format string
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(50): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(56): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(62): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(118): warning C4244: '+=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(125): warning C4244: '-=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(142): warning C4244: '-=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(154): warning C4244: '-=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(163): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(214): warning C4244: '+=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(218): warning C4244: '-=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(222): warning C4244: '-=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(237): warning C4244: '-=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1player.cpp(245): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
   Motor2D.vcxproj -> C:\Users\adell\Documents\GitHub\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe

@@ -162,20 +162,21 @@ bool j1Player::Update(float dt)
 	}
 	position.y += gravity;
 	stay_in_platform = false;
+
 	//mechanic
 	if (App->scene->volcan_map)
 	{
 
 		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
 		{
-			App->audio->PlayFx(1, 0);
+			App->audio->PlayFx(2, 0);
 			position.x = 7 * App->map->data.tile_width;
 		}
 
 		else if (position.x < 7 * App->map->data.tile_width)
 		{
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;	
-			App->audio->PlayFx(1, 0);
+			App->audio->PlayFx(2, 0);
 		}
 	}
 	else
@@ -188,7 +189,7 @@ bool j1Player::Update(float dt)
 		else if (position.x < 8 * App->map->data.tile_width)
 		{
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
-			App->audio->PlayFx(1, 0);
+			App->audio->PlayFx(2, 0);
 		}
 	}
 

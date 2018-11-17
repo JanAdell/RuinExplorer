@@ -38,7 +38,7 @@ bool j1Scene::Start()
 	App->fade->fadetoBlack(2.0f);
 	App->map->Load("Volcano_Map.tmx");
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-	App->audio->LoadFx("audio/fx/Death.wav");
+	App->audio->LoadFx("audio/fx/death.wav");
 
 	return true;
 }
@@ -213,6 +213,7 @@ void j1Scene::dead()
 	App->player->cameralimit->to_delete = true;
 	App->audio->PlayFx(1, 0);
 	App->fade->fadetoBlack(2.0f);
+
 	if (volcan_map)
 	{
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
