@@ -52,7 +52,7 @@ bool j1Scene::Start()
 			App->pathfinding->SetMap(w, h, data);
 
 		RELEASE_ARRAY(data);
-		respawnEnemies();
+		
 	}
 	
 	return true;
@@ -116,10 +116,21 @@ bool j1Scene::Update(float dt)
 	{
 
 		App->map->CleanUp();
+		App->entities->enemyboatpos.clear();
+		App->entities->enemyeyepos.clear();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
-		App->map->Load("SeaTempleMap.tmx");
+		if (App->map->Load("SeaTempleMap.tmx"))
+		{
+			int w, h;
+			uchar* data = NULL;
+			if (App->map->CreateWalkabilityMap(w, h, &data))
+				App->pathfinding->SetMap(w, h, data);
+
+			RELEASE_ARRAY(data);
+
+		}
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->entities->Start();
@@ -136,14 +147,22 @@ bool j1Scene::Update(float dt)
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
-		App->map->Load("Volcano_Map.tmx");
+		if (App->map->Load("Volcano_Map.tmx"))
+		{
+			int w, h;
+			uchar* data = NULL;
+			if (App->map->CreateWalkabilityMap(w, h, &data))
+				App->pathfinding->SetMap(w, h, data);
+
+			RELEASE_ARRAY(data);
+
+		}
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
 		App->entities->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
-		respawnEnemies();
 		volcan_map = true;
 	}
 
@@ -162,12 +181,23 @@ bool j1Scene::Update(float dt)
 	{
 		
 		App->map->CleanUp();
+		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
-		App->map->Load("SeaTempleMap.tmx");
+		if (App->map->Load("SeaTempleMap.tmx"))
+		{
+			int w, h;
+			uchar* data = NULL;
+			if (App->map->CreateWalkabilityMap(w, h, &data))
+				App->pathfinding->SetMap(w, h, data);
+
+			RELEASE_ARRAY(data);
+
+		}
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
+		App->entities->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
 		volcan_map = false;
@@ -175,12 +205,23 @@ bool j1Scene::Update(float dt)
 	else if(-App->player->position.y > -App->map->data.tile_height * 10 && !volcan_map)
 	{
 		App->map->CleanUp();
+		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
-		App->map->Load("Volcano_map.tmx");
+		if (App->map->Load("Volcano_Map.tmx"))
+		{
+			int w, h;
+			uchar* data = NULL;
+			if (App->map->CreateWalkabilityMap(w, h, &data))
+				App->pathfinding->SetMap(w, h, data);
+
+			RELEASE_ARRAY(data);
+
+		}
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
+		App->entities->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
 		volcan_map = true;
@@ -269,9 +310,16 @@ void j1Scene::death()
 
 void j1Scene::respawnEnemies()
 {
-	App->entities->AddEntity(ENTITY_EYEMONSTER, App->player->respawnPlayer.x - 30, App->player->respawnPlayer.y - 220);
-	App->entities->AddEntity(ENTITY_EYEMONSTER, App->player->respawnPlayer.x - 30, App->player->respawnPlayer.y - 500);
-	App->entities->AddEntity(ENTITY_BOAR, App->player->respawnPlayer.x - 30, App->player->respawnPlayer.y - 500);
-	App->entities->AddEntity(ENTITY_BOAR, App->player->respawnPlayer.x + 30, App->player->respawnPlayer.y - 500);
+
+	for (p2List_item<iPoint> *iterator = App->entities->enemyboatpos.start; iterator != nullptr;iterator = iterator->next)
+	{
+		App->entities->AddEntity(ENTITY_TYPES::ENTITY_BOAR, iterator->data.x, iterator->data.y);
+	}
+
+	
+	for (p2List_item<iPoint> *iterator = App->entities->enemyeyepos.start; iterator != nullptr;iterator = iterator->next)
+	{
+		App->entities->AddEntity(ENTITY_TYPES::ENTITY_EYEMONSTER, iterator->data.x, iterator->data.y);
+	}
 }
 

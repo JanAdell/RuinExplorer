@@ -48,6 +48,9 @@ public:
 	Entity* entities[MAX_ENTITIES];
 	ENTITY_TYPES type = ENTITY_TYPES::NO_TYPE;
 
+	p2List<iPoint> enemyeyepos;
+	p2List<iPoint> enemyboatpos;
+
 private:
 
 	void SpawnEntity(const EntityInfo& info);

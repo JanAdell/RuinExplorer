@@ -162,6 +162,39 @@ bool j1Collisions::Update(float dt)
 
 
 	DebugDraw();
+	if (App->input->GetKey(SDL_SCANCODE_F9))
+		god_mode = !god_mode;
+
+	if (god_mode)
+	{
+		matrix[COLLIDER_PLAYER_DOWN][COLLIDER_ENEMY]= false;
+		matrix[COLLIDER_PLAYER][COLLIDER_ENEMY] = false;
+
+		matrix[COLLIDER_ENEMY][COLLIDER_WALL] = true;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_UP] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_DOWN] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_LEFT] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_RIGHT] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] =false;
+		matrix[COLLIDER_ENEMY][COLLIDER_BOOST] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_LIMIT_CAMERA] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_ENEMY] = false;
+	}
+	else
+	{
+		matrix[COLLIDER_PLAYER_DOWN][COLLIDER_ENEMY] = true;
+		matrix[COLLIDER_PLAYER][COLLIDER_ENEMY] = true;
+
+		matrix[COLLIDER_ENEMY][COLLIDER_WALL] = true;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_UP] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_DOWN] = true;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_LEFT] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_RIGHT] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = true;
+		matrix[COLLIDER_ENEMY][COLLIDER_BOOST] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_LIMIT_CAMERA] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_ENEMY] = false;
+	}
 
 	return true;
 }

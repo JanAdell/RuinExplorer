@@ -57,11 +57,10 @@ public:
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, j1Module* callback = nullptr);
 	void DebugDraw();
 	Collider * colliders[MAX_COLLIDERS];
-
+	bool debug = false;
 private:
 
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
-	bool debug = false;
 	bool god_mode = false;
 
 };

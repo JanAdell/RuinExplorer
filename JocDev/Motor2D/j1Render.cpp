@@ -87,7 +87,7 @@ bool j1Render::Update(float dt)
 {
 	BROFILER_CATEGORY("UpdateRenderer", Profiler::Color::CornflowerBlue);
 
-	if (App->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
 		god_mode = !god_mode;
 
 	if (!god_mode)
@@ -129,22 +129,6 @@ bool j1Render::Update(float dt)
 
 	}
 
-	/*if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
-	{
-		camera.y += 1;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
-	{
-		camera.y -= 1;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
-	{
-		camera.x -= 1;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
-	{
-		camera.x += 1;
-	}*/
 	return true;
 }
 

@@ -30,10 +30,13 @@ void EyeMonster::Update(float dt)
 		if (App->pathfinding->CreatePath(enemy_pos, player_pos, ENTITY_EYEMONSTER) != -1)
 		{
 			enemypath = App->pathfinding->GetLastPath();
-			for (uint i = 0; i < enemypath->Count(); i++)
+			if (App->collisions->debug)
 			{
-				iPoint road = App->map->MapToWorld(enemypath->At(i)->x, enemypath->At(i)->y);
-				App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height}, 100, 100, 0, 80);
+				for (uint i = 0; i < enemypath->Count(); i++)
+				{
+					iPoint road = App->map->MapToWorld(enemypath->At(i)->x, enemypath->At(i)->y);
+					App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height }, 100, 100, 0, 80);
+				}
 			}
 			if (position != App->player->position)
 			{
@@ -63,11 +66,11 @@ void EyeMonster::Update(float dt)
 	}
 	else
 	{
-		if (position.x == 7 * App->map->data.tile_width)
+		if (position.x == 8 * App->map->data.tile_width)
 		{
 			left = false;
 		}
-		if (position.x == App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
+		if (position.x == App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width)
 		{
 			left = true;
 		}

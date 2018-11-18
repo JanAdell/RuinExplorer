@@ -27,7 +27,6 @@ void boar::Update(float dt)
 	player_pos = App->map->WorldToMap(App->player->position.x, App->player->position.y);
 	ground.x = enemy_pos.x;
 	ground.y = enemy_pos.y + 1;
-	App->render->DrawQuad({ ground.x ,ground.y ,App->map->data.tile_width,App->map->data.tile_height }, 255, 0, 0, 80);
 	if (App->pathfinding->IsWalkable(ground))
 	{
 		position.y += 1;
@@ -38,10 +37,13 @@ void boar::Update(float dt)
 		enemypath = App->pathfinding->GetLastPath();
 		if (App->pathfinding->CreatePath(enemy_pos, player_pos,ENTITY_BOAR) != -1)
 		{
-			for (uint i = 0; i < enemypath->Count(); i++)
+			if (App->collisions->debug)
 			{
-				iPoint road = App->map->MapToWorld(enemypath->At(i)->x, enemypath->At(i)->y);
-				App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height } ,100, 0, 100, 80);
+				for (uint i = 0; i < enemypath->Count(); i++)
+				{
+					iPoint road = App->map->MapToWorld(enemypath->At(i)->x, enemypath->At(i)->y);
+					App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height }, 100, 0, 100, 80);
+				}
 			}
 			
 			if (position != App->player->position)
@@ -79,14 +81,7 @@ void boar::Update(float dt)
 	}
 	else
 	{
-		if (position.x == 7 * App->map->data.tile_width)
-		{
-			left = false;
-		}
-		if (position.x == App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
-		{
-			left = true;
-		}
+
 		if (left)
 		{
 			ground = { enemy_pos.x - 1, enemy_pos.y + 1 };

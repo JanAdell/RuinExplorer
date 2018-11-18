@@ -8,6 +8,7 @@
 #include "j1Collisions.h"
 #include "j1Player.h"
 #include "j1Entity.h"
+#include "j1Scene.h"
 #include "Brofiler/Brofiler.h"
 
 #include <math.h>
@@ -252,6 +253,7 @@ bool j1Map::Load(const char* file_name)
 		}
 	}
 
+	App->scene->respawnEnemies();
 	map_loaded = ret;
 
 	return ret;
@@ -438,10 +440,18 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 		}
 		else
 		{
+
+			
 			for (col_object; col_object; col_object = col_object.next_sibling("object"))
 			{
 				if (strcmp(node.attribute("name").as_string(), "Colliders") == 0)
 					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_WALL);
+
+				else if (strcmp(node.attribute("name").as_string(), "EyeMonster") == 0)
+					App->entities->enemyeyepos.add({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0) });
+
+				else if(strcmp(node.attribute("name").as_string(), "Boat") == 0)
+					App->entities->enemyboatpos.add({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0) });
 				else
 					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_BOOST);
 
