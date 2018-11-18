@@ -35,6 +35,7 @@ public:
 public:
 	//Mix_Chunk* player_death = nullptr;
 	SDL_Texture* player_tex = nullptr;
+	SDL_Texture* teleport_tex = nullptr;
 	iPoint position;
 	iPoint respawnPlayer;
 	int normal_jump;
@@ -49,6 +50,7 @@ public:
 private:
 	j1Textures* tex_player = nullptr;
 	Animation* current_animation = nullptr;
+	Animation teleport;
 	Animation idle;
 	Animation run;
 	Animation jump_anim;

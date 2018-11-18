@@ -77,12 +77,16 @@ bool j1Render::Start()
 // Called each loop iteration
 bool j1Render::PreUpdate()
 {
+	BROFILER_CATEGORY("PreUpdateRenderer", Profiler::Color::CadetBlue);
+
 	SDL_RenderClear(renderer);
 	return true;
 }
 
 bool j1Render::Update(float dt)
 {
+	BROFILER_CATEGORY("UpdateRenderer", Profiler::Color::CornflowerBlue);
+
 	if (App->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		god_mode = !god_mode;
 
@@ -146,6 +150,8 @@ bool j1Render::Update(float dt)
 
 bool j1Render::PostUpdate()
 {
+	BROFILER_CATEGORY("PostUpdateRenderer", Profiler::Color::DarkBlue);
+
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);
 	SDL_RenderPresent(renderer);
 	return true;

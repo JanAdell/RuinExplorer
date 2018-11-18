@@ -81,6 +81,7 @@ bool j1App::Awake()
 	pugi::xml_document	config_file;
 	pugi::xml_node		config;
 	pugi::xml_node		app_config;
+	pugi::xml_node		render_config;
 
 	bool ret = false;
 	
@@ -93,6 +94,7 @@ bool j1App::Awake()
 		// self-config
 		ret = true;
 		app_config = config.child("app");
+		render_config = config.child("render");
 		title.create(app_config.child("title").child_value());
 		organization.create(app_config.child("organization").child_value());
 		
@@ -100,6 +102,7 @@ bool j1App::Awake()
 		//time delay each frame cycle 
 		framerate = app_config.attribute("frame_time_cap").as_int();
 		framerate_cap = app_config.child("frame_time_cap").attribute("on").as_bool();
+		vsync = render_config.child("vsync").attribute("value").as_bool();
 		//LOG("MS at 60 fps = %u", capTime);
 
 	}
@@ -138,6 +141,8 @@ bool j1App::Start()
 // Called each loop iteration
 bool j1App::Update()
 {
+	BROFILER_CATEGORY("UpdateApp", Profiler::Color::Yellow);
+
 	bool ret = true;
 	PrepareUpdate();
 
@@ -176,6 +181,8 @@ pugi::xml_node j1App::LoadConfig(pugi::xml_document& config_file) const
 // ---------------------------------------------
 void j1App::PrepareUpdate()
 {
+	BROFILER_CATEGORY("PrepareUpdateApp", Profiler::Color::LightYellow);
+
 	frame_count++;
 	last_sec_frame_count++;
 
@@ -187,6 +194,8 @@ void j1App::PrepareUpdate()
 // ---------------------------------------------
 void j1App::FinishUpdate()
 {
+	BROFILER_CATEGORY("FinishUpdateApp", Profiler::Color::LightGoldenRodYellow);
+
 	if(want_to_save == true)
 		SavegameNow();
 
@@ -223,6 +232,8 @@ void j1App::FinishUpdate()
 // Call modules before each loop iteration
 bool j1App::PreUpdate()
 {
+	BROFILER_CATEGORY("PreUpdateApp", Profiler::Color::GreenYellow);
+
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	item = modules.start;
@@ -245,10 +256,17 @@ bool j1App::PreUpdate()
 // Call modules on each loop iteration
 bool j1App::DoUpdate()
 {
+	BROFILER_CATEGORY("DoUpdateApp", Profiler::Color::LemonChiffon);
+
 	bool ret = true;
 	if (App->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN) {
 		framerate_cap = !framerate_cap;
 	}
+
+	/*if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
+		vsync = !vsync;
+	}*/
+
 	p2List_item<j1Module*>* item;
 	item = modules.start;
 	j1Module* pModule = NULL;
@@ -270,6 +288,8 @@ bool j1App::DoUpdate()
 // Call modules after each loop iteration
 bool j1App::PostUpdate()
 {
+	BROFILER_CATEGORY("PostUpdateApp", Profiler::Color::YellowGreen);
+
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	j1Module* pModule = NULL;

@@ -71,6 +71,7 @@ bool j1Player::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	player_tex = App->tex->Load("adventurer/adventurer.png"); 
+	teleport_tex = App->tex->Load("Textures/Teleport.png");
 	position.y = respawnPlayer.y;
 	position.x = respawnPlayer.x;
 	normal_jump = App->map->data.tile_height * 4;
@@ -97,9 +98,11 @@ bool j1Player::CleanUp()
 {
 	LOG("Unloading player");
 	App->audio->UnloadFx(1);
-	//App->audio->UnloadFx(2);
+	App->audio->UnloadFx(2);
 	App->tex->UnLoad(player_tex);
+	App->tex->UnLoad(teleport_tex);
 	player_tex = nullptr;
+	teleport_tex = nullptr;
 	return true;
 
 }
@@ -108,6 +111,7 @@ bool j1Player::CleanUp()
 // Update: draw background
 bool j1Player::Update(float dt)
 {
+
 	pos_collidery = position.y + 30;
 	current_animation = &idle;
 
