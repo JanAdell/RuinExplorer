@@ -9,6 +9,7 @@
 #include "j1Scene.h"
 #include "p2Log.h"
 #include "j1Collisions.h"
+#include "Brofiler/Brofiler.h"
 
 
 #define SPAWN_MARGIN 2000
@@ -35,6 +36,7 @@ bool j1Entity::Start()
 
 bool j1Entity::PreUpdate()
 {
+	BROFILER_CATEGORY("PreUpdateEntity", Profiler::Color::Pink);
 	// check camera position to decide what to spawn
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
@@ -55,6 +57,8 @@ bool j1Entity::PreUpdate()
 // Called before render is available
 bool j1Entity::Update(float dt)
 {
+	BROFILER_CATEGORY("UpdateEntity", Profiler::Color::LightPink);
+
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 		if (entities[i] != nullptr)
 			entities[i]->Update(dt);
@@ -68,6 +72,8 @@ bool j1Entity::Update(float dt)
 
 bool j1Entity::PostUpdate()
 {
+	BROFILER_CATEGORY("PostUpdateEntity", Profiler::Color::HotPink);
+
 	// check camera position to decide what to spawn
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
