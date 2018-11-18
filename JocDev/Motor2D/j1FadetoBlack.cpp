@@ -5,6 +5,7 @@
 #include "j1Render.h"
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_timer.h"
+#include "p2Log.h"
 
 j1FadetoBlack::j1FadetoBlack()
 {
@@ -15,14 +16,16 @@ j1FadetoBlack::~j1FadetoBlack(){}
 bool  j1FadetoBlack::Start()
 {
 	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
-	return true;
+	
 	uint width, height;
 	App->win->GetWindowSize(width, height);
 	screen = { 0,0,(int)width,(int)height};
+	return true;
+	//LOG("window width= %i / height= %i", width, height);
 }
 
-// Actualización: dibujar fondo
-bool j1FadetoBlack::Update(float id)
+// Update to draw background
+bool j1FadetoBlack::Update(float dt)
 {
 	if (current_step == fade_step::NONE)
 		return true;
@@ -48,7 +51,7 @@ bool j1FadetoBlack::Update(float id)
 			normalized = 1.0f - normalized;
 
 			if (now >= total_time)
-				current_step = fade_step::NONE;
+				current_step = fade_step::NONE;                                       
 		} 
 		break;
 	}
@@ -58,7 +61,12 @@ bool j1FadetoBlack::Update(float id)
 	return true;
 }
 
-// Se desvanece a negro. En el punto medio, desactiva un módulo, luego activa el otro
+bool j1FadetoBlack::CleanUp()
+{
+	return true;
+}
+
+// fadetoblack makes the screen fade to black and fadefromblack makes it fade from black to the screen used at the time
 bool j1FadetoBlack::fadetoBlack(float time)
 {
 	bool ret = false;
@@ -69,6 +77,22 @@ bool j1FadetoBlack::fadetoBlack(float time)
 		start_time = SDL_GetTicks();
 		total_time = (Uint32)(time * 0.5f * 1000.0f);
 		
+		ret = true;
+	}
+
+	return ret;
+}
+
+bool j1FadetoBlack::fadefromblack(float time)
+{
+	bool ret = false;
+
+	if (current_step == fade_step::NONE)
+	{
+		current_step = fade_step::FADE_FROM_BLACK;
+		start_time = SDL_GetTicks();
+		total_time = (Uint32)(time * 0.5f * 1000.0f);
+
 		ret = true;
 	}
 

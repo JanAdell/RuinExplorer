@@ -1,7 +1,7 @@
 <!-- Config file for the game -->
 
 <config>
-  <app frame_time_cap="17" on="false">
+  <app frame_time_cap="33" on="true">
     <title>Ruin Explorer</title>
     <organization>UPC</organization>
   </app>

@@ -92,7 +92,7 @@ public:
 	j1Render*			render;
 	j1Textures*			tex;
 	j1Audio*			audio = nullptr;
-	j1FadetoBlack*		fade = nullptr;
+	j1FadetoBlack*		fade;
 	j1Scene*			scene;
 	j1Collisions*		collisions;
 	j1Map*				map;

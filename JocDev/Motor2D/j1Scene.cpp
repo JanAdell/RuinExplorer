@@ -38,7 +38,8 @@ bool j1Scene::Start()
 {
 	
 	//App->map->Load("SeaTempleMap.tmx");
-	App->fade->fadetoBlack(2.0f);
+	//App->fade->fadetoBlack();
+
 	
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	App->audio->LoadFx("audio/fx/death.wav");
@@ -71,7 +72,7 @@ bool j1Scene::Update(float dt)
 		if (volcan_map && map_saved)
 		{
 			App->LoadGame("save_game.xml");
-			App->fade->fadetoBlack(2.0f);
+			App->fade->fadetoBlack();
 			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 
 		}
@@ -79,7 +80,7 @@ bool j1Scene::Update(float dt)
 		if (!volcan_map && !map_saved)
 		{
 			App->LoadGame("save_game.xml");
-			App->fade->fadetoBlack(2.0f);
+			App->fade->fadetoBlack();
 			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		}
 	}
@@ -109,9 +110,10 @@ bool j1Scene::Update(float dt)
 	
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
+
 		App->map->CleanUp();
 		App->collisions->CleanUp();
-		App->fade->fadetoBlack(2.0f);
+		App->fade->fadetoBlack();
 		App->map->Load("SeaTempleMap.tmx");
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
@@ -123,9 +125,10 @@ bool j1Scene::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
 	{
+		
 		App->map->CleanUp();
 		App->collisions->CleanUp();
-		App->fade->fadetoBlack(2.0f);
+		App->fade->fadetoBlack();
 		App->map->Load("Volcano_Map.tmx");
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
@@ -151,7 +154,7 @@ bool j1Scene::Update(float dt)
 		
 		App->map->CleanUp();
 		App->collisions->CleanUp();
-		App->fade->fadetoBlack(2.0f);
+		App->fade->fadetoBlack();
 		App->map->Load("SeaTempleMap.tmx");
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
@@ -164,7 +167,7 @@ bool j1Scene::Update(float dt)
 	{
 		App->map->CleanUp();
 		App->collisions->CleanUp();
-		App->fade->fadetoBlack(2.0f);
+		App->fade->fadetoBlack();
 		App->map->Load("Volcano_map.tmx");
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
@@ -232,7 +235,8 @@ void j1Scene::death()
 	if (App->player->cameralimit != nullptr)
 		App->player->cameralimit->to_delete = true;
 	App->audio->PlayFx(1, 0);
-	App->fade->fadetoBlack(2.0f);
+	App->fade->fadetoBlack();
+
 
 	if (volcan_map)
 	{
@@ -256,3 +260,4 @@ void j1Scene::respawnEnemies()
 	App->entities->AddEntity(ENTITY_EYEMONSTER, App->player->respawnPlayer.x + 30, App->player->respawnPlayer.y - 220);
 
 }
+

@@ -32,7 +32,6 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	scene = new j1Scene();
 	map = new j1Map();
 	player = new j1Player();
-	fade = new j1FadetoBlack();
 	collisions = new j1Collisions();
 	pathfinding = new j1Pathfinding();
 	entities = new j1Entity();

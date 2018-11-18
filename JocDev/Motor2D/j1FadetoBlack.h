@@ -12,7 +12,9 @@ public:
 
 	bool Start();
 	bool Update(float id);
+	bool CleanUp();
 	bool fadetoBlack(float time = 2.0f);
+	bool fadefromblack(float time = 2.0f);
 	bool IsFading() const;
 
 
