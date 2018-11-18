@@ -61,6 +61,15 @@ bool j1Player::Awake(pugi::xml_node & conf)
 	fall.loop = false;
 	fall.speed = 0.1;
 
+	//teleport
+	teleport.PushBack({ conf.child("tp_anim").attribute("x1").as_int(),conf.child("tp_anim").attribute("y1").as_int(),conf.child("tp_anim").attribute("w1").as_int(),conf.child("tp_anim").attribute("h1").as_int() });
+	teleport.PushBack({ conf.child("tp_anim").attribute("x2").as_int(),conf.child("tp_anim").attribute("y2").as_int(),conf.child("tp_anim").attribute("w2").as_int(),conf.child("tp_anim").attribute("h2").as_int() });
+	teleport.PushBack({ conf.child("tp_anim").attribute("x3").as_int(),conf.child("tp_anim").attribute("y3").as_int(),conf.child("tp_anim").attribute("w3").as_int(),conf.child("tp_anim").attribute("h3").as_int() });
+	teleport.PushBack({ conf.child("tp_anim").attribute("x4").as_int(),conf.child("tp_anim").attribute("y4").as_int(),conf.child("tp_anim").attribute("w4").as_int(),conf.child("tp_anim").attribute("h4").as_int() });
+	teleport.PushBack({ conf.child("tp_anim").attribute("x5").as_int(),conf.child("tp_anim").attribute("y5").as_int(),conf.child("tp_anim").attribute("w5").as_int(),conf.child("tp_anim").attribute("h5").as_int() });
+	teleport.PushBack({ conf.child("tp_anim").attribute("x6").as_int(),conf.child("tp_anim").attribute("y6").as_int(),conf.child("tp_anim").attribute("w6").as_int(),conf.child("tp_anim").attribute("h6").as_int() });
+	teleport.loop = false;
+	teleport.speed = 0.05;
 
 	return ret;
 }
@@ -175,25 +184,30 @@ bool j1Player::Update(float dt)
 		{
 			App->audio->PlayFx(2, 0);
 			position.x = 7 * App->map->data.tile_width;
+			current_animation = &teleport;
 		}
 
 		else if (position.x < 7 * App->map->data.tile_width)
 		{
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;	
 			App->audio->PlayFx(2, 0);
+			current_animation = &teleport;
 		}
 	}
 	else
 	{
 		if (position.x > App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width)
 		{
+			App->audio->PlayFx(2, 0);
 			position.x = 8 * App->map->data.tile_width;
+			current_animation = &teleport;
 		}
 
 		else if (position.x < 8 * App->map->data.tile_width)
 		{
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
 			App->audio->PlayFx(2, 0);
+			current_animation = &teleport;
 		}
 	}
 
