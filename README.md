@@ -1,7 +1,7 @@
 # Videogame Development: Ruin Explorer
 Repository dedicated to the project releases of the Videogame Development subject from GDDV (CITM, UPC).
 
-In this project we will attempt to put together a vertical platformer called Ruin Explorer, based on difficult platforming and the freedom of advancing taking whichever route the player prefers.
+In this project we will attempt to put together a vertical platformer called Ruin Explorer, based on difficult platforming and the freedom of advancing taking whichever route the player prefers (even though that preferred route may not be the most optimal).
 
 
 ## Controls
@@ -10,8 +10,11 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 * Right Arrow Key: Move Right
 
-* Space: Jump
+* Top Arrow Key: Jump
 
+* Space: Boosted jump (when on top of a booster platform). 
+
+* The player in this game is able to teleport from one side to the other of the screen, though it is not always the best way to advance.
 
 
 ## Credits
@@ -31,6 +34,8 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 * *Atlas* (Attribution file in folder).
 
+  >https://opengameart.org/content/lpc-tile-atlas
+
 * *Dungeon Crawl Tiles*:
 
   >https://opengameart.org/content/dungeon-crawl-32x32-tiles
@@ -44,6 +49,18 @@ In this project we will attempt to put together a vertical platformer called Rui
 	> https://itch.io/profile/rvros
 
 	> https://rvros.itch.io/animated-pixel-hero
+	
+* *Minotaur with an Axe* by Bonsaiheldin:
+	
+	>http://bonsaiheld.org
+	
+	>https://opengameart.org/content/minotaur-with-axe
+	
+* *Flying Eye Creature* by Warren Clark
+
+	>https://lionheart963.itch.io/
+	
+	>https://lionheart963.itch.io/flying-eye-creature
 
 ### Audio:
 
@@ -98,6 +115,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 See the license here: https://github.com/JanAdell/Videogame_Dev_RuinExplorer/blob/master/LICENSE
 
+### Group members achievements in the current version
+
+* Didac Llop:
+
+* Jan Adell:
 
 ## Project repository
 
