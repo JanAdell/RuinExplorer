@@ -6,14 +6,16 @@
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 #include "EyeMonster.h"
+#include "boar.h"
 
-#define MAX_ENEMIES 100
+#define MAX_ENTITIES 100
 
 enum ENTITY_TYPES
 {
 	NO_TYPE,
 	ENTITY_PLAYER,
 	ENTITY_EYEMONSTER,
+	ENTITY_BOAR
 };
 
 class Entity;
@@ -22,7 +24,6 @@ struct EntityInfo
 {
 	ENTITY_TYPES type = ENTITY_TYPES::NO_TYPE;
 	int x, y;
-	float  enemy_life;
 };
 
 class j1Entity : public j1Module
@@ -39,10 +40,12 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 	bool AddEntity(ENTITY_TYPES type, int x, int y);
-	SDL_RendererFlip enemyflip = SDL_RendererFlip::SDL_FLIP_NONE;
+	bool Load(pugi::xml_node &data);
+	bool Save(pugi::xml_node &data) const;
+	SDL_RendererFlip enemyflip;
 
-	EntityInfo queue[MAX_ENEMIES];
-	Entity* entities[MAX_ENEMIES];
+	EntityInfo queue[MAX_ENTITIES];
+	Entity* entities[MAX_ENTITIES];
 	ENTITY_TYPES type = ENTITY_TYPES::NO_TYPE;
 
 private:

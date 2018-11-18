@@ -9,13 +9,13 @@
 		<scene volcan_map="true" />
 	</scene>
 	<:anonymous />
-	<:anonymous />
+	<Entity />
 	<player>
-		<player x="480" y="4049" />
+		<player x="528" y="4049" />
 	</player>
 	<:anonymous />
 	<pathfinding />
 	<renderer>
-		<camera x="164" y="401" speed="300" />
+		<camera x="0" y="-3360" speed="5" />
 	</renderer>
 </game_state>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="65" nextobjectid="171">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="65" nextobjectid="172">
  <tileset firstgid="1" name="Volcano Background" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
   <image source="terrain_atlas.png" width="1024" height="1024"/>
   <terraintypes>
@@ -29173,8 +29173,5 @@
   <object id="167" x="545" y="3840" width="31" height="31"/>
   <object id="168" x="448" y="3839" width="31" height="33"/>
   <object id="169" x="480" y="3938" width="63" height="30"/>
- </objectgroup>
- <objectgroup color="#55007f" id="64" name="EyeMonster">
-  <object id="170" x="734" y="3654" width="32" height="42"/>
  </objectgroup>
 </map>

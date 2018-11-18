@@ -69,7 +69,7 @@ bool j1Player::Awake(pugi::xml_node & conf)
 	teleport.PushBack({ conf.child("tp_anim").attribute("x5").as_int(),conf.child("tp_anim").attribute("y5").as_int(),conf.child("tp_anim").attribute("w5").as_int(),conf.child("tp_anim").attribute("h5").as_int() });
 	teleport.PushBack({ conf.child("tp_anim").attribute("x6").as_int(),conf.child("tp_anim").attribute("y6").as_int(),conf.child("tp_anim").attribute("w6").as_int(),conf.child("tp_anim").attribute("h6").as_int() });
 	teleport.loop = false;
-	teleport.speed = 0.05;
+	teleport.speed = 0.2;
 
 	return ret;
 }
@@ -182,6 +182,7 @@ bool j1Player::Update(float dt)
 
 		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
 		{
+			teleport.Reset();
 			App->audio->PlayFx(2, 0);
 			position.x = 7 * App->map->data.tile_width;
 			current_animation = &teleport;
@@ -189,6 +190,7 @@ bool j1Player::Update(float dt)
 
 		else if (position.x < 7 * App->map->data.tile_width)
 		{
+			teleport.Reset();
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;	
 			App->audio->PlayFx(2, 0);
 			current_animation = &teleport;
@@ -198,6 +200,7 @@ bool j1Player::Update(float dt)
 	{
 		if (position.x > App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width)
 		{
+			teleport.Reset();
 			App->audio->PlayFx(2, 0);
 			position.x = 8 * App->map->data.tile_width;
 			current_animation = &teleport;
@@ -205,6 +208,7 @@ bool j1Player::Update(float dt)
 
 		else if (position.x < 8 * App->map->data.tile_width)
 		{
+			teleport.Reset();
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
 			App->audio->PlayFx(2, 0);
 			current_animation = &teleport;

@@ -219,8 +219,6 @@ int j1Pathfinding::CreatePath(const iPoint& origin, const iPoint& destination)
 			last_path.Flip();
 			return last_path.Count();
 		}
-		// TODO 5: Fill a list of all adjancent nodes
-
 
 		else
 		{
@@ -236,8 +234,6 @@ int j1Pathfinding::CreatePath(const iPoint& origin, const iPoint& destination)
 				else if (open.Find(frontier_iterator->data.pos))
 				{
 					frontier_iterator->data.CalculateF(destination);
-					open.list.add(frontier_iterator->data);
-
 					PathNode comp = open.Find(frontier_iterator->data.pos)->data;
 					if (comp.g > frontier_iterator->data.g)
 					{

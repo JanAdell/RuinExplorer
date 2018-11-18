@@ -8,6 +8,7 @@
 #include "j1Player.h"
 #include "j1Scene.h"
 #include "p2Log.h"
+#include "j1Collisions.h"
 
 
 #define SPAWN_MARGIN 2000
@@ -15,7 +16,8 @@
 
 j1Entity::j1Entity()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	name.create("Entity");
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 		entities[i] = nullptr;
 }
 
@@ -34,7 +36,7 @@ bool j1Entity::Start()
 bool j1Entity::PreUpdate()
 {
 	// check camera position to decide what to spawn
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (queue[i].type != ENTITY_TYPES::NO_TYPE)
 		{
@@ -53,11 +55,11 @@ bool j1Entity::PreUpdate()
 // Called before render is available
 bool j1Entity::Update(float dt)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 		if (entities[i] != nullptr)
 			entities[i]->Update(dt);
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 		if (entities[i] != nullptr) 
 			entities[i]->Draw(sprites);
 
@@ -67,7 +69,7 @@ bool j1Entity::Update(float dt)
 bool j1Entity::PostUpdate()
 {
 	// check camera position to decide what to spawn
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (entities[i] != nullptr)
 		{
@@ -89,7 +91,7 @@ bool j1Entity::CleanUp()
 
 	App->tex->UnLoad(sprites);
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (entities[i] != nullptr)
 		{
@@ -106,7 +108,7 @@ bool j1Entity::AddEntity(ENTITY_TYPES type, int x, int y)
 {
 	bool ret = false;
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (queue[i].type == ENTITY_TYPES::NO_TYPE)
 		{
@@ -121,11 +123,53 @@ bool j1Entity::AddEntity(ENTITY_TYPES type, int x, int y)
 	return ret;
 }
 
+bool j1Entity::Load(pugi::xml_node & data)
+{
+	for (uint i = 0; i < MAX_ENTITIES; i++)
+	{
+		if (entities[i] != nullptr)
+		{
+			if (queue[i].type == ENTITY_TYPES::ENTITY_EYEMONSTER)
+			{
+				pugi::xml_node eyemonster_data = data.child("eyemonster");
+				entities[i]->Save(eyemonster_data);
+			}
+			if (queue[i].type == ENTITY_TYPES::ENTITY_BOAR)
+			{
+				pugi::xml_node boar_data = data.child("boar");
+				entities[i]->Save(boar_data);
+			}
+		}
+	}
+	return true;
+}
+
+bool j1Entity::Save(pugi::xml_node & data) const
+{
+	for (uint i = 0; i < MAX_ENTITIES; i++)
+	{
+		if (entities[i] != nullptr)
+		{
+			if ( queue[i].type == ENTITY_TYPES::ENTITY_EYEMONSTER)
+			{
+				pugi::xml_node eyemonster_data = data.append_child("eyemonster");
+				entities[i]->Save(eyemonster_data);
+			}
+			if (queue[i].type == ENTITY_TYPES::ENTITY_BOAR)
+			{
+				pugi::xml_node boar_data = data.append_child("boar");
+				entities[i]->Save(boar_data);
+			}
+		}
+	}
+	return true;
+}
+
 void j1Entity::SpawnEntity(const EntityInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
-	for (; entities[i] != nullptr && i < MAX_ENEMIES; ++i);
+	for (; entities[i] != nullptr && i < MAX_ENTITIES; ++i);
 	switch (info.type)
 	{
 	case ENTITY_TYPES::ENTITY_PLAYER:
@@ -135,20 +179,25 @@ void j1Entity::SpawnEntity(const EntityInfo& info)
 	case ENTITY_TYPES::ENTITY_EYEMONSTER:
 		entities[i] = new EyeMonster(info.x, info.y);
 		break;
+	case ENTITY_BOAR:
+		entities[i] = new boar(info.x, info.y);
+		break;
 	}
 	
 }
 
 void j1Entity::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (entities[i] != nullptr && entities[i]->GetCollider() == c1)
 		{
-
-				entities[i]->OnCollision(c2);
+			entities[i]->OnCollision(c2);
+			if (c2->type == COLLIDER_PLAYER_DOWN)
+			{		
 				delete entities[i];
 				entities[i] = nullptr;
+			}
 		}
 
 	}

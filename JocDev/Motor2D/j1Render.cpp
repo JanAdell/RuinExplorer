@@ -129,7 +129,7 @@ bool j1Render::Update(float dt)
 
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+	/*if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
 		camera.y += 1;
 	}
@@ -144,7 +144,7 @@ bool j1Render::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		camera.x += 1;
-	}
+	}*/
 	return true;
 }
 

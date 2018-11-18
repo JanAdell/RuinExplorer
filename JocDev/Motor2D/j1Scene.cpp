@@ -52,8 +52,9 @@ bool j1Scene::Start()
 			App->pathfinding->SetMap(w, h, data);
 
 		RELEASE_ARRAY(data);
+		respawnEnemies();
 	}
-	respawnEnemies();
+	
 	return true;
 }
 
@@ -84,7 +85,7 @@ bool j1Scene::Update(float dt)
 		{
 			App->LoadGame("save_game.xml");
 			App->fade->fadetoBlack();
-			App->audio->PlayMusic("audio/music/SeaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		}
 	}
 	//fiinish first map
@@ -115,11 +116,13 @@ bool j1Scene::Update(float dt)
 	{
 
 		App->map->CleanUp();
+		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
 		App->map->Load("SeaTempleMap.tmx");
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
+		App->entities->Start();
 		App->player->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
@@ -130,14 +133,17 @@ bool j1Scene::Update(float dt)
 	{
 		
 		App->map->CleanUp();
+		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
 		App->map->Load("Volcano_Map.tmx");
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->player->Start();
+		App->entities->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
+		respawnEnemies();
 		volcan_map = true;
 	}
 
@@ -226,7 +232,7 @@ bool j1Scene::Save(pugi::xml_node& data) const
 
 void j1Scene::death()
 {
-	App->entities->CleanUp();
+	
 	if (App->player->collider_player_down != nullptr)
 		App->player->collider_player_down->to_delete = true;
 	if (App->player->collider_player_up != nullptr)
@@ -239,6 +245,7 @@ void j1Scene::death()
 		App->player->collider_player->to_delete = true;
 	if (App->player->cameralimit != nullptr)
 		App->player->cameralimit->to_delete = true;
+	App->entities->CleanUp();
 	App->audio->PlayFx(1, 0);
 	App->fade->fadetoBlack();
 
@@ -262,7 +269,9 @@ void j1Scene::death()
 
 void j1Scene::respawnEnemies()
 {
-	App->entities->AddEntity(ENTITY_EYEMONSTER, App->player->respawnPlayer.x + 30, App->player->respawnPlayer.y - 220);
-
+	App->entities->AddEntity(ENTITY_EYEMONSTER, App->player->respawnPlayer.x - 30, App->player->respawnPlayer.y - 220);
+	App->entities->AddEntity(ENTITY_EYEMONSTER, App->player->respawnPlayer.x - 30, App->player->respawnPlayer.y - 500);
+	App->entities->AddEntity(ENTITY_BOAR, App->player->respawnPlayer.x - 30, App->player->respawnPlayer.y - 500);
+	App->entities->AddEntity(ENTITY_BOAR, App->player->respawnPlayer.x + 30, App->player->respawnPlayer.y - 500);
 }
 

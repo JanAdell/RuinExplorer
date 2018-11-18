@@ -15,11 +15,15 @@ public:
 	~EyeMonster() {};
 	void Update(float dt);
 	void OnCollision(Collider* collider);
+	virtual bool Load(pugi::xml_node &node);
+	virtual	bool Save(pugi::xml_node &node) const;
+	bool CleanUp();
+public:
 	bool left;
 	const p2DynArray<iPoint>* enemypath;
-	bool CleanUp();
+	
 
-	iPoint enemy_pos, player_pos,speed,path_to_follow;
+	iPoint enemy_pos, player_pos,speed,objective;
 };
 
 #endif
