@@ -23,7 +23,7 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 > *Github* : https://github.com/didaclis
 
-**Programming and Design: Jan Adell**
+**Programming, Design and Asset Management: Jan Adell**
 
 > *Github*: https://github.com/JanAdell
 
@@ -119,7 +119,7 @@ See the license here: https://github.com/JanAdell/Videogame_Dev_RuinExplorer/blo
 
 * **Didac Llop:**
 	* Pathfinding implementation
-	* Entity management and Enemy creation
+	* Entity management and Enemy implementation
 
 * **Jan Adell:**
 	* Framerate regulation
