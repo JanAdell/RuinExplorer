@@ -115,11 +115,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 See the license here: https://github.com/JanAdell/Videogame_Dev_RuinExplorer/blob/master/LICENSE
 
-### Group members achievements in the current version
+### Group members acomplishments in the current version
 
 * Didac Llop:
+	-Implementation of pathfinding 
+	-Entity management and Enemy creation
 
 * Jan Adell:
+	-Framerate regulation
+	-Previous version modules corrections
 
 ## Project repository
 
