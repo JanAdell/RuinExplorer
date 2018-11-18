@@ -17,7 +17,7 @@ protected:
 
 public:
 	iPoint position;
-
+	pugi::xml_document file;
 public:
 	Entity(int x, int y);
 	virtual ~Entity();

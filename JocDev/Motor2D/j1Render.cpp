@@ -87,7 +87,7 @@ bool j1Render::Update(float dt)
 {
 	BROFILER_CATEGORY("UpdateRenderer", Profiler::Color::CornflowerBlue);
 
-	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F7) == KEY_DOWN)
 		god_mode = !god_mode;
 
 	if (!god_mode)

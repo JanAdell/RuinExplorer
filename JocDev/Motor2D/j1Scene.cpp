@@ -144,6 +144,8 @@ bool j1Scene::Update(float dt)
 	{
 		
 		App->map->CleanUp();
+		App->entities->enemyboatpos.clear();
+		App->entities->enemyeyepos.clear();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
@@ -181,6 +183,8 @@ bool j1Scene::Update(float dt)
 	{
 		
 		App->map->CleanUp();
+		App->entities->enemyboatpos.clear();
+		App->entities->enemyeyepos.clear();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
@@ -205,6 +209,8 @@ bool j1Scene::Update(float dt)
 	else if(-App->player->position.y > -App->map->data.tile_height * 10 && !volcan_map)
 	{
 		App->map->CleanUp();
+		App->entities->enemyboatpos.clear();
+		App->entities->enemyeyepos.clear();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();

@@ -11,21 +11,36 @@
 
 EyeMonster::EyeMonster(int x, int y) : Entity(x, y)
 {
-	eyemonster.PushBack({ 51, 88, 25, 30 });
-	eyemonster.PushBack({ 108, 91, 26, 27 });
-	eyemonster.PushBack({ 165, 92, 27, 26 });
-	eyemonster.PushBack({ 225, 92, 20, 26 });
-	eyemonster.loop = true;
-	eyemonster.speed = 0.1f;
-	animation = &eyemonster;
-	collider = App->collisions->AddCollider({ position.x, position.y, 26, 26 }, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
+	pugi::xml_parse_result result = file.load_file("Entities.xml");
+	
+	if (result != NULL)
+	{
+		pugi::xml_node node = file.child("entities");
+
+		speed.x = node.child("eyemonster").child("speed").attribute("x").as_float();
+		speed.y = node.child("eyemonster").child("speed").attribute("y").as_float();
+
+		search = node.child("eyemonster").child("search").attribute("x").as_int();
+
+		pugi::xml_node anim = node.child("eyemonster").child("anim");
+
+		eyemonster.PushBack({ anim.attribute("x1").as_int(), anim.attribute("y1").as_int(), anim.attribute("w1").as_int(), anim.attribute("h1").as_int() });
+		eyemonster.PushBack({ anim.attribute("x2").as_int(), anim.attribute("y2").as_int(), anim.attribute("w2").as_int(), anim.attribute("h2").as_int() });
+		eyemonster.PushBack({ anim.attribute("x3").as_int(), anim.attribute("y3").as_int(), anim.attribute("w3").as_int(), anim.attribute("h3").as_int() });
+		eyemonster.PushBack({ anim.attribute("x4").as_int(), anim.attribute("y4").as_int(), anim.attribute("w4").as_int(), anim.attribute("h4").as_int() });
+		eyemonster.loop = true;
+		eyemonster.speed = anim.attribute("speed").as_float();
+		animation = &eyemonster;
+
+		collider = App->collisions->AddCollider({ position.x, position.y, anim.attribute("w3").as_int(), anim.attribute("h3").as_int() }, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
+	}
 }
 void EyeMonster::Update(float dt)
 {
 	enemy_pos = App->map->WorldToMap(position.x, position.y);
 	player_pos = App->map->WorldToMap(App->player->position.x,App->player->position.y);
 
-	if (enemy_pos.DistanceManhattan(player_pos) < 10)
+	if (enemy_pos.DistanceManhattan(player_pos) < search)
 	{
 		if (App->pathfinding->CreatePath(enemy_pos, player_pos, ENTITY_EYEMONSTER) != -1)
 		{
@@ -35,7 +50,7 @@ void EyeMonster::Update(float dt)
 				for (uint i = 0; i < enemypath->Count(); i++)
 				{
 					iPoint road = App->map->MapToWorld(enemypath->At(i)->x, enemypath->At(i)->y);
-					App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height }, 100, 100, 0, 80);
+					App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height }, 100, 100, 0, alpha);
 				}
 			}
 			if (position != App->player->position)
@@ -54,11 +69,11 @@ void EyeMonster::Update(float dt)
 					}
 					if (objective.y <= enemy_pos.y)
 					{
-						position.y += -1;
+						position.y += -speed.y;
 					}
 					else if (objective.y > enemy_pos.y)
 					{
-						position.y += 1;
+						position.y += speed.y;
 					}
 				}
 			}
@@ -78,13 +93,13 @@ void EyeMonster::Update(float dt)
 	}
 	if (left)
 	{
-		position.x -= 1;
+		position.x -= speed.x;
 		App->entities->enemyflip = SDL_FLIP_NONE;
 	}
 
 	else
 	{
-		position.x += 1;
+		position.x += speed.x;
 		App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
 	}
 }

@@ -21,9 +21,10 @@ public:
 public:
 	bool left;
 	const p2DynArray<iPoint>* enemypath;
-
-
-	iPoint enemy_pos, player_pos, speed, objective,ground;
+	int search;
+	int next_ground;
+	iPoint enemy_pos, objective, player_pos,ground;
+	fPoint speed;
 };
 
 #endif

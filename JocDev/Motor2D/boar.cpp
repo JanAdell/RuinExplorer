@@ -11,14 +11,31 @@
 
 boar::boar(int x, int y) : Entity(x, y)
 {
-	boaranim.PushBack({ 25, 171, 31, 31 });
-	boaranim.PushBack({ 95, 171, 35, 31 });
-	boaranim.PushBack({ 164, 171, 39, 31 });
-	boaranim.PushBack({ 236, 171, 34, 31 });
-	boaranim.loop = true;
-	boaranim.speed = 0.1f;
-	animation = &boaranim;
-	collider = App->collisions->AddCollider({ position.x, position.y, 34, 31 }, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
+	pugi::xml_parse_result result = file.load_file("Entities.xml");
+
+	if (result != NULL)
+	{
+		pugi::xml_node node = file.child("entities");
+
+		speed.x = node.child("boar").child("speed").attribute("x").as_float();
+		speed.y = node.child("boar").child("speed").attribute("y").as_float();
+
+		next_ground = node.child("boar").child("objective").attribute("x").as_float();
+		
+		search = node.child("boar").child("search").attribute("x").as_int();
+
+		pugi::xml_node anim = node.child("boar").child("anim");
+
+		boaranim.PushBack({ anim.attribute("x1").as_int(), anim.attribute("y1").as_int(), anim.attribute("w1").as_int(), anim.attribute("h1").as_int() });
+		boaranim.PushBack({ anim.attribute("x2").as_int(), anim.attribute("y2").as_int(), anim.attribute("w2").as_int(), anim.attribute("h2").as_int() });
+		boaranim.PushBack({ anim.attribute("x3").as_int(), anim.attribute("y3").as_int(), anim.attribute("w3").as_int(), anim.attribute("h3").as_int() });
+		boaranim.PushBack({ anim.attribute("x4").as_int(), anim.attribute("y4").as_int(), anim.attribute("w4").as_int(), anim.attribute("h4").as_int() });
+		boaranim.loop = true;
+		boaranim.speed = anim.attribute("speed").as_float();
+		animation = &boaranim;
+
+		collider = App->collisions->AddCollider({ position.x, position.y, anim.attribute("w3").as_int(), anim.attribute("h3").as_int() }, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
+	}
 }
 void boar::Update(float dt)
 {
@@ -26,13 +43,13 @@ void boar::Update(float dt)
 	enemy_pos = App->map->WorldToMap(position.x, position.y);
 	player_pos = App->map->WorldToMap(App->player->position.x, App->player->position.y);
 	ground.x = enemy_pos.x;
-	ground.y = enemy_pos.y + 1;
+	ground.y = enemy_pos.y + speed.y;
 	if (App->pathfinding->IsWalkable(ground))
 	{
-		position.y += 1;
+		position.y += speed.y;
 	}
 		
-	if (enemy_pos.DistanceManhattan(player_pos) < 8)
+	if (enemy_pos.DistanceManhattan(player_pos) < search)
 	{
 		enemypath = App->pathfinding->GetLastPath();
 		if (App->pathfinding->CreatePath(enemy_pos, player_pos,ENTITY_BOAR) != -1)
@@ -67,14 +84,14 @@ void boar::Update(float dt)
 		}
 		if (left)
 		{
-			position.x -= 1;
+			position.x -= speed.x;
 			App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
 
 		}
 
 		else
 		{
-			position.x += 1;
+			position.x += speed.x;
 			App->entities->enemyflip = SDL_FLIP_NONE;
 	
 		}
@@ -84,10 +101,10 @@ void boar::Update(float dt)
 
 		if (left)
 		{
-			ground = { enemy_pos.x - 1, enemy_pos.y + 1 };
+			ground = { enemy_pos.x - next_ground, enemy_pos.y + next_ground };
 			if (!App->pathfinding->IsWalkable(ground))
 			{
-				position.x -= 1;
+				position.x -= speed.x;
 				App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
 			}
 			else
@@ -96,10 +113,10 @@ void boar::Update(float dt)
 
 		else
 		{
-			ground = { enemy_pos.x + 1, enemy_pos.y + 1 };
+			ground = { enemy_pos.x + next_ground, enemy_pos.y + next_ground };
 			if (!App->pathfinding->IsWalkable(ground))
 			{
-				position.x += 1;
+				position.x += speed.x;
 				App->entities->enemyflip = SDL_FLIP_NONE;
 			}
 
