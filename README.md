@@ -117,13 +117,14 @@ See the license here: https://github.com/JanAdell/Videogame_Dev_RuinExplorer/blo
 
 ### Group members acomplishments in the current version
 
-* Didac Llop:
-	-Implementation of pathfinding 
-	-Entity management and Enemy creation
+* **Didac Llop:**
+	* Pathfinding implementation
+	* Entity management and Enemy creation
 
-* Jan Adell:
-	-Framerate regulation
-	-Previous version modules corrections
+* **Jan Adell:**
+	* Framerate regulation
+	* Previous version modules corrections
+	* Profiler implementation
 
 ## Project repository
 
