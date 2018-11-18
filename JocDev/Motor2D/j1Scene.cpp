@@ -71,7 +71,7 @@ bool j1Scene::Update(float dt)
 {
 	BROFILER_CATEGORY("UpdateScene", Profiler::Color::RosyBrown);
 
-	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 	{
 		if (volcan_map && map_saved)
 		{
@@ -89,20 +89,20 @@ bool j1Scene::Update(float dt)
 		}
 	}
 	//fiinish first map
-	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN && volcan_map)
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN && volcan_map)
 	{
 		App->render->camera.x = App->render->camera.y = 0;
 		App->player->position.y = App->map->data.tile_height * 19;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN && !volcan_map)
+	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN && !volcan_map)
 	{
 		App->render->camera.x = App->render->camera.y = 0;
 		App->player->position.y = App->map->data.tile_height * 19;
 	}
 	
 	if (App->player->stay_in_platform)
-		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
+		if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 		{
 			App->SaveGame("save_game.xml");
 			if (volcan_map)
@@ -112,7 +112,7 @@ bool j1Scene::Update(float dt)
 		}
 
 	
-	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
 	{
 
 		App->map->CleanUp();
@@ -140,7 +140,7 @@ bool j1Scene::Update(float dt)
 		volcan_map = false;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN) 
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) 
 	{
 		
 		App->map->CleanUp();

@@ -82,15 +82,17 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 
 ### Debug and Utility Keys
-* F1: See game colliders.
-* F2: Places the player at the start of the first stage.
-* F3: Places the player at the end of the first stage.
-* F5: Places the player at the start of the second stage.
-* F6: Places the player at the start of the second stage.
-* F9: God Mode. Allows free camera control.
+* F1: Places the player at the start of the first stage.
+* F2: Places the player at the end of the first stage.
+* F3: Places the player at the start of the second stage.
+* F4: Places the player at the start of the second stage.
+* F5: Saves the game.
+* F6: Loads previously saved game.
+* F8: God Mode. Allows free camera control.
+* F9: Debug colliders and Pathfinding.
+* F10: God Mode. Enemies don't kill you.
 * F11: Switch between 30 fps and uncapped fps.
-* S key: Saves the game.
-* L key: Loads previously saved game.
+
 
 ### License
 

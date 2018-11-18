@@ -162,7 +162,7 @@ bool j1Collisions::Update(float dt)
 
 
 	DebugDraw();
-	if (App->input->GetKey(SDL_SCANCODE_F9))
+	if (App->input->GetKey(SDL_SCANCODE_F10))
 		god_mode = !god_mode;
 
 	if (god_mode)
@@ -201,7 +201,7 @@ bool j1Collisions::Update(float dt)
 
 void j1Collisions::DebugDraw()
 {
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		debug = !debug;
 
 	if (debug == false)
