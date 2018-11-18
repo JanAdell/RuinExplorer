@@ -121,11 +121,11 @@ See the license here: https://github.com/JanAdell/Videogame_Dev_RuinExplorer/blo
 
 * **Didac Llop:**
 	* Pathfinding implementation
-	* Entity management and Enemy implementation
+	* Entity management
 
 * **Jan Adell:**
 	* Framerate regulation
-	* Previous version modules corrections
+	* Previous version modules corrections, including Sound Effects and Fade To Black
 	* Profiler implementation
 
 ## Project repository
