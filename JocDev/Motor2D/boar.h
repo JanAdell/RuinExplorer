@@ -23,7 +23,7 @@ public:
 	const p2DynArray<iPoint>* enemypath;
 
 
-	iPoint enemy_pos, player_pos, speed, objective;
+	iPoint enemy_pos, player_pos, speed, objective,ground;
 };
 
 #endif

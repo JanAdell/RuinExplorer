@@ -2,6 +2,7 @@
 #include "p2Log.h"
 #include "j1App.h"
 #include "j1Pathfinding.h"
+#include "j1Entity.h"
 #include "Brofiler/Brofiler.h"
 
 j1Pathfinding::j1Pathfinding() : j1Module(), map(NULL), last_path(DEFAULT_PATH_LENGTH), width(0), height(0)
@@ -116,7 +117,7 @@ PathNode::PathNode(const PathNode& node) : g(node.g), h(node.h), pos(node.pos), 
 // PathNode -------------------------------------------------------------------------
 // Fills a list (PathList) of all valid adjacent pathnodes
 // ----------------------------------------------------------------------------------
-uint PathNode::FindWalkableAdjacents(PathList& list_to_fill) const
+uint PathNode::FindWalkableAdjacents(PathList& list_to_fill,ENTITY_TYPES type) const
 {
 	iPoint cell;
 	uint before = list_to_fill.list.count();
@@ -141,27 +142,30 @@ uint PathNode::FindWalkableAdjacents(PathList& list_to_fill) const
 	if (App->pathfinding->IsWalkable(cell))
 		list_to_fill.list.add(PathNode(-1, -1, cell, this));
 
-	//north-east
-	cell.create(pos.x + 1, pos.y + 1);
-	if (App->pathfinding->IsWalkable(cell))
-		list_to_fill.list.add(PathNode(-1, -1, cell, this));
+	if (type == ENTITY_EYEMONSTER)
+	{
+		//north-east
+		cell.create(pos.x + 1, pos.y + 1);
+		if (App->pathfinding->IsWalkable(cell))
+			list_to_fill.list.add(PathNode(-1, -1, cell, this));
 
-	//sub-east
-	cell.create(pos.x + 1, pos.y - 1);
-	if (App->pathfinding->IsWalkable(cell))
-		list_to_fill.list.add(PathNode(-1, -1, cell, this));
-
-
-	//north-west
-	cell.create(pos.x - 1, pos.y + 1);
-	if (App->pathfinding->IsWalkable(cell))
-		list_to_fill.list.add(PathNode(-1, -1, cell, this));
+		//sub-east
+		cell.create(pos.x + 1, pos.y - 1);
+		if (App->pathfinding->IsWalkable(cell))
+			list_to_fill.list.add(PathNode(-1, -1, cell, this));
 
 
-	//suth-west
-	cell.create(pos.x - 1, pos.y - 1);
-	if (App->pathfinding->IsWalkable(cell))
-		list_to_fill.list.add(PathNode(-1, -1, cell, this));
+		//north-west
+		cell.create(pos.x - 1, pos.y + 1);
+		if (App->pathfinding->IsWalkable(cell))
+			list_to_fill.list.add(PathNode(-1, -1, cell, this));
+
+
+		//suth-west
+		cell.create(pos.x - 1, pos.y - 1);
+		if (App->pathfinding->IsWalkable(cell))
+			list_to_fill.list.add(PathNode(-1, -1, cell, this));
+	}
 
 
 	return list_to_fill.list.count();
@@ -189,7 +193,7 @@ int PathNode::CalculateF(const iPoint& destination)
 // ----------------------------------------------------------------------------------
 // Actual A* algorithm: return number of steps in the creation of the path or -1 ----
 // ----------------------------------------------------------------------------------
-int j1Pathfinding::CreatePath(const iPoint& origin, const iPoint& destination)
+int j1Pathfinding::CreatePath(const iPoint& origin, const iPoint& destination, ENTITY_TYPES type)
 {
 	last_path.Clear();
 
@@ -223,7 +227,7 @@ int j1Pathfinding::CreatePath(const iPoint& origin, const iPoint& destination)
 		else
 		{
 			PathList frontier;
-			close.list.end->data.FindWalkableAdjacents(frontier);
+			close.list.end->data.FindWalkableAdjacents(frontier,type);
 
 			for (p2List_item<PathNode> *frontier_iterator = frontier.list.start; frontier_iterator != nullptr; frontier_iterator = frontier_iterator->next)
 			{

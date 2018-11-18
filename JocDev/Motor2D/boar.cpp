@@ -25,20 +25,56 @@ void boar::Update(float dt)
 
 	enemy_pos = App->map->WorldToMap(position.x, position.y);
 	player_pos = App->map->WorldToMap(App->player->position.x, App->player->position.y);
-
+	ground.x = enemy_pos.x;
+	ground.y = enemy_pos.y + 1;
+	App->render->DrawQuad({ ground.x ,ground.y ,App->map->data.tile_width,App->map->data.tile_height }, 255, 0, 0, 80);
+	if (App->pathfinding->IsWalkable(ground))
+	{
+		position.y += 1;
+	}
+		
 	if (enemy_pos.DistanceManhattan(player_pos) < 8)
 	{
-		if (App->pathfinding->CreatePath(enemy_pos, player_pos) != -1)
+		enemypath = App->pathfinding->GetLastPath();
+		if (App->pathfinding->CreatePath(enemy_pos, player_pos,ENTITY_BOAR) != -1)
 		{
-			enemypath = App->pathfinding->GetLastPath();
+			for (uint i = 0; i < enemypath->Count(); i++)
+			{
+				iPoint road = App->map->MapToWorld(enemypath->At(i)->x, enemypath->At(i)->y);
+				App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height } ,100, 0, 100, 80);
+			}
+			
 			if (position != App->player->position)
 			{
 				if (enemypath->Count() > 0)
 				{
 					objective = iPoint(enemypath->At(0)->x, enemypath->At(0)->y);
+		
+					
+					if (objective.x <= enemy_pos.x )
+					{
+						left = true;
 
+					}
+					else if (objective.x > enemy_pos.x)
+					{
+						left = false;
+					}					
 				}
 			}
+		}
+		if (left)
+		{
+			position.x -= 1;
+			App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
+
+		}
+
+		else
+		{
+			position.x += 1;
+			App->entities->enemyflip = SDL_FLIP_NONE;
+	
 		}
 	}
 	else
@@ -51,19 +87,33 @@ void boar::Update(float dt)
 		{
 			left = true;
 		}
+		if (left)
+		{
+			ground = { enemy_pos.x - 1, enemy_pos.y + 1 };
+			if (!App->pathfinding->IsWalkable(ground))
+			{
+				position.x -= 1;
+				App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
+			}
+			else
+				left = false;
+		}
 
-	}
-	if (left)
-	{
-		position.x -= 1;
-		App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
+		else
+		{
+			ground = { enemy_pos.x + 1, enemy_pos.y + 1 };
+			if (!App->pathfinding->IsWalkable(ground))
+			{
+				position.x += 1;
+				App->entities->enemyflip = SDL_FLIP_NONE;
+			}
+
+			else
+				left = true;
+		}
 	}
 
-	else
-	{
-		position.x += 1;
-		App->entities->enemyflip = SDL_FLIP_NONE;
-	}
+
 }
 
 

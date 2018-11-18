@@ -22,15 +22,19 @@ EyeMonster::EyeMonster(int x, int y) : Entity(x, y)
 }
 void EyeMonster::Update(float dt)
 {
-
 	enemy_pos = App->map->WorldToMap(position.x, position.y);
 	player_pos = App->map->WorldToMap(App->player->position.x,App->player->position.y);
 
 	if (enemy_pos.DistanceManhattan(player_pos) < 10)
 	{
-		if (App->pathfinding->CreatePath(enemy_pos, player_pos) != -1)
+		if (App->pathfinding->CreatePath(enemy_pos, player_pos, ENTITY_EYEMONSTER) != -1)
 		{
 			enemypath = App->pathfinding->GetLastPath();
+			for (uint i = 0; i < enemypath->Count(); i++)
+			{
+				iPoint road = App->map->MapToWorld(enemypath->At(i)->x, enemypath->At(i)->y);
+				App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height}, 100, 100, 0, 80);
+			}
 			if (position != App->player->position)
 			{
 				if (enemypath->Count() > 0)
