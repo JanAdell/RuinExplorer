@@ -131,11 +131,7 @@ void boar::Update(float dt)
 
 void boar::OnCollision(Collider* collider)
 {
-	if (collider->type == COLLIDER_PLAYER)
-	{
-		App->scene->death();
 
-	}
 	if (collider->type == COLLIDER_WALL)
 		left = !left;
 }

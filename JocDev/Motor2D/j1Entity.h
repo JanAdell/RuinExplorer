@@ -7,6 +7,7 @@
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 #include "EyeMonster.h"
 #include "boar.h"
+#include "Player.h"
 
 #define MAX_ENTITIES 100
 
@@ -56,7 +57,6 @@ private:
 	void SpawnEntity(const EntityInfo& info);
 
 public:
-
 	SDL_Texture * sprites;
 };
 #endif

@@ -435,8 +435,8 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 		int i = 0;
 		if(strcmp(node.attribute("name").as_string(), "Respawn") == 0)
 		{
-			App->player->respawnPlayer.x = col_object.attribute("x").as_int();
-			App->player->respawnPlayer.y = col_object.attribute("y").as_int();
+			respawnPlayer.x = col_object.attribute("x").as_int();
+			respawnPlayer.y = col_object.attribute("y").as_int();
 		}
 		else
 		{

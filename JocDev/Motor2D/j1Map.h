@@ -132,6 +132,7 @@ private:
 
 public:
 
+	iPoint respawnPlayer;
 	MapData data;
 
 private:

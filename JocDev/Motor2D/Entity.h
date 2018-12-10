@@ -14,7 +14,7 @@ class Entity
 protected:
 	Animation * animation = nullptr;
 	Collider* collider = nullptr;
-
+	
 public:
 	iPoint position;
 	pugi::xml_document file;

@@ -29,7 +29,7 @@ void Entity::Draw(SDL_Texture* sprites)
 		collider->SetPos(position.x, position.y);
 
 	if (animation != nullptr)
-		App->render->Blit(sprites, position.x, position.y, App->entities->enemyflip ,&(animation->GetCurrentFrame()));
+		App->render->Blit(sprites, position.x, position.y, App->entities->enemyflip,&(animation->GetCurrentFrame()));
 }
 
 void Entity::OnCollision(Collider * collider)

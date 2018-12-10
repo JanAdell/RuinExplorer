@@ -107,11 +107,7 @@ void EyeMonster::Update(float dt)
 
 void EyeMonster::OnCollision(Collider* collider)
 {
-	if (collider->type == COLLIDER_PLAYER)
-	{
-		App->scene->death();
-		
-	}
+
 	if (collider->type == COLLIDER_WALL)
 		left = !left;
 }

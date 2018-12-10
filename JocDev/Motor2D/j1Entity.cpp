@@ -138,12 +138,17 @@ bool j1Entity::Load(pugi::xml_node & data)
 			if (queue[i].type == ENTITY_TYPES::ENTITY_EYEMONSTER)
 			{
 				pugi::xml_node eyemonster_data = data.child("eyemonster");
-				entities[i]->Save(eyemonster_data);
+				entities[i]->Load(eyemonster_data);
 			}
 			if (queue[i].type == ENTITY_TYPES::ENTITY_BOAR)
 			{
 				pugi::xml_node boar_data = data.child("boar");
-				entities[i]->Save(boar_data);
+				entities[i]->Load(boar_data);
+			}
+			if (queue[i].type == ENTITY_TYPES::ENTITY_PLAYER)
+			{
+				pugi::xml_node player_data = data.child("player");
+				entities[i]->Load(player_data);
 			}
 		}
 	}
@@ -166,6 +171,11 @@ bool j1Entity::Save(pugi::xml_node & data) const
 				pugi::xml_node boar_data = data.append_child("boar");
 				entities[i]->Save(boar_data);
 			}
+			if (queue[i].type == ENTITY_TYPES::ENTITY_PLAYER)
+			{
+				pugi::xml_node player_data = data.append_child("player");
+				entities[i]->Save(player_data);
+			}
 		}
 	}
 	return true;
@@ -179,13 +189,12 @@ void j1Entity::SpawnEntity(const EntityInfo& info)
 	switch (info.type)
 	{
 	case ENTITY_TYPES::ENTITY_PLAYER:
-			/*entities[i] = new playerEntity(info.x, info.y);
-			queue[i].enemy_life = 5;*/
+		entities[i] = new Player(info.x, info.y);
 		break;
 	case ENTITY_TYPES::ENTITY_EYEMONSTER:
 		entities[i] = new EyeMonster(info.x, info.y);
 		break;
-	case ENTITY_BOAR:
+	case ENTITY_TYPES::ENTITY_BOAR:
 		entities[i] = new boar(info.x, info.y);
 		break;
 	}
@@ -199,7 +208,7 @@ void j1Entity::OnCollision(Collider* c1, Collider* c2)
 		if (entities[i] != nullptr && entities[i]->GetCollider() == c1)
 		{
 			entities[i]->OnCollision(c2);
-			if (c2->type == COLLIDER_PLAYER_DOWN)
+			if (c2->type == COLLIDER_PLAYER)
 			{		
 				delete entities[i];
 				entities[i] = nullptr;
