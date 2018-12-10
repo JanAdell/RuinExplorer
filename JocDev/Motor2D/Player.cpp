@@ -63,7 +63,6 @@ Player::Player(int x, int y):Entity(x,y)
 		fall.speed = anim.child("fall_anim").attribute("speed").as_float();
 
 		collider = App->collisions->AddCollider({ position.x,position.y,player_size.x,player_size.y - 5 }, COLLIDER_PLAYER, (j1Module*)App->entities);
-		entityflip = SDL_RendererFlip::SDL_FLIP_NONE;
 		
 		top_jump = true;
 
@@ -81,10 +80,6 @@ bool Player::CleanUp()
 	LOG("Unloading player");
 	App->audio->UnloadFx(1);
 	App->audio->UnloadFx(2);
-	App->tex->UnLoad(player_tex);
-	App->tex->UnLoad(teleport_tex);
-	player_tex = nullptr;
-	teleport_tex = nullptr;
 	return true;
 
 }
@@ -203,11 +198,11 @@ void Player::OnCollision(Collider* collider)
 {
 	if (collider->type == COLLIDER_WALL)
 	{
-		if(position.x <= collider->SetPos.rect.x + collider->SetPos.rect.w)
+		if(position.x <= collider->SetPos.rect.x + player_size.x)
 		position.x += speed.x;
 		if (position.x + player_size.x >= collider->SetPos.rect.x)
 			position.x -= speed.x;
-		if (position.y <= collider->SetPos.rect.y + collider->SetPos.rect.h)
+		if (position.y <= collider->SetPos.rect.y + player_size.y)
 		{
 			stay_in_platform = true;
 			position.y -= gravity;

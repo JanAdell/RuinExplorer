@@ -7,64 +7,31 @@ c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boa
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(94): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(107): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(119): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-  Entity.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  EyeMonster.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(21): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  j1Collisions.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  j1Entity.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  j1App.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(227): warning C4477: 'sprintf_s' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 5 has type 'uint64'
-  c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(227): note: consider using '%llu' in the format string
-  c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(227): note: consider using '%I64u' in the format string
-  j1Map.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1map.cpp(59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1map.cpp(144): warning C4101: 'item_layer': unreferenced local variable
-  j1Pathfinding.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\p2point.h(114): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\p2point.h(110): note: while compiling class template member function 'int p2Point<int>::DistanceTo(const p2Point<int> &) const'
-  c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1pathfinding.cpp(188): note: see reference to function template instantiation 'int p2Point<int>::DistanceTo(const p2Point<int> &) const' being compiled
-  c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1pathfinding.h(77): note: see reference to class template instantiation 'p2Point<int>' being compiled
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\p2point.h(114): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  j1Scene.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   Player.cpp
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(66): error C2065: 'entityflip': undeclared identifier
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(84): error C2065: 'player_tex': undeclared identifier
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(85): error C2065: 'teleport_tex': undeclared identifier
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(86): error C2065: 'player_tex': undeclared identifier
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(87): error C2065: 'teleport_tex': undeclared identifier
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(104): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(111): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(130): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(142): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(150): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(153): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(206): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(206): error C2228: left of '.x' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(206): error C2228: left of '.w' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(207): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(208): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(208): error C2228: left of '.x' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(209): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(99): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(106): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(125): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(137): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(145): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(148): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(201): error C2228: left of '.rect' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(201): error C2228: left of '.x' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(201): error C2228: left of '.w' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(202): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(203): error C2228: left of '.rect' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(203): error C2228: left of '.x' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(204): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(205): error C2228: left of '.rect' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(205): error C2228: left of '.y' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(205): error C2228: left of '.h' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(208): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(210): error C2228: left of '.rect' must have class/struct/union
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(210): error C2228: left of '.y' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(210): error C2228: left of '.h' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(213): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(215): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(215): error C2228: left of '.y' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(225): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(233): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(233): error C2228: left of '.y' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(233): error C2228: left of '.h' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(220): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(228): error C2228: left of '.rect' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(228): error C2228: left of '.y' must have class/struct/union
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(228): error C2228: left of '.h' must have class/struct/union
   Generating Code...
