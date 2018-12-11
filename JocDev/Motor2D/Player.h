@@ -21,14 +21,11 @@ public:
 	void OnCollision(Collider* collider);
 	bool Load(pugi::xml_node &node);
 	bool Save(pugi::xml_node &node) const;
-	int positionWall(const iPoint& pos,const SDL_Rect& rect);
 	bool CleanUp();
 
 
 public:
-	//Mix_Chunk* player_death = nullptr;
-	//SDL_Texture * player_tex = nullptr;
-	//SDL_Texture* teleport_tex = nullptr;
+
 	int normal_jump;
 	int boosted_jump;
 	int distance_to_jump;
@@ -44,6 +41,7 @@ private:
 	Animation run;
 	Animation jump_anim;
 	Animation fall;
+	Animation Attack;
 	//int pos_collidery;
 	iPoint player_size;
 	uint sfx;

@@ -24,6 +24,7 @@ public:
 	uint alpha = 80;
 	int search;
 	iPoint enemy_pos, player_pos,speed,objective;
+	bool diferentpath = false;
 };
 
 #endif

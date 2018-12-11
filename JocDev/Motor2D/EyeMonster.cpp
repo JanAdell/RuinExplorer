@@ -38,7 +38,7 @@ EyeMonster::EyeMonster(int x, int y) : Entity(x, y)
 void EyeMonster::Update(float dt)
 {
 	enemy_pos = App->map->WorldToMap(position.x, position.y);
-	player_pos = App->map->WorldToMap(App->entities->player->position.x,App->entities->player->position.y);
+	player_pos = App->map->WorldToMap(App->entities->player->position.x, App->entities->player->position.y);
 
 	if (enemy_pos.DistanceManhattan(player_pos) < search)
 	{

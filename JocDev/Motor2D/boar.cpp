@@ -63,24 +63,23 @@ void boar::Update(float dt)
 				}
 			}
 			
-			if (position != App->entities->player->position)
+			
+			if (enemypath->Count() > 0)
 			{
-				if (enemypath->Count() > 0)
-				{
-					objective = iPoint(enemypath->At(0)->x, enemypath->At(0)->y);
+				objective = iPoint(enemypath->At(0)->x, enemypath->At(0)->y);
 		
 					
-					if (objective.x <= enemy_pos.x )
-					{
-						left = true;
+				if (objective.x <= enemy_pos.x )
+				{
+					left = true;
 
-					}
-					else if (objective.x > enemy_pos.x)
-					{
-						left = false;
-					}					
 				}
+				else if (objective.x > enemy_pos.x)
+				{
+						left = false;
+				}					
 			}
+			
 		}
 		if (left)
 		{

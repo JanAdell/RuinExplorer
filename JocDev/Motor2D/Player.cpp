@@ -62,6 +62,12 @@ Player::Player(int x, int y):Entity(x,y)
 		fall.loop = false;
 		fall.speed = anim.child("fall_anim").attribute("speed").as_float();
 
+		Attack.PushBack({ anim.child("attack_anim").attribute("x1").as_int(),anim.child("attack_anim").attribute("y1").as_int(),anim.child("attack_anim").attribute("w1").as_int(),anim.child("attack_anim").attribute("h1").as_int() });
+		Attack.PushBack({ anim.child("attack_anim").attribute("x2").as_int(),anim.child("attack_anim").attribute("y2").as_int(),anim.child("attack_anim").attribute("w2").as_int(),anim.child("attack_anim").attribute("h2").as_int() });
+		Attack.PushBack({ anim.child("attack_anim").attribute("x3").as_int(),anim.child("attack_anim").attribute("y3").as_int(),anim.child("attack_anim").attribute("w3").as_int(),anim.child("attack_anim").attribute("h3").as_int() });
+		Attack.loop = false;
+		Attack.speed = anim.child("attack_anim").attribute("speed").as_float();
+
 		collider = App->collisions->AddCollider({ position.x,position.y,player_size.x,player_size.y - 5 }, COLLIDER_PLAYER, (j1Module*)App->entities);
 		
 		top_jump = true;
@@ -106,7 +112,7 @@ void Player::Update(float dt)
 		position.x -= speed.x;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
 	{
 		top_jump = true;
 		attack = true;
@@ -114,9 +120,11 @@ void Player::Update(float dt)
 	//jump
 	if (stay_in_platform)
 	{
+		Attack.Reset();
+		fall.Reset();
+		jump_anim.Reset();
 		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
 		{
-			attack = false;
 			start_jump = false;
 			if (start_jump == false)
 			{
@@ -126,6 +134,7 @@ void Player::Update(float dt)
 				start_jump = true;
 				stay_in_platform = false;
 				top_jump = false;
+				attack = false;
 			}
 		}
 	}
@@ -140,9 +149,14 @@ void Player::Update(float dt)
 			top_jump = true;
 		if (top_jump == true)
 		{
-			animation = &fall;
-			if (attack = true)
+			if (attack == true)
+			{
 				position.y += gravity;
+				animation = &Attack;
+			}
+			else
+				animation = &fall;
+			
 		}
 	}
 	position.y += gravity;
