@@ -85,14 +85,14 @@ void boar::Update(float dt)
 		if (left)
 		{
 			position.x -= speed.x;
-			App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
+			entityflip = SDL_FLIP_HORIZONTAL;
 
 		}
 
 		else
 		{
 			position.x += speed.x;
-			App->entities->enemyflip = SDL_FLIP_NONE;
+			entityflip = SDL_FLIP_NONE;
 	
 		}
 	}
@@ -105,7 +105,7 @@ void boar::Update(float dt)
 			if (!App->pathfinding->IsWalkable(ground))
 			{
 				position.x -= speed.x;
-				App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
+				entityflip = SDL_FLIP_HORIZONTAL;
 			}
 			else
 				left = false;
@@ -117,7 +117,7 @@ void boar::Update(float dt)
 			if (!App->pathfinding->IsWalkable(ground))
 			{
 				position.x += speed.x;
-				App->entities->enemyflip = SDL_FLIP_NONE;
+				entityflip = SDL_FLIP_NONE;
 			}
 
 			else

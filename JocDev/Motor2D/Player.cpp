@@ -95,14 +95,14 @@ void Player::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		animation = &run;
-		App->entities->enemyflip = SDL_RendererFlip::SDL_FLIP_NONE;
+		entityflip = SDL_RendererFlip::SDL_FLIP_NONE;
 		position.x += speed.x;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		animation = &run;
-		App->entities->enemyflip = SDL_RendererFlip::SDL_FLIP_HORIZONTAL;
+		entityflip = SDL_RendererFlip::SDL_FLIP_HORIZONTAL;
 		position.x -= speed.x;
 	}
 
@@ -195,17 +195,22 @@ void Player::OnCollision(Collider* collider)
 {
 	if (collider->type == COLLIDER_WALL)
 	{
-		if(position.x <= collider->rect.x + collider->rect.w)
-		position.x += speed.x;
-		if (position.x + player_size.x >= collider->rect.x)
-			position.x -= speed.x;
-		if (position.y + player_size.y >= collider->rect.y)
+		if (position.y + player_size.y < collider->rect.y + 10)
 		{
 			stay_in_platform = true;
 			position.y -= gravity;
 		}
-		if (position.y <= collider->rect.y + collider->rect.h)
+		else
+		{
+			if (position.x > collider->rect.x + collider->rect.w - 10)
+				position.x += speed.x;
+
+			if (position.x + player_size.x < collider->rect.x + 10)
+				position.x -= speed.x;
+		}
+		if (position.y > collider->rect.y + collider->rect.h - 10)
 			top_jump = true;
+		
 	}
 	if (collider->type == COLLIDER_BOOST)
 	{
@@ -222,7 +227,7 @@ void Player::OnCollision(Collider* collider)
 	}
 	if (collider->type == COLLIDER_ENEMY)
 	{
-		if (position.y <= collider->rect.y + collider->rect.h && !attack)
+		if (position.y + player_size.y > collider->rect.y - 10 && !attack)
 		{
 			App->scene->death();
 		}

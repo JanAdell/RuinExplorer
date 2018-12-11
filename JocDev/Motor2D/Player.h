@@ -19,8 +19,9 @@ public:
 
 	void Update(float dt);
 	void OnCollision(Collider* collider);
-	virtual bool Load(pugi::xml_node &node);
-	virtual	bool Save(pugi::xml_node &node) const;
+	bool Load(pugi::xml_node &node);
+	bool Save(pugi::xml_node &node) const;
+	int positionWall(const iPoint& pos,const SDL_Rect& rect);
 	bool CleanUp();
 
 

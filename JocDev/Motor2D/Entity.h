@@ -4,6 +4,9 @@
 #include "p2Point.h"
 #include "Animation.h"
 #include "j1Audio.h"
+#include "SDL/include/SDL.h"
+#pragma comment( lib, "SDL/libx86/SDL2.lib" )
+#pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
 
 struct SDL_Texture;
@@ -14,7 +17,7 @@ class Entity
 protected:
 	Animation * animation = nullptr;
 	Collider* collider = nullptr;
-	
+	SDL_RendererFlip entityflip;
 public:
 	iPoint position;
 	pugi::xml_document file;

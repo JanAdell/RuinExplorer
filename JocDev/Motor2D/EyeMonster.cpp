@@ -94,13 +94,13 @@ void EyeMonster::Update(float dt)
 	if (left)
 	{
 		position.x -= speed.x;
-		App->entities->enemyflip = SDL_FLIP_NONE;
+		entityflip = SDL_FLIP_NONE;
 	}
 
 	else
 	{
 		position.x += speed.x;
-		App->entities->enemyflip = SDL_FLIP_HORIZONTAL;
+		entityflip = SDL_FLIP_HORIZONTAL;
 	}
 }
 
