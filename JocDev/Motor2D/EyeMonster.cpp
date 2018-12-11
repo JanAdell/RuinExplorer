@@ -38,7 +38,7 @@ EyeMonster::EyeMonster(int x, int y) : Entity(x, y)
 void EyeMonster::Update(float dt)
 {
 	enemy_pos = App->map->WorldToMap(position.x, position.y);
-	player_pos = App->map->WorldToMap(App->player->position.x,App->player->position.y);
+	player_pos = App->map->WorldToMap(App->entities->player->position.x,App->entities->player->position.y);
 
 	if (enemy_pos.DistanceManhattan(player_pos) < search)
 	{
@@ -53,7 +53,7 @@ void EyeMonster::Update(float dt)
 					App->render->DrawQuad({ road.x ,road.y ,App->map->data.tile_width,App->map->data.tile_height }, 100, 100, 0, alpha);
 				}
 			}
-			if (position != App->player->position)
+			if (position != App->entities->player->position)
 			{
 				if (enemypath->Count() > 0)
 				{

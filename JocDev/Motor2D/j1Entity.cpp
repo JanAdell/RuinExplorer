@@ -190,6 +190,7 @@ void j1Entity::SpawnEntity(const EntityInfo& info)
 	{
 	case ENTITY_TYPES::ENTITY_PLAYER:
 		entities[i] = new Player(info.x, info.y);
+		player = entities[i];
 		break;
 	case ENTITY_TYPES::ENTITY_EYEMONSTER:
 		entities[i] = new EyeMonster(info.x, info.y);
@@ -207,8 +208,11 @@ void j1Entity::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (entities[i] != nullptr && entities[i]->GetCollider() == c1)
 		{
+			if(c1->type == COLLIDER_PLAYER)
+				entities[i]->OnCollision(c2);
+			else
 			entities[i]->OnCollision(c2);
-			if (c2->type == COLLIDER_PLAYER)
+			if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER)
 			{		
 				delete entities[i];
 				entities[i] = nullptr;

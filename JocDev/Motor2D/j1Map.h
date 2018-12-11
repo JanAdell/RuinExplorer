@@ -126,7 +126,7 @@ private:
 	bool LoadLayer(pugi::xml_node& node, Layer* layer);
 	bool LoadObjects(pugi::xml_node& node);
 	bool LoadProperties(pugi::xml_node& node, Properties& properties);
-	bool LoadProperties(pugi::xml_node& node, Properties* prop);
+
 
 	TileSet* GetTilesetFromTileId(int id) const;
 

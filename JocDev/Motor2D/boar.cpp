@@ -41,7 +41,7 @@ void boar::Update(float dt)
 {
 
 	enemy_pos = App->map->WorldToMap(position.x, position.y);
-	player_pos = App->map->WorldToMap(App->player->position.x, App->player->position.y);
+	player_pos = App->map->WorldToMap(App->entities->player->position.x, App->entities->player->position.y);
 	ground.x = enemy_pos.x;
 	ground.y = enemy_pos.y + speed.y;
 	if (App->pathfinding->IsWalkable(ground))
@@ -63,7 +63,7 @@ void boar::Update(float dt)
 				}
 			}
 			
-			if (position != App->player->position)
+			if (position != App->entities->player->position)
 			{
 				if (enemypath->Count() > 0)
 				{

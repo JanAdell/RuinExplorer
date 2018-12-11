@@ -90,18 +90,18 @@ void Player::Update(float dt)
 {
 
 	//pos_collidery = position.y + 30;
-	current_animation = &idle;
+	animation = &idle;
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
-		current_animation = &run;
+		animation = &run;
 		App->entities->enemyflip = SDL_RendererFlip::SDL_FLIP_NONE;
 		position.x += speed.x;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
-		current_animation = &run;
+		animation = &run;
 		App->entities->enemyflip = SDL_RendererFlip::SDL_FLIP_HORIZONTAL;
 		position.x -= speed.x;
 	}
@@ -133,14 +133,14 @@ void Player::Update(float dt)
 	{
 		if (position.y > distance_to_jump && top_jump == false)
 		{
-			current_animation = &jump_anim;
+			animation = &jump_anim;
 			position.y -= speed.y + gravity;
 		}
 		if (position.y == distance_to_jump)
 			top_jump = true;
 		if (top_jump == true)
 		{
-			current_animation = &fall;
+			animation = &fall;
 			if (attack = true)
 				position.y += gravity;
 		}
@@ -157,7 +157,7 @@ void Player::Update(float dt)
 			teleport.Reset();
 			App->audio->PlayFx(2, 0);
 			position.x = 7 * App->map->data.tile_width;
-			current_animation = &teleport;
+			animation = &teleport;
 		}
 
 		else if (position.x < 7 * App->map->data.tile_width)
@@ -165,7 +165,7 @@ void Player::Update(float dt)
 			teleport.Reset();
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
 			App->audio->PlayFx(2, 0);
-			current_animation = &teleport;
+			animation = &teleport;
 		}
 	}
 	else
@@ -175,7 +175,7 @@ void Player::Update(float dt)
 			teleport.Reset();
 			App->audio->PlayFx(2, 0);
 			position.x = 8 * App->map->data.tile_width;
-			current_animation = &teleport;
+			animation = &teleport;
 		}
 
 		else if (position.x < 8 * App->map->data.tile_width)
@@ -183,12 +183,9 @@ void Player::Update(float dt)
 			teleport.Reset();
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
 			App->audio->PlayFx(2, 0);
-			current_animation = &teleport;
+			animation = &teleport;
 		}
 	}
-
-	//colliders player
-	collider->SetPos(position.x, position.y);
 
 	//cameralimit->SetPos(App->render->camera.x, -App->render->camera.y);
 
@@ -198,16 +195,16 @@ void Player::OnCollision(Collider* collider)
 {
 	if (collider->type == COLLIDER_WALL)
 	{
-		if(position.x <= collider->SetPos.rect.x + player_size.x)
+		if(position.x <= collider->rect.x + collider->rect.w)
 		position.x += speed.x;
-		if (position.x + player_size.x >= collider->SetPos.rect.x)
+		if (position.x + player_size.x >= collider->rect.x)
 			position.x -= speed.x;
-		if (position.y <= collider->SetPos.rect.y + player_size.y)
+		if (position.y + player_size.y >= collider->rect.y)
 		{
 			stay_in_platform = true;
 			position.y -= gravity;
 		}
-		if (position.y + player_size.y >= collider->SetPos.rect.y)
+		if (position.y <= collider->rect.y + collider->rect.h)
 			top_jump = true;
 	}
 	if (collider->type == COLLIDER_BOOST)
@@ -225,7 +222,7 @@ void Player::OnCollision(Collider* collider)
 	}
 	if (collider->type == COLLIDER_ENEMY)
 	{
-		if (position.y <= collider->SetPos.rect.y + collider->SetPos.rect.h && !attack)
+		if (position.y <= collider->rect.y + collider->rect.h && !attack)
 		{
 			App->scene->death();
 		}

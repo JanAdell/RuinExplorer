@@ -1,37 +1,12 @@
-﻿  boar.cpp
+﻿  Player.cpp
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(46): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(49): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(87): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(94): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(107): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(119): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-  Player.cpp
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(99): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(106): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(125): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(137): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(145): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
 c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(148): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(201): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(201): error C2228: left of '.x' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(201): error C2228: left of '.w' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(202): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(203): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(203): error C2228: left of '.x' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(204): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(205): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(205): error C2228: left of '.y' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(205): error C2228: left of '.h' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(208): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(210): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(210): error C2228: left of '.y' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(220): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(228): error C2228: left of '.rect' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(228): error C2228: left of '.y' must have class/struct/union
-c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(228): error C2228: left of '.h' must have class/struct/union
-  Generating Code...
+c:\users\didaclis\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(205): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+  Motor2D.vcxproj -> C:\Users\didaclis\Documents\GitHub\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe

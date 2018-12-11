@@ -437,6 +437,8 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 		{
 			respawnPlayer.x = col_object.attribute("x").as_int();
 			respawnPlayer.y = col_object.attribute("y").as_int();
+			App->entities->position_player.x = col_object.attribute("x").as_int();
+			App->entities->position_player.y = col_object.attribute("y").as_int();
 		}
 		else
 		{
@@ -489,6 +491,7 @@ bool j1Map::LoadProperties(pugi::xml_node& node, Properties& properties)
 
 	return ret;
 }
+
 
 
 TileSet * j1Map::GetTilesetFromTileId(int id) const

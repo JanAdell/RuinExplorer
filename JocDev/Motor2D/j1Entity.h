@@ -51,6 +51,9 @@ public:
 
 	p2List<iPoint> enemyeyepos;
 	p2List<iPoint> enemyboatpos;
+	iPoint position_player;
+
+	Entity* player;
 
 private:
 

@@ -81,8 +81,8 @@ bool j1Player::Start()
 	bool ret = true;
 	player_tex = App->tex->Load("adventurer/adventurer.png"); 
 	teleport_tex = App->tex->Load("Textures/Teleport.png");
-	position.y = respawnPlayer.y;
-	position.x = respawnPlayer.x;
+	position.y = App->map->respawnPlayer.y;
+	position.x = App->map->respawnPlayer.x;
 	normal_jump = App->map->data.tile_height * 4;
 	boosted_jump = App->map->data.tile_height * 8;
 	top_jump = true;

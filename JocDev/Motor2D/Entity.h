@@ -24,10 +24,11 @@ public:
 
 	const Collider* GetCollider() const;
 	uint points = 0;
+	bool stay_in_platform = false;
 
 	virtual void Update(float dt) = 0;
 	virtual void Draw(SDL_Texture* sprites);
-	virtual void OnCollision(Collider* collider);
+	virtual void OnCollision(Collider* collider) = 0;
 	virtual bool Load(pugi::xml_node &node) { return true; };
 	virtual	bool Save(pugi::xml_node &node) const { return true; };
 

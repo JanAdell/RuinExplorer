@@ -28,20 +28,16 @@ public:
 	//Mix_Chunk* player_death = nullptr;
 	//SDL_Texture * player_tex = nullptr;
 	//SDL_Texture* teleport_tex = nullptr;
-	iPoint position;
-	iPoint respawnPlayer;
 	int normal_jump;
 	int boosted_jump;
 	int distance_to_jump;
 	float gravity;
 	bool start_jump = false;
-	bool stay_in_platform = false;
 	bool top_jump = true;
 	bool attack = false;
-	fPoint speed;
+	iPoint speed;
 
 private:
-	Animation* current_animation = nullptr;
 	Animation teleport;
 	Animation idle;
 	Animation run;

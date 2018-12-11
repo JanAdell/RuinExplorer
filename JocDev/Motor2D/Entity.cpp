@@ -3,7 +3,6 @@
 #include "j1Collisions.h"
 #include "j1Render.h"
 #include "j1Entity.h"
-#include "j1Player.h"
 #include "j1Scene.h"
 #include "Brofiler/Brofiler.h"
 
@@ -26,13 +25,13 @@ const Collider* Entity::GetCollider() const
 void Entity::Draw(SDL_Texture* sprites)
 {
 	if (collider != nullptr)
+	{
 		collider->SetPos(position.x, position.y);
+	}
 
 	if (animation != nullptr)
-		App->render->Blit(sprites, position.x, position.y, App->entities->enemyflip,&(animation->GetCurrentFrame()));
+	{
+		App->render->Blit(sprites, position.x, position.y, App->entities->enemyflip, &(animation->GetCurrentFrame()));
+	}
 }
 
-void Entity::OnCollision(Collider * collider)
-{
-	
-}

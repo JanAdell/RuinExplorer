@@ -92,16 +92,16 @@ bool j1Scene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN && volcan_map)
 	{
 		App->render->camera.x = App->render->camera.y = 0;
-		App->player->position.y = App->map->data.tile_height * 19;
+		App->entities->player->position.y = App->map->data.tile_height * 19;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN && !volcan_map)
 	{
 		App->render->camera.x = App->render->camera.y = 0;
-		App->player->position.y = App->map->data.tile_height * 19;
+		App->entities->player->position.y = App->map->data.tile_height * 19;
 	}
 	
-	if (App->player->stay_in_platform)
+	if (App->entities->player->stay_in_platform)
 		if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 		{
 			App->SaveGame("save_game.xml");
@@ -134,7 +134,6 @@ bool j1Scene::Update(float dt)
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->entities->Start();
-		App->player->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
 		volcan_map = false;
@@ -161,7 +160,6 @@ bool j1Scene::Update(float dt)
 		}
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
-		App->player->Start();
 		App->entities->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
@@ -173,13 +171,13 @@ bool j1Scene::Update(float dt)
 
 
 	//dead condition
-	if (-App->player->position.y < App->render->camera.y - App->render->camera.h)
+	if (-App->entities->player->position.y < App->render->camera.y - App->render->camera.h)
 	{
 		death();		
 	}
 
 	//win condition
-	if (-App->player->position.y > -App->map->data.tile_height * 16 && volcan_map)
+	if (-App->entities->player->position.y > -App->map->data.tile_height * 16 && volcan_map)
 	{
 		
 		App->map->CleanUp();
@@ -200,13 +198,12 @@ bool j1Scene::Update(float dt)
 		}
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
-		App->player->Start();
 		App->entities->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
 		volcan_map = false;
 	}
-	else if(-App->player->position.y > -App->map->data.tile_height * 10 && !volcan_map)
+	else if(-App->entities->player->position.y > -App->map->data.tile_height * 10 && !volcan_map)
 	{
 		App->map->CleanUp();
 		App->entities->enemyboatpos.clear();
@@ -226,7 +223,6 @@ bool j1Scene::Update(float dt)
 		}
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
-		App->player->Start();
 		App->entities->Start();
 		App->collisions->Start();
 		App->render->ResetTime(App->render->speed);
@@ -279,19 +275,6 @@ bool j1Scene::Save(pugi::xml_node& data) const
 
 void j1Scene::death()
 {
-	
-	if (App->player->collider_player_down != nullptr)
-		App->player->collider_player_down->to_delete = true;
-	if (App->player->collider_player_up != nullptr)
-		App->player->collider_player_up->to_delete = true;
-	if (App->player->collider_player_left != nullptr)
-		App->player->collider_player_left->to_delete = true;
-	if (App->player->collider_player_right != nullptr)
-		App->player->collider_player_right->to_delete = true;
-	if (App->player->collider_player != nullptr)
-		App->player->collider_player->to_delete = true;
-	if (App->player->cameralimit != nullptr)
-		App->player->cameralimit->to_delete = true;
 	App->entities->CleanUp();
 	App->audio->PlayFx(1, 0);
 	App->fade->fadetoBlack();
@@ -309,13 +292,13 @@ void j1Scene::death()
 	
 	App->entities->Start();
 	App->render->Start();
-	App->player->Start();
 	App->render->ResetTime(App->render->speed);
 	respawnEnemies();
 }
 
 void j1Scene::respawnEnemies()
 {
+	App->entities->AddEntity(ENTITY_TYPES::ENTITY_PLAYER, App->entities->position_player.x, App->entities->position_player.y);
 
 	for (p2List_item<iPoint> *iterator = App->entities->enemyboatpos.start; iterator != nullptr;iterator = iterator->next)
 	{
