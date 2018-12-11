@@ -1,5 +1,4 @@
 #include "j1App.h"
-#include "j1Textures.h"
 #include "j1Input.h"
 #include "j1Render.h"
 #include "Player.h"
@@ -9,6 +8,8 @@
 #include "j1Map.h"
 #include "j1Entity.h"
 #include "j1Collisions.h"
+#include "j1FadetoBlack.h"
+#include "j1Pathfinding.h"
 #include "p2Log.h"
 #include "j1Scene.h"
 #include <stdio.h>
@@ -237,13 +238,72 @@ void Player::OnCollision(Collider* collider)
 			start_jump = true;
 			stay_in_platform = false;
 			top_jump = false;
+			attack = false;
 		}
 	}
+
 	if (collider->type == COLLIDER_ENEMY)
 	{
 		if (position.y + player_size.y > collider->rect.y - 10 && !attack)
 		{
 			App->scene->death();
+		}
+	}
+
+	if (collider->type == COLLIDER_FINISH)
+	{
+		//win condition
+		if (App->scene->volcan_map)
+		{
+
+			App->map->CleanUp();
+			App->entities->enemyboatpos.clear();
+			App->entities->enemyeyepos.clear();
+			App->entities->CleanUp();
+			App->collisions->CleanUp();
+			App->fade->fadetoBlack();
+			if (App->map->Load("SeaTempleMap.tmx"))
+			{
+				int w, h;
+				uchar* data = NULL;
+				if (App->map->CreateWalkabilityMap(w, h, &data))
+					App->pathfinding->SetMap(w, h, data);
+
+				RELEASE_ARRAY(data);
+
+			}
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->render->Start();
+			App->entities->Start();
+			App->collisions->Start();
+			App->render->ResetTime(App->render->speed);
+			App->scene->volcan_map = false;
+		}
+		else if (!App->scene->volcan_map)
+		{
+			App->map->CleanUp();
+			App->entities->enemyboatpos.clear();
+			App->entities->enemyeyepos.clear();
+			App->entities->CleanUp();
+			App->collisions->CleanUp();
+			App->fade->fadetoBlack();
+			if (App->map->Load("Volcano_Map.tmx"))
+			{
+				int w, h;
+				uchar* data = NULL;
+				if (App->map->CreateWalkabilityMap(w, h, &data))
+					App->pathfinding->SetMap(w, h, data);
+
+				RELEASE_ARRAY(data);
+
+			}
+			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->render->Start();
+			App->entities->Start();
+			App->collisions->Start();
+			App->render->ResetTime(App->render->speed);
+			App->scene->volcan_map = true;
+
 		}
 	}
 

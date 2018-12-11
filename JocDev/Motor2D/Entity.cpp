@@ -26,7 +26,10 @@ void Entity::Draw(SDL_Texture* sprites)
 {
 	if (collider != nullptr)
 	{
-		collider->SetPos(position.x, position.y);
+		if(collider->type == COLLIDER_ENEMY)
+		collider->SetPos(position.x + 5, position.y);
+		else
+			collider->SetPos(position.x, position.y);
 	}
 
 	if (animation != nullptr)

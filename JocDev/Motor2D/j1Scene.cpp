@@ -175,61 +175,6 @@ bool j1Scene::Update(float dt)
 	{
 		death();		
 	}
-
-	//win condition
-	if (-App->entities->player->position.y > -App->map->data.tile_height * 16 && volcan_map)
-	{
-		
-		App->map->CleanUp();
-		App->entities->enemyboatpos.clear();
-		App->entities->enemyeyepos.clear();
-		App->entities->CleanUp();
-		App->collisions->CleanUp();
-		App->fade->fadetoBlack();
-		if (App->map->Load("SeaTempleMap.tmx"))
-		{
-			int w, h;
-			uchar* data = NULL;
-			if (App->map->CreateWalkabilityMap(w, h, &data))
-				App->pathfinding->SetMap(w, h, data);
-
-			RELEASE_ARRAY(data);
-
-		}
-		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
-		App->render->Start();
-		App->entities->Start();
-		App->collisions->Start();
-		App->render->ResetTime(App->render->speed);
-		volcan_map = false;
-	}
-	else if(-App->entities->player->position.y > -App->map->data.tile_height * 10 && !volcan_map)
-	{
-		App->map->CleanUp();
-		App->entities->enemyboatpos.clear();
-		App->entities->enemyeyepos.clear();
-		App->entities->CleanUp();
-		App->collisions->CleanUp();
-		App->fade->fadetoBlack();
-		if (App->map->Load("Volcano_Map.tmx"))
-		{
-			int w, h;
-			uchar* data = NULL;
-			if (App->map->CreateWalkabilityMap(w, h, &data))
-				App->pathfinding->SetMap(w, h, data);
-
-			RELEASE_ARRAY(data);
-
-		}
-		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-		App->render->Start();
-		App->entities->Start();
-		App->collisions->Start();
-		App->render->ResetTime(App->render->speed);
-		volcan_map = true;
-
-	}
-
 	return true;
 }
 

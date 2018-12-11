@@ -32,7 +32,7 @@ EyeMonster::EyeMonster(int x, int y) : Entity(x, y)
 		eyemonster.speed = anim.attribute("speed").as_float();
 		animation = &eyemonster;
 
-		collider = App->collisions->AddCollider({ position.x, position.y, anim.attribute("w3").as_int(), anim.attribute("h3").as_int() }, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
+		collider = App->collisions->AddCollider({ position.x + 20, position.y + 20, anim.attribute("w3").as_int() - 10, anim.attribute("h3").as_int() -10}, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
 	}
 }
 void EyeMonster::Update(float dt)

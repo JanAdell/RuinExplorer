@@ -81,49 +81,40 @@ void boar::Update(float dt)
 			}
 			
 		}
-		if (left)
-		{
-			position.x -= speed.x;
-			entityflip = SDL_FLIP_HORIZONTAL;
-
-		}
-
-		else
-		{
-			position.x += speed.x;
-			entityflip = SDL_FLIP_NONE;
-	
-		}
 	}
 	else
 	{
 
 		if (left)
 		{
-			ground = { enemy_pos.x - next_ground, enemy_pos.y + next_ground };
-			if (!App->pathfinding->IsWalkable(ground))
-			{
-				position.x -= speed.x;
-				entityflip = SDL_FLIP_HORIZONTAL;
-			}
-			else
-				left = false;
-		}
+			objective.x = enemy_pos.x - 1;
+			objective.y = enemy_pos.y + 1;
 
+		}
 		else
 		{
-			ground = { enemy_pos.x + next_ground, enemy_pos.y + next_ground };
-			if (!App->pathfinding->IsWalkable(ground))
-			{
-				position.x += speed.x;
-				entityflip = SDL_FLIP_NONE;
-			}
+			objective.x = enemy_pos.x + 1;
+			objective.y = enemy_pos.y + 1;
+		}
+		if (App->pathfinding->IsWalkable(objective))
+		{
+			left = !left;
 
-			else
-				left = true;
 		}
 	}
+	if (left)
+	{
+		position.x -= speed.x;
+		entityflip = SDL_FLIP_HORIZONTAL;
 
+	}
+
+	else
+	{
+		position.x += speed.x;
+		entityflip = SDL_FLIP_NONE;
+
+	}
 
 }
 
@@ -131,8 +122,6 @@ void boar::Update(float dt)
 void boar::OnCollision(Collider* collider)
 {
 
-	if (collider->type == COLLIDER_WALL)
-		left = !left;
 }
 
 bool boar::Load(pugi::xml_node & data)

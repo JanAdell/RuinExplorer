@@ -454,6 +454,10 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 
 				else if(strcmp(node.attribute("name").as_string(), "Boat") == 0)
 					App->entities->enemyboatpos.add({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0) });
+				
+				else if (strcmp(node.attribute("name").as_string(), "Finish") == 0)
+					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_FINISH);
+
 				else
 					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_BOOST);
 

@@ -23,6 +23,9 @@
   <terrain name="tree1" tile="95"/>
   <terrain name="tree" tile="441"/>
   <terrain name="sky" tile="456"/>
+  <terrain name="wf mid" tile="438"/>
+  <terrain name="wf mid 2" tile="437"/>
+  <terrain name="wf mid 3" tile="439"/>
  </terraintypes>
  <tile id="30" terrain="18,18,18,18"/>
  <tile id="31" terrain="18,18,18,18"/>
@@ -50,6 +53,9 @@
  <tile id="409" terrain=",,19,19"/>
  <tile id="410" terrain=",,19,"/>
  <tile id="415" terrain="2,2,2,2"/>
+ <tile id="437" terrain=",22,,22"/>
+ <tile id="438" terrain="21,21,21,21"/>
+ <tile id="439" terrain="23,,23,"/>
  <tile id="440" terrain=",19,,19"/>
  <tile id="441" terrain="19,19,19,19"/>
  <tile id="442" terrain="19,,19,"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="69" nextobjectid="182">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="32" height="129" tilewidth="32" tileheight="32" infinite="0" nextlayerid="70" nextobjectid="184">
  <tileset firstgid="1" name="Volcano Background" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
   <image source="terrain_atlas.png" width="1024" height="1024"/>
   <terraintypes>
@@ -33289,6 +33289,7 @@
   <object id="177" x="576" y="728" width="26" height="38"/>
   <object id="178" x="572" y="638" width="26" height="30"/>
   <object id="179" x="438" y="638" width="22" height="30"/>
+  <object id="183" x="658" y="3804" width="18" height="26"/>
  </objectgroup>
  <objectgroup color="#00aa00" id="38" name="Booster">
   <object id="141" x="288" y="544" width="31" height="30"/>
@@ -33320,5 +33321,8 @@
   <object id="167" x="545" y="3840" width="31" height="31"/>
   <object id="168" x="448" y="3839" width="31" height="33"/>
   <object id="169" x="480" y="3938" width="63" height="30"/>
+ </objectgroup>
+ <objectgroup color="#ffffff" id="69" name="Finish">
+  <object id="182" x="190" y="316" width="642" height="110"/>
  </objectgroup>
 </map>
