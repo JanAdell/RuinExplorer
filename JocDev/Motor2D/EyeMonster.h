@@ -17,12 +17,12 @@ public:
 	void OnCollision(Collider* collider);
 	virtual bool Load(pugi::xml_node &node);
 	virtual	bool Save(pugi::xml_node &node) const;
-	bool CleanUp();
 public:
 	bool left;
 	const p2DynArray<iPoint>* enemypath;
 	uint alpha = 80;
 	int search;
+	int monstersize;
 	iPoint enemy_pos, player_pos,speed,objective;
 	bool diferentpath = false;
 };

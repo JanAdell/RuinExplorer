@@ -26,6 +26,8 @@
     
     <player>
 	  <speed x = "2" y = "3" gravity = "2"/>
+	  <hit x = "20"/>
+	  <health life = "3"/>
       <jump normal = "128" boost = "256"/>
 		  <idle_anim
 		  x1 = "376" y1 = "75" w1 = "19" h1 = "29"

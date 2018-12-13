@@ -116,12 +116,10 @@ bool j1Scene::Update(float dt)
 	{
 
 		App->map->CleanUp();
-		App->entities->enemyboatpos.clear();
-		App->entities->enemyeyepos.clear();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
-		if (App->map->Load("SeaTempleMap.tmx"))
+		App->map->Load("SeaTempleMap.tmx");
 		{
 			int w, h;
 			uchar* data = NULL;
@@ -143,21 +141,11 @@ bool j1Scene::Update(float dt)
 	{
 		
 		App->map->CleanUp();
-		App->entities->enemyboatpos.clear();
-		App->entities->enemyeyepos.clear();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
-		if (App->map->Load("Volcano_Map.tmx"))
-		{
-			int w, h;
-			uchar* data = NULL;
-			if (App->map->CreateWalkabilityMap(w, h, &data))
-				App->pathfinding->SetMap(w, h, data);
+		App->map->Load("Volcano_Map.tmx");
 
-			RELEASE_ARRAY(data);
-
-		}
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->entities->Start();
@@ -221,7 +209,6 @@ bool j1Scene::Save(pugi::xml_node& data) const
 void j1Scene::death()
 {
 	App->entities->CleanUp();
-	App->audio->PlayFx(1, 0);
 	App->fade->fadetoBlack();
 
 

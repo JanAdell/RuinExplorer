@@ -23,7 +23,7 @@ EyeMonster::EyeMonster(int x, int y) : Entity(x, y)
 		search = node.child("eyemonster").child("search").attribute("x").as_int();
 
 		pugi::xml_node anim = node.child("eyemonster").child("anim");
-
+		monstersize = anim.attribute("w1").as_int() - 10;
 		eyemonster.PushBack({ anim.attribute("x1").as_int(), anim.attribute("y1").as_int(), anim.attribute("w1").as_int(), anim.attribute("h1").as_int() });
 		eyemonster.PushBack({ anim.attribute("x2").as_int(), anim.attribute("y2").as_int(), anim.attribute("w2").as_int(), anim.attribute("h2").as_int() });
 		eyemonster.PushBack({ anim.attribute("x3").as_int(), anim.attribute("y3").as_int(), anim.attribute("w3").as_int(), anim.attribute("h3").as_int() });
@@ -110,6 +110,14 @@ void EyeMonster::OnCollision(Collider* collider)
 
 	if (collider->type == COLLIDER_WALL)
 		left = !left;
+	if (collider->type == COLLIDER_PLAYER)
+	{
+		if (position.x + 20 > collider->rect.x + collider->rect.w - 10)
+			position.x += speed.x * 3;
+
+		if (position.x + 20 + monstersize < collider->rect.x + 10)
+			position.x -= speed.x * 3;
+	}
 }
 
 bool EyeMonster::Load(pugi::xml_node & data)
@@ -128,11 +136,5 @@ bool EyeMonster::Save(pugi::xml_node & data) const
 	pos.append_attribute("x") = position.x;
 	pos.append_attribute("y") = position.y;
 
-	return true;
-}
-
-bool EyeMonster::CleanUp()
-{
-	
 	return true;
 }

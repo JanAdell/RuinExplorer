@@ -21,18 +21,20 @@ public:
 	void OnCollision(Collider* collider);
 	bool Load(pugi::xml_node &node);
 	bool Save(pugi::xml_node &node) const;
-	bool CleanUp();
-
 
 public:
 
 	int normal_jump;
 	int boosted_jump;
 	int distance_to_jump;
+	int lifes;
 	float gravity;
 	bool start_jump = false;
 	bool top_jump = true;
 	bool attack = false;
+	bool recivedamageL = false;
+	bool recivedamageR = false;
+	int damageM,hit;
 	iPoint speed;
 
 private:

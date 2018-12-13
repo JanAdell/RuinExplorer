@@ -87,7 +87,7 @@ void boar::Update(float dt)
 
 		if (left)
 		{
-			objective.x = enemy_pos.x - 1;
+			objective.x = enemy_pos.x;
 			objective.y = enemy_pos.y + 1;
 
 		}
@@ -139,12 +139,6 @@ bool boar::Save(pugi::xml_node & data) const
 
 	pos.append_attribute("x") = position.x;
 	pos.append_attribute("y") = position.y;
-
-	return true;
-}
-
-bool boar::CleanUp()
-{
 
 	return true;
 }

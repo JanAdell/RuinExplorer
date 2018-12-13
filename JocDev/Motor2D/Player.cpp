@@ -34,6 +34,9 @@ Player::Player(int x, int y):Entity(x,y)
 		normal_jump = node.child("player").child("jump").attribute("normal").as_float();
 		boosted_jump = node.child("player").child("jump").attribute("boost").as_float();
 
+		hit = node.child("player").child("hit").attribute("x").as_int();
+		lifes = node.child("player").child("health").attribute("life").as_int();
+
 		pugi::xml_node anim = node.child("player");
 
 		idle.PushBack({ anim.child("idle_anim").attribute("x1").as_int(),anim.child("idle_anim").attribute("y1").as_int(),anim.child("idle_anim").attribute("w1").as_int(),anim.child("idle_anim").attribute("h1").as_int() });
@@ -79,18 +82,11 @@ Player::Player(int x, int y):Entity(x,y)
 }
 
 Player::~Player()
-{}
-
-
-bool Player::CleanUp()
 {
 	LOG("Unloading player");
 	App->audio->UnloadFx(1);
 	App->audio->UnloadFx(2);
-	return true;
-
 }
-
 
 // Update: draw background
 void Player::Update(float dt)
@@ -121,6 +117,7 @@ void Player::Update(float dt)
 	//jump
 	if (stay_in_platform)
 	{
+		attack = false;
 		Attack.Reset();
 		fall.Reset();
 		jump_anim.Reset();
@@ -135,7 +132,6 @@ void Player::Update(float dt)
 				start_jump = true;
 				stay_in_platform = false;
 				top_jump = false;
-				attack = false;
 			}
 		}
 	}
@@ -172,7 +168,6 @@ void Player::Update(float dt)
 			teleport.Reset();
 			App->audio->PlayFx(2, 0);
 			position.x = 7 * App->map->data.tile_width;
-			animation = &teleport;
 		}
 
 		else if (position.x < 7 * App->map->data.tile_width)
@@ -180,7 +175,6 @@ void Player::Update(float dt)
 			teleport.Reset();
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
 			App->audio->PlayFx(2, 0);
-			animation = &teleport;
 		}
 	}
 	else
@@ -202,7 +196,25 @@ void Player::Update(float dt)
 		}
 	}
 
-	//cameralimit->SetPos(App->render->camera.x, -App->render->camera.y);
+	//damage moviment
+	if (recivedamageL)
+	{
+		if (damageM > position.x)
+		{
+			position.x += speed.y;
+		}
+		else
+			recivedamageL = false;
+	}
+	if (recivedamageR)
+	{
+		if (damageM < position.x)
+		{
+			position.x -= speed.y;
+		}
+		else
+			recivedamageR = false;
+	}
 
 }
 
@@ -238,7 +250,6 @@ void Player::OnCollision(Collider* collider)
 			start_jump = true;
 			stay_in_platform = false;
 			top_jump = false;
-			attack = false;
 		}
 	}
 
@@ -246,22 +257,40 @@ void Player::OnCollision(Collider* collider)
 	{
 		if (position.y + player_size.y > collider->rect.y - 10 && !attack)
 		{
-			App->scene->death();
+			App->audio->PlayFx(1, 0);
+			--lifes;
+			if (lifes <= 0) 
+			{
+				App->scene->death();
+			}
+			else
+			{
+				if (position.x > collider->rect.x + collider->rect.w - 10)
+				{
+					recivedamageL = true;
+					damageM = position.x + hit;
+				}
+
+				if (position.x + player_size.x < collider->rect.x + 10)
+				{
+					recivedamageR = true;
+					damageM = position.x - hit;
+				}
+			}
 		}
 	}
 
 	if (collider->type == COLLIDER_FINISH)
 	{
 		//win condition
-		if (App->scene->volcan_map)
-		{
 
-			App->map->CleanUp();
-			App->entities->enemyboatpos.clear();
-			App->entities->enemyeyepos.clear();
-			App->entities->CleanUp();
-			App->collisions->CleanUp();
-			App->fade->fadetoBlack();
+		App->map->CleanUp();
+		App->entities->CleanUp();
+		App->collisions->CleanUp();
+		App->fade->fadetoBlack();
+
+		if (App->scene->volcan_map)
+		{	
 			if (App->map->Load("SeaTempleMap.tmx"))
 			{
 				int w, h;
@@ -273,20 +302,10 @@ void Player::OnCollision(Collider* collider)
 
 			}
 			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
-			App->render->Start();
-			App->entities->Start();
-			App->collisions->Start();
-			App->render->ResetTime(App->render->speed);
 			App->scene->volcan_map = false;
 		}
 		else if (!App->scene->volcan_map)
 		{
-			App->map->CleanUp();
-			App->entities->enemyboatpos.clear();
-			App->entities->enemyeyepos.clear();
-			App->entities->CleanUp();
-			App->collisions->CleanUp();
-			App->fade->fadetoBlack();
 			if (App->map->Load("Volcano_Map.tmx"))
 			{
 				int w, h;
@@ -298,13 +317,13 @@ void Player::OnCollision(Collider* collider)
 
 			}
 			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-			App->render->Start();
-			App->entities->Start();
-			App->collisions->Start();
-			App->render->ResetTime(App->render->speed);
 			App->scene->volcan_map = true;
 
 		}
+		App->render->Start();
+		App->entities->Start();
+		App->collisions->Start();
+		App->render->ResetTime(App->render->speed);
 	}
 
 }
