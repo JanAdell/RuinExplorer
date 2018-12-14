@@ -210,12 +210,9 @@ void j1Scene::death()
 {
 	App->entities->CleanUp();
 	App->fade->fadetoBlack();
-
-
 	if (volcan_map)
 	{
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-		
 	}
 	else
 	{

@@ -34,7 +34,7 @@ boar::boar(int x, int y) : Entity(x, y)
 		boaranim.speed = anim.attribute("speed").as_float();
 		animation = &boaranim;
 
-		collider = App->collisions->AddCollider({ position.x, position.y, anim.attribute("w3").as_int(), anim.attribute("h3").as_int() }, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
+		collider = App->collisions->AddCollider({ position.x, position.y, anim.attribute("w3").as_int() - 20, anim.attribute("h3").as_int() }, COLLIDER_TYPE::COLLIDER_ENEMY, (j1Module*)App->entities);
 	}
 }
 void boar::Update(float dt)
@@ -49,7 +49,7 @@ void boar::Update(float dt)
 		position.y += speed.y;
 	}
 		
-	if (enemy_pos.DistanceManhattan(player_pos) < search)
+	if (enemy_pos.DistanceManhattan(player_pos) < search && position.y <= App->entities->player->position.y)
 	{
 		enemypath = App->pathfinding->GetLastPath();
 		if (App->pathfinding->CreatePath(enemy_pos, player_pos,ENTITY_BOAR) != -1)
@@ -97,6 +97,22 @@ void boar::Update(float dt)
 			objective.y = enemy_pos.y + 1;
 		}
 		if (App->pathfinding->IsWalkable(objective))
+		{
+			left = !left;
+
+		}
+		if (left)
+		{
+			objective.x = enemy_pos.x - 1;
+			objective.y = enemy_pos.y;
+
+		}
+		else
+		{
+			objective.x = enemy_pos.x + 1;
+			objective.y = enemy_pos.y;
+		}
+		if (!App->pathfinding->IsWalkable(objective))
 		{
 			left = !left;
 

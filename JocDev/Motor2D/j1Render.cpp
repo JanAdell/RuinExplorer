@@ -10,6 +10,7 @@
 #include "Brofiler/Brofiler.h"
 
 #define VSYNC true
+#define MOVE_MARGING 20
 
 j1Render::j1Render() : j1Module()
 {
@@ -89,14 +90,9 @@ bool j1Render::Update(float dt)
 
 	if (camera.y != 0)
 	{
-		if (time_to_start <= speed)
+		if (App->entities->player->position.y < App->map->respawnPlayer.y - MOVE_MARGING)
 		{
-			camera.y += 1;
-			speed = time_to_start;
-		}
-		else
-		{
-			speed += 1;
+			camera.y += speed;
 		}
 	}
 
