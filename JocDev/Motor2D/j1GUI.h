@@ -7,6 +7,7 @@
 #include "lifes.h"
 #include "ProgresionBar.h"
 #include "Bar.h"
+#include "Coins.h"
 
 #define CURSOR_WIDTH 2
 #define MAX_GUI 50
@@ -19,7 +20,9 @@ enum GUI_TYPES
 	SPRITES,
 	LIFES,
 	PROGRESBAR,
-	BAR
+	BAR,
+	COLLECTIVE,
+	COIN
 };
 
 

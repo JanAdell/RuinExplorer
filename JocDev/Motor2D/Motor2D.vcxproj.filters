@@ -85,6 +85,12 @@
     <ClCompile Include="Bar.cpp">
       <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClCompile>
+    <ClCompile Include="Collective.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Coins.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI\Collective</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -189,6 +195,12 @@
     <ClInclude Include="Bar.h">
       <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClInclude>
+    <ClInclude Include="Collective.h">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Coins.h">
+      <Filter>Desenvolupament  ========\Modules\GUI\Collective</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -217,6 +229,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Modules\GUI\Sprites">
       <UniqueIdentifier>{985c7315-878e-4b8b-bae3-5b69fa9d37bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\GUI\Collective">
+      <UniqueIdentifier>{eab76bef-feef-4945-9cc7-5f7ef4eb85e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -22,6 +22,7 @@ Lifes::Lifes(int x, int y) : Sprites(x, y)
 		min_life = lifeNode.child("health").attribute("min_life").as_int();
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
+	gui_delete = false;
 }
 
 Lifes::~Lifes()
@@ -30,6 +31,7 @@ Lifes::~Lifes()
 
 void Lifes::Update(float dt)
 {
+
 	animation = &life_anim;
 	if (App->entities->player != nullptr)
 	{

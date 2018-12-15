@@ -34,6 +34,7 @@ bar::bar(int x, int y):Sprites(x,y)
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_VERTICAL;
 	barpos = position;
+	gui_delete = false;
 }
 
 bar::~bar()
@@ -42,6 +43,7 @@ bar::~bar()
 
 void bar::Update(float dt)
 {
+	gui_delete = false;
 	if (App->render->start)
 	{
 		animation = &bar_anim;

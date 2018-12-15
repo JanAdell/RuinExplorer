@@ -29,6 +29,7 @@ public:
 	iPoint position;
 	pugi::xml_document file;
 	GUI_TYPES type;
+	bool gui_delete = false;
 
 };
 

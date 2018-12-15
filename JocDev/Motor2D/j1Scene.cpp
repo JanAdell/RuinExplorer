@@ -42,6 +42,7 @@ bool j1Scene::Start()
 	App->gui->AddGui(250, 10, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
 	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
 	App->gui->AddGui(950, 500, GUI_TYPES::SPRITES, GUI_TYPES::PROGRESBAR);
+	App->gui->AddGui(300, 4020, GUI_TYPES::COLLECTIVE, GUI_TYPES::COIN);
 	
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	App->audio->LoadFx("audio/fx/death.wav");

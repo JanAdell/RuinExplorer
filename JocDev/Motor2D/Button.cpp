@@ -27,6 +27,7 @@ Button::Button(int x, int y) : GUI(x, y,GUI_TYPES::BUTTON)
 		push.loop = false;
 		flip = SDL_RendererFlip::SDL_FLIP_NONE;
 	}
+	gui_delete = false;
 }
 
 Button::~Button()

@@ -66,6 +66,7 @@ bool j1GUI::PostUpdate()
 	for (uint i = 0; i < MAX_GUI; ++i)
 		if (gui[i] != nullptr)
 			gui[i]->Draw((SDL_Texture*)GetAtlas());
+
 	return true;
 }
 
@@ -106,6 +107,7 @@ bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype)
 	return ret;
 }
 
+
 // const getter for atlas
 const SDL_Texture* j1GUI::GetAtlas() const
 {
@@ -130,7 +132,10 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 
 		if (inf.subtype == GUI_TYPES::BAR)
 			gui[i] = new bar(inf.pos.x, inf.pos.y);
-
+		break;
+	case GUI_TYPES::COLLECTIVE:
+		if (inf.subtype == GUI_TYPES::COIN)
+			gui[i] = new Coins(inf.pos.x, inf.pos.y);
 		break;
 	}
 }
