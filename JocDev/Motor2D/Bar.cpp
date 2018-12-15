@@ -57,7 +57,6 @@ void bar::Update(float dt)
 	else
 	{
 		bar_anim.Reset();
-		App->render->start = false;
 		position.y = barpos.y + 14;
 	}
 

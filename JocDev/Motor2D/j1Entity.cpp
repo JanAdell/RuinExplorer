@@ -107,8 +107,11 @@ bool j1Entity::CleanUp()
 
 	}
 
-	enemyboatpos.clear();
-	enemyeyepos.clear();
+	if (!App->scene->die)
+	{
+		enemyboatpos.clear();
+		enemyeyepos.clear();
+	}
 
 	return true;
 }

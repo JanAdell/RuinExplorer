@@ -39,6 +39,7 @@ public:
 	void respawnEnemies();
 	bool volcan_map = true;
 	bool map_saved = true;
+	bool die = false;
 
 private:
 	_Mix_Music* Stage_music = nullptr;

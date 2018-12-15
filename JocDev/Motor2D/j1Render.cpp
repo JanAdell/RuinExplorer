@@ -95,6 +95,8 @@ bool j1Render::Update(float dt)
 			camera.y += speed;
 			start = true;
 		}
+		else
+			start = false;
 	}
 
 		//windows name

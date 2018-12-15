@@ -116,12 +116,12 @@ bool j1Scene::Update(float dt)
 	
 	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
 	{
-
 		App->map->CleanUp();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
+		App->pathfinding->CleanUp();
 		App->fade->fadetoBlack();
-		App->map->Load("SeaTempleMap.tmx");
+		if(App->map->Load("SeaTempleMap.tmx"));
 		{
 			int w, h;
 			uchar* data = NULL;
@@ -140,13 +140,21 @@ bool j1Scene::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) 
 	{
-		
 		App->map->CleanUp();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
+		App->pathfinding->CleanUp();
 		App->fade->fadetoBlack();
-		App->map->Load("Volcano_Map.tmx");
+		if(App->map->Load("Volcano_Map.tmx"));
+		{
+			int w, h;
+			uchar* data = NULL;
+			if (App->map->CreateWalkabilityMap(w, h, &data))
+				App->pathfinding->SetMap(w, h, data);
 
+			RELEASE_ARRAY(data);
+
+		}
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->entities->Start();
@@ -175,6 +183,8 @@ bool j1Scene::PostUpdate()
 
 	if(App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
+
+	die = false;
 
 	return ret;
 }
@@ -208,6 +218,7 @@ bool j1Scene::Save(pugi::xml_node& data) const
 
 void j1Scene::death()
 {
+	App->scene->die = true;
 	App->entities->CleanUp();
 	App->fade->fadetoBlack();
 	if (volcan_map)
