@@ -80,6 +80,8 @@ private:
 public:
 	GUI_inf	queue[MAX_GUI];
 	GUI* gui[MAX_GUI];
+
+	p2List<iPoint> coins;
 };
 
 #endif // __j1GUI_H_

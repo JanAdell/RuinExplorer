@@ -14,6 +14,7 @@ public:
 private:
 	Animation coin_anim;
 	iPoint size;
+	bool collectcoin = false;
 };
 
 #endif

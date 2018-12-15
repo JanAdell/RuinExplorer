@@ -12,6 +12,7 @@
 #include "j1Pathfinding.h"
 #include "p2Log.h"
 #include "j1Scene.h"
+#include "j1GUI.h"
 #include <stdio.h>
 
 
@@ -286,6 +287,7 @@ void Player::OnCollision(Collider* collider)
 
 		App->map->CleanUp();
 		App->entities->CleanUp();
+		App->gui->CleanUp();
 		App->collisions->CleanUp();
 		App->fade->fadetoBlack();
 
@@ -322,6 +324,7 @@ void Player::OnCollision(Collider* collider)
 		}
 		App->render->Start();
 		App->entities->Start();
+		App->gui->Start();
 		App->collisions->Start();
 	}
 

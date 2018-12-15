@@ -37,13 +37,6 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-
-	//App->gui->AddGui(480, 4029, GUI_TYPES::BUTTON);
-	App->gui->AddGui(250, 10, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
-	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
-	App->gui->AddGui(950, 500, GUI_TYPES::SPRITES, GUI_TYPES::PROGRESBAR);
-	App->gui->AddGui(300, 4020, GUI_TYPES::COLLECTIVE, GUI_TYPES::COIN);
-	
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	App->audio->LoadFx("audio/fx/death.wav");
 
@@ -120,6 +113,7 @@ bool j1Scene::Update(float dt)
 		App->map->CleanUp();
 		App->entities->CleanUp();
 		App->collisions->CleanUp();
+		App->gui->CleanUp();
 		App->pathfinding->CleanUp();
 		App->fade->fadetoBlack();
 		if(App->map->Load("SeaTempleMap.tmx"));
@@ -135,6 +129,7 @@ bool j1Scene::Update(float dt)
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->entities->Start();
+		App->gui->Start();
 		App->collisions->Start();
 		volcan_map = false;
 	}
@@ -143,6 +138,7 @@ bool j1Scene::Update(float dt)
 	{
 		App->map->CleanUp();
 		App->entities->CleanUp();
+		App->gui->CleanUp();
 		App->collisions->CleanUp();
 		App->pathfinding->CleanUp();
 		App->fade->fadetoBlack();
@@ -159,6 +155,7 @@ bool j1Scene::Update(float dt)
 		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 		App->render->Start();
 		App->entities->Start();
+		App->gui->Start();
 		App->collisions->Start();
 		volcan_map = true;
 	}
@@ -230,7 +227,6 @@ void j1Scene::death()
 	{
 		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 	}
-	
 	App->entities->Start();
 	App->render->Start();
 	respawnEnemies();
@@ -249,6 +245,19 @@ void j1Scene::respawnEnemies()
 	for (p2List_item<iPoint> *iterator = App->entities->enemyeyepos.start; iterator != nullptr;iterator = iterator->next)
 	{
 		App->entities->AddEntity(ENTITY_TYPES::ENTITY_EYEMONSTER, iterator->data.x, iterator->data.y);
+	}
+}
+
+void j1Scene::respawnGUI()
+{
+
+	//App->gui->AddGui(480, 4029, GUI_TYPES::BUTTON);
+	App->gui->AddGui(250, 10, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
+	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
+	App->gui->AddGui(950, 500, GUI_TYPES::SPRITES, GUI_TYPES::PROGRESBAR);
+	for (p2List_item<iPoint>* item = App->gui->coins.start; item != nullptr; item = item->next)
+	{
+		App->gui->AddGui(item->data.x, item->data.y, GUI_TYPES::COLLECTIVE, GUI_TYPES::COIN);
 	}
 }
 

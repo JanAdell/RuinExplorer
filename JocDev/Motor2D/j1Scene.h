@@ -37,6 +37,7 @@ public:
 
 	void death();
 	void respawnEnemies();
+	void respawnGUI();
 	bool volcan_map = true;
 	bool map_saved = true;
 	bool die = false;

@@ -10,6 +10,8 @@
 j1GUI::j1GUI() : j1Module()
 {
 	name.create("gui");
+	for (uint i = 0; i < MAX_GUI; ++i)
+		gui[i] = nullptr;
 }
 
 // Destructor
@@ -84,6 +86,8 @@ bool j1GUI::CleanUp()
 			gui[i] = nullptr;
 		}
 	}
+	coins.clear();
+
 	return true;
 }
 

@@ -1,6 +1,7 @@
 #include "Coins.h"
 #include "j1App.h"
 #include "j1Entity.h"
+#include "j1Scene.h"
 
 Coins::Coins(int x, int y):Collective(x,y)
 {
@@ -31,11 +32,20 @@ Coins::~Coins()
 
 void Coins::Update(float dt)
 {
-	animation = &coin_anim;
+	if (!collectcoin)
+		animation = &coin_anim;
+	else
+		animation = nullptr;
+
 	if (position.x < App->entities->player->position.x && position.x + size.x > App->entities->player->position.x
-		&& position.y < App->entities->player->position.y && position.y + size.y > App->entities->player->position.y)
+		&& position.y < App->entities->player->position.y && position.y + size.y > App->entities->player->position.y && !collectcoin)
 	{
-		gui_delete = true;
+		collectcoin = true;
 		collect++;
+	}
+
+	if (App->scene->die)
+	{
+		collectcoin = false;
 	}
 }
