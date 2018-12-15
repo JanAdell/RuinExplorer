@@ -91,6 +91,9 @@
     <ClCompile Include="Coins.cpp">
       <Filter>Desenvolupament  ========\Modules\GUI\Collective</Filter>
     </ClCompile>
+    <ClCompile Include="SCoin.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -200,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="Coins.h">
       <Filter>Desenvolupament  ========\Modules\GUI\Collective</Filter>
+    </ClInclude>
+    <ClInclude Include="SCoin.h">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

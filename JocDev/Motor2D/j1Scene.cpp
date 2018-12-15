@@ -252,7 +252,8 @@ void j1Scene::respawnGUI()
 {
 
 	//App->gui->AddGui(480, 4029, GUI_TYPES::BUTTON);
-	App->gui->AddGui(250, 10, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
+	App->gui->AddGui(250, 13, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
+	App->gui->AddGui(300, 10, GUI_TYPES::SPRITES, GUI_TYPES::SPRITECOIN);
 	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
 	App->gui->AddGui(950, 500, GUI_TYPES::SPRITES, GUI_TYPES::PROGRESBAR);
 	for (p2List_item<iPoint>* item = App->gui->coins.start; item != nullptr; item = item->next)

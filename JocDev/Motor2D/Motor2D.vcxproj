@@ -105,6 +105,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ProgresionBar.cpp" />
     <ClCompile Include="PugiXml\src\pugixml.cpp" />
+    <ClCompile Include="SCoin.cpp" />
     <ClCompile Include="Sprites.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +144,7 @@
     <ClInclude Include="ProgresionBar.h" />
     <ClInclude Include="PugiXml\src\pugiconfig.hpp" />
     <ClInclude Include="PugiXml\src\pugixml.hpp" />
+    <ClInclude Include="SCoin.h" />
     <ClInclude Include="Sprites.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -8,7 +8,7 @@ Coins::Coins(int x, int y):Collective(x,y)
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
 	{
-		pugi::xml_node coinNode = file.child("GUI").child("Sprites");
+		pugi::xml_node coinNode = file.child("GUI").child("Collective");
 
 		coin_anim.PushBack({ coinNode.child("coin_anim").attribute("x1").as_int(), coinNode.child("coin_anim").attribute("y1").as_int(), coinNode.child("coin_anim").attribute("w1").as_int(), coinNode.child("coin_anim").attribute("h1").as_int() });
 		coin_anim.PushBack({ coinNode.child("coin_anim").attribute("x2").as_int(), coinNode.child("coin_anim").attribute("y2").as_int(), coinNode.child("coin_anim").attribute("w2").as_int(), coinNode.child("coin_anim").attribute("h2").as_int() });

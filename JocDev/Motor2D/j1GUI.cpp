@@ -136,6 +136,9 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 
 		if (inf.subtype == GUI_TYPES::BAR)
 			gui[i] = new bar(inf.pos.x, inf.pos.y);
+
+		if (inf.subtype == GUI_TYPES::SPRITECOIN)
+			gui[i] = new Scoin(inf.pos.x, inf.pos.y);
 		break;
 	case GUI_TYPES::COLLECTIVE:
 		if (inf.subtype == GUI_TYPES::COIN)
