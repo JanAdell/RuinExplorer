@@ -31,6 +31,7 @@ bool j1Entity::Start()
 {
 
 	sprites = App->tex->Load("../Game/maps/enemy.png");
+	mdeathsfx = App->audio->LoadFx("audio/fx/Teleport.wav");
 	return true;
 }
 
@@ -96,7 +97,7 @@ bool j1Entity::CleanUp()
 	LOG("Freeing all enemies");
 
 	App->tex->UnLoad(sprites);
-
+	App->audio->UnloadFx(mdeathsfx);
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (entities[i] != nullptr)
@@ -222,6 +223,7 @@ void j1Entity::OnCollision(Collider* c1, Collider* c2)
 			if (c1->type == COLLIDER_ENEMY && c2->type == COLLIDER_PLAYER)
 			{		
 				delete entities[i];
+				App->audio->PlayFx(mdeathsfx);
 				entities[i] = nullptr;
 			}
 		}
