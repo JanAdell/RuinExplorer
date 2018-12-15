@@ -104,8 +104,11 @@ bool j1Entity::CleanUp()
 			delete entities[i];
 			entities[i] = nullptr;
 		}
+
 	}
 
+	enemyboatpos.clear();
+	enemyeyepos.clear();
 
 	return true;
 }
@@ -180,6 +183,7 @@ bool j1Entity::Save(pugi::xml_node & data) const
 	}
 	return true;
 }
+
 
 void j1Entity::SpawnEntity(const EntityInfo& info)
 {

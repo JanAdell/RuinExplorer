@@ -11,11 +11,11 @@
 #include "j1Scene.h"
 #include "j1Map.h"
 #include "j1FadetoBlack.h"
-//#include "j1Player.h"
 #include "j1App.h"
 #include "j1Collisions.h"
 #include "j1Pathfinding.h"
 #include "j1Entity.h"
+#include "j1Gui.h"
 #include "Brofiler/Brofiler.h"
 
 // Constructor
@@ -31,7 +31,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	fade = new j1FadetoBlack();
 	scene = new j1Scene();
 	map = new j1Map();
-	//player = new j1Player();
+	gui = new j1GUI();
 	collisions = new j1Collisions();
 	pathfinding = new j1Pathfinding();
 	entities = new j1Entity();
@@ -44,9 +44,9 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(map);
 	AddModule(scene);
+	AddModule(gui);
 	AddModule(collisions);
 	AddModule(entities);
-	//AddModule(player);
 	AddModule(fade);
 	AddModule(pathfinding);
 

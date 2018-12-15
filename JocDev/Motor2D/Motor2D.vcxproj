@@ -76,12 +76,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bar.cpp" />
     <ClCompile Include="boar.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EyeMonster.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="j1Collisions.cpp" />
     <ClCompile Include="j1Entity.cpp" />
     <ClCompile Include="j1FadetoBlack.cpp" />
+    <ClCompile Include="j1GUI.cpp" />
     <ClCompile Include="j1Main.cpp" />
     <ClCompile Include="j1App.cpp" />
     <ClCompile Include="j1Audio.cpp" />
@@ -91,25 +95,33 @@
     <ClCompile Include="j1PerfTimer.cpp" />
     <ClCompile Include="j1Scene.cpp" />
     <ClCompile Include="j1Timer.cpp" />
+    <ClCompile Include="Lifes.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="j1Render.cpp" />
     <ClCompile Include="j1Textures.cpp" />
     <ClCompile Include="j1Window.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ProgresionBar.cpp" />
     <ClCompile Include="PugiXml\src\pugixml.cpp" />
+    <ClCompile Include="Sprites.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bar.h" />
     <ClInclude Include="boar.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EyeMonster.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="j1Collisions.h" />
     <ClInclude Include="j1Entity.h" />
     <ClInclude Include="j1FadetoBlack.h" />
+    <ClInclude Include="j1GUI.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="j1Pathfinding.h" />
     <ClInclude Include="j1PerfTimer.h" />
     <ClInclude Include="j1Scene.h" />
     <ClInclude Include="j1Timer.h" />
+    <ClInclude Include="Lifes.h" />
     <ClInclude Include="p2DynArray.h" />
     <ClInclude Include="j1Audio.h" />
     <ClInclude Include="j1Input.h" />
@@ -124,8 +136,10 @@
     <ClInclude Include="j1Window.h" />
     <ClInclude Include="p2SString.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ProgresionBar.h" />
     <ClInclude Include="PugiXml\src\pugiconfig.hpp" />
     <ClInclude Include="PugiXml\src\pugixml.hpp" />
+    <ClInclude Include="Sprites.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

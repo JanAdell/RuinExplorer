@@ -64,6 +64,27 @@
     <ClCompile Include="Player.cpp">
       <Filter>Desenvolupament  ========\Modules\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="j1GUI.cpp">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Lifes.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgresionBar.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Bar.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -147,6 +168,27 @@
     <ClInclude Include="Player.h">
       <Filter>Desenvolupament  ========\Modules\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="j1GUI.h">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites.h">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Lifes.h">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgresionBar.h">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Bar.h">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -169,6 +211,12 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Modules\Entities">
       <UniqueIdentifier>{85f3d21e-4508-4f64-851a-4433b9016ef2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\GUI">
+      <UniqueIdentifier>{964dcda0-e919-40f7-a124-b574d49eade7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\GUI\Sprites">
+      <UniqueIdentifier>{985c7315-878e-4b8b-bae3-5b69fa9d37bd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

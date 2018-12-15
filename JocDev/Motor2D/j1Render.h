@@ -42,7 +42,6 @@ public:
 
 	// Set background color
 	void SetBackgroundColor(SDL_Color color);
-	void ResetTime(uint &speed);
 
 public:
 
@@ -52,7 +51,7 @@ public:
 	SDL_Color		background;
 	uint			speed;
 	uint			time_to_start;
-	bool god_mode = false;
+	bool start = false;
 
 
 

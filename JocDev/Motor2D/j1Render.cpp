@@ -55,7 +55,6 @@ bool j1Render::Awake(pugi::xml_node& config)
 	}
 
 	speed = config.child("camera").attribute("speed").as_uint();
-	time_to_start = config.child("camera").attribute("time").as_uint();
 	game_name = config.child("game_name").attribute("name").as_string();
 
 	return ret;
@@ -72,6 +71,7 @@ bool j1Render::Start()
 	uint width, height;
 	App->win->GetWindowSize(width, height);
 	camera.y = -App->map->data.height * App->map->data.tile_height + height;
+	start = false;
 	return true;
 }
 
@@ -93,6 +93,7 @@ bool j1Render::Update(float dt)
 		if (App->entities->player->position.y < App->map->respawnPlayer.y - MOVE_MARGING)
 		{
 			camera.y += speed;
+			start = true;
 		}
 	}
 
@@ -147,10 +148,6 @@ void j1Render::SetBackgroundColor(SDL_Color color)
 	background = color;
 }
 
-void j1Render::ResetTime(uint & speed)
-{
-	speed = 0u;
-}
 
 void j1Render::SetViewPort(const SDL_Rect& rect)
 {

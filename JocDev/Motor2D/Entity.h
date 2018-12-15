@@ -23,12 +23,12 @@ public:
 	pugi::xml_document file;
 public:
 	Entity(int x, int y);
-	virtual ~Entity();
+	~Entity();
 
 	const Collider* GetCollider() const;
 	uint points = 0;
 	bool stay_in_platform = false;
-
+	int lifes;
 	virtual void Update(float dt) = 0;
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider) = 0;

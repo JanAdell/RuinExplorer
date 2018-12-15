@@ -27,7 +27,6 @@ public:
 	int normal_jump;
 	int boosted_jump;
 	int distance_to_jump;
-	int lifes;
 	float gravity;
 	bool start_jump = false;
 	bool top_jump = true;

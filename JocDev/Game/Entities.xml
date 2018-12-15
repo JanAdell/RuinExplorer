@@ -1,6 +1,7 @@
 <entities>
 	<eyemonster>
 		<speed x = "1" y = "1"/>
+		<health life = "1"/>
 		<anim
 		x1 = "51" y1 = "88" w1 = "25" h1 = "30"
 		x2 = "108" y2 = "91" w2 = "26" h2 = "27"
@@ -13,6 +14,7 @@
 	
 	<boar>
 		<speed x = "1" y = "1"/>
+		<health life = "1"/>
 		<objective x = "1" />
 		<anim
 		x1 = "25" y1 = "171" w1 = "31" h1 = "31"
@@ -27,7 +29,7 @@
     <player>
 	  <speed x = "2" y = "3" gravity = "2"/>
 	  <hit x = "20"/>
-	  <health life = "3"/>
+	  <health life = "2"/>
       <jump normal = "128" boost = "256"/>
 		  <idle_anim
 		  x1 = "376" y1 = "75" w1 = "19" h1 = "29"

@@ -21,6 +21,8 @@ boar::boar(int x, int y) : Entity(x, y)
 		speed.y = node.child("boar").child("speed").attribute("y").as_float();
 
 		next_ground = node.child("boar").child("objective").attribute("x").as_float();
+
+		lifes = node.child("boar").child("health").attribute("life").as_int();
 		
 		search = node.child("boar").child("search").attribute("x").as_int();
 

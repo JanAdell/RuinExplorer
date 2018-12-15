@@ -13,6 +13,7 @@
 #include "j1Collisions.h"
 #include "j1Entity.h"
 #include "j1Pathfinding.h"
+#include "j1GUI.h"
 #include "Brofiler/Brofiler.h"
 
 j1Scene::j1Scene() : j1Module()
@@ -36,10 +37,11 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	
-	//App->map->Load("SeaTempleMap.tmx");
-	//App->fade->fadetoBlack();
 
+	//App->gui->AddGui(480, 4029, GUI_TYPES::BUTTON);
+	App->gui->AddGui(250, 10, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
+	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
+	App->gui->AddGui(950, 500, GUI_TYPES::SPRITES, GUI_TYPES::PROGRESBAR);
 	
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	App->audio->LoadFx("audio/fx/death.wav");
@@ -133,7 +135,6 @@ bool j1Scene::Update(float dt)
 		App->render->Start();
 		App->entities->Start();
 		App->collisions->Start();
-		App->render->ResetTime(App->render->speed);
 		volcan_map = false;
 	}
 
@@ -150,7 +151,6 @@ bool j1Scene::Update(float dt)
 		App->render->Start();
 		App->entities->Start();
 		App->collisions->Start();
-		App->render->ResetTime(App->render->speed);
 		volcan_map = true;
 	}
 
@@ -221,7 +221,6 @@ void j1Scene::death()
 	
 	App->entities->Start();
 	App->render->Start();
-	App->render->ResetTime(App->render->speed);
 	respawnEnemies();
 }
 

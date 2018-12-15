@@ -20,6 +20,8 @@ EyeMonster::EyeMonster(int x, int y) : Entity(x, y)
 		speed.x = node.child("eyemonster").child("speed").attribute("x").as_float();
 		speed.y = node.child("eyemonster").child("speed").attribute("y").as_float();
 
+		lifes = node.child("eyemonster").child("health").attribute("life").as_int();
+
 		search = node.child("eyemonster").child("search").attribute("x").as_int();
 
 		pugi::xml_node anim = node.child("eyemonster").child("anim");

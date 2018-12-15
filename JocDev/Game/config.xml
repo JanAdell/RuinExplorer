@@ -8,7 +8,7 @@
 	
   <renderer>
     <vsync value="true"/>
-	<camera speed = "1" time = "300"/>
+	<camera speed = "1" />
 	<game_name name = "Ruin_Explorer"/>
   </renderer>
 
@@ -74,4 +74,7 @@
 		  x4 = "17" y4 = "470" w4 = "14" h4 = "14"
 		  />
   </fx_anim>
+  <gui>
+    <atlas file="maps/GUI.png"/>
+  </gui>
 </config>

@@ -323,7 +323,6 @@ void Player::OnCollision(Collider* collider)
 		App->render->Start();
 		App->entities->Start();
 		App->collisions->Start();
-		App->render->ResetTime(App->render->speed);
 	}
 
 }
