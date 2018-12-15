@@ -77,16 +77,16 @@ Player::Player(int x, int y):Entity(x,y)
 		
 		top_jump = true;
 
-		App->audio->LoadFx("audio/fx/Teleport.wav");
-		App->audio->LoadFx("audio/fx/Death.wav");
+		tpsfx = App->audio->LoadFx("audio/fx/Randomize3.wav");
+		//deathsfx = App->audio->LoadFx("audio/fx/Death.wav");
 	}
 }
 
 Player::~Player()
 {
 	LOG("Unloading player");
-	App->audio->UnloadFx(1);
-	App->audio->UnloadFx(2);
+	App->audio->UnloadFx(tpsfx);
+	//App->audio->UnloadFx(deathsfx);
 }
 
 // Update: draw background
@@ -167,7 +167,7 @@ void Player::Update(float dt)
 		if (position.x > App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width)
 		{
 			teleport.Reset();
-			App->audio->PlayFx(2, 0);
+			App->audio->PlayFx(tpsfx);
 			position.x = 7 * App->map->data.tile_width;
 		}
 
@@ -175,7 +175,7 @@ void Player::Update(float dt)
 		{
 			teleport.Reset();
 			position.x = App->map->data.tile_width * App->map->data.width - 7 * App->map->data.tile_width;
-			App->audio->PlayFx(2, 0);
+			App->audio->PlayFx(tpsfx);
 		}
 	}
 	else
@@ -183,7 +183,7 @@ void Player::Update(float dt)
 		if (position.x > App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width)
 		{
 			teleport.Reset();
-			App->audio->PlayFx(2, 0);
+			App->audio->PlayFx(tpsfx);
 			position.x = 8 * App->map->data.tile_width;
 			animation = &teleport;
 		}
@@ -192,7 +192,7 @@ void Player::Update(float dt)
 		{
 			teleport.Reset();
 			position.x = App->map->data.tile_width * App->map->data.width - 8 * App->map->data.tile_width;
-			App->audio->PlayFx(2, 0);
+			App->audio->PlayFx(tpsfx);
 			animation = &teleport;
 		}
 	}
@@ -258,10 +258,11 @@ void Player::OnCollision(Collider* collider)
 	{
 		if (position.y + player_size.y > collider->rect.y - 10 && !attack)
 		{
-			App->audio->PlayFx(1, 0);
+			
 			--lifes;
 			if (lifes <= 0) 
 			{
+				App->audio->PlayFx(deathsfx);
 				App->scene->death();
 			}
 			else

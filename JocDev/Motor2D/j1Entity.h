@@ -51,6 +51,8 @@ public:
 
 	Entity* player;
 
+	uint monstdeathsfx;
+
 private:
 
 	void SpawnEntity(const EntityInfo& info);

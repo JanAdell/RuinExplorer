@@ -38,7 +38,7 @@ bool j1Scene::Awake()
 bool j1Scene::Start()
 {
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-	App->audio->LoadFx("audio/fx/death.wav");
+	deathsfx = App->audio->LoadFx("audio/fx/Death.wav");
 
 	if (App->map->Load("Volcano_Map.tmx"))
 	{
@@ -167,6 +167,7 @@ bool j1Scene::Update(float dt)
 	//dead condition
 	if (-App->entities->player->position.y < App->render->camera.y - App->render->camera.h)
 	{
+		App->audio->PlayFx(deathsfx);
 		death();		
 	}
 	return true;
@@ -191,7 +192,7 @@ bool j1Scene::PostUpdate()
 bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
-	App->audio->UnloadFx(1);
+	App->audio->UnloadFx(deathsfx);
 	return true;
 
 }

@@ -36,6 +36,9 @@ public:
 	int damageM,hit;
 	iPoint speed;
 
+	uint tpsfx;
+	uint deathsfx;
+
 private:
 	Animation teleport;
 	Animation idle;

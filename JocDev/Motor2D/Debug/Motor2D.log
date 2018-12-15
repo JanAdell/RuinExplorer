@@ -1,5 +1,110 @@
-﻿  j1Scene.cpp
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1scene.cpp(119): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1scene.cpp(145): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-  Motor2D.vcxproj -> C:\Users\Isabel\Desktop\class vec3\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe
+﻿  Coins.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Entity.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  EyeMonster.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(20): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(21): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  Player.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(28): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(29): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(36): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(132): warning C4244: '-=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(144): warning C4244: '-=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(152): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(160): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(229): warning C4244: '-=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  boar.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(48): warning C4244: '=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(51): warning C4244: '+=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(125): warning C4244: '-=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\boar.cpp(132): warning C4244: '+=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+  j1App.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(227): warning C4477: 'sprintf_s' : format string '%lu' requires an argument of type 'unsigned long', but variadic argument 5 has type 'uint64'
+  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(227): note: consider using '%llu' in the format string
+  c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(227): note: consider using '%I64u' in the format string
+  j1Entity.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  j1Map.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1map.cpp(60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  j1Scene.cpp
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1scene.cpp(119): warning C4390: ';': empty controlled statement found; is this the intent?
+c:\users\adell\documents\github\videogame_dev_ruinexplorer\jocdev\motor2d\j1scene.cpp(145): warning C4390: ';': empty controlled statement found; is this the intent?
+  Generating Code...
+  Motor2D.vcxproj -> C:\Users\adell\Documents\GitHub\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe

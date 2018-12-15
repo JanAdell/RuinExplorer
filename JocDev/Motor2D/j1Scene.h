@@ -42,6 +42,8 @@ public:
 	bool map_saved = true;
 	bool die = false;
 
+	uint deathsfx;
+
 private:
 	_Mix_Music* Stage_music = nullptr;
 
