@@ -4,23 +4,32 @@
 
 ## Team Members
 
- * **Didac Llop** as Main Programmer and Designer:
+**Didac Llop** as Main Programmer and Designer:
  > Dedicated to the implementation of the most complex functionalities inside the code, Didac implemented Pathfinding methods, GUI modules    and game mechanics, like power ups or the character attack. He worked on the implementation of the menu and varios UI elements within    the game, as well as fixing animations, adding the fonts and balancing general game balance together with his partner. 
  
- ![Didac Llop](https://user-images.githubusercontent.com/36292051/50056302-80236b00-015a-11e9-9028-f2e87f13dd6a.png)
- 
- * **Jan Adell** as Programmer, Designer and Media and Asset manager:
+ * https://github.com/didaclis
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36292051/50056302-80236b00-015a-11e9-9028-f2e87f13dd6a.png" alt="Didac Llop"/>
+</p>
+
+**Jan Adell** as Programmer, Designer and Media and Asset manager:
  > Working as a support role in the creation of the game, Jan searched and provided all the assets for the game. He also designed and created the maps, which were later modified together with Didac as the development progressed. In the programming side, he implemented basic modules, like the one used to include fonts, and added basic functionalities like Brofiler. He also worked on implementing the various audio tracks and effects into the game. 
+ 
+ * https://github.com/JanAdell
 
- ![Jan Adell](https://user-images.githubusercontent.com/36292051/50056301-7dc11100-015a-11e9-9d97-08bbca6cda93.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/36292051/50056301-7dc11100-015a-11e9-9d97-08bbca6cda93.png" alt="Jan Adell"/>
+</p>
 
- ## Github
+
+ # Github
  
- * Here's a link to the team's github repository where you can find the various versions and process which the game has gone through, as well as releases and a Readme regarding all the assets used and game controls, gimmicks and debug tools.
+Here's a link to the team's github repository where you can find the various versions and process which the game has gone through, as well as releases and a Readme regarding all the assets used and game controls, gimmicks and debug tools.
  
- > https://github.com/JanAdell/RuinExplorer
+ * https://github.com/JanAdell/RuinExplorer
  
-  ## License 
+  # License 
 
 GNU GPLv3
 
