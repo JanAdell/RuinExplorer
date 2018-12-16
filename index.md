@@ -53,7 +53,7 @@ Here's a link to the team's github repository where you can find the various ver
   
 Here's a video showcasing a sample of gameplay of Ruin Explorer.
 
-<iframe width="568" heigth="315" src="https://www.youtube.com/watch?v=osWXkOtHFQ0&feature=youtu.be" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="568" heigth="315" src="https://youtu.be/osWXkOtHFQ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  
  **License** 
 
