@@ -47,7 +47,7 @@ bool j1Scene::Start()
 	menuBackground = App->tex->Load(menu_file_name.GetString());
 	menuBackgroundR = App->tex->Load(menu_file_name2.GetString());
 	GUImenu();
-	App->audio->PlayMusic("audio/music/awesomeness.ogg", DEFAULT_MUSIC_FADE_TIME);
+	
 	
 	return true;
 }
@@ -258,6 +258,7 @@ void j1Scene::GUImenu()
 	App->gui->AddGui(130, 250, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE,"CONTINUE");
 	App->gui->AddGui(130, 400, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "OPTIONS");
 	App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::EXIT, "EXIT");
+	App->audio->PlayMusic("audio/music/awesomeness.ogg", DEFAULT_MUSIC_FADE_TIME);
 
 }
 

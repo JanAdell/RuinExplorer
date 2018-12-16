@@ -136,18 +136,6 @@ void Player::Update(float dt)
 				top_jump = false;
 			}
 		}
-
-		if (stay_in_platform == true && App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && dt != 0)
-		{
-			start_jump = false;
-			jump_anim.Reset();
-			distance_to_jump = position.y - boosted_jump;
-			position.y -= speed.y;
-			start_jump = true;
-			stay_in_platform = false;
-			top_jump = false;
-			booster = false;
-		}
 	}
 	else
 	{
@@ -266,7 +254,17 @@ void Player::OnCollision(Collider* collider)
 	}
 	if (collider->type == COLLIDER_BOOST)
 	{
-		booster = true;
+
+		if (stay_in_platform == true && App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			start_jump = false;
+			jump_anim.Reset();
+			distance_to_jump = position.y - boosted_jump;
+			position.y -= speed.y;
+			start_jump = true;
+			stay_in_platform = false;
+			top_jump = false;
+		}
 	}
 
 	if (collider->type == COLLIDER_ENEMY)
