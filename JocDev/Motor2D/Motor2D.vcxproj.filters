@@ -95,7 +95,10 @@
       <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClCompile>
     <ClCompile Include="j1Fonts.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,7 +214,10 @@
       <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClInclude>
     <ClInclude Include="j1Fonts.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Textbox.h">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

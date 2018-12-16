@@ -71,6 +71,7 @@ public:
 
 
 	const SDL_Texture* GetAtlas() const;
+	
 
 private:
 
@@ -78,12 +79,18 @@ private:
 
 	SDL_Texture* atlas;
 	p2SString atlas_file_name;
+		
 
 public:
 	GUI_inf	queue[MAX_GUI];
 	GUI* gui[MAX_GUI];
 
 	p2List<iPoint> coins;
+
+	SDL_Texture* text_draw;
+	iPoint position;
+	SDL_Rect element;
 };
+
 
 #endif // __j1GUI_H_
