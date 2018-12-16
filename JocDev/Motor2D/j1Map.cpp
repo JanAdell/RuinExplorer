@@ -470,7 +470,7 @@ bool j1Map::LoadObjects(pugi::xml_node & node)
 				else if (strcmp(node.attribute("name").as_string(), "Coins") == 0)
 					App->gui->coins.add({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0) });
 
-				else
+				else if (strcmp(node.attribute("name").as_string(), "Booster") == 0)
 					App->collisions->AddCollider({ col_object.attribute("x").as_int(0),col_object.attribute("y").as_int(0),col_object.attribute("width").as_int(0),col_object.attribute("height").as_int(0) }, COLLIDER_BOOST);
 
 				i++;

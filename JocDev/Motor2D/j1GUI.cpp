@@ -31,6 +31,30 @@ bool j1GUI::Awake(pugi::xml_node& conf)
 	bool ret = true;
 
 	atlas_file_name = conf.child("atlas").attribute("file").as_string("");
+	pugi::xml_node pos = conf.child("positions");
+	right = pos.child("button").attribute("right").as_int();
+	easy = pos.child("button").attribute("easy").as_int();
+	dif = pos.child("button").attribute("difficult").as_int();
+	cred = pos.child("button").attribute("credits").as_int();
+	returnm = pos.child("button").attribute("returnmenu").as_int();
+
+	slidermenu.x = pos.child("slider").attribute("x").as_int();
+	slidermenu.y = pos.child("slider").attribute("y").as_int();
+
+	sliderpause.x = pos.child("pause").attribute("sliderx").as_int();
+	sliderpause.y = pos.child("pause").attribute("slidery").as_int();
+
+	buttonpause1.x = pos.child("pause").attribute("buttonx").as_int();
+	buttonpause1.y = pos.child("pause").attribute("buttony").as_int();
+
+	buttonpause2.x = pos.child("pause").attribute("returnmenu").as_int();
+	buttonpause2.y = pos.child("pause").attribute("options").as_int();
+
+	creditsa.x = pos.child("credits").attribute("x").as_int();
+	creditsa.y = pos.child("credits").attribute("y").as_int();
+
+	buttoncredits.x = pos.child("credits").attribute("buttonx").as_int();
+	buttoncredits.y = pos.child("credits").attribute("buttony").as_int();
 
 	return ret;
 }
@@ -206,8 +230,8 @@ void j1GUI::ActiveBotton(GUI & GUi)
 	{
 	case GUI_TYPES::PLAY:
 
-		App->gui->AddGui(615, 100, GUI_TYPES::BUTTON,GUI_TYPES::EASY,"EASY");
-		App->gui->AddGui(615, 300, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT,"DIFFICULT");
+		App->gui->AddGui(right, easy, GUI_TYPES::BUTTON,GUI_TYPES::EASY,"EASY");
+		App->gui->AddGui(right, dif, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT,"DIFFICULT");
 		App->dopause = false;
 		break;
 
@@ -264,15 +288,15 @@ void j1GUI::ActiveBotton(GUI & GUi)
 
 	case GUI_TYPES::OPTIONS:
 		//create sliderbar
-		App->gui->AddGui(610, 200, GUI_TYPES::SLIDER);
-		App->gui->AddGui(615,350, GUI_TYPES::BUTTON, GUI_TYPES::CREDITS, "CREDITS");
-		App->gui->AddGui(615,500,GUI_TYPES::BUTTON,GUI_TYPES :: RETURNMENU, "MENU");
+		App->gui->AddGui(slidermenu.x, slidermenu.y, GUI_TYPES::SLIDER);
+		App->gui->AddGui(right,cred, GUI_TYPES::BUTTON, GUI_TYPES::CREDITS, "CREDITS");
+		App->gui->AddGui(right,returnm,GUI_TYPES::BUTTON,GUI_TYPES :: RETURNMENU, "MENU");
 		break;
 
 	case GUI_TYPES::OPTIONSPAUSE:
 		//create sliderbar
-		App->gui->AddGui(400, 290, GUI_TYPES::SLIDER);
-		App->gui->AddGui(390, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNPAUSE, "RETURN");
+		App->gui->AddGui(sliderpause.x, sliderpause.y, GUI_TYPES::SLIDER);
+		App->gui->AddGui(buttonpause1.x, buttonpause1.y, GUI_TYPES::BUTTON, GUI_TYPES::RETURNPAUSE, "RETURN");
 		break;
 	case GUI_TYPES::RETURNMENU:
 		if (!App->scene->stayinmenu)
@@ -292,14 +316,14 @@ void j1GUI::ActiveBotton(GUI & GUi)
 		break;
 
 	case GUI_TYPES::RETURNPAUSE:
-		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU, "MENU");
-		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE, "OPTIONS");
+		App->gui->AddGui(buttonpause1.x, buttonpause2.x, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU, "MENU");
+		App->gui->AddGui(buttonpause1.x, buttonpause2.y, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE, "OPTIONS");
 		break;
 
 	case GUI_TYPES::CREDITS:
 		
-		App->gui->AddGui(130, 530, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "RETURN");
-		App->gui->AddGui(133, 180, GUI_TYPES::SPRITES, GUI_TYPES::CREDITS);
+		App->gui->AddGui(buttoncredits.x, buttoncredits.y, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "RETURN");
+		App->gui->AddGui(creditsa.x, creditsa.y, GUI_TYPES::SPRITES, GUI_TYPES::CREDITS);
 		break;
 	case GUI_TYPES::EXIT:
 		App->scene->go_out = true;

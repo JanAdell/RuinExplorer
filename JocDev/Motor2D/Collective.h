@@ -14,8 +14,7 @@ public:
 
 
 	bool GetPush();
-public:
-	uint collect;
+
 };
 
 #endif

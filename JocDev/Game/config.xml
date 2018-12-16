@@ -37,6 +37,17 @@
 	<menu2 name = "maps/menuR.png"
 	x = "0" y = "0" w = "1024" h = "768"
 	/>
+	<scenegui>
+		<life  x = "250" y = "13"/>
+		<scoin x = "300" y = "10"/>
+		<bar x = "965" y = "740"/>
+		<progresbar x = "950" y = "500"/>
+		<pause x = "300" y = "120"/>
+		<button left = "130" firstpos = "100" secondpos = "250"
+		thirdpos = "400" fourthpos = "550" pausex = "400" 
+		pausey1 = "440" pausey2 = "240"
+		/>
+	</scenegui>
   </scene>
 
   <audio>
@@ -86,6 +97,15 @@
   
   <gui>
     <atlas file="maps/GUI.png"/>
+	<positions>
+		<button right = "615" easy = "100" difficult = "300"
+		credits = "350" returnmenu = "500"/>
+		<slider x = "610" y = "200"/>
+		<pause sliderx = "400" slidery = "290" 
+		buttonx = "390" buttony = "440"
+		returnmenu = "440" options = "240"/>
+		<credits x = "133" y = "180" buttonx = "130" buttony = "530"/>
+	</positions>
   </gui>
   
   <fonts>

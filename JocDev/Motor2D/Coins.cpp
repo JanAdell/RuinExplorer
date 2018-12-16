@@ -61,5 +61,5 @@ void Coins::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		collectcoin = colcoin;
-	
+
 }

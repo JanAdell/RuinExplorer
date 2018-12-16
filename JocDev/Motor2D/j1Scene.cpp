@@ -33,6 +33,33 @@ bool j1Scene::Awake(pugi::xml_node& conf)
 	menu_file_name2 = conf.child("menu2").attribute("name").as_string("");
 	rect = {conf.child("menu").attribute("x").as_int(),conf.child("menu").attribute("y").as_int(),conf.child("menu").attribute("w").as_int(),conf.child("menu").attribute("h").as_int() };
 	rectR = { conf.child("menu2").attribute("x").as_int(),conf.child("menu2").attribute("y").as_int(),conf.child("menu2").attribute("w").as_int(),conf.child("menu2").attribute("h").as_int() };
+	
+	pugi::xml_node node = conf.child("scenegui");
+
+	scoin.x = node.child("scoin").attribute("x").as_int();
+	scoin.y = node.child("scoin").attribute("y").as_int();
+
+	life.x = node.child("life").attribute("x").as_int();
+	life.y = node.child("life").attribute("y").as_int();
+
+	bar.x = node.child("bar").attribute("x").as_int();
+	bar.y = node.child("bar").attribute("y").as_int();
+
+	progresbar.x = node.child("progresbar").attribute("x").as_int();
+	progresbar.y = node.child("progresbar").attribute("y").as_int();
+
+	pausepos.x = node.child("pause").attribute("x").as_int();
+	pausepos.y = node.child("pause").attribute("y").as_int();
+	
+	buttonx = node.child("button").attribute("left").as_int();
+	button1 = node.child("button").attribute("firstpos").as_int();
+	button2 = node.child("button").attribute("secondpos").as_int();
+	button3 = node.child("button").attribute("thirdpos").as_int();
+	button4 = node.child("button").attribute("fourthpos").as_int();
+	buttonxpause = node.child("button").attribute("pausex").as_int();
+	buttonypause1 = node.child("button").attribute("pausey1").as_int();
+	buttonypause2 = node.child("button").attribute("pausey2").as_int();
+	
 	bool ret = true;
 
 	return ret;
@@ -129,9 +156,9 @@ bool j1Scene::Update(float dt)
 	//open pause
 	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && !App->dopause && !stayinmenu)
 	{
-		App->gui->AddGui(300, 120, GUI_TYPES::SPRITES, GUI_TYPES::PAUSE);
-		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU, "MENU");
-		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE, "OPTIONS");
+		App->gui->AddGui(pausepos.x, pausepos.y, GUI_TYPES::SPRITES, GUI_TYPES::PAUSE);
+		App->gui->AddGui(buttonxpause, buttonypause1, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU, "MENU");
+		App->gui->AddGui(buttonxpause, buttonypause2, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE, "OPTIONS");
 	}
 
 	//close pause
@@ -139,7 +166,8 @@ bool j1Scene::Update(float dt)
 	{
 		for (uint i = 0; i < MAX_GUI; ++i)
 		{
-			if (App->gui->gui[i] != nullptr && (App->gui->gui[i]->type == GUI_TYPES::BUTTON || App->gui->gui[i]->subtype == GUI_TYPES::PAUSE))
+			if (App->gui->gui[i] != nullptr && (App->gui->gui[i]->subtype == GUI_TYPES::CREDITS || App->gui->gui[i]->type == GUI_TYPES::SLIDER
+				|| App->gui->gui[i]->type == GUI_TYPES::BUTTON || App->gui->gui[i]->type == GUI_TYPES::TEXTBOX || App->gui->gui[i]->subtype == GUI_TYPES::PAUSE))
 			{
 				App->gui->gui[i]->to_delete = true;
 			}
@@ -241,10 +269,10 @@ void j1Scene::respawnEnemies()
 
 void j1Scene::respawnGUI()
 {
-	App->gui->AddGui(250, 13, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
-	App->gui->AddGui(300, 10, GUI_TYPES::SPRITES, GUI_TYPES::SPRITECOIN);
-	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
-	App->gui->AddGui(950, 500, GUI_TYPES::SPRITES, GUI_TYPES::PROGRESBAR);
+	App->gui->AddGui(life.x, life.y, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
+	App->gui->AddGui(scoin.x, scoin.y, GUI_TYPES::SPRITES, GUI_TYPES::SPRITECOIN);
+	App->gui->AddGui(bar.x, bar.y, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
+	App->gui->AddGui(progresbar.x, progresbar.y, GUI_TYPES::SPRITES, GUI_TYPES::PROGRESBAR);
 	for (p2List_item<iPoint>* item = App->gui->coins.start; item != nullptr; item = item->next)
 	{
 		App->gui->AddGui(item->data.x, item->data.y, GUI_TYPES::COLLECTIVE, GUI_TYPES::COIN);
@@ -254,10 +282,10 @@ void j1Scene::respawnGUI()
 void j1Scene::GUImenu()
 {
 	changemenu = true;
-	App->gui->AddGui(130, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY,"START");
-	App->gui->AddGui(130, 250, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE,"CONTINUE");
-	App->gui->AddGui(130, 400, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "OPTIONS");
-	App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::EXIT, "EXIT");
+	App->gui->AddGui(buttonx, button1, GUI_TYPES::BUTTON,GUI_TYPES::PLAY,"START");
+	App->gui->AddGui(buttonx, button2, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE,"CONTINUE");
+	App->gui->AddGui(buttonx, button3, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "OPTIONS");
+	App->gui->AddGui(buttonx, button4, GUI_TYPES::BUTTON, GUI_TYPES::EXIT, "EXIT");
 	App->audio->PlayMusic("audio/music/awesomeness.ogg", DEFAULT_MUSIC_FADE_TIME);
 
 }

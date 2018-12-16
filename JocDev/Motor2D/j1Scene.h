@@ -58,6 +58,8 @@ private:
 	SDL_Rect rect,rectR;
 	p2SString menu_file_name;
 	p2SString menu_file_name2;
+	iPoint life, scoin, bar, progresbar,pausepos;
+	int buttonx, buttonxpause, button1, button2, button3, button4,buttonypause1,buttonypause2;
 	
 	
 

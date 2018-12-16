@@ -37,6 +37,7 @@ public:
 	pugi::xml_document file;
 	GUI_TYPES type,subtype;
 	bool to_delete = false;
+	uint collect;
 
 };
 

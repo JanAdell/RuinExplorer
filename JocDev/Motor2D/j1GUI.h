@@ -103,6 +103,8 @@ private:
 
 	SDL_Texture* atlas;
 	p2SString atlas_file_name;
+	iPoint slidermenu, sliderpause, buttonpause1, buttonpause2, creditsa, buttoncredits;
+	uint right, easy, dif, cred, returnm;
 
 public:
 	GUI_inf	queue[MAX_GUI];
