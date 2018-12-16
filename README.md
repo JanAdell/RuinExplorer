@@ -67,6 +67,14 @@ In this project we will attempt to put together a vertical platformer called Rui
 	
  **GUI Elements and Assets:**
  
+ *  *Interface Items Contribution* by Tempest in the Aether and Ryzom Core:
+ 
+ 	>https://opengameart.org/content/lpc-interface-items-contribution-by-tempest-in-the-aether
+	
+	>http://dev.ryzom.com/projects/ryzom/wiki
+	
+	>https://opengameart.org/users/botanic (user who uploaded it)
+ 
  *  *Enemy Health Bars*(used as progress bars) by Paul Wortmann
  
  	>https://opengameart.org/content/enemy-health-bars
@@ -102,6 +110,11 @@ In this project we will attempt to put together a vertical platformer called Rui
 * *Lava Area Theme* and *Ancient Ruins* by Ted Kerr: 
 
   > https://opengameart.org/users/wolfgang
+  
+  
+* *Menu Music* by mrpoly:
+
+  > https://opengameart.org/content/menu-music
 
 
 
@@ -166,6 +179,10 @@ See the license here: https://github.com/JanAdell/Videogame_Dev_RuinExplorer/blo
 
 * **Jan Adell:**
 	* Font Module Implementation and sound fixes
+
+## Project Website
+
+https://janadell.github.io/RuinExplorer/
 
 ## Project repository
 
