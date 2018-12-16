@@ -53,7 +53,7 @@ Here's a link to the team's github repository where you can find the various ver
   
 Here's a video showcasing a sample of gameplay of Ruin Explorer.
 
-![Ruin Explorer - Sample Gameplay](https://youtu.be/osWXkOtHFQ0)
+![Ruin Explorer - Sample Gameplay]("https://youtu.be/osWXkOtHFQ0")
 
  
  **License** 
