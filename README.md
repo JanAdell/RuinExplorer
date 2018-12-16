@@ -20,6 +20,8 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 * The player in this game is able to teleport from one side to the other of the screen, though it is not always the best way to advance.
 
+* The bar in the configuration tab is for audio regulation. When clicked on the volume is regulated. 
+
 
 ## Credits
 
