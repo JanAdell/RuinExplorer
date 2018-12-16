@@ -100,14 +100,14 @@ void Player::Update(float dt)
 	{
 		animation = &run;
 		entityflip = SDL_RendererFlip::SDL_FLIP_NONE;
-		position.x += speed.x;
+		position.x += speed.x * dt;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		animation = &run;
 		entityflip = SDL_RendererFlip::SDL_FLIP_HORIZONTAL;
-		position.x -= speed.x;
+		position.x -= speed.x * dt;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
@@ -118,6 +118,7 @@ void Player::Update(float dt)
 	//jump
 	if (stay_in_platform)
 	{
+		position.y -= gravity*dt;
 		attack = false;
 		Attack.Reset();
 		fall.Reset();
@@ -129,7 +130,7 @@ void Player::Update(float dt)
 			{
 				jump_anim.Reset();
 				distance_to_jump = position.y - normal_jump;
-				position.y -= speed.y + gravity;
+				position.y -= (speed.y + gravity)*dt;
 				start_jump = true;
 				stay_in_platform = false;
 				top_jump = false;
@@ -141,7 +142,7 @@ void Player::Update(float dt)
 		if (position.y > distance_to_jump && top_jump == false)
 		{
 			animation = &jump_anim;
-			position.y -= speed.y + gravity;
+			position.y -= (speed.y + gravity)*dt;
 		}
 		if (position.y == distance_to_jump)
 			top_jump = true;
@@ -149,7 +150,7 @@ void Player::Update(float dt)
 		{
 			if (attack == true)
 			{
-				position.y += gravity;
+				position.y += gravity * dt;
 				animation = &Attack;
 			}
 			else
@@ -157,7 +158,7 @@ void Player::Update(float dt)
 			
 		}
 	}
-	position.y += gravity;
+	position.y += gravity * dt;
 	stay_in_platform = false;
 
 	//tp mechanic
@@ -202,7 +203,7 @@ void Player::Update(float dt)
 	{
 		if (damageM > position.x)
 		{
-			position.x += speed.y;
+			position.x += speed.y * dt;
 		}
 		else
 			recivedamageL = false;
@@ -211,12 +212,30 @@ void Player::Update(float dt)
 	{
 		if (damageM < position.x)
 		{
-			position.x -= speed.y;
+			position.x -= speed.y * dt;
 		}
 		else
 			recivedamageR = false;
 	}
 
+	if (rightwall)
+	{
+		position.x += speed.x*dt;
+		rightwall = false;
+	}
+	if (leftwall)
+	{
+		position.x -= speed.x*dt;
+		leftwall = false;
+	}
+	if (dt == 0)
+	{
+		idle.current_frame = idle.speed *dt;
+		run.current_frame = run.speed *dt;
+		fall.current_frame = fall.speed *dt;
+		jump_anim.current_frame = jump_anim.speed * dt;
+		Attack.current_frame = Attack.speed * dt;
+	}
 }
 
 void Player::OnCollision(Collider* collider)
@@ -226,15 +245,15 @@ void Player::OnCollision(Collider* collider)
 		if (position.y + player_size.y < collider->rect.y + 10)
 		{
 			stay_in_platform = true;
-			position.y -= gravity;
+			
 		}
 		else
 		{
 			if (position.x > collider->rect.x + collider->rect.w - 10)
-				position.x += speed.x;
+				rightwall = true;
 
 			if (position.x + player_size.x < collider->rect.x + 10)
-				position.x -= speed.x;
+				leftwall = true;
 		}
 		if (position.y > collider->rect.y + collider->rect.h - 10)
 			top_jump = true;

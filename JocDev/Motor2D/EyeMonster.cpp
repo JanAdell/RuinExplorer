@@ -71,11 +71,11 @@ void EyeMonster::Update(float dt)
 					}
 					if (objective.y <= enemy_pos.y)
 					{
-						position.y += -speed.y;
+						position.y += -speed.y*dt;
 					}
 					else if (objective.y > enemy_pos.y)
 					{
-						position.y += speed.y;
+						position.y += speed.y*dt;
 					}
 				}
 			}
@@ -95,15 +95,19 @@ void EyeMonster::Update(float dt)
 	}
 	if (left)
 	{
-		position.x -= speed.x;
+		position.x -= speed.x * dt;
 		entityflip = SDL_FLIP_NONE;
 	}
 
 	else
 	{
-		position.x += speed.x;
+		position.x += speed.x *dt;
 		entityflip = SDL_FLIP_HORIZONTAL;
 	}
+
+	if (dt == 0)
+	eyemonster.current_frame = eyemonster.speed * dt;
+
 }
 
 
@@ -112,14 +116,6 @@ void EyeMonster::OnCollision(Collider* collider)
 
 	if (collider->type == COLLIDER_WALL)
 		left = !left;
-	if (collider->type == COLLIDER_PLAYER)
-	{
-		if (position.x + 20 > collider->rect.x + collider->rect.w - 10)
-			position.x += speed.x * 3;
-
-		if (position.x + 20 + monstersize < collider->rect.x + 10)
-			position.x -= speed.x * 3;
-	}
 }
 
 bool EyeMonster::Load(pugi::xml_node & data)

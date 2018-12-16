@@ -49,6 +49,8 @@ private:
 	//int pos_collidery;
 	iPoint player_size;
 	uint sfx;
+	bool leftwall = false;
+	bool rightwall = false;
 
 };
 

@@ -68,4 +68,6 @@ void bar::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		bar_anim.current_frame = saveframe;
 
+	if (dt == 0)
+	bar_anim.current_frame = bar_anim.speed*dt;
 }

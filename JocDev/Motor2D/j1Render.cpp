@@ -92,7 +92,7 @@ bool j1Render::Update(float dt)
 	{
 		if (App->entities->player->position.y < App->map->respawnPlayer.y - MOVE_MARGING)
 		{
-			camera.y += speed;
+			camera.y += speed *dt;
 			start = true;
 		}
 		else

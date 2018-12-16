@@ -281,7 +281,10 @@ bool j1App::DoUpdate()
 		if(pModule->active == false) {
 			continue;
 		}
-
+		if (input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+			dopause = !dopause;
+		if (dopause) dt = 0;
+		else dt = 1;
 		ret = item->data->Update(dt);
 	}
 

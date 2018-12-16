@@ -48,7 +48,16 @@ void boar::Update(float dt)
 	ground.y = enemy_pos.y + speed.y;
 	if (App->pathfinding->IsWalkable(ground))
 	{
-		position.y += speed.y;
+		position.y += speed.y * dt;
+		if (App->entities->player != nullptr)
+		{
+			if (position.x > App->entities->player->position.x)
+			{
+				left = true;
+			}
+			else
+				left = false;
+		}
 	}
 		
 	if (enemy_pos.DistanceManhattan(player_pos) < search && position.y <= App->entities->player->position.y)
@@ -122,17 +131,19 @@ void boar::Update(float dt)
 	}
 	if (left)
 	{
-		position.x -= speed.x;
+		position.x -= speed.x*dt;
 		entityflip = SDL_FLIP_HORIZONTAL;
 
 	}
 
 	else
 	{
-		position.x += speed.x;
+		position.x += speed.x*dt;
 		entityflip = SDL_FLIP_NONE;
 
 	}
+	if(dt == 0)
+	boaranim.current_frame = boaranim.speed * dt;
 
 }
 

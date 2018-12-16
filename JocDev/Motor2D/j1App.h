@@ -132,7 +132,7 @@ private:
 	uint32				frames_on_last_update;
 	bool				framerate_cap = true;
 	bool				vsync = true;
-
+	bool				dopause = false;
 };
 
 extern j1App* App; // No student is asking me about that ... odd :-S

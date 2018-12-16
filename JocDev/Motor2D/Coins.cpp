@@ -37,12 +37,14 @@ void Coins::Update(float dt)
 		animation = &coin_anim;
 	else
 		animation = nullptr;
-
-	if (position.x < App->entities->player->position.x && position.x + size.x > App->entities->player->position.x
-		&& position.y < App->entities->player->position.y && position.y + size.y > App->entities->player->position.y && !collectcoin)
+	if (App->entities->player != nullptr)
 	{
-		collectcoin = true;
-		collect++;
+		if (position.x < App->entities->player->position.x && position.x + size.x > App->entities->player->position.x
+			&& position.y < App->entities->player->position.y && position.y + size.y > App->entities->player->position.y && !collectcoin)
+		{
+			collectcoin = true;
+			collect++;
+		}
 	}
 
 	if (App->scene->die)
@@ -55,4 +57,6 @@ void Coins::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		collectcoin = colcoin;
+	if (dt == 0)
+	coin_anim.current_frame = coin_anim.speed *dt;
 }
