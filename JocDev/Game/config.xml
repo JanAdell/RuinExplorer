@@ -89,7 +89,7 @@
   </gui>
   
   <fonts>
-	  <default_font file = "Fonts/Awkward/Awkward.ttf" size = "12"/>
+	  <default_font file = "Fonts/Awkward/Awkward.ttf" size = "48"/>
   </fonts>
   
 </config>

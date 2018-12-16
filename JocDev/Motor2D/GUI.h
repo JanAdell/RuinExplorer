@@ -31,6 +31,7 @@ protected:
 	SDL_RendererFlip flip = SDL_RendererFlip::SDL_FLIP_NONE;
 	float saveframe;
 	bool colcoin;
+	SDL_Texture* text_draw;
 public:
 	iPoint position;
 	pugi::xml_document file;

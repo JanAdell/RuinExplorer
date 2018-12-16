@@ -254,11 +254,10 @@ void j1Scene::respawnGUI()
 void j1Scene::GUImenu()
 {
 	changemenu = true;
-	App->gui->AddGui(130, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY);
+	App->gui->AddGui(130, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY,"START");
 	App->gui->AddGui(130, 250, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE);
 	App->gui->AddGui(130, 400, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS);
 	App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::EXIT);
-	App->gui->AddGui(10, 10, GUI_TYPES::TEXTBOX, GUI_TYPES::NO_TYPES, "hello world");
 
 }
 

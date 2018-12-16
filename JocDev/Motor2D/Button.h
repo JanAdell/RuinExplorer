@@ -8,7 +8,7 @@
 class Button : public GUI
 {
 public:
-	Button(int x, int y, GUI_TYPES subtype);
+	Button(int x, int y, GUI_TYPES subtype,p2SString txt);
 	~Button();
 
 	void Update(float dt);

@@ -4,7 +4,7 @@
 #include "j1Render.h"
 #include "j1GUI.h"
 
-Button::Button(int x, int y, GUI_TYPES subtype) : GUI(x, y,GUI_TYPES::BUTTON,subtype)
+Button::Button(int x, int y, GUI_TYPES subtype, p2SString txt) : GUI(x, y,GUI_TYPES::BUTTON,subtype)
 {
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
@@ -27,6 +27,7 @@ Button::Button(int x, int y, GUI_TYPES subtype) : GUI(x, y,GUI_TYPES::BUTTON,sub
 		push.loop = false;
 		flip = SDL_RendererFlip::SDL_FLIP_NONE;
 	}
+	App->gui->AddGui(100, 100, GUI_TYPES::TEXTBOX, GUI_TYPES::NO_TYPES, txt);
 }
 
 Button::~Button()

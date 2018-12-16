@@ -16,11 +16,12 @@ Textbox::~Textbox()
 {
 }
 
-void Textbox::SetText(p2SString text)
+void Textbox::SetText(p2SString txt)
 {
-	text.create(text.GetString());
+	text.create(txt.GetString());
 	App->font->CalcSize(text.GetString(), element.w, element.h, font);
 	element.x = element.y = 0;
+	App->tex->UnLoad(text_draw);
 	text_draw = App->font->Print(text.GetString(), color, font);
 }
 
@@ -31,7 +32,7 @@ void Textbox::Update(float dt)
 
 void Textbox::Draw()
 {
-	App->render->Blit(text_draw, position.x, position.y, flip, &element);
+	App->render->Blit(text_draw, position.x, position.y, flip,NULL,0.0f);
 
 }
 

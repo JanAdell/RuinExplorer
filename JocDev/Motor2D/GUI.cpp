@@ -28,9 +28,14 @@ void GUI::Draw(SDL_Texture * sprites,float dt)
 		{
 			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame(dt)));
 		}
-		if (type == GUI_TYPES::BUTTON || type == GUI_TYPES::SPRITES || type == GUI_TYPES::TEXTBOX)
+		if (type == GUI_TYPES::BUTTON || type == GUI_TYPES::SPRITES)
 		{
 			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame(dt)),0.0f);
+		}
+		if (type == GUI_TYPES::TEXTBOX)
+		{
+			App->render->Blit(text_draw, position.x, position.y, flip, NULL, 0.0f);
+
 		}
 	}
 }

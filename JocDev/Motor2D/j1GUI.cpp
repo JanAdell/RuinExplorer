@@ -195,7 +195,7 @@ void j1GUI::ActiveBotton(GUI & GUi)
 
 	for (uint i = 0; i < MAX_GUI; ++i)
 	{
-		if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
+		if (gui[i] != nullptr && (gui[i]->type == GUI_TYPES::BUTTON || gui[i]->type == GUI_TYPES::TEXTBOX))
 		{
 			gui[i]->to_delete = true;
 		}
@@ -312,7 +312,7 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 	switch (inf.type)
 	{
 	case GUI_TYPES::BUTTON:
-		gui[i] = new Button(inf.pos.x, inf.pos.y,inf.subtype);
+		gui[i] = new Button(inf.pos.x, inf.pos.y,inf.subtype,inf.text);
 		break;
 	case GUI_TYPES::SPRITES:
 		if (inf.subtype == GUI_TYPES::LIFES)
@@ -336,7 +336,7 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 		break;
 
 	case GUI_TYPES::TEXTBOX:
-		gui[i] = new Textbox({ inf.pos.x, inf.pos.y }, inf.text, App->font->default, { 255,255,255,80 });
+		gui[i] = new Textbox({ inf.pos.x, inf.pos.y }, inf.text, App->font->default, { 0,0,0,80 });
 		break;
 	}
 }
