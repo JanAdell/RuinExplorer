@@ -44,6 +44,7 @@ void Coins::Update(float dt)
 		{
 			collectcoin = true;
 			collect++;
+
 		}
 	}
 

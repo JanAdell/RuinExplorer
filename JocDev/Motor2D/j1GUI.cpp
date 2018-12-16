@@ -196,7 +196,8 @@ void j1GUI::ActiveBotton(GUI & GUi)
 
 	for (uint i = 0; i < MAX_GUI; ++i)
 	{
-		if (gui[i] != nullptr && (gui[i]->type == GUI_TYPES::BUTTON || gui[i]->type == GUI_TYPES::TEXTBOX))
+		if (gui[i] != nullptr && (gui[i]->subtype == GUI_TYPES::CREDITS|| gui[i]->type == GUI_TYPES::SLIDER
+			||gui[i]->type == GUI_TYPES::BUTTON || gui[i]->type == GUI_TYPES::TEXTBOX))
 		{
 			gui[i]->to_delete = true;
 		}
@@ -263,13 +264,15 @@ void j1GUI::ActiveBotton(GUI & GUi)
 
 	case GUI_TYPES::OPTIONS:
 		//create sliderbar
+		App->gui->AddGui(610, 200, GUI_TYPES::SLIDER);
 		App->gui->AddGui(615,350, GUI_TYPES::BUTTON, GUI_TYPES::CREDITS, "CREDITS");
 		App->gui->AddGui(615,500,GUI_TYPES::BUTTON,GUI_TYPES :: RETURNMENU, "MENU");
 		break;
 
 	case GUI_TYPES::OPTIONSPAUSE:
 		//create sliderbar
-		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNPAUSE, "RETURN");
+		App->gui->AddGui(400, 290, GUI_TYPES::SLIDER);
+		App->gui->AddGui(390, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNPAUSE, "RETURN");
 		break;
 	case GUI_TYPES::RETURNMENU:
 		if (!App->scene->stayinmenu)
@@ -346,6 +349,10 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 
 	case GUI_TYPES::TEXTBOX:
 		gui[i] = new Textbox({ inf.pos.x, inf.pos.y }, inf.text, App->font->default, { 0,0,0,80 });
+		break;
+
+	case GUI_TYPES::SLIDER:
+		gui[i] = new sliderbar(inf.pos.x, inf.pos.y);
 		break;
 	}
 }

@@ -10,9 +10,11 @@ public:
 	~sliderbar();
 
 	void Update(float dt);
-
+	bool GetPush();
 private:
-	Animation slider_anim;
+	Animation anim;
+	iPoint size,mousepos;
+	float pich;
 };
 
 #endif

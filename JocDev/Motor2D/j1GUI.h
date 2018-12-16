@@ -12,6 +12,7 @@
 #include "pause.h"
 #include "Textbox.h"
 #include "Credits.h"
+#include "Sliderbar.h"
 
 
 #define CURSOR_WIDTH 2
