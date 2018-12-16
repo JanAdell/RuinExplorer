@@ -2,6 +2,7 @@
 #include "j1App.h"
 #include "j1Render.h"
 #include "j1GUI.h"
+#include "j1Input.h"
 
 
 bar::bar(int x, int y):Sprites(x,y,GUI_TYPES::BAR)
@@ -60,7 +61,11 @@ void bar::Update(float dt)
 		bar_anim.Reset();
 		position.y = barpos.y + 14;
 	}
-
 	
+	if(App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
+		saveframe = bar_anim.current_frame;
+
+	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
+		bar_anim.current_frame = saveframe;
 
 }

@@ -11,6 +11,7 @@ public:
 
 	void Update(float dt);
 
+
 private:
 	Animation SCoin_anim;
 };

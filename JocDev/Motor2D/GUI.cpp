@@ -34,3 +34,41 @@ void GUI::Draw(SDL_Texture * sprites)
 		}
 	}
 }
+
+bool GUI::Load(pugi::xml_node & node)
+{
+	position.x = node.child("position").attribute("x").as_int();
+	position.x = node.child("position").attribute("y").as_int();
+	if (subtype == GUI_TYPES::BAR)
+	{
+		saveframe = node.child("frame").attribute("frame").as_float();
+	}
+	else if (subtype == GUI_TYPES::COIN)
+	{
+		colcoin = node.child("collect").attribute("collect").as_bool();
+	}
+	return true;
+}
+
+bool GUI::Save(pugi::xml_node & node) const
+{
+	pugi::xml_node pos = node.append_child("position");
+
+	pos.append_attribute("x") = position.x;
+	pos.append_attribute("y") = position.y;
+
+	if (subtype == GUI_TYPES::BAR)
+	{
+		pugi::xml_node frame = node.append_child("frame");
+
+		frame.append_attribute("frame") = saveframe;
+	}
+
+	else if (subtype == GUI_TYPES::COIN)
+	{
+		pugi::xml_node col = node.append_child("collect");
+
+		col.append_attribute("collect") = colcoin;
+	}
+	return true;
+}

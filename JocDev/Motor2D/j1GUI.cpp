@@ -111,6 +111,58 @@ bool j1GUI::CleanUp()
 	return true;
 }
 
+bool j1GUI::Load(pugi::xml_node & data)
+{
+	for (uint i = 0; i < MAX_GUI; i++)
+	{
+		if (gui[i] != nullptr)
+		{
+			if (gui[i]->type == GUI_TYPES::BUTTON)
+			{
+				pugi::xml_node button_data = data.child("Button");
+				gui[i]->Load(button_data);
+			}
+			if (queue[i].type == GUI_TYPES::COLLECTIVE)
+			{
+				pugi::xml_node collective_data = data.child("Collective");
+				gui[i]->Load(collective_data);
+			}
+			if (queue[i].type == GUI_TYPES::SPRITES)
+			{
+				pugi::xml_node sprites_data = data.child("Sprites");
+				gui[i]->Load(sprites_data);
+			}
+		}
+	}
+	return true;
+}
+
+bool j1GUI::Save(pugi::xml_node & data) const
+{
+	for (uint i = 0; i < MAX_GUI; i++)
+	{
+		if (gui[i] != nullptr)
+		{
+			if (gui[i]->type == GUI_TYPES::BUTTON)
+			{
+				pugi::xml_node button_data = data.append_child("Button");
+				gui[i]->Save(button_data);
+			}
+			if (gui[i]->type == GUI_TYPES::COIN)
+			{
+				pugi::xml_node collective_data = data.append_child("Collective");
+				gui[i]->Save(collective_data);
+			}
+			if (gui[i]->type == GUI_TYPES::BAR)
+			{
+				pugi::xml_node sprites_data = data.append_child("Sprites");
+				gui[i]->Save(sprites_data);
+			}
+		}
+	}
+	return true;
+}
+
 bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype)
 {
 	bool ret = false;
@@ -131,11 +183,12 @@ bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype)
 	return ret;
 }
 
-void j1GUI::ActiveBotton(const GUI & GUi)
+void j1GUI::ActiveBotton(GUI & GUi)
 {
 	switch (GUi.subtype)
 	{
 	case GUI_TYPES::PLAY:
+
 		for (uint i = 0; i < MAX_GUI; ++i)
 		{
 			if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
@@ -143,8 +196,8 @@ void j1GUI::ActiveBotton(const GUI & GUi)
 				gui[i]->to_delete = true;
 			}
 		}
-		App->gui->AddGui(100, 20, GUI_TYPES::BUTTON,GUI_TYPES::EASY);
-		App->gui->AddGui(100, 180, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT);
+		App->gui->AddGui(100, 100, GUI_TYPES::BUTTON,GUI_TYPES::EASY);
+		App->gui->AddGui(100, 300, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT);
 		break;
 
 	case GUI_TYPES::DIFFICULT:
@@ -186,6 +239,7 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 
 		if (inf.subtype == GUI_TYPES::BAR)
 			gui[i] = new bar(inf.pos.x, inf.pos.y);
+		
 
 		if (inf.subtype == GUI_TYPES::SPRITECOIN)
 			gui[i] = new Scoin(inf.pos.x, inf.pos.y);

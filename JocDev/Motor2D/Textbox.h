@@ -19,6 +19,7 @@ public:
 
 	bool Draw();
 
+
 private:
 	_TTF_Font*			font = nullptr;
 	SDL_Color           color = { 255,255,255,255 };

@@ -10,6 +10,8 @@ public:
 	~Sprites();
 
 	virtual void Update(float dt) = 0;
+
+
 	bool GetPush();
 
 };

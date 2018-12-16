@@ -69,12 +69,13 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	// TODO 2: Create the factory methods
-	// Gui creation functions
+	bool Load(pugi::xml_node &data);
+	bool Save(pugi::xml_node &data) const;
+
 
 	bool AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype = GUI_TYPES::NO_TYPES);
 
-	void ActiveBotton(const GUI &GUi);
+	void ActiveBotton(GUI &GUi);
 
 	const SDL_Texture* GetAtlas() const;
 	
@@ -97,6 +98,8 @@ public:
 	iPoint position;
 	SDL_Rect element;
 	bool dificultEasy = true;
+	bar* barprogres;
+	p2List<Coins*> coin;
 };
 
 

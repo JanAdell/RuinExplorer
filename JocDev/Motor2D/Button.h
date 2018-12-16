@@ -12,6 +12,8 @@ public:
 	~Button();
 
 	void Update(float dt);
+
+
 	bool GetPush();
 
 private:

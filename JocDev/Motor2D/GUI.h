@@ -22,10 +22,15 @@ public:
 
 	virtual void Update(float dt) = 0;
 	void Draw(SDL_Texture* sprites);
+	bool Load(pugi::xml_node &node);
+	bool Save(pugi::xml_node &node) const;
 	virtual bool GetPush() = 0;
+
 protected:
 	Animation * animation = nullptr;
 	SDL_RendererFlip flip = SDL_RendererFlip::SDL_FLIP_NONE;
+	float saveframe;
+	bool colcoin;
 public:
 	iPoint position;
 	pugi::xml_document file;

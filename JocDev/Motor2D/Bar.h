@@ -10,6 +10,7 @@ public:
 	~bar();
 
 	void Update(float dt);
+
 public:
 	Animation bar_anim;
 private:

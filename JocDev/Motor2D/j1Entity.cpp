@@ -152,7 +152,7 @@ bool j1Entity::Load(pugi::xml_node & data)
 				pugi::xml_node boar_data = data.child("boar");
 				entities[i]->Load(boar_data);
 			}
-			if (queue[i].type == ENTITY_TYPES::ENTITY_PLAYER)
+			if (entities[i] == player)
 			{
 				pugi::xml_node player_data = data.child("player");
 				entities[i]->Load(player_data);
@@ -178,7 +178,7 @@ bool j1Entity::Save(pugi::xml_node & data) const
 				pugi::xml_node boar_data = data.append_child("boar");
 				entities[i]->Save(boar_data);
 			}
-			if (queue[i].type == ENTITY_TYPES::ENTITY_PLAYER)
+			if (entities[i] == player)
 			{
 				pugi::xml_node player_data = data.append_child("player");
 				entities[i]->Save(player_data);

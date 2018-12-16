@@ -11,6 +11,8 @@ public:
 	~Collective();
 
 	virtual void Update(float dt) = 0;
+
+
 	bool GetPush();
 public:
 	uint collect;

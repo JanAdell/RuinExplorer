@@ -9,8 +9,13 @@
 		<scene volcan_map="true" />
 	</scene>
 	<gui />
+	<fonts />
 	<:anonymous />
-	<Entity />
+	<Entity>
+		<player>
+			<position x="480" y="4045" />
+		</player>
+	</Entity>
 	<:anonymous />
 	<pathfinding />
 	<renderer>

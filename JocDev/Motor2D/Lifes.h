@@ -12,6 +12,7 @@ public:
 	~Lifes();
 
 	void Update(float dt);
+
 private:
 	Animation life_anim;
 	int max_life, min_life;

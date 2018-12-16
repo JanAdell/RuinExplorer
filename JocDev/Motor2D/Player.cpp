@@ -334,8 +334,9 @@ void Player::OnCollision(Collider* collider)
 
 bool Player::Load(pugi::xml_node& data)
 {
-	position.x = data.child("player").attribute("x").as_int();
-	position.y = data.child("player").attribute("y").as_int();
+	position.x = data.child("position").attribute("x").as_int();
+	position.y = data.child("position").attribute("y").as_int();
+
 
 	return true;
 }
@@ -343,7 +344,7 @@ bool Player::Load(pugi::xml_node& data)
 // Save Game State
 bool Player::Save(pugi::xml_node& data) const
 {
-	pugi::xml_node pos = data.append_child("player");
+	pugi::xml_node pos = data.append_child("position");
 
 	pos.append_attribute("x") = position.x;
 	pos.append_attribute("y") = position.y;

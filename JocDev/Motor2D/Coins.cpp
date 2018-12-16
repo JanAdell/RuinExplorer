@@ -3,6 +3,7 @@
 #include "j1Entity.h"
 #include "j1Scene.h"
 #include "j1GUI.h"
+#include "j1Input.h"
 
 Coins::Coins(int x, int y):Collective(x,y,GUI_TYPES::COIN)
 {
@@ -48,4 +49,10 @@ void Coins::Update(float dt)
 	{
 		collectcoin = false;
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
+		colcoin = collectcoin;
+
+	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
+		collectcoin = colcoin;
 }
