@@ -11,6 +11,7 @@
 #include "SCoin.h"
 #include "pause.h"
 #include "Textbox.h"
+#include "Credits.h"
 
 
 #define CURSOR_WIDTH 2
@@ -42,7 +43,9 @@ enum GUI_TYPES
 	COLLECTIVE,
 	COIN,
 
-	TEXTBOX
+	TEXTBOX,
+
+	SLIDER
 };
 
 

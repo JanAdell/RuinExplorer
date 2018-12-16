@@ -103,6 +103,12 @@
     <ClCompile Include="pause.cpp">
       <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClCompile>
+    <ClCompile Include="Sliderbar.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -223,6 +229,12 @@
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClInclude>
     <ClInclude Include="pause.h">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Sliderbar.h">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Credits.h">
       <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClInclude>
   </ItemGroup>

@@ -294,8 +294,9 @@ void j1GUI::ActiveBotton(GUI & GUi)
 		break;
 
 	case GUI_TYPES::CREDITS:
-		//credits png
-		App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "RETURN");
+		
+		App->gui->AddGui(130, 530, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "RETURN");
+		App->gui->AddGui(133, 180, GUI_TYPES::SPRITES, GUI_TYPES::CREDITS);
 		break;
 	case GUI_TYPES::EXIT:
 		App->scene->go_out = true;
@@ -334,6 +335,9 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 
 		if (inf.subtype == GUI_TYPES::PAUSE)
 			gui[i] = new Pause(inf.pos.x, inf.pos.y);
+
+		if (inf.subtype == GUI_TYPES::CREDITS)
+			gui[i] = new credits(inf.pos.x, inf.pos.y);
 
 	case GUI_TYPES::COLLECTIVE:
 		if (inf.subtype == GUI_TYPES::COIN)
