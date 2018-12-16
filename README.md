@@ -12,6 +12,8 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 * Top Arrow Key: Jump
 
+* Down Arrow Key: Downwards slash.
+
 * Space: Boosted jump (when on top of a booster platform). 
 
 * The player in this game is able to teleport from one side to the other of the screen, though it is not always the best way to advance.
@@ -62,6 +64,37 @@ In this project we will attempt to put together a vertical platformer called Rui
 	
 	>https://lionheart963.itch.io/flying-eye-creature
 
+	
+ **GUI Elements and Assets:**
+ 
+ *  *Enemy Health Bars*(used as progress bars) by Paul Wortmann
+ 
+ 	>https://opengameart.org/content/enemy-health-bars
+	
+*  *Spinning Gold Coin* by morgan3d
+	
+	>https://opengameart.org/users/morgan3d
+	
+	>https://opengameart.org/content/spinning-gold-coin
+	
+*  *Awkward*, font by Void
+	
+	>https://arcade.itch.io/
+	
+	>https://arcade.itch.io/awkward
+	
+*  *Simple Small pixel hearths* by C.Nilsson
+	
+	>https://opengameart.org/content/simple-small-pixel-hearts
+	
+	
+*  *Mountain Dusk parallax background* by ansimuz
+
+	>https://ansimuz.itch.io/
+	
+	>https://ansimuz.itch.io/mountain-dusk-parallax-background
+	
+	
 ### Audio:
 
 **Themes used:**
@@ -79,7 +112,16 @@ In this project we will attempt to put together a vertical platformer called Rui
   > https://freesound.org/people/LittleRobotSoundFactory/
 
 
+* *8-bit Platformer SFX* by Mark McCorkle for OpenGameArt.org
 
+  > https://opengameart.org/content/8-bit-platformer-sfx
+  
+  
+* *10 8bit coin sounds* by Luke.RUSTLTD  
+  
+  >https://opengameart.org/users/lukerustltd
+  >https://opengameart.org/content/10-8bit-coin-sounds
+  >http://www.rustltd.com/
 
 ### Debug and Utility Keys
 * F1: Places the player at the start of the first stage.
@@ -120,13 +162,10 @@ See the license here: https://github.com/JanAdell/Videogame_Dev_RuinExplorer/blo
 ### Group members acomplishments in the current version
 
 * **Didac Llop:**
-	* Pathfinding implementation
-	* Entity management
+	* GUI Module Iplementation and application
 
 * **Jan Adell:**
-	* Framerate regulation
-	* Previous version modules corrections, including Sound Effects and Fade To Black
-	* Profiler implementation
+	* Font Module Implementation and sound fixes
 
 ## Project repository
 
