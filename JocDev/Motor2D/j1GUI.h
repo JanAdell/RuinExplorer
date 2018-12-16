@@ -10,6 +10,7 @@
 #include "Coins.h"
 #include "SCoin.h"
 
+
 #define CURSOR_WIDTH 2
 #define MAX_GUI 50
 // TODO 1: Create your structure of classes
@@ -22,6 +23,9 @@ enum GUI_TYPES
 	EASY,
 	DIFFICULT,
 	CONTINUE,
+	OPTIONS,
+	RETURNMENU,
+	EXIT,
 
 	SPRITES,
 	LIFES,
@@ -87,7 +91,7 @@ private:
 
 	SDL_Texture* atlas;
 	p2SString atlas_file_name;
-		
+	bool firstiterator = true;
 
 public:
 	GUI_inf	queue[MAX_GUI];

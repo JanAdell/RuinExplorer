@@ -112,8 +112,9 @@ bool j1Entity::CleanUp()
 	{
 		enemyboatpos.clear();
 		enemyeyepos.clear();
+		
 	}
-
+	player = nullptr;
 	return true;
 }
 

@@ -30,7 +30,9 @@ bool j1Scene::Awake(pugi::xml_node& conf)
 {
 	LOG("Loading Scene");
 	menu_file_name = conf.child("menu").attribute("name").as_string("");
+	menu_file_name2 = conf.child("menu2").attribute("name").as_string("");
 	rect = {conf.child("menu").attribute("x").as_int(),conf.child("menu").attribute("y").as_int(),conf.child("menu").attribute("w").as_int(),conf.child("menu").attribute("h").as_int() };
+	rectR = { conf.child("menu2").attribute("x").as_int(),conf.child("menu2").attribute("y").as_int(),conf.child("menu2").attribute("w").as_int(),conf.child("menu2").attribute("h").as_int() };
 	bool ret = true;
 
 	return ret;
@@ -43,6 +45,7 @@ bool j1Scene::Start()
 	App->collisions->CleanUp();
 	App->map->CleanUp();
 	menuBackground = App->tex->Load(menu_file_name.GetString());
+	menuBackgroundR = App->tex->Load(menu_file_name2.GetString());
 	GUImenu();
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
 	
@@ -61,10 +64,17 @@ bool j1Scene::PreUpdate()
 bool j1Scene::Update(float dt)
 {
 	BROFILER_CATEGORY("UpdateScene", Profiler::Color::RosyBrown);
-	if(stayinmenu)
-		App->render->Blit(menuBackground, 0, 0, SDL_RendererFlip::SDL_FLIP_NONE, &rect, 0.0f);
+	if (stayinmenu)
+	{
+		if(changemenu)
+			App->render->Blit(menuBackground, 0, 0, SDL_RendererFlip::SDL_FLIP_NONE, &rect, 0.0f);
+		else
+			App->render->Blit(menuBackgroundR, 0, 0, SDL_RendererFlip::SDL_FLIP_NONE, &rect, 0.0f);
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
+		do_load = true;
+	if(do_load)
 	{
 		if (volcan_map && map_saved)
 		{
@@ -80,6 +90,7 @@ bool j1Scene::Update(float dt)
 			App->fade->fadetoBlack();
 			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
 		}
+		do_load = false;
 	}
 	//fiinish first map
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN && volcan_map)
@@ -106,12 +117,12 @@ bool j1Scene::Update(float dt)
 			}
 
 	}
-	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN && !stayinmenu)
 	{
 		StartGameT();
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) 
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN && !stayinmenu) 
 	{
 		StartGameV();
 	}
@@ -139,7 +150,9 @@ bool j1Scene::PostUpdate()
 
 	bool ret = true;
 
-	if(App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		go_out = true;
+	if(go_out)
 		ret = false;
 
 	die = false;
@@ -194,7 +207,6 @@ void j1Scene::death()
 
 void j1Scene::respawnEnemies()
 {
-	App->entities->AddEntity(ENTITY_TYPES::ENTITY_PLAYER, App->entities->position_player.x, App->entities->position_player.y);
 
 	for (p2List_item<iPoint> *iterator = App->entities->enemyboatpos.start; iterator != nullptr;iterator = iterator->next)
 	{
@@ -206,12 +218,14 @@ void j1Scene::respawnEnemies()
 	{
 		App->entities->AddEntity(ENTITY_TYPES::ENTITY_EYEMONSTER, iterator->data.x, iterator->data.y);
 	}
+
+	App->entities->AddEntity(ENTITY_TYPES::ENTITY_PLAYER, App->entities->position_player.x, App->entities->position_player.y);
 }
 
 void j1Scene::respawnGUI()
 {
 
-	//App->gui->AddGui(480, 4029, GUI_TYPES::BUTTON);
+	App->gui->AddGui(100, 100, GUI_TYPES::BUTTON,GUI_TYPES::RETURNMENU);
 	App->gui->AddGui(250, 13, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
 	App->gui->AddGui(300, 10, GUI_TYPES::SPRITES, GUI_TYPES::SPRITECOIN);
 	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);
@@ -224,8 +238,12 @@ void j1Scene::respawnGUI()
 
 void j1Scene::GUImenu()
 {
-	App->gui->AddGui(100, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY);
-	App->gui->AddGui(100, 300, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE);
+	changemenu = true;
+	App->gui->AddGui(130, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY);
+	App->gui->AddGui(130, 250, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE);
+	App->gui->AddGui(130, 400, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS);
+	App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::EXIT);
+
 }
 
 void j1Scene::StartGameV()

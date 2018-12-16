@@ -8,6 +8,10 @@
 #include "j1GUI.h"
 #include "j1FadetoBlack.h"
 #include "j1Scene.h"
+#include "j1Map.h"
+#include "j1Entity.h"
+#include "j1Pathfinding.h"
+#include "j1Collisions.h"
 
 j1GUI::j1GUI() : j1Module()
 {
@@ -185,10 +189,75 @@ bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype)
 
 void j1GUI::ActiveBotton(GUI & GUi)
 {
+	App->scene->changemenu = !App->scene->changemenu;
+
+	for (uint i = 0; i < MAX_GUI; ++i)
+	{
+		if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
+		{
+			gui[i]->to_delete = true;
+		}
+	}
 	switch (GUi.subtype)
 	{
 	case GUI_TYPES::PLAY:
 
+		App->gui->AddGui(615, 100, GUI_TYPES::BUTTON,GUI_TYPES::EASY);
+		App->gui->AddGui(615, 300, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT);
+		break;
+
+	case GUI_TYPES::DIFFICULT:
+		App->gui->dificultEasy = false;
+		App->scene->StartGameV();
+		App->scene->stayinmenu = false;
+		break;
+
+	case GUI_TYPES::EASY:
+		App->gui->dificultEasy = true;
+		App->scene->StartGameV();
+		App->scene->stayinmenu = false;
+		break;
+
+	case GUI_TYPES::CONTINUE:
+
+		App->scene->stayinmenu = false;
+		App->entities->Start();
+		App->fade->fadetoBlack();
+		if (App->scene->volcan_map)
+		{
+			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			if (App->map->Load("Volcano_Map.tmx"));
+			{
+				int w, h;
+				uchar* data = NULL;
+				if (App->map->CreateWalkabilityMap(w, h, &data))
+					App->pathfinding->SetMap(w, h, data);
+
+				RELEASE_ARRAY(data);
+
+			}
+		}
+			App->scene->do_load = false;
+
+
+		if (!App->scene->volcan_map)
+		{
+			if (App->map->Load("SeaTempleMap.tmx"));
+			{
+				int w, h;
+				uchar* data = NULL;
+				if (App->map->CreateWalkabilityMap(w, h, &data))
+					App->pathfinding->SetMap(w, h, data);
+
+				RELEASE_ARRAY(data);
+
+			}
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
+		}
+		
+		break;
+
+	case GUI_TYPES::OPTIONS:
 		for (uint i = 0; i < MAX_GUI; ++i)
 		{
 			if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
@@ -196,36 +265,40 @@ void j1GUI::ActiveBotton(GUI & GUi)
 				gui[i]->to_delete = true;
 			}
 		}
-		App->gui->AddGui(100, 100, GUI_TYPES::BUTTON,GUI_TYPES::EASY);
-		App->gui->AddGui(100, 300, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT);
+		//create sliderbar
+
+		App->gui->AddGui(615,500,GUI_TYPES::BUTTON,GUI_TYPES :: RETURNMENU);
 		break;
 
-	case GUI_TYPES::DIFFICULT:
-		App->gui->dificultEasy = false;
-		App->scene->StartGameV();
-		break;
-
-	case GUI_TYPES::EASY:
-		App->gui->dificultEasy = true;
-		App->scene->StartGameV();
-		break;
-
-	case GUI_TYPES::CONTINUE:
-		
-		if (App->scene->volcan_map && App->scene->map_saved)
+	case GUI_TYPES::RETURNMENU:
+		if (App->scene->stayinmenu)
 		{
-			App->scene->StartGameV();
-			App->LoadGame("save_game.xml");
+			for (uint i = 0; i < MAX_GUI; ++i)
+			{
+				if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
+				{
+					gui[i]->to_delete = true;
+				}
+			}
+		}
+		else
+		{
+			App->scene->die = true;
+			App->map->CleanUp();
+			App->entities->CleanUp();
+			App->gui->CleanUp();
+			App->collisions->CleanUp();
+			App->pathfinding->CleanUp();
 			App->fade->fadetoBlack();
-			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+			App->gui->Start();
+			App->scene->stayinmenu = true;
 		}
 
-		if (!App->scene->volcan_map && !App->scene->map_saved)
-		{
-			App->LoadGame("save_game.xml");
-			App->fade->fadetoBlack();
-			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
-		}
+		App->scene->GUImenu();
+		break;
+
+	case GUI_TYPES::EXIT:
+		App->scene->go_out = true;
 		break;
 	}
 }
@@ -255,11 +328,10 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 
 		if (inf.subtype == GUI_TYPES::BAR)
 			gui[i] = new bar(inf.pos.x, inf.pos.y);
-		
 
 		if (inf.subtype == GUI_TYPES::SPRITECOIN)
 			gui[i] = new Scoin(inf.pos.x, inf.pos.y);
-		break;
+
 	case GUI_TYPES::COLLECTIVE:
 		if (inf.subtype == GUI_TYPES::COIN)
 			gui[i] = new Coins(inf.pos.x, inf.pos.y);

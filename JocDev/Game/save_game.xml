@@ -6,9 +6,12 @@
 	<audio />
 	<map />
 	<scene>
-		<scene volcan_map="true" />
+		<scene volcan_map="false" />
 	</scene>
 	<gui>
+		<Button>
+			<position x="100" y="100" />
+		</Button>
 		<Sprites>
 			<position x="250" y="13" />
 		</Sprites>
@@ -23,31 +26,51 @@
 			<position x="950" y="500" />
 		</Sprites>
 		<Collective>
-			<position x="286" y="4038" />
-			<collect collect="true" />
-		</Collective>
-		<Collective>
-			<position x="742" y="3706" />
+			<position x="596" y="4073" />
 			<collect collect="false" />
 		</Collective>
 		<Collective>
-			<position x="646" y="2650" />
+			<position x="642" y="4072" />
 			<collect collect="false" />
 		</Collective>
 		<Collective>
-			<position x="290" y="2974" />
+			<position x="685" y="4071" />
 			<collect collect="false" />
 		</Collective>
 		<Collective>
-			<position x="786" y="1694" />
+			<position x="678" y="3394" />
 			<collect collect="false" />
 		</Collective>
 		<Collective>
-			<position x="502" y="924" />
+			<position x="422" y="2334" />
 			<collect collect="false" />
 		</Collective>
 		<Collective>
-			<position x="744" y="514" />
+			<position x="326" y="1798" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="648" y="1508" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="504" y="796" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="612" y="518" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="520" y="450" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="392" y="514" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="722" y="1122" />
 			<collect collect="false" />
 		</Collective>
 	</gui>
@@ -55,12 +78,12 @@
 	<:anonymous />
 	<Entity>
 		<player>
-			<position x="342" y="4045" />
+			<position x="480" y="4360" />
 		</player>
 	</Entity>
 	<:anonymous />
 	<pathfinding />
 	<renderer>
-		<camera x="0" y="-3359" speed="1" />
+		<camera x="0" y="-3680" speed="1" />
 	</renderer>
 </game_state>

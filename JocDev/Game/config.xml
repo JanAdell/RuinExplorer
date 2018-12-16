@@ -31,7 +31,10 @@
   </map>
   
   <scene>
-	<menu name = "maps/menu.png"
+	<menu name = "maps/menuL.png"
+	x = "0" y = "0" w = "1024" h = "768"
+	/>
+	<menu2 name = "maps/menuR.png"
 	x = "0" y = "0" w = "1024" h = "768"
 	/>
   </scene>

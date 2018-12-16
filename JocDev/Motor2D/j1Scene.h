@@ -47,13 +47,19 @@ public:
 	bool map_saved = true;
 	bool die = false;
 	uint deathsfx;
-
+	bool changemenu = false;
+	bool stayinmenu = true;
+	bool do_load = false;
+	bool go_out = false;
 private:
 	_Mix_Music* Stage_music = nullptr;
 	SDL_Texture *menuBackground;
-	SDL_Rect rect;
+	SDL_Texture *menuBackgroundR;
+	SDL_Rect rect,rectR;
 	p2SString menu_file_name;
-	bool stayinmenu = true;
+	p2SString menu_file_name2;
+	
+	
 
 };
 
