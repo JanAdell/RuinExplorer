@@ -33,7 +33,7 @@ Here's a link to the team's github repository where you can find the various ver
 
 GNU GPLv3
 
-Ruin Explorer (Provisional name)
+Ruin Explorer 
 
 Copyright (C) 2018  Didac Llop / Jan Adell
 
