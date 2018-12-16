@@ -24,11 +24,11 @@ void GUI::Draw(SDL_Texture * sprites)
 {
 	if (animation != nullptr)
 	{
-		if (type == GUI_TYPES::BUTTON || type == GUI_TYPES::COLLECTIVE)
+		if (type == GUI_TYPES::COLLECTIVE)
 		{
 			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame()));
 		}
-		if (type == GUI_TYPES::SPRITES)
+		if (type == GUI_TYPES::BUTTON || type == GUI_TYPES::SPRITES)
 		{
 			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame()),0.0f);
 		}

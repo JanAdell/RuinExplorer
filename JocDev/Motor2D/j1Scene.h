@@ -5,6 +5,7 @@
 
 struct SDL_Texture;
 
+
 class j1Scene : public j1Module
 {
 public:
@@ -15,7 +16,7 @@ public:
 	virtual ~j1Scene();
 
 	// Called before render is available
-	bool Awake();
+	bool Awake(pugi::xml_node& conf);
 
 	// Called before the first frame
 	bool Start();
@@ -38,6 +39,9 @@ public:
 	void death();
 	void respawnEnemies();
 	void respawnGUI();
+	void GUImenu();
+
+public:
 	bool volcan_map = true;
 	bool map_saved = true;
 	bool die = false;
@@ -46,6 +50,9 @@ public:
 
 private:
 	_Mix_Music* Stage_music = nullptr;
+	SDL_Texture *menuBackground;
+	SDL_Rect rect;
+	p2SString menu_file_name;
 
 };
 

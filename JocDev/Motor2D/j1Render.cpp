@@ -88,7 +88,7 @@ bool j1Render::Update(float dt)
 {
 	BROFILER_CATEGORY("UpdateRenderer", Profiler::Color::CornflowerBlue);
 
-	if (camera.y != 0)
+	if (camera.y != 0 && App->entities->player != nullptr)
 	{
 		if (App->entities->player->position.y < App->map->respawnPlayer.y - MOVE_MARGING)
 		{

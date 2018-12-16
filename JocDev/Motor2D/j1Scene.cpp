@@ -26,9 +26,11 @@ j1Scene::~j1Scene()
 {}
 
 // Called before render is available
-bool j1Scene::Awake()
+bool j1Scene::Awake(pugi::xml_node& conf)
 {
 	LOG("Loading Scene");
+	menu_file_name = conf.child("menu").attribute("name").as_string("");
+	rect = {conf.child("menu").attribute("x").as_int(),conf.child("menu").attribute("y").as_int(),conf.child("menu").attribute("w").as_int(),conf.child("menu").attribute("h").as_int() };
 	bool ret = true;
 
 	return ret;
@@ -37,19 +39,12 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
+	App->entities->CleanUp();
+	App->collisions->CleanUp();
+	App->map->CleanUp();
+	menuBackground = App->tex->Load(menu_file_name.GetString());
+	GUImenu();
 	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-	deathsfx = App->audio->LoadFx("audio/fx/Death.wav");
-
-	if (App->map->Load("Volcano_Map.tmx"))
-	{
-		int w, h;
-		uchar* data = NULL;
-		if (App->map->CreateWalkabilityMap(w, h, &data))
-			App->pathfinding->SetMap(w, h, data);
-
-		RELEASE_ARRAY(data);
-		
-	}
 	
 	return true;
 }
@@ -66,6 +61,7 @@ bool j1Scene::PreUpdate()
 bool j1Scene::Update(float dt)
 {
 	BROFILER_CATEGORY("UpdateScene", Profiler::Color::RosyBrown);
+	App->render->Blit(menuBackground, 0, 82, SDL_RendererFlip::SDL_FLIP_NONE, &rect, 0.0f);
 
 	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 	{
@@ -96,18 +92,19 @@ bool j1Scene::Update(float dt)
 		App->render->camera.x = App->render->camera.y = 0;
 		App->entities->player->position.y = App->map->data.tile_height * 19;
 	}
-	
-	if (App->entities->player->stay_in_platform)
-		if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
-		{
-			App->SaveGame("save_game.xml");
-			if (volcan_map)
-				map_saved = true;
-			else
-				map_saved = false;
-		}
+	if (App->entities->player != nullptr)
+	{
+		if (App->entities->player->stay_in_platform)
+			if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
+			{
+				App->SaveGame("save_game.xml");
+				if (volcan_map)
+					map_saved = true;
+				else
+					map_saved = false;
+			}
 
-	
+	}
 	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
 	{
 		App->map->CleanUp();
@@ -165,10 +162,13 @@ bool j1Scene::Update(float dt)
 
 
 	//dead condition
-	if (-App->entities->player->position.y < App->render->camera.y - App->render->camera.h)
+	if (App->entities->player != nullptr)
 	{
-		App->audio->PlayFx(deathsfx);
-		death();		
+		if (-App->entities->player->position.y < App->render->camera.y - App->render->camera.h)
+		{
+			App->audio->PlayFx(deathsfx);
+			death();
+		}
 	}
 	return true;
 }
@@ -261,5 +261,10 @@ void j1Scene::respawnGUI()
 	{
 		App->gui->AddGui(item->data.x, item->data.y, GUI_TYPES::COLLECTIVE, GUI_TYPES::COIN);
 	}
+}
+
+void j1Scene::GUImenu()
+{
+	App->gui->AddGui(100, 100, GUI_TYPES::BUTTON);
 }
 

@@ -39,7 +39,7 @@ void Button::Update(float dt)
 	iPoint mousePos;
 	App->input->GetMousePosition(mousePos.x, mousePos.y);
 	if (mousePos.x > position.x && mousePos.x < position.x + buttonsize.x
-		&& mousePos.y - App->render->camera.y > position.y && mousePos.y - App->render->camera.y < position.y + buttonsize.y)
+		&& mousePos.y> position.y && mousePos.y < position.y + buttonsize.y)
 	{
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT)
 		{
