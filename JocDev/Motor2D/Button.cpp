@@ -28,10 +28,12 @@ Button::Button(int x, int y, GUI_TYPES subtype, p2SString txt) : GUI(x, y,GUI_TY
 		flip = SDL_RendererFlip::SDL_FLIP_NONE;
 	}
 	App->gui->AddGui(x, y, GUI_TYPES::TEXTBOX, GUI_TYPES::NO_TYPES, txt);
+	clickfx = App->audio->LoadFx("audio/fx/click1.wav");
 }
 
 Button::~Button()
 {
+	App->audio->UnloadFx(clickfx);
 }
 
 void Button::Update(float dt)
@@ -45,6 +47,7 @@ void Button::Update(float dt)
 		{
 			active = false;
 			animation = &push;
+			App->audio->PlayFx(clickfx);
 		}
 		else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_UP)
 			active = true;

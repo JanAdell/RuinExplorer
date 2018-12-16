@@ -23,6 +23,7 @@ private:
 
 	iPoint buttonsize;
 	bool active = false;
+	uint clickfx;
 };
 
 #endif

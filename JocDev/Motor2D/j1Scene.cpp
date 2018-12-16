@@ -47,7 +47,7 @@ bool j1Scene::Start()
 	menuBackground = App->tex->Load(menu_file_name.GetString());
 	menuBackgroundR = App->tex->Load(menu_file_name2.GetString());
 	GUImenu();
-	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+	App->audio->PlayMusic("audio/music/awesomeness.ogg", DEFAULT_MUSIC_FADE_TIME);
 	
 	return true;
 }
