@@ -61,7 +61,8 @@ bool j1Scene::PreUpdate()
 bool j1Scene::Update(float dt)
 {
 	BROFILER_CATEGORY("UpdateScene", Profiler::Color::RosyBrown);
-	App->render->Blit(menuBackground, 0, 82, SDL_RendererFlip::SDL_FLIP_NONE, &rect, 0.0f);
+	if(stayinmenu)
+		App->render->Blit(menuBackground, 0, 0, SDL_RendererFlip::SDL_FLIP_NONE, &rect, 0.0f);
 
 	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 	{
@@ -265,6 +266,32 @@ void j1Scene::respawnGUI()
 
 void j1Scene::GUImenu()
 {
-	App->gui->AddGui(100, 100, GUI_TYPES::BUTTON);
+	App->gui->AddGui(100, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY);
+}
+
+void j1Scene::StartGame()
+{
+	App->map->CleanUp();
+	App->entities->CleanUp();
+	App->gui->CleanUp();
+	App->collisions->CleanUp();
+	App->pathfinding->CleanUp();
+	App->fade->fadetoBlack();
+	if (App->map->Load("Volcano_Map.tmx"));
+	{
+		int w, h;
+		uchar* data = NULL;
+		if (App->map->CreateWalkabilityMap(w, h, &data))
+			App->pathfinding->SetMap(w, h, data);
+
+		RELEASE_ARRAY(data);
+
+	}
+	App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+	App->render->Start();
+	App->entities->Start();
+	App->gui->Start();
+	App->collisions->Start();
+	volcan_map = true;
 }
 

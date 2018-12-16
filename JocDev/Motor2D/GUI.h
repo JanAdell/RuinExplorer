@@ -15,21 +15,22 @@ enum GUI_TYPES;
 class GUI
 {
 public:
-	GUI(int x, int y, GUI_TYPES type);
+	GUI(int x, int y, GUI_TYPES type,GUI_TYPES subtype);
 	~GUI();
 
 	const iPoint GetPos() const;
 
 	virtual void Update(float dt) = 0;
 	void Draw(SDL_Texture* sprites);
+	virtual bool GetPush() = 0;
 protected:
 	Animation * animation = nullptr;
 	SDL_RendererFlip flip = SDL_RendererFlip::SDL_FLIP_NONE;
 public:
 	iPoint position;
 	pugi::xml_document file;
-	GUI_TYPES type;
-	bool gui_delete = false;
+	GUI_TYPES type,subtype;
+	bool to_delete = false;
 
 };
 

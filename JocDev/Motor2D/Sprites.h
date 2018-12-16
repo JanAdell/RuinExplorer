@@ -6,11 +6,11 @@
 class Sprites : public GUI
 {
 public:
-	Sprites(int x, int y);
+	Sprites(int x, int y, GUI_TYPES subtype);
 	~Sprites();
 
 	virtual void Update(float dt) = 0;
-public:
+	bool GetPush();
 
 };
 #endif

@@ -1,6 +1,7 @@
 #include "SCoin.h"
+#include "j1GUI.h"
 
-Scoin::Scoin(int x, int y):Sprites(x,y)
+Scoin::Scoin(int x, int y):Sprites(x,y, GUI_TYPES::SPRITECOIN)
 {
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
@@ -13,7 +14,6 @@ Scoin::Scoin(int x, int y):Sprites(x,y)
 
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
-	gui_delete = false;
 }
 
 Scoin::~Scoin()

@@ -4,7 +4,7 @@
 #include "j1Render.h"
 #include "j1GUI.h"
 
-Button::Button(int x, int y) : GUI(x, y,GUI_TYPES::BUTTON)
+Button::Button(int x, int y, GUI_TYPES subtype) : GUI(x, y,GUI_TYPES::BUTTON,subtype)
 {
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
@@ -27,7 +27,6 @@ Button::Button(int x, int y) : GUI(x, y,GUI_TYPES::BUTTON)
 		push.loop = false;
 		flip = SDL_RendererFlip::SDL_FLIP_NONE;
 	}
-	gui_delete = false;
 }
 
 Button::~Button()
@@ -43,14 +42,26 @@ void Button::Update(float dt)
 	{
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT)
 		{
+			active = false;
 			animation = &push;
 		}
+		else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_UP)
+			active = true;
 		else
+		{
 			animation = &select;
+			active = false;
+		}
 	}
 	else
 	{
 		animation = &idle;
+		active = false;
 	}
+}
+
+bool Button::GetPush()
+{
+	return active;
 }
 

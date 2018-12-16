@@ -7,7 +7,7 @@
   </app>
 	
   <renderer>
-    <vsync value="false"/>
+    <vsync value="true"/>
 	<camera speed = "1" />
 	<game_name name = "Ruin_Explorer"/>
   </renderer>

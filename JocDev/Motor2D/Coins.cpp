@@ -2,8 +2,9 @@
 #include "j1App.h"
 #include "j1Entity.h"
 #include "j1Scene.h"
+#include "j1GUI.h"
 
-Coins::Coins(int x, int y):Collective(x,y)
+Coins::Coins(int x, int y):Collective(x,y,GUI_TYPES::COIN)
 {
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
@@ -23,7 +24,6 @@ Coins::Coins(int x, int y):Collective(x,y)
 		size.y = coinNode.child("coin_anim").attribute("h1").as_int();
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
-	gui_delete = false;
 }
 
 Coins::~Coins()

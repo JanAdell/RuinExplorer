@@ -40,12 +40,12 @@ public:
 	void respawnEnemies();
 	void respawnGUI();
 	void GUImenu();
+	void StartGame();
 
 public:
 	bool volcan_map = true;
 	bool map_saved = true;
 	bool die = false;
-
 	uint deathsfx;
 
 private:
@@ -53,6 +53,7 @@ private:
 	SDL_Texture *menuBackground;
 	SDL_Rect rect;
 	p2SString menu_file_name;
+	bool stayinmenu = true;
 
 };
 

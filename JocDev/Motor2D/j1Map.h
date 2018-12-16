@@ -134,7 +134,6 @@ public:
 
 	iPoint respawnPlayer;
 	MapData data;
-
 private:
 
 	pugi::xml_document	map_file;

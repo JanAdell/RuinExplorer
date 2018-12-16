@@ -1,9 +1,10 @@
 #include "Bar.h"
 #include "j1App.h"
 #include "j1Render.h"
+#include "j1GUI.h"
 
 
-bar::bar(int x, int y):Sprites(x,y)
+bar::bar(int x, int y):Sprites(x,y,GUI_TYPES::BAR)
 {
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
@@ -34,7 +35,6 @@ bar::bar(int x, int y):Sprites(x,y)
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_VERTICAL;
 	barpos = position;
-	gui_delete = false;
 }
 
 bar::~bar()
@@ -43,7 +43,6 @@ bar::~bar()
 
 void bar::Update(float dt)
 {
-	gui_delete = false;
 	if (App->render->start)
 	{
 		animation = &bar_anim;

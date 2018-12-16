@@ -6,6 +6,8 @@
 #include "j1Fonts.h"
 #include "j1Input.h"
 #include "j1GUI.h"
+#include "j1FadetoBlack.h"
+#include "j1Scene.h"
 
 j1GUI::j1GUI() : j1Module()
 {
@@ -49,7 +51,14 @@ bool j1GUI::PreUpdate()
 		}
 	}
 
-
+	for (uint i = 0; i < MAX_GUI; ++i)
+	{
+		if (gui[i] != nullptr && gui[i]->to_delete == true)
+		{
+			delete gui[i];
+			gui[i] = nullptr;
+		}
+	}
 	return true;
 }
 
@@ -58,6 +67,17 @@ bool j1GUI::Update(float dt)
 	for (uint i = 0; i < MAX_GUI; ++i)
 		if (gui[i] != nullptr)
 			gui[i]->Update(dt);
+
+	for (uint i = 0; i < MAX_GUI; ++i)
+	{
+		if (gui[i] != nullptr)
+		{
+			if (gui[i]->GetPush() == true)
+			{
+				ActiveBotton(*gui[i]);
+			}
+		}
+	}
 
 	return true;
 }
@@ -111,6 +131,36 @@ bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype)
 	return ret;
 }
 
+void j1GUI::ActiveBotton(const GUI & GUi)
+{
+	switch (GUi.subtype)
+	{
+	case GUI_TYPES::PLAY:
+		for (uint i = 0; i < MAX_GUI; ++i)
+		{
+			if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
+			{
+				gui[i]->to_delete = true;
+			}
+		}
+		App->gui->AddGui(100, 20, GUI_TYPES::BUTTON,GUI_TYPES::EASY);
+		App->gui->AddGui(100, 180, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT);
+		break;
+
+	case GUI_TYPES::DIFFICULT:
+		App->gui->dificultEasy = false;
+		App->scene->StartGame();
+		break;
+
+	case GUI_TYPES::EASY:
+		App->gui->dificultEasy = true;
+		App->scene->StartGame();
+		break;
+
+	
+	}
+}
+
 
 // const getter for atlas
 const SDL_Texture* j1GUI::GetAtlas() const
@@ -125,7 +175,7 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 	switch (inf.type)
 	{
 	case GUI_TYPES::BUTTON:
-		gui[i] = new Button(inf.pos.x, inf.pos.y);
+		gui[i] = new Button(inf.pos.x, inf.pos.y,inf.subtype);
 		break;
 	case GUI_TYPES::SPRITES:
 		if (inf.subtype == GUI_TYPES::LIFES)

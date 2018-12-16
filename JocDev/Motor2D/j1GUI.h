@@ -18,11 +18,16 @@ enum GUI_TYPES
 {
 	NO_TYPES,
 	BUTTON,
+	PLAY,
+	EASY,
+	DIFFICULT,
+
 	SPRITES,
 	LIFES,
 	PROGRESBAR,
 	BAR,
 	SPRITECOIN,
+
 	COLLECTIVE,
 	COIN
 };
@@ -69,6 +74,7 @@ public:
 
 	bool AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype = GUI_TYPES::NO_TYPES);
 
+	void ActiveBotton(const GUI &GUi);
 
 	const SDL_Texture* GetAtlas() const;
 	
@@ -90,6 +96,7 @@ public:
 	SDL_Texture* text_draw;
 	iPoint position;
 	SDL_Rect element;
+	bool dificultEasy = true;
 };
 
 

@@ -4,7 +4,7 @@
 #include "j1GUI.h"
 
 
-GUI::GUI(int x, int y, GUI_TYPES type) : position(x, y), type(type)
+GUI::GUI(int x, int y, GUI_TYPES type, GUI_TYPES subtype) : position(x, y), type(type), subtype(subtype)
 {
 }
 

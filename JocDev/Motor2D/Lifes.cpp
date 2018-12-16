@@ -4,7 +4,7 @@
 #include "j1GUI.h"
 #include "j1Entity.h"
 
-Lifes::Lifes(int x, int y) : Sprites(x, y)
+Lifes::Lifes(int x, int y) : Sprites(x, y,GUI_TYPES::LIFES)
 {
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
@@ -22,7 +22,6 @@ Lifes::Lifes(int x, int y) : Sprites(x, y)
 		min_life = lifeNode.child("health").attribute("min_life").as_int();
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
-	gui_delete = false;
 }
 
 Lifes::~Lifes()

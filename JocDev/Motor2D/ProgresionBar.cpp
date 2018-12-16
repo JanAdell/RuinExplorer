@@ -1,6 +1,6 @@
 #include "ProgresionBar.h"
-
-ProgresionBar::ProgresionBar(int x , int y): Sprites(x,y)
+#include "j1GUI.h"
+ProgresionBar::ProgresionBar(int x , int y): Sprites(x,y, GUI_TYPES::PROGRESBAR)
 {
 	pugi::xml_parse_result result = file.load_file("GUI.xml");
 	if (result != NULL)
@@ -14,7 +14,6 @@ ProgresionBar::ProgresionBar(int x , int y): Sprites(x,y)
 		animation = &progresbar_anim;
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
-	gui_delete = false;
 }
 
 ProgresionBar::~ProgresionBar()
@@ -23,7 +22,6 @@ ProgresionBar::~ProgresionBar()
 
 void ProgresionBar::Update(float dt)
 {
-	gui_delete = false;
 	animation = &progresbar_anim;
 }
 
