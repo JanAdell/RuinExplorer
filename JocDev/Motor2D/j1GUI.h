@@ -9,6 +9,7 @@
 #include "Bar.h"
 #include "Coins.h"
 #include "SCoin.h"
+#include "pause.h"
 
 
 #define CURSOR_WIDTH 2

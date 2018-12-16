@@ -129,8 +129,9 @@ bool j1Scene::Update(float dt)
 	//open pause
 	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && !App->dopause && !stayinmenu)
 	{
-		App->gui->AddGui(10, 10, GUI_TYPES::SPRITES, GUI_TYPES::PAUSE);
-		App->gui->AddGui(615, 500, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU);
+		App->gui->AddGui(300, 120, GUI_TYPES::SPRITES, GUI_TYPES::PAUSE);
+		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU);
+		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS);
 	}
 
 	//close pause
@@ -138,7 +139,7 @@ bool j1Scene::Update(float dt)
 	{
 		for (uint i = 0; i < MAX_GUI; ++i)
 		{
-			if (App->gui->gui[i] != nullptr && (App->gui->gui[i]->type == GUI_TYPES::BUTTON || App->gui->gui[i]->type == GUI_TYPES::PAUSE))
+			if (App->gui->gui[i] != nullptr && (App->gui->gui[i]->type == GUI_TYPES::BUTTON || App->gui->gui[i]->subtype == GUI_TYPES::PAUSE))
 			{
 				App->gui->gui[i]->to_delete = true;
 			}
@@ -240,8 +241,6 @@ void j1Scene::respawnEnemies()
 
 void j1Scene::respawnGUI()
 {
-
-	App->gui->AddGui(100, 100, GUI_TYPES::BUTTON,GUI_TYPES::RETURNMENU);
 	App->gui->AddGui(250, 13, GUI_TYPES::SPRITES, GUI_TYPES::LIFES);
 	App->gui->AddGui(300, 10, GUI_TYPES::SPRITES, GUI_TYPES::SPRITECOIN);
 	App->gui->AddGui(965, 740, GUI_TYPES::SPRITES, GUI_TYPES::BAR);

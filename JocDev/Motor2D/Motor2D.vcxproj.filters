@@ -100,6 +100,9 @@
     <ClCompile Include="j1Fonts.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="pause.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -218,6 +221,9 @@
     </ClInclude>
     <ClInclude Include="j1Fonts.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="pause.h">
+      <Filter>Desenvolupament  ========\Modules\GUI\Sprites</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -333,6 +333,9 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 		if (inf.subtype == GUI_TYPES::SPRITECOIN)
 			gui[i] = new Scoin(inf.pos.x, inf.pos.y);
 
+		if (inf.subtype == GUI_TYPES::PAUSE)
+			gui[i] = new Pause(inf.pos.x, inf.pos.y);
+
 	case GUI_TYPES::COLLECTIVE:
 		if (inf.subtype == GUI_TYPES::COIN)
 			gui[i] = new Coins(inf.pos.x, inf.pos.y);
