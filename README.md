@@ -14,7 +14,9 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 * Down Arrow Key: Downwards slash.
 
-* Space: Boosted jump (when on top of a booster platform). 
+* Space bar: Boosted jump (when on top of a booster platform). 
+
+* P Key: Pause the Game.
 
 * The player in this game is able to teleport from one side to the other of the screen, though it is not always the best way to advance.
 
