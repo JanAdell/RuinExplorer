@@ -46,10 +46,10 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(map);
 	AddModule(scene);
-	AddModule(gui);
 	AddModule(font);
 	AddModule(collisions);
 	AddModule(entities);
+	AddModule(gui);
 	AddModule(fade);
 	AddModule(pathfinding);
 

@@ -10,6 +10,7 @@
 #include "Coins.h"
 #include "SCoin.h"
 #include "pause.h"
+#include "Textbox.h"
 
 
 #define CURSOR_WIDTH 2
@@ -25,7 +26,9 @@ enum GUI_TYPES
 	DIFFICULT,
 	CONTINUE,
 	OPTIONS,
+	OPTIONSPAUSE,
 	RETURNMENU,
+	RETURNPAUSE,
 	EXIT,
 
 	SPRITES,
@@ -36,7 +39,9 @@ enum GUI_TYPES
 	PAUSE,
 
 	COLLECTIVE,
-	COIN
+	COIN,
+
+	TEXTBOX
 };
 
 
@@ -80,7 +85,7 @@ public:
 	bool Save(pugi::xml_node &data) const;
 
 
-	bool AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype = GUI_TYPES::NO_TYPES);
+	bool AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype = GUI_TYPES::NO_TYPES, p2SString text = " ");
 
 	void ActiveBotton(GUI &GUi);
 
@@ -93,7 +98,6 @@ private:
 
 	SDL_Texture* atlas;
 	p2SString atlas_file_name;
-	bool firstiterator = true;
 
 public:
 	GUI_inf	queue[MAX_GUI];
@@ -101,9 +105,7 @@ public:
 
 	p2List<iPoint> coins;
 
-	SDL_Texture* text_draw;
 	iPoint position;
-	SDL_Rect element;
 	bool dificultEasy = true;
 	bar* barprogres;
 	p2List<Coins*> coin;

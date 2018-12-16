@@ -83,7 +83,13 @@
 		  x4 = "17" y4 = "470" w4 = "14" h4 = "14"
 		  />
   </fx_anim>
+  
   <gui>
     <atlas file="maps/GUI.png"/>
   </gui>
+  
+  <fonts>
+	  <default_font file = "Fonts/Awkward/Awkward.ttf" size = "12"/>
+  </fonts>
+  
 </config>

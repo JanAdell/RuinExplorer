@@ -168,7 +168,7 @@ bool j1GUI::Save(pugi::xml_node & data) const
 	return true;
 }
 
-bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype)
+bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype,p2SString text)
 {
 	bool ret = false;
 
@@ -180,6 +180,7 @@ bool j1GUI::AddGui(int x, int y, GUI_TYPES type, GUI_TYPES subtype)
 			queue[i].subtype = subtype;
 			queue[i].pos.x = x;
 			queue[i].pos.y = y;
+			queue[i].text = text;
 			ret = true;
 			break;
 		}
@@ -205,6 +206,7 @@ void j1GUI::ActiveBotton(GUI & GUi)
 
 		App->gui->AddGui(615, 100, GUI_TYPES::BUTTON,GUI_TYPES::EASY);
 		App->gui->AddGui(615, 300, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT);
+		App->dopause = false;
 		break;
 
 	case GUI_TYPES::DIFFICULT:
@@ -259,30 +261,18 @@ void j1GUI::ActiveBotton(GUI & GUi)
 		break;
 
 	case GUI_TYPES::OPTIONS:
-		for (uint i = 0; i < MAX_GUI; ++i)
-		{
-			if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
-			{
-				gui[i]->to_delete = true;
-			}
-		}
 		//create sliderbar
 
 		App->gui->AddGui(615,500,GUI_TYPES::BUTTON,GUI_TYPES :: RETURNMENU);
 		break;
 
+	case GUI_TYPES::OPTIONSPAUSE:
+		//create sliderbar
+
+		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNPAUSE);
+		break;
 	case GUI_TYPES::RETURNMENU:
-		if (App->scene->stayinmenu)
-		{
-			for (uint i = 0; i < MAX_GUI; ++i)
-			{
-				if (gui[i] != nullptr && gui[i]->type == GUI_TYPES::BUTTON)
-				{
-					gui[i]->to_delete = true;
-				}
-			}
-		}
-		else
+		if (!App->scene->stayinmenu)
 		{
 			App->scene->die = true;
 			App->map->CleanUp();
@@ -298,6 +288,10 @@ void j1GUI::ActiveBotton(GUI & GUi)
 		App->scene->GUImenu();
 		break;
 
+	case GUI_TYPES::RETURNPAUSE:
+		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU);
+		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE);
+		break;
 	case GUI_TYPES::EXIT:
 		App->scene->go_out = true;
 		break;
@@ -339,6 +333,10 @@ void j1GUI::SpawnGUI(const GUI_inf & inf)
 	case GUI_TYPES::COLLECTIVE:
 		if (inf.subtype == GUI_TYPES::COIN)
 			gui[i] = new Coins(inf.pos.x, inf.pos.y);
+		break;
+
+	case GUI_TYPES::TEXTBOX:
+		gui[i] = new Textbox({ inf.pos.x, inf.pos.y }, inf.text, App->font->default, { 255,255,255,80 });
 		break;
 	}
 }

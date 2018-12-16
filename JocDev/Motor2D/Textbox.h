@@ -1,13 +1,12 @@
 #ifndef _TEXT_BOX_
 #define _TEXT_BOX_
 
-#include "j1Module.h"
-#include "j1GUI.h"
+#include "GUI.h"
 #include "p2Point.h"
 #include "SDL_ttf/include/SDL_ttf.h"
 
 
-class Textbox : public j1GUI
+class Textbox : public GUI
 {
 public:
 
@@ -16,9 +15,10 @@ public:
 	~Textbox();
 
 	void SetText(p2SString text);
+	void Update(float dt);
+	void Draw();
 
-	bool Draw();
-
+	bool GetPush();
 
 private:
 	_TTF_Font*			font = nullptr;
@@ -26,6 +26,8 @@ private:
 	p2SString		    text;
 	Animation * animation = nullptr;
 	SDL_RendererFlip flip = SDL_RendererFlip::SDL_FLIP_NONE;
+	SDL_Rect element;
+	SDL_Texture* text_draw;
 
 };
 

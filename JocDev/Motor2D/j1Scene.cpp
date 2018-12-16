@@ -131,7 +131,7 @@ bool j1Scene::Update(float dt)
 	{
 		App->gui->AddGui(300, 120, GUI_TYPES::SPRITES, GUI_TYPES::PAUSE);
 		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU);
-		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS);
+		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE);
 	}
 
 	//close pause
@@ -258,6 +258,7 @@ void j1Scene::GUImenu()
 	App->gui->AddGui(130, 250, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE);
 	App->gui->AddGui(130, 400, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS);
 	App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::EXIT);
+	App->gui->AddGui(10, 10, GUI_TYPES::TEXTBOX, GUI_TYPES::NO_TYPES, "hello world");
 
 }
 

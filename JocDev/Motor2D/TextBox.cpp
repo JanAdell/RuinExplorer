@@ -7,12 +7,9 @@
 #include "j1GUI.h"
 #include "GUI.h"
 
-Textbox::Textbox(const iPoint position, const p2SString text, _TTF_Font* font, SDL_Color color) : j1GUI{}
+Textbox::Textbox(const iPoint position, const p2SString text, _TTF_Font* font, SDL_Color color) : GUI(position.x,position.y, GUI_TYPES::TEXTBOX,GUI_TYPES::NO_TYPES), font(font),text(text),color(color)
 {
-
-	this->font = font;
 	SetText(text);
-
 }
 
 Textbox::~Textbox()
@@ -27,9 +24,18 @@ void Textbox::SetText(p2SString text)
 	text_draw = App->font->Print(text.GetString(), color, font);
 }
 
-bool Textbox::Draw()
+void Textbox::Update(float dt)
 {
-	App->render->Blit(text_draw, position.x - element.w, position.y - element.h, flip, &(animation->GetCurrentFrame(1)));
+	Draw();
+}
 
+void Textbox::Draw()
+{
+	App->render->Blit(text_draw, position.x, position.y, flip, &element);
+
+}
+
+bool Textbox::GetPush()
+{
 	return false;
 }
