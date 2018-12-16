@@ -21,7 +21,7 @@ class j1GUI;
 class j1Collisions;
 class j1Pathfinding;
 class j1Entity;
-
+class j1Fonts;
 
 class j1App
 {

@@ -32,6 +32,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	scene = new j1Scene();
 	map = new j1Map();
 	gui = new j1GUI();
+	font = new j1Fonts();
 	collisions = new j1Collisions();
 	pathfinding = new j1Pathfinding();
 	entities = new j1Entity();
