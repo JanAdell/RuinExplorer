@@ -25,10 +25,12 @@ Coins::Coins(int x, int y):Collective(x,y,GUI_TYPES::COIN)
 		size.y = coinNode.child("coin_anim").attribute("h1").as_int();
 	}
 	flip = SDL_RendererFlip::SDL_FLIP_NONE;
+	coinsfx = App->audio->LoadFx("audio/fx/coin1.wav");
 }
 
 Coins::~Coins()
 {
+	App->audio->UnloadFx(coinsfx);
 }
 
 void Coins::Update(float dt)
@@ -43,6 +45,7 @@ void Coins::Update(float dt)
 			&& position.y < App->entities->player->position.y && position.y + size.y > App->entities->player->position.y && !collectcoin)
 		{
 			collectcoin = true;
+			App->audio->PlayFx(coinsfx);
 			collect++;
 
 		}

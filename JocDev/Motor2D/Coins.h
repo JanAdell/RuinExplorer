@@ -15,6 +15,7 @@ private:
 	Animation coin_anim;
 	iPoint size;
 	bool collectcoin = false;
+	uint coinsfx;
 };
 
 #endif
