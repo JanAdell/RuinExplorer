@@ -148,12 +148,12 @@ bool j1GUI::Save(pugi::xml_node & data) const
 				pugi::xml_node button_data = data.append_child("Button");
 				gui[i]->Save(button_data);
 			}
-			if (gui[i]->type == GUI_TYPES::COIN)
+			if (gui[i]->type == GUI_TYPES::COLLECTIVE)
 			{
 				pugi::xml_node collective_data = data.append_child("Collective");
 				gui[i]->Save(collective_data);
 			}
-			if (gui[i]->type == GUI_TYPES::BAR)
+			if (gui[i]->type == GUI_TYPES::SPRITES)
 			{
 				pugi::xml_node sprites_data = data.append_child("Sprites");
 				gui[i]->Save(sprites_data);
@@ -202,15 +202,31 @@ void j1GUI::ActiveBotton(GUI & GUi)
 
 	case GUI_TYPES::DIFFICULT:
 		App->gui->dificultEasy = false;
-		App->scene->StartGame();
+		App->scene->StartGameV();
 		break;
 
 	case GUI_TYPES::EASY:
 		App->gui->dificultEasy = true;
-		App->scene->StartGame();
+		App->scene->StartGameV();
 		break;
 
-	
+	case GUI_TYPES::CONTINUE:
+		
+		if (App->scene->volcan_map && App->scene->map_saved)
+		{
+			App->scene->StartGameV();
+			App->LoadGame("save_game.xml");
+			App->fade->fadetoBlack();
+			App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
+		}
+
+		if (!App->scene->volcan_map && !App->scene->map_saved)
+		{
+			App->LoadGame("save_game.xml");
+			App->fade->fadetoBlack();
+			App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
+		}
+		break;
 	}
 }
 

@@ -8,17 +8,59 @@
 	<scene>
 		<scene volcan_map="true" />
 	</scene>
-	<gui />
+	<gui>
+		<Sprites>
+			<position x="250" y="13" />
+		</Sprites>
+		<Sprites>
+			<position x="300" y="10" />
+		</Sprites>
+		<Sprites>
+			<position x="965" y="754" />
+			<frame frame="0" />
+		</Sprites>
+		<Sprites>
+			<position x="950" y="500" />
+		</Sprites>
+		<Collective>
+			<position x="286" y="4038" />
+			<collect collect="true" />
+		</Collective>
+		<Collective>
+			<position x="742" y="3706" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="646" y="2650" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="290" y="2974" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="786" y="1694" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="502" y="924" />
+			<collect collect="false" />
+		</Collective>
+		<Collective>
+			<position x="744" y="514" />
+			<collect collect="false" />
+		</Collective>
+	</gui>
 	<fonts />
 	<:anonymous />
 	<Entity>
 		<player>
-			<position x="480" y="4045" />
+			<position x="342" y="4045" />
 		</player>
 	</Entity>
 	<:anonymous />
 	<pathfinding />
 	<renderer>
-		<camera x="0" y="-3360" speed="1" />
+		<camera x="0" y="-3359" speed="1" />
 	</renderer>
 </game_state>

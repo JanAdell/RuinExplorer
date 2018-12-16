@@ -108,54 +108,12 @@ bool j1Scene::Update(float dt)
 	}
 	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
 	{
-		App->map->CleanUp();
-		App->entities->CleanUp();
-		App->collisions->CleanUp();
-		App->gui->CleanUp();
-		App->pathfinding->CleanUp();
-		App->fade->fadetoBlack();
-		if(App->map->Load("SeaTempleMap.tmx"));
-		{
-			int w, h;
-			uchar* data = NULL;
-			if (App->map->CreateWalkabilityMap(w, h, &data))
-				App->pathfinding->SetMap(w, h, data);
-
-			RELEASE_ARRAY(data);
-
-		}
-		App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
-		App->render->Start();
-		App->entities->Start();
-		App->gui->Start();
-		App->collisions->Start();
-		volcan_map = false;
+		StartGameT();
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) 
 	{
-		App->map->CleanUp();
-		App->entities->CleanUp();
-		App->gui->CleanUp();
-		App->collisions->CleanUp();
-		App->pathfinding->CleanUp();
-		App->fade->fadetoBlack();
-		if(App->map->Load("Volcano_Map.tmx"));
-		{
-			int w, h;
-			uchar* data = NULL;
-			if (App->map->CreateWalkabilityMap(w, h, &data))
-				App->pathfinding->SetMap(w, h, data);
-
-			RELEASE_ARRAY(data);
-
-		}
-		App->audio->PlayMusic("audio/music/LavaLand.ogg", DEFAULT_MUSIC_FADE_TIME);
-		App->render->Start();
-		App->entities->Start();
-		App->gui->Start();
-		App->collisions->Start();
-		volcan_map = true;
+		StartGameV();
 	}
 
 
@@ -267,9 +225,10 @@ void j1Scene::respawnGUI()
 void j1Scene::GUImenu()
 {
 	App->gui->AddGui(100, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY);
+	App->gui->AddGui(100, 300, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE);
 }
 
-void j1Scene::StartGame()
+void j1Scene::StartGameV()
 {
 	App->map->CleanUp();
 	App->entities->CleanUp();
@@ -293,5 +252,31 @@ void j1Scene::StartGame()
 	App->gui->Start();
 	App->collisions->Start();
 	volcan_map = true;
+}
+
+void j1Scene::StartGameT()
+{
+	App->map->CleanUp();
+	App->entities->CleanUp();
+	App->collisions->CleanUp();
+	App->gui->CleanUp();
+	App->pathfinding->CleanUp();
+	App->fade->fadetoBlack();
+	if (App->map->Load("SeaTempleMap.tmx"));
+	{
+		int w, h;
+		uchar* data = NULL;
+		if (App->map->CreateWalkabilityMap(w, h, &data))
+			App->pathfinding->SetMap(w, h, data);
+
+		RELEASE_ARRAY(data);
+
+	}
+	App->audio->PlayMusic("audio/music/AncientRuins.ogg", DEFAULT_MUSIC_FADE_TIME);
+	App->render->Start();
+	App->entities->Start();
+	App->gui->Start();
+	App->collisions->Start();
+	volcan_map = false;
 }
 

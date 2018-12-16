@@ -40,8 +40,8 @@ public:
 	void respawnEnemies();
 	void respawnGUI();
 	void GUImenu();
-	void StartGame();
-
+	void StartGameV();
+	void StartGameT();
 public:
 	bool volcan_map = true;
 	bool map_saved = true;
