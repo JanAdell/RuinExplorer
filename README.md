@@ -147,10 +147,9 @@ In this project we will attempt to put together a vertical platformer called Rui
 * F4: Places the player at the start of the second stage.
 * F5: Saves the game.
 * F6: Loads previously saved game.
-* F7: God Mode. Allows free camera control.
 * F9: Debug colliders and Pathfinding.
 * F10: God Mode. Enemies don't kill you.
-* F11: Switch between 30 fps and uncapped fps.
+
 
 
 ### License
