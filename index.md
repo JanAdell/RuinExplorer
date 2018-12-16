@@ -5,7 +5,7 @@
 ## Team Members
 
 **Didac Llop** as Main Programmer and Designer:
- > Dedicated to the implementation of the most complex functionalities inside the code, Didac implemented Pathfinding methods, GUI modules    and game mechanics, like power ups or the character attack. He worked on the implementation of the menu and varios UI elements within    the game, as well as fixing animations, adding the fonts and balancing general game balance together with his partner. 
+ > Dedicated to the implementation of the most complex functionalities inside the code, Didac implemented Pathfinding methods, GUI modules    and game mechanics, like power ups or the character attack. He worked on the implementation of the menu and varios UI elements within the game, as well as fixing animations, adding the fonts and general game balance together with his partner. Didac also implemented the entities in the game (with some minor fixes and addons by Jan) allowing the addition of enemies.
  
  * <https://github.com/didaclis>
 
@@ -14,7 +14,7 @@
 </p>
 
 **Jan Adell** as Programmer, Designer and Media and Asset manager:
- > Working as a support role in the creation of the game, Jan searched and provided all the assets for the game. He also designed and created the maps, which were later modified together with Didac as the development progressed. In the programming side, he implemented basic modules, like the one used to include fonts, and added basic functionalities like Brofiler. He also worked on implementing the various audio tracks and effects into the game. 
+ > Working as a support role in the creation of the game, Jan searched and provided the assets for the game. He also designed and created the maps, which were later modified together with Didac as the development progressed. In the programming side, he implemented basic modules, like the one used to include fonts or the Fade module, and added functionalities like Brofiler. He also worked on implementing the audio in the game, fixing memory leaks, or finding error causes while other modules were being worked on by Didac. 
  
  * <https://github.com/JanAdell>
 
@@ -22,12 +22,32 @@
   <img src="https://user-images.githubusercontent.com/36292051/50056301-7dc11100-015a-11e9-9d97-08bbca6cda93.png" alt="Jan Adell"/>
 </p>
 
+ **Game Core Subsystems**
+ 
+The game relies on gravity and position manipulation to allow for the teleport and boost mechanics added. One allows the player to jump higher than normal in certain platforms, the other allows the player to jump from one side of the screen an reappear in the other, making the path to advance have various different options. 
+
+
+ **Game Controls**
+
+* Left Arrow Key: Move Left
+
+* Right Arrow Key: Move Right
+
+* Top Arrow Key: Jump
+
+* Down Arrow Key: Downwards slash.
+
+* Space bar: Boosted jump (when on top of a booster platform). 
+
+* P Key: Pause the Game.
+
 
  **Github**
  
 Here's a link to the team's github repository where you can find the various versions and process which the game has gone through, as well as releases and a Readme regarding all the assets used and game controls, gimmicks and debug tools.
  
  * <https://github.com/JanAdell/RuinExplorer>
+ * <https://github.com/JanAdell/RuinExplorer/releases>
  
  **License** 
 
