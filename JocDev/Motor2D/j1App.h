@@ -132,6 +132,7 @@ private:
 	uint32				frames_on_last_update;
 	bool				framerate_cap = true;
 	bool				vsync = true;
+public:
 	bool				dopause = false;
 };
 

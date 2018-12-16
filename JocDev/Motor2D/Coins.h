@@ -11,9 +11,6 @@ public:
 
 	void Update(float dt);
 
-	bool Load(pugi::xml_node &node);
-	bool Save(pugi::xml_node &node) const;
-
 private:
 	Animation coin_anim;
 	iPoint size;

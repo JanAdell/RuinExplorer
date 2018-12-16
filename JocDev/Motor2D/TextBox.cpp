@@ -29,7 +29,7 @@ void Textbox::SetText(p2SString text)
 
 bool Textbox::Draw()
 {
-	App->render->Blit(text_draw, position.x - element.w, position.y - element.h, flip, &(animation->GetCurrentFrame()));
+	App->render->Blit(text_draw, position.x - element.w, position.y - element.h, flip, &(animation->GetCurrentFrame(1)));
 
 	return false;
 }

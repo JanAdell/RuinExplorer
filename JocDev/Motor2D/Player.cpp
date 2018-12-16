@@ -96,21 +96,21 @@ void Player::Update(float dt)
 	//pos_collidery = position.y + 30;
 	animation = &idle;
 
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT && dt != 0 )
 	{
 		animation = &run;
 		entityflip = SDL_RendererFlip::SDL_FLIP_NONE;
 		position.x += speed.x * dt;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT && dt != 0)
 	{
 		animation = &run;
 		entityflip = SDL_RendererFlip::SDL_FLIP_HORIZONTAL;
 		position.x -= speed.x * dt;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && dt != 0)
 	{
 		top_jump = true;
 		attack = true;
@@ -123,7 +123,7 @@ void Player::Update(float dt)
 		Attack.Reset();
 		fall.Reset();
 		jump_anim.Reset();
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && dt != 0)
 		{
 			start_jump = false;
 			if (start_jump == false)
@@ -135,6 +135,18 @@ void Player::Update(float dt)
 				stay_in_platform = false;
 				top_jump = false;
 			}
+		}
+
+		if (stay_in_platform == true && App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && dt != 0)
+		{
+			start_jump = false;
+			jump_anim.Reset();
+			distance_to_jump = position.y - boosted_jump;
+			position.y -= speed.y;
+			start_jump = true;
+			stay_in_platform = false;
+			top_jump = false;
+			booster = false;
 		}
 	}
 	else
@@ -228,14 +240,7 @@ void Player::Update(float dt)
 		position.x -= speed.x*dt;
 		leftwall = false;
 	}
-	if (dt == 0)
-	{
-		idle.current_frame = idle.speed *dt;
-		run.current_frame = run.speed *dt;
-		fall.current_frame = fall.speed *dt;
-		jump_anim.current_frame = jump_anim.speed * dt;
-		Attack.current_frame = Attack.speed * dt;
-	}
+	
 }
 
 void Player::OnCollision(Collider* collider)
@@ -261,16 +266,7 @@ void Player::OnCollision(Collider* collider)
 	}
 	if (collider->type == COLLIDER_BOOST)
 	{
-		if (stay_in_platform == true && App->input->GetKey(SDL_SCANCODE_SPACE))
-		{
-			start_jump = false;
-			jump_anim.Reset();
-			distance_to_jump = position.y - boosted_jump;
-			position.y -= speed.y;
-			start_jump = true;
-			stay_in_platform = false;
-			top_jump = false;
-		}
+		booster = true;
 	}
 
 	if (collider->type == COLLIDER_ENEMY)

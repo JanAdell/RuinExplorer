@@ -126,8 +126,24 @@ bool j1Scene::Update(float dt)
 	{
 		StartGameV();
 	}
+	//open pause
+	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && !App->dopause && !stayinmenu)
+	{
+		App->gui->AddGui(10, 10, GUI_TYPES::SPRITES, GUI_TYPES::PAUSE);
+		App->gui->AddGui(615, 500, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU);
+	}
 
-
+	//close pause
+	else if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && App->dopause && !stayinmenu)
+	{
+		for (uint i = 0; i < MAX_GUI; ++i)
+		{
+			if (App->gui->gui[i] != nullptr && (App->gui->gui[i]->type == GUI_TYPES::BUTTON || App->gui->gui[i]->type == GUI_TYPES::PAUSE))
+			{
+				App->gui->gui[i]->to_delete = true;
+			}
+		}
+	}
 	App->map->Draw();
 
 

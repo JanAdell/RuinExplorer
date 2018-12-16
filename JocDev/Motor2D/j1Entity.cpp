@@ -66,7 +66,7 @@ bool j1Entity::Update(float dt)
 
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 		if (entities[i] != nullptr) 
-			entities[i]->Draw(sprites);
+			entities[i]->Draw(sprites,dt);
 
 	return true;
 }

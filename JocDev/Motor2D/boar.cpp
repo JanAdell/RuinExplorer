@@ -142,9 +142,7 @@ void boar::Update(float dt)
 		entityflip = SDL_FLIP_NONE;
 
 	}
-	if(dt == 0)
-	boaranim.current_frame = boaranim.speed * dt;
-
+	
 }
 
 

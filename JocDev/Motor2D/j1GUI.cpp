@@ -82,6 +82,9 @@ bool j1GUI::Update(float dt)
 			}
 		}
 	}
+	for (uint i = 0; i < MAX_GUI; ++i)
+		if (gui[i] != nullptr)
+			gui[i]->Draw((SDL_Texture*)GetAtlas(), dt);
 
 	return true;
 }
@@ -89,9 +92,7 @@ bool j1GUI::Update(float dt)
 // Called after all Updates
 bool j1GUI::PostUpdate()
 {
-	for (uint i = 0; i < MAX_GUI; ++i)
-		if (gui[i] != nullptr)
-			gui[i]->Draw((SDL_Texture*)GetAtlas());
+	
 
 	return true;
 }

@@ -22,7 +22,7 @@ const Collider* Entity::GetCollider() const
 	return collider;
 }
 
-void Entity::Draw(SDL_Texture* sprites)
+void Entity::Draw(SDL_Texture* sprites,float dt)
 {
 	if (collider != nullptr)
 	{
@@ -34,7 +34,7 @@ void Entity::Draw(SDL_Texture* sprites)
 
 	if (animation != nullptr)
 	{
-		App->render->Blit(sprites, position.x, position.y, entityflip, &(animation->GetCurrentFrame()));
+		App->render->Blit(sprites, position.x, position.y, entityflip, &(animation->GetCurrentFrame(dt)));
 	}
 }
 

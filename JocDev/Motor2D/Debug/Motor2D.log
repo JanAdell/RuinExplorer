@@ -1,33 +1,22 @@
-﻿  Bar.cpp
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\bar.cpp(35): warning C4244: '=': conversión de 'float' a 'uint'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\bar.cpp(54): warning C4244: '=': conversión de 'float' a 'uint'; posible pérdida de datos
-  Coins.cpp
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
-  EyeMonster.cpp
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(21): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(74): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(78): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(98): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\eyemonster.cpp(104): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-  Player.cpp
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(41): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(28): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(29): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(35): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(36): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(103): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(110): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(121): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(133): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(145): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(153): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(161): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(206): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(215): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(223): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\player.cpp(228): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+﻿  TextBox.cpp
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(40): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(8): warning C4005: 'DEFAULT_FONT': redefinición de macro
+  c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(7): note: vea la definición anterior de 'DEFAULT_FONT'
+  j1App.cpp
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(40): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(8): warning C4005: 'DEFAULT_FONT': redefinición de macro
+  c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(7): note: vea la definición anterior de 'DEFAULT_FONT'
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(230): warning C4477: 'sprintf_s' : la cadena de formato '%lu' requiere un argumento de tipo 'unsigned long', pero el argumento variádico 5 tiene el tipo 'uint64'
+  c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(230): note: considere el uso de ' %llu' en la cadena de formato
+  c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1app.cpp(230): note: considere el uso de ' %I64u' en la cadena de formato
+  j1Fonts.cpp
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(8): warning C4005: 'DEFAULT_FONT': redefinición de macro
+  c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(7): note: vea la definición anterior de 'DEFAULT_FONT'
+  j1GUI.cpp
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(8): warning C4005: 'DEFAULT_FONT': redefinición de macro
+  c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1fonts.h(7): note: vea la definición anterior de 'DEFAULT_FONT'
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(40): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1gui.cpp(230): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1gui.cpp(246): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   Generando código...
   Motor2D.vcxproj -> C:\Users\Isabel\Desktop\class vec3\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe

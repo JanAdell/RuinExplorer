@@ -30,7 +30,7 @@ public:
 	bool stay_in_platform = false;
 	int lifes;
 	virtual void Update(float dt) = 0;
-	virtual void Draw(SDL_Texture* sprites);
+	virtual void Draw(SDL_Texture* sprites,float dt);
 	virtual void OnCollision(Collider* collider) = 0;
 	virtual bool Load(pugi::xml_node &node) = 0;
 	virtual	bool Save(pugi::xml_node &node)const = 0;

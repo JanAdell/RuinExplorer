@@ -51,6 +51,7 @@ private:
 	uint sfx;
 	bool leftwall = false;
 	bool rightwall = false;
+	bool booster = false;
 
 };
 

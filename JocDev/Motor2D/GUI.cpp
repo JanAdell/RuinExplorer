@@ -20,17 +20,17 @@ const iPoint GUI::GetPos() const
 
 
 
-void GUI::Draw(SDL_Texture * sprites)
+void GUI::Draw(SDL_Texture * sprites,float dt)
 {
 	if (animation != nullptr)
 	{
 		if (type == GUI_TYPES::COLLECTIVE)
 		{
-			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame()));
+			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame(dt)));
 		}
 		if (type == GUI_TYPES::BUTTON || type == GUI_TYPES::SPRITES)
 		{
-			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame()),0.0f);
+			App->render->Blit(sprites, position.x, position.y, flip, &(animation->GetCurrentFrame(dt)),0.0f);
 		}
 	}
 }

@@ -105,9 +105,7 @@ void EyeMonster::Update(float dt)
 		entityflip = SDL_FLIP_HORIZONTAL;
 	}
 
-	if (dt == 0)
-	eyemonster.current_frame = eyemonster.speed * dt;
-
+	
 }
 
 
