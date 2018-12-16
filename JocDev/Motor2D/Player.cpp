@@ -78,7 +78,7 @@ Player::Player(int x, int y):Entity(x,y)
 		top_jump = true;
 
 		tpsfx = App->audio->LoadFx("audio/fx/Randomize3.wav");
-		//deathsfx = App->audio->LoadFx("audio/fx/Death.wav");
+		deathsfx = App->audio->LoadFx("audio/fx/Death.wav");
 	}
 }
 
@@ -86,7 +86,7 @@ Player::~Player()
 {
 	LOG("Unloading player");
 	App->audio->UnloadFx(tpsfx);
-	//App->audio->UnloadFx(deathsfx);
+	App->audio->UnloadFx(deathsfx);
 }
 
 // Update: draw background
