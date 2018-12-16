@@ -153,7 +153,7 @@ In this project we will attempt to put together a vertical platformer called Rui
 
 GNU GPLv3
 
-Ruin Explorer (Provisional name)
+Ruin Explorer
 
 Copyright (C) 2018  Didac Llop / Jan Adell
 
