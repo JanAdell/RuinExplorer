@@ -32,7 +32,7 @@ void Textbox::Update(float dt)
 
 void Textbox::Draw()
 {
-	App->render->Blit(text_draw, position.x, position.y, flip,NULL,0.0f);
+	App->render->Blit(text_draw, position.x + element.w/2, position.y + element.h/2 , flip,NULL,0.0f);
 
 }
 

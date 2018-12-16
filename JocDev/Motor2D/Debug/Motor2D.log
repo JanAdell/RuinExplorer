@@ -1,3 +1,5 @@
-﻿  GUI.cpp
+﻿  j1GUI.cpp
 c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\animation.h(40): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1gui.cpp(233): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+c:\users\isabel\desktop\class vec3\videogame_dev_ruinexplorer\jocdev\motor2d\j1gui.cpp(249): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   Motor2D.vcxproj -> C:\Users\Isabel\Desktop\class vec3\Videogame_Dev_RuinExplorer\JocDev\Debug\Motor 2D.exe

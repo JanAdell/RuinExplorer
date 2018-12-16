@@ -34,8 +34,7 @@ void GUI::Draw(SDL_Texture * sprites,float dt)
 		}
 		if (type == GUI_TYPES::TEXTBOX)
 		{
-			App->render->Blit(text_draw, position.x, position.y, flip, NULL, 0.0f);
-
+			App->render->Blit(text_draw, position.x - 10, position.y - 10, flip, NULL, 0.0f);
 		}
 	}
 }

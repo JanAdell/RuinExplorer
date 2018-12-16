@@ -27,7 +27,7 @@ Button::Button(int x, int y, GUI_TYPES subtype, p2SString txt) : GUI(x, y,GUI_TY
 		push.loop = false;
 		flip = SDL_RendererFlip::SDL_FLIP_NONE;
 	}
-	App->gui->AddGui(100, 100, GUI_TYPES::TEXTBOX, GUI_TYPES::NO_TYPES, txt);
+	App->gui->AddGui(x, y, GUI_TYPES::TEXTBOX, GUI_TYPES::NO_TYPES, txt);
 }
 
 Button::~Button()

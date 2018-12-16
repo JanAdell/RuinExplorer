@@ -70,6 +70,10 @@ bool j1GUI::Update(float dt)
 {
 	for (uint i = 0; i < MAX_GUI; ++i)
 		if (gui[i] != nullptr)
+			gui[i]->Draw((SDL_Texture*)GetAtlas(), dt);
+
+	for (uint i = 0; i < MAX_GUI; ++i)
+		if (gui[i] != nullptr)
 			gui[i]->Update(dt);
 
 	for (uint i = 0; i < MAX_GUI; ++i)
@@ -82,9 +86,6 @@ bool j1GUI::Update(float dt)
 			}
 		}
 	}
-	for (uint i = 0; i < MAX_GUI; ++i)
-		if (gui[i] != nullptr)
-			gui[i]->Draw((SDL_Texture*)GetAtlas(), dt);
 
 	return true;
 }
@@ -204,8 +205,8 @@ void j1GUI::ActiveBotton(GUI & GUi)
 	{
 	case GUI_TYPES::PLAY:
 
-		App->gui->AddGui(615, 100, GUI_TYPES::BUTTON,GUI_TYPES::EASY);
-		App->gui->AddGui(615, 300, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT);
+		App->gui->AddGui(615, 100, GUI_TYPES::BUTTON,GUI_TYPES::EASY,"EASY");
+		App->gui->AddGui(615, 300, GUI_TYPES::BUTTON, GUI_TYPES::DIFFICULT,"DIFFICULT");
 		App->dopause = false;
 		break;
 
@@ -262,14 +263,13 @@ void j1GUI::ActiveBotton(GUI & GUi)
 
 	case GUI_TYPES::OPTIONS:
 		//create sliderbar
-
-		App->gui->AddGui(615,500,GUI_TYPES::BUTTON,GUI_TYPES :: RETURNMENU);
+		App->gui->AddGui(615,350, GUI_TYPES::BUTTON, GUI_TYPES::CREDITS, "CREDITS");
+		App->gui->AddGui(615,500,GUI_TYPES::BUTTON,GUI_TYPES :: RETURNMENU, "MENU");
 		break;
 
 	case GUI_TYPES::OPTIONSPAUSE:
 		//create sliderbar
-
-		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNPAUSE);
+		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNPAUSE, "RETURN");
 		break;
 	case GUI_TYPES::RETURNMENU:
 		if (!App->scene->stayinmenu)
@@ -284,13 +284,18 @@ void j1GUI::ActiveBotton(GUI & GUi)
 			App->gui->Start();
 			App->scene->stayinmenu = true;
 		}
-
+		App->dopause = false;
 		App->scene->GUImenu();
 		break;
 
 	case GUI_TYPES::RETURNPAUSE:
-		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU);
-		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE);
+		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU, "MENU");
+		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE, "OPTIONS");
+		break;
+
+	case GUI_TYPES::CREDITS:
+		//credits png
+		App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "RETURN");
 		break;
 	case GUI_TYPES::EXIT:
 		App->scene->go_out = true;

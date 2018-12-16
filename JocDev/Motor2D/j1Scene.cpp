@@ -130,8 +130,8 @@ bool j1Scene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && !App->dopause && !stayinmenu)
 	{
 		App->gui->AddGui(300, 120, GUI_TYPES::SPRITES, GUI_TYPES::PAUSE);
-		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU);
-		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE);
+		App->gui->AddGui(400, 440, GUI_TYPES::BUTTON, GUI_TYPES::RETURNMENU, "MENU");
+		App->gui->AddGui(400, 240, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONSPAUSE, "OPTIONS");
 	}
 
 	//close pause
@@ -255,9 +255,9 @@ void j1Scene::GUImenu()
 {
 	changemenu = true;
 	App->gui->AddGui(130, 100, GUI_TYPES::BUTTON,GUI_TYPES::PLAY,"START");
-	App->gui->AddGui(130, 250, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE);
-	App->gui->AddGui(130, 400, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS);
-	App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::EXIT);
+	App->gui->AddGui(130, 250, GUI_TYPES::BUTTON, GUI_TYPES::CONTINUE,"CONTINUE");
+	App->gui->AddGui(130, 400, GUI_TYPES::BUTTON, GUI_TYPES::OPTIONS, "OPTIONS");
+	App->gui->AddGui(130, 550, GUI_TYPES::BUTTON, GUI_TYPES::EXIT, "EXIT");
 
 }
 
