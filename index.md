@@ -23,13 +23,13 @@
 </p>
 
 
- # Github
+ ## Github
  
 Here's a link to the team's github repository where you can find the various versions and process which the game has gone through, as well as releases and a Readme regarding all the assets used and game controls, gimmicks and debug tools.
  
  * https://github.com/JanAdell/RuinExplorer
  
-  # License 
+ ## License 
 
 GNU GPLv3
 
