@@ -16,6 +16,7 @@
 #include "j1Pathfinding.h"
 #include "j1Entity.h"
 #include "j1Gui.h"
+#include "j1Fonts.h"
 #include "Brofiler/Brofiler.h"
 
 // Constructor
@@ -46,6 +47,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(scene);
 	AddModule(gui);
+	AddModule(font);
 	AddModule(collisions);
 	AddModule(entities);
 	AddModule(fade);

@@ -18,10 +18,11 @@ class j1Scene;
 class j1Map;
 class j1FadetoBlack;
 class j1GUI;
+class j1Fonts;
 class j1Collisions;
 class j1Pathfinding;
 class j1Entity;
-class j1Fonts;
+
 
 class j1App
 {
@@ -97,6 +98,7 @@ public:
 	j1Collisions*		collisions;
 	j1Map*				map;
 	j1GUI*				gui;
+	j1Fonts*			font = NULL;
 	j1Pathfinding*		pathfinding;
 	j1Entity*			entities;
 

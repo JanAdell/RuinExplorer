@@ -3,9 +3,9 @@
 #include "j1App.h"
 #include "j1Render.h"
 #include "j1Textures.h"
-//#include "j1Fonts.h"
+#include "j1Fonts.h"
 #include "j1Input.h"
-#include "j1Gui.h"
+#include "j1GUI.h"
 
 j1GUI::j1GUI() : j1Module()
 {
